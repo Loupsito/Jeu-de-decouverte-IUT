@@ -25,7 +25,7 @@
 				<?php
 				//salle G25
 				  $g25scenesAdjacentes = array($scene1 = array(1,"couloir 1",true),$scene2 = array(3,"I21",false));
-				 $g25 = array(0, "G25", $g25scenesAdjacentes, $item= array("clé","pomme","brosse"));  
+				 $g25 = array(0, "G25", $g25scenesAdjacentes, $item= array("cle","pomme","brosse"));  
 					  
 				//couloir 1
 				  $couloir1scenesAdjacentes = array($scene1 = array(0,"G25",true),$scene2 = array(2,"couloir 2",true));
@@ -47,10 +47,10 @@
 							$lienIMG1="images/cle.jpg";
 							$possession = false;
 							$tabInfos1 = array($tabAction1,$description1,$lienIMG1,$possession);
-						$tabItem2 = array("clé",$tabInfos1);
+						$tabItem2 = array("cle",$tabInfos1);
 
 					//----La-pomme----
-							$tabAction2 = array("écraser","manger");
+							$tabAction2 = array("ecraser","manger");
 							$description2="une belle pomme rouge";
 							$lienIMG2="images/pomme.jpg";
 							$possession2 = false;
@@ -82,6 +82,9 @@
 		
 					
 					var tampon;
+					var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
+					var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0"]};
+					var listesActions = [ecraser,manger];	
 					
 					//Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc.)
 					function genereContenu(element,contenu,divMere)
@@ -159,7 +162,7 @@
 					
 						//affiche une alerte si non accessible
 						if (listeCases[joueur.idSalle][2][indice][2] == false)			
-							alert("La porte est vérrouillé, il doit y avoir une clé près d\'ici...");
+							alert("La porte est vérrouillé, il doit y avoir une cle près d\'ici...");
 						//case lointaine accessible => le joueur peut avancer
 						else 
 							joueur.idSalle = newScene;
@@ -203,24 +206,34 @@
 						
 						
 						var captureBouton = document.querySelectorAll('#objet span');
+						document.getElementById('objet').innerHTML = "";
 						for(var i = 0; i<captureBouton.length;i++)
 						{
 							//alert(captureBouton[i].textContent);
 							//efface la div des actions pour faire le test de verification de prerequis.
-							document.getElementById('objet').innerHTML = "";
+							
+				
 							
 							//parcours le tableau d'actions
 							for(var j = 0; j <listesActions.length;j++)
 							{
 								//compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
-								if (captureBouton[i].textContent == listesActions[j][0])
+								if (captureBouton[i].textContent == listesActions[j]["nomAction"])
 								{
 									//alert(listesActions[j][0]);
-									var machin = "joueur.idSalle";
-									verifiePrerequis("manger",eval(machin));
+									//verifiePrerequis("manger",eval(machin));
+									//alert("dessus");
+									verifiePrerequis(listesActions[j]["nomAction"]);
+									//verifiePrerequis("ecraser");
+									//alert("dessous");
 								}
 							}
 						}
+					}
+					
+					function afficheResultat(val)
+					{
+						document.getElementById('objet').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
 					}
 					
 					// Efface que la première occurrence pour la valeur
@@ -304,21 +317,39 @@
 							}	
 					}
 					//Fonction verifiant les prerequis des actions
-					function verifiePrerequis(action,valeur) //manger , joueur.idSalle == 0   joueur.idSalle
+					function verifiePrerequis(action)
 					{
+						var erreurs = 0 ;
 						for(i=0;i<listesActions.length;i++)
 						{
 							if (listesActions[i]['nomAction']==action)//identification du nom de l'action
 								{
-									alert(listesActions[i]['nomAction']+" = "+action);
-									if (listesActions[i]['prerequis'][0]== valeur)
-										alert("Position : "+valeur+" ==>"+listesActions[i]['prerequis'][0]+"   prerequis respecté");
+									//alert(listesActions[i]['nomAction']+" = "+action);
+									for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
+									{
+										if (eval(listesActions[i]['prerequis'][j]))
+										{
+											//alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
+										}
+										else
+										{	
+											alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
+											erreurs +=1;
+										}
+									}
+									if (erreurs != 0)
+										alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
 									else
-										alert("Position : "+valeur+" ==>"+listesActions[i]['prerequis'][0]+"   rien n'est respecté");
+									{
+										//alert("Affichage des actions pour " +listesActions[i]['nomAction']);
+										genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','objet');
+									}	
 								}
 								
 							else
-								alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
+								{
+									//alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
+								}
 						}
 					}
 					
@@ -339,14 +370,7 @@
 					//instanciation du joueur
 					var joueur = new Joueur(); 					
 					//gerere le texte et les boutons
-					genererTexte();
-					
-					//prerequis = [joueur.idSalle == 0]
-					var manger = {"nomAction" : "manger","prerequis" : [0]};
-					var ecraser = ["écraser", prerequis = {"idSalle" : 2}];
-					
-					var listesActions = [manger, ecraser];	
-					
+					genererTexte();				
 				</script>
 			</div>		
 		</div>
