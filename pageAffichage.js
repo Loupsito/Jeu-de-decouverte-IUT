@@ -2,7 +2,8 @@
 //---------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
-					
+var listeCases;
+var tabDeTousLesItems;
 var tampon;
 
 //Les actions
@@ -15,16 +16,16 @@ var listesActions = [ecraser,manger];
 //Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc.)
 function genereContenu(element,contenu,divMere)
 {
-    nouveauDiv = document.createElement(element);			  //creation de l'element
-    nouveauDiv.innerHTML = contenu							  //Attribution d'un contenu
-    document.getElementById(divMere).appendChild(nouveauDiv); //pour insérer dans une div qu'on aura donnee au prealable
+    nouveauDiv = document.createElement(element);                //creation de l'element
+    nouveauDiv.innerHTML = contenu;                            //Attribution d'un contenu
+    document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
 function genereContenuID(element,contenu,divMere,idd)
 {
-    nouveauDiv = document.createElement(element);			  //creation de l'element
-    nouveauDiv.innerHTML = contenu							  //Attribution d'un contenu
-    nouveauDiv.id=idd;
-    document.getElementById(divMere).appendChild(nouveauDiv); //pour insérer dans une div qu'on aura donnee au prealable
+    nouveauDiv = document.createElement(element);                //creation de l'element
+    nouveauDiv.innerHTML = contenu;				 //Attribution d'un contenu
+    nouveauDiv.id=idd;                                           //Attribution d'un id
+    document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
 					
 //---------------------------------------------------------------------------------------------------------------------------
@@ -87,7 +88,7 @@ function avancer(newScene,indice)
 //test la case lointaine est accessible
 
         //affiche une alerte si non accessible
-        if (listeCases[joueur.idSalle][2][indice][2] == false)			
+        if (listeCases[joueur.idSalle][2][indice][2] === false)			
                 alert("La porte est vérrouillé, il doit y avoir une cle près d\'ici...");
         //case lointaine accessible => le joueur peut avancer
         else 
@@ -107,7 +108,7 @@ function changementAff(val)
 { 
         for(var i = 0; i<tabDeTousLesItems.length;i++)
         {
-                if (tabDeTousLesItems[i][0] == val)
+                if (tabDeTousLesItems[i][0] === val)
                 {
                         //On suvegarde la valeur de l'objet pour pouvoir l'utiliser plus tard
                         tampon = val;
@@ -131,7 +132,7 @@ function changementAff(val)
                 for(var j = 0; j <listesActions.length;j++)
                 {
                         //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
-                        if (captureBouton[i].textContent == listesActions[j]["nomAction"])
+                        if (captureBouton[i].textContent === listesActions[j]["nomAction"])
                         {
                                 verifiePrerequis(listesActions[j]["nomAction"]);
                         }
@@ -155,7 +156,7 @@ function verifPossessionItem(leItem)
 {
         for(var i = 0; i<tabDeTousLesItems.length;i++)
         {
-                if (tabDeTousLesItems[i][0] == leItem)
+                if (tabDeTousLesItems[i][0] === leItem)
                 {
                         return tabDeTousLesItems[i][1][3];
                 }
@@ -165,7 +166,7 @@ function verifPossessionItem(leItem)
 //Place l'item en fonction de son booleen
 function placementItem(leItem)
 {
-        if (verifPossessionItem(leItem) == true)//Si c'est dans l'inventaire
+        if (verifPossessionItem(leItem) === true)//Si c'est dans l'inventaire
         {
                 //ne rien faire
         }
@@ -178,7 +179,7 @@ function placementItem(leItem)
 //Place l'item dans l'inventaire si celui-ci est a false
 function placementItemDansInventaire(leItem)
 {
-        if (verifPossessionItem(leItem) == true)            //Si c'est dans l'inventaire
+        if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
                 genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
         }
@@ -193,7 +194,7 @@ function selectionObjet(leItem)
 {
         for(var i = 0; i<tabDeTousLesItems.length;i++)
         {
-                if (tabDeTousLesItems[i][0] == leItem)
+                if (tabDeTousLesItems[i][0] === leItem)
                 {
                         tabDeTousLesItems[i][1][3] = true;//true ou false
                 }
@@ -214,7 +215,7 @@ function debutInventaire()
 {
         for(var i = 0; i<tabDeTousLesItems.length;i++)
                 {
-                        if (tabDeTousLesItems[i][1][3] == true)
+                        if (tabDeTousLesItems[i][1][3] === true)
                         {
                                 genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
                         }
@@ -231,7 +232,7 @@ function verifiePrerequis(action)
         var erreurs = 0 ;
         for(i=0;i<listesActions.length;i++)
         {
-                if (listesActions[i]['nomAction']==action)//identification du nom de l'action
+                if (listesActions[i]['nomAction']===action)//identification du nom de l'action
                         {
                                 //alert(listesActions[i]['nomAction']+" = "+action);
                                 for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
@@ -246,7 +247,7 @@ function verifiePrerequis(action)
                                                 erreurs +=1;
                                         }
                                 }
-                                if (erreurs != 0)
+                                if (erreurs !== 0)
                                         alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
                                 else
                                 {
