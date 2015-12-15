@@ -38,12 +38,11 @@
 				//salle I21
 				  $i21scenesAdjacentes = array($scene1 = array(0,"G25",true),$scene2 = array(2,"couloir 2",true));
 				 $i21 = array(3, "I21", $i21scenesAdjacentes, $item= array("brosse"));					
-										
-												
-					$listeCases = array($g25, $couloir1, $couloir2, $i21);
+																					
+				$listeCases = array($g25, $couloir1, $couloir2, $i21);
 			
 					//----La-cle----
-							$tabAction1 = array("frotté","polit","tordu");
+							$tabAction1 = array("ouvrir porte");
 							$description1="Sert a ouvrir quelque chose";
 							$lienIMG1="images/cle.jpg";
 							$possession = false;
@@ -51,15 +50,15 @@
 						$tabItem2 = array("clé",$tabInfos1);
 
 					//----La-pomme----
-							$tabAction2 = array("mangé","epluché","ecrasé");
+							$tabAction2 = array("écraser","manger");
 							$description2="une belle pomme rouge";
 							$lienIMG2="images/pomme.jpg";
-							$possession2 = true;
+							$possession2 = false;
 							$tabInfos2 = array($tabAction2,$description2,$lienIMG2,$possession2);
 						$tabItem3 = array("pomme",$tabInfos2);
 
 					//----La-brosse----	
-							$tabAction3 = array("effacé","depoussieré","jeté");
+							$tabAction3 = array("brosser");
 							$description3="une brosse qui semble use par le temps";
 							$lienIMG3="images/brosse.jpg";
 							$possession3 = false;
@@ -68,7 +67,10 @@
 
 					//---Répertoriassions-de-tous-les-items-dans-un-seul-tableau---	
 						$tabDeTousLesItems=array($tabItem2,$tabItem3,$tabItem4);		
+					
+					
 
+						
 				echo '<script type="text/javascript">var tabDeTousLesItems = '.json_encode($tabDeTousLesItems).';</script>';	
 				echo '<script type="text/javascript">var listeCases = '.json_encode($listeCases).';</script>';					
 				?>
@@ -77,8 +79,9 @@
 					//---------------------------------------------------------------------------------------------------------------------------
 					//---------------------------------------------------------------------------------------------------------------------------
 					//---------------------------------------------------------------------------------------------------------------------------
+		
 					
-					var tampon;	
+					var tampon;
 					
 					//Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc.)
 					function genereContenu(element,contenu,divMere)
@@ -91,7 +94,7 @@
 					{
 						nouveauDiv = document.createElement(element);			  //creation de l'element
 						nouveauDiv.innerHTML = contenu							  //Attribution d'un contenu
-						nouveauDiv.id=idd;										  //Attribution d'un id
+						nouveauDiv.id=idd;
 						document.getElementById(divMere).appendChild(nouveauDiv); //pour insérer dans une div qu'on aura donnee au prealable
 					}
 					
@@ -109,41 +112,46 @@
 									
 					//fonction générant le texte et les boutons
 					function genererTexte()
-					 {
-					  //position du joueur
-					  var positionJoueur = '<b>Position du joueur =></b> '+listeCases[joueur.idSalle][1];
-					  genereContenu('p',positionJoueur,'deplacement');
+					{
+						//position du joueur
+						var positionJoueur = '<b>Position du joueur =></b> '+listeCases[joueur.idSalle][1];
+						genereContenu('p',positionJoueur,'deplacement');
 					  
-					  //affichage des boutons de scènes (portes ou longs couloirs)
-					  var boutonsDeplacement = '<b>Salles adjacentes :</b><br/>';
-					  genereContenu('p',boutonsDeplacement,'deplacement'); 
+						//affichage des boutons de scènes (portes ou longs couloirs)
+						var boutonsDeplacement = '<b>Salles adjacentes :</b><br/>';
+						genereContenu('p',boutonsDeplacement,'deplacement'); 
 							
-					  for (i = 0; i < listeCases[joueur.idSalle][2].length; i++)
-					  {
-					   //affiche le nom de la scène dans les boutons créés.
-					   genereContenu('span','<button type="button" onclick="avancer(listeCases[joueur.idSalle][2]['+i+'][0],'+i+')">'+listeCases[joueur.idSalle][2][i][1]+'</button>','deplacement');
-					  } 
-					  
-					  //affiche boutons items  
-					  var caseInventaire = '<b>Objets que vous voyez :</b><br/>';
-					  genereContenu('p',caseInventaire,'deplacement'); 
-					  for (i = 0; i < listeCases[joueur.idSalle][3].length; i++)
-					  {
-					   genereContenu('span','<button type="button">'+listeCases[joueur.idSalle][3][i]+'</button>','objet');
-					  }
+						for (i = 0; i < listeCases[joueur.idSalle][2].length; i++)
+						{
+							//affiche le nom de la scène dans les boutons créés.
+							genereContenu('span','<button type="button" onclick="avancer(listeCases[joueur.idSalle][2]['+i+'][0],'+i+')">'+listeCases[joueur.idSalle][2][i][1]+'</button>','deplacement');
+						} 
+						
+
+						
+						//affiche boutons items  
+						var caseInventaire = '<b>Objets que vous voyez :</b><br/>';
+						genereContenu('p',caseInventaire,'deplacement'); 
+						for (i = 0; i < listeCases[joueur.idSalle][3].length; i++)
+						{
+							genereContenu('span','<button type="button">'+listeCases[joueur.idSalle][3][i]+'</button>','objet');
+						}
+						
 						//-----------------------------------------------------------------------------------------------------------------------------
 						//----------------------------------------------Analyse-des-boutons-et-traitement----------------------------------------------
 							var	captureBouton = document.querySelectorAll('#objet span');
 							document.getElementById('objet').innerHTML = "";
 							for(var i = 0; i<captureBouton.length;i++)
 							{
+								//genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
 								placementItem(captureBouton[i].textContent);
 							}
 						//-----------------------------------------------------------------------------------------------------------------------------
 						//-----------------------------------------------------------------------------------------------------------------------------
-
+						
 					  
 					 }		
+					
 					
 					function avancer(newScene,indice)
 					{	
@@ -166,8 +174,10 @@
 					//---------------------------------------------------------------------------------------------------------------------------
 					
 					//Fonction qui change le contenu de l'ecran : affiche les actions
+
+					  //Fonction qui change le contenu de l'ecran : affiche les actions
 					function changementAff(val)
-					{	
+					{ 
 						for(var i = 0; i<tabDeTousLesItems.length;i++)
 						{
 							if (tabDeTousLesItems[i][0] == val)
@@ -177,12 +187,38 @@
 								//on supprime tous le contenu de la division 'objet'
 								document.getElementById('objet').innerHTML = "";
 								//puis on ajoute nos nouveaux elements
-								genereAction(tabDeTousLesItems[i][1][0]);	
+								genereAction(tabDeTousLesItems[i][1][0]); 
 								break;
 							}
 							else
 							{
 								document.getElementById('objet').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
+							}
+						}
+		
+						//var laListeAction = joueur.idSalle == 0;
+						
+						//if (laListeAction)
+							//alert(laListeAction);	
+						
+						
+						var captureBouton = document.querySelectorAll('#objet span');
+						for(var i = 0; i<captureBouton.length;i++)
+						{
+							//alert(captureBouton[i].textContent);
+							//efface la div des actions pour faire le test de verification de prerequis.
+							document.getElementById('objet').innerHTML = "";
+							
+							//parcours le tableau d'actions
+							for(var j = 0; j <listesActions.length;j++)
+							{
+								//compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
+								if (captureBouton[i].textContent == listesActions[j][0])
+								{
+									//alert(listesActions[j][0]);
+									var machin = "joueur.idSalle";
+									verifiePrerequis("manger",eval(machin));
+								}
 							}
 						}
 					}
@@ -200,7 +236,8 @@
 						{
 							if (tabDeTousLesItems[i][0] == leItem)
 							{
-								return tabDeTousLesItems[i][1][3];//true ou false
+								//alert(tabDeTousLesItems[i][1][3]);//true ou false
+								return tabDeTousLesItems[i][1][3];
 							}
 						}
 					}
@@ -214,20 +251,23 @@
 						}
 						else 									//Si c'est dans la salle
 						{
+							//alert("FALSE");
 							genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
 						}	
 					}
 					
-					//Fonction utilise pour ranger un item dans l'inventaire
 					function placementItemDansInventaire(leItem)
 					{
 						if (verifPossessionItem(leItem) == true)//Si c'est dans l'inventaire
 						{
 							genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
 						}
+						else 									//Si c'est dans la salle
+						{
+							genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
+						}	
 					}
-					
-					
+										
 					//Fonction utilise lors de la selection d'un item
 					function selectionObjet(leItem)
 					{
@@ -237,6 +277,10 @@
 							{
 								tabDeTousLesItems[i][1][3] = true;//true ou false
 							}
+							else
+							{
+								//ne rien faire
+							}
 						}	
 						//suppresion de l'item
 						var monItem = document.getElementById(leItem);
@@ -244,7 +288,6 @@
 						
 						placementItemDansInventaire(leItem);
 					}
-					
 					
 					function debutInventaire()
 					{
@@ -254,8 +297,31 @@
 								{
 									genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
 								}
+								else
+								{
+									//ne rien faire
+								}
 							}	
 					}
+					//Fonction verifiant les prerequis des actions
+					function verifiePrerequis(action,valeur) //manger , joueur.idSalle == 0   joueur.idSalle
+					{
+						for(i=0;i<listesActions.length;i++)
+						{
+							if (listesActions[i]['nomAction']==action)//identification du nom de l'action
+								{
+									alert(listesActions[i]['nomAction']+" = "+action);
+									if (listesActions[i]['prerequis'][0]== valeur)
+										alert("Position : "+valeur+" ==>"+listesActions[i]['prerequis'][0]+"   prerequis respecté");
+									else
+										alert("Position : "+valeur+" ==>"+listesActions[i]['prerequis'][0]+"   rien n'est respecté");
+								}
+								
+							else
+								alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
+						}
+					}
+					
 					
 					//Fontion qui genere des actions en fonction d'un item
 					function genereAction(tabActions)
@@ -263,7 +329,7 @@
 						document.getElementById('objet').innerHTML = "";
 						for(var i=0;i < tabActions.length;i++)
 						{	
-							genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','objet');
+							genereContenu('span','<button type="button" onclick="">'+tabActions[i]+'</button>','objet');
 						}
 					}
 					//---------------------------------------------------------------------------------------------------------------------------
@@ -273,7 +339,14 @@
 					//instanciation du joueur
 					var joueur = new Joueur(); 					
 					//gerere le texte et les boutons
-					genererTexte();		
+					genererTexte();
+					
+					//prerequis = [joueur.idSalle == 0]
+					var manger = {"nomAction" : "manger","prerequis" : [0]};
+					var ecraser = ["écraser", prerequis = {"idSalle" : 2}];
+					
+					var listesActions = [manger, ecraser];	
+					
 				</script>
 			</div>		
 		</div>
