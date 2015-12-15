@@ -9,10 +9,18 @@ var tampon;
 //Les actions
 var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
 var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0"]};
+var brosser = {"nomAction": "brosser","prerequis" : ["joueur.idSalle==0"]};
+//var ouvrir porte
+//var brosser
 
 //Le tableau qui contient les actions
-var listesActions = [ecraser,manger];	
-			
+var listesActions = [ecraser,manger,brosser];	
+
+/*
+ * @param {string} element - la balise que l'on veut creer
+ * @param {string} contenu - ce que va contenir la balise
+ * @param {string} divMere - la division qui va contenir la nouvelle balise
+ */
 //Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc.)
 function genereContenu(element,contenu,divMere)
 {
@@ -20,6 +28,14 @@ function genereContenu(element,contenu,divMere)
     nouveauDiv.innerHTML = contenu;                            //Attribution d'un contenu
     document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
+
+/* 
+ * @param {string} element - la balise que l'on veut creer
+ * @param {string} contenu - ce que va contenir la balise
+ * @param {string} divMere - la division qui va contenir la nouvelle balise
+ * @param {type} idd - nom de l'id a donnee
+ */
+//Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc, avec attribution d'un id)
 function genereContenuID(element,contenu,divMere,idd)
 {
     nouveauDiv = document.createElement(element);                //creation de l'element
@@ -103,7 +119,10 @@ function avancer(newScene,indice)
 //---------------------------------------------------------INTERACTION-------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
 
-  //Fonction qui change le contenu de l'ecran : affiche les actions
+/*
+ * @param {string} - le nom de l'item
+ */
+//Fonction qui change le contenu de l'ecran : affiche les actions
 function changementAff(val)
 { 
         for(var i = 0; i<tabDeTousLesItems.length;i++)
@@ -139,18 +158,27 @@ function changementAff(val)
                 }
         }
 }
-
+/*
+ * @param {string} val - l'action choisi precedemment
+ */
 function afficheResultat(val)
 {
         document.getElementById('objet').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
 }
 
+/*
+ * @param {Object[]} array - le tableau
+ * @param {string} value - la valeur a supprimer
+ */
 // Efface que la première occurrence pour la valeur
 function arrayUnsetByValue(array, value)
 { 
         array.splice(array.indexOf(value), 1);
 }
 
+/*
+ * @param {string} leItem - le nom de l'item
+ */
 //Verifie si l'item est dans l'inventairer ou pas
 function verifPossessionItem(leItem)
 {
@@ -163,6 +191,9 @@ function verifPossessionItem(leItem)
         }
 }
 
+/*
+ * @param {string} leItem - le nom de l'item
+ */
 //Place l'item en fonction de son booleen
 function placementItem(leItem)
 {
@@ -176,6 +207,9 @@ function placementItem(leItem)
         }	
 }
 
+/*
+ * @param {string} leItem - le nom de l'item
+ */
 //Place l'item dans l'inventaire si celui-ci est a false
 function placementItemDansInventaire(leItem)
 {
@@ -189,6 +223,9 @@ function placementItemDansInventaire(leItem)
         }	
 }
 
+/*
+ * @param {string} leItem - le nom de l'item
+ */
 //Fonction utilise lors de la selection d'un item
 function selectionObjet(leItem)
 {
@@ -225,51 +262,61 @@ function debutInventaire()
                         }
                 }	
 }
-
+/*
+ * 
+ * @param {string} action - le nom de l'action
+ */
 //Fonction verifiant les prerequis des actions
 function verifiePrerequis(action)
 {
-        var erreurs = 0 ;
-        for(i=0;i<listesActions.length;i++)
-        {
-                if (listesActions[i]['nomAction']===action)//identification du nom de l'action
-                        {
-                                //alert(listesActions[i]['nomAction']+" = "+action);
-                                for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
-                                {
-                                        if (eval(listesActions[i]['prerequis'][j]))
-                                        {
-                                                //alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
-                                        }
-                                        else
-                                        {	
-                                                alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
-                                                erreurs +=1;
-                                        }
-                                }
-                                if (erreurs !== 0)
-                                        alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
-                                else
-                                {
-                                        //alert("Affichage des actions pour " +listesActions[i]['nomAction']);
-                                        genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','objet');
-                                }	
-                        }
+    var erreurs = 0 ;
+    
+    for(i=0;i<listesActions.length;i++)
+    {
+        if (listesActions[i]['nomAction']===action)//identification du nom de l'action
+            {
+                //alert(listesActions[i]['nomAction']+" = "+action);
+                for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
+                {   
+                    //Si le prerequis est respecte
+                    if (eval(listesActions[i]['prerequis'][j]))
+                    {
+                        // alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
+                        // ne rien faire 
+                    }
+                    //Si jamais un prerequis n'est pas respecte
+                    else
+                    {	
+                        alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
+                        erreurs +=1;
+                    }
+                }
+                //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
+                if (erreurs !== 0)
+                    alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
                 else
-                        {
-                                //alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
-                        }
-        }
+                {
+                    //alert("Affichage des actions pour " +listesActions[i]['nomAction']);
+                    genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','objet');
+                }	
+            }
+        else
+            {
+                    //alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
+            }
+    }
 }
-
+/*
+ * @param {Object[]} tabActions - un tableau qui contient des actions
+ */
 //Fontion qui genere des actions en fonction d'un item
 function genereAction(tabActions)
 {
-        document.getElementById('objet').innerHTML = "";
-        for(var i=0;i < tabActions.length;i++)
-        {	
-                genereContenu('span','<button type="button" onclick="">'+tabActions[i]+'</button>','objet');
-        }
+    document.getElementById('objet').innerHTML = "";
+    for(var i=0;i < tabActions.length;i++)
+    {	
+        genereContenu('span','<button type="button" onclick="">'+tabActions[i]+'</button>','objet');
+    }
 }
 //---------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------

@@ -43,16 +43,4 @@ $listeCases = array($g25, $couloir1, $couloir2, $i21);
 
 //---Répertoriassions-de-tous-les-items-dans-un-seul-tableau---	
 $tabDeTousLesItems=array($tabItem2,$tabItem3,$tabItem4);
-?>
-
-
-
-
-
-
-
-
-
-
-
 
