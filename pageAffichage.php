@@ -17,13 +17,9 @@
 			<div id ="ecran">	
 				<div id="deplacement"></div>
 				<div id="objet"></div>
-				<div id="inventaire">
-					<br/><br/>
-						<p>inventaire inventaire</p>
-						<p>inventaire inventaire</p>
-						
-						
-					<br/><br/>
+				<div id="inventaire">		
+					<h2>Inventaire</h2>
+					<hr/>
 				</div>
 				<?php
 					echo '<script type="text/javascript">var listeCases = '.json_encode($listeCases).';</script>';	
@@ -34,8 +30,8 @@
 					//---------------------------------------------------------------------------------------------------------------------------
 					//---------------------------------------------------------------------------------------------------------------------------
 					//---------------------------------------------------------------------------------------------------------------------------
-					var inventaire = new Array();
 					var tampon;
+					var inventaire =[] ;
 					
 					//Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc.)
 					function genereContenu(element,contenu,divMere)
@@ -105,7 +101,7 @@
 							document.getElementById('objet').innerHTML = "";
 							for(var i = 0; i<captureBouton.length;i++)
 							{
-								genereContenu('span','<button type="button" onclick="changementAff('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
+								genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
 							}
 						//-----------------------------------------------------------------------------------------------------------------------------
 						//-----------------------------------------------------------------------------------------------------------------------------
@@ -170,17 +166,7 @@
 					//---------------------------------------------------------INTERACTION-------------------------------------------------------
 					//---------------------------------------------------------------------------------------------------------------------------
 					
-					//classe item
-					function Item (para_nom,para_actions, para_description,para_lienIMG)
-					{
-						this.nom = para_nom;
-						this.actions = tabActionsItem;
-						this.description = para_description;
-						this.lienIMG = para_lienIMG;
-					}
-					
-					
-					//Fonction qui change le contenu de l'ecran
+					//Fonction qui change le contenu de l'ecran : affiche les actions
 					function changementAff(val)
 					{	
 						for(var i = 0; i<tabDeTousLesItems.length;i++)
@@ -202,13 +188,46 @@
 						}
 					}
 					
-					function selectionObjet()
-					{
-						//Recuperation de l'item
-						//effacement de l'item dans la div "objet"
-						//Implantation de l'item dans la div "inventaire"
+					// Efface que la première occurrence pour la valeur
+					function arrayUnsetByValue(array, value)
+					{ 
+						array.splice(array.indexOf(value), 1);
 					}
 					
+					//Fonction utilise lors de la selection d'un item
+					function selectionObjet(leItem)
+					{
+						//On recupere les bouton item
+						//Seul pb : c'est un tableau d'element HTML...
+						//...et pour supprimer notre item de la div "objet"...
+						//...on identifie l'item à supprimer avec son nom (qui est de type chaine de caractere)
+						var	captureItem = document.querySelectorAll('#objet span');
+						
+						//On cree donc un nouveau tableau pour supprimer l'indice que l'on veut...
+						var tableau =[] ;
+						
+						//...puis on met tous les elements (de type chaine de caractere) dans notre nouveau tableau
+						for(var i = 0; i<captureItem.length;i++)
+						{
+							tableau.push(captureItem[i].textContent);
+						}
+						//Suppression de l'item
+						arrayUnsetByValue(tableau,leItem);
+						
+						//On supprime le contenue de la div "objet" ...
+						document.getElementById('objet').innerHTML = "";
+						
+						//...puis on reaffiche les item restant
+						for(var i = 0; i<tableau.length;i++)
+						{
+							genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+tableau[i]+"'"+')">'+tableau[i]+'</button>','objet');
+						}
+						
+						//Enfin, on affiche l'item choisie dans l'inventaire
+						genereContenu('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire');
+					}
+					
+					//Fontion qui genere des actions en fonction d'un item
 					function genereAction(tabActions)
 					{
 						document.getElementById('objet').innerHTML = "";
@@ -224,7 +243,7 @@
 					//instanciation du joueur
 					var joueur = new Joueur(); 					
 					//gerere le texte et les boutons
-					genererTexte();
+					genererTexte();					
 				</script>
 			</div>		
 		</div>
