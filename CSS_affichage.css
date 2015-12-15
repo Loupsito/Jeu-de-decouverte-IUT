@@ -11,6 +11,37 @@
 	padding : 10px;
 }
 
+#deplacement
+{
+    display: inline-block;
+    width: 65%;
+   /* border: 1px solid black;*/
+    vertical-align: top;
+	position : absolute;
+	left:0px;
+	margin:10px;
+}
+
+#inventaire
+{
+   display: inline-block;    
+   border: 1px solid blue;
+   vertical-align: top;
+   position : absolute;
+   right:0px;
+   width:30%;
+   height:60%;
+   margin:10px;
+}
+
+#objet
+{
+	position : absolute;
+	bottom:25%;
+	/*border: 1px solid white;*/
+	margin:10px;
+}
+
 
 @media all and (max-height: 1070px)
 {
