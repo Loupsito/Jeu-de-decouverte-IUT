@@ -17,6 +17,7 @@
                 <div id ="ecran">
                         <div id="deplacement"></div>
                         <div id="objet"></div>
+                        <div id="actions"></div>
                         <div id="inventaire">		
                                 <h2>Inventaire</h2>
                                 <hr/>

@@ -44,6 +44,12 @@
 	margin:10px;
 }
 
+#actions
+{
+    position : absolute;
+    bottom:10%;
+    margin:10px;
+}
 
 @media all and (max-height: 1070px)
 {

@@ -7,11 +7,13 @@ var tabDeTousLesItems;
 var tampon;
 
 //Les actions
-var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
-var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0"]};
-var brosser = {"nomAction": "brosser","prerequis" : ["joueur.idSalle==0"]};
-//var ouvrir porte
-//var brosser
+    //pomme
+    var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
+    var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0"]};
+    //brosse
+    var brosser = {"nomAction": "brosser","prerequis" : ["joueur.idSalle==0"]};
+    //cle
+    //var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["joueur.idSalle==0"]};
 
 //Le tableau qui contient les actions
 var listesActions = [ecraser,manger,brosser];	
@@ -132,19 +134,19 @@ function changementAff(val)
                         //On suvegarde la valeur de l'objet pour pouvoir l'utiliser plus tard
                         tampon = val;
                         //on supprime tous le contenu de la division 'objet'
-                        document.getElementById('objet').innerHTML = "";
+                        document.getElementById('actions').innerHTML = "";
                         //puis on ajoute nos nouveaux elements
                         genereAction(tabDeTousLesItems[i][1][0]); 
                         break;
                 }
                 else
                 {
-                        document.getElementById('objet').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
+                        document.getElementById('actions').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
                 }
         }
 
-        var captureBouton = document.querySelectorAll('#objet span');
-        document.getElementById('objet').innerHTML = "";
+        var captureBouton = document.querySelectorAll('#actions span');
+        document.getElementById('actions').innerHTML = "";
         for(var i = 0; i<captureBouton.length;i++)
         {
                 //parcours le tableau d'actions
@@ -163,7 +165,7 @@ function changementAff(val)
  */
 function afficheResultat(val)
 {
-        document.getElementById('objet').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
+        document.getElementById('actions').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
 }
 
 /*
@@ -297,7 +299,7 @@ function verifiePrerequis(action)
                 else
                 {
                     //alert("Affichage des actions pour " +listesActions[i]['nomAction']);
-                    genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','objet');
+                    genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions');
                 }	
             }
         else
@@ -312,10 +314,10 @@ function verifiePrerequis(action)
 //Fontion qui genere des actions en fonction d'un item
 function genereAction(tabActions)
 {
-    document.getElementById('objet').innerHTML = "";
+    document.getElementById('actions').innerHTML = "";
     for(var i=0;i < tabActions.length;i++)
     {	
-        genereContenu('span','<button type="button" onclick="">'+tabActions[i]+'</button>','objet');
+        genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','actions');
     }
 }
 //---------------------------------------------------------------------------------------------------------------------------
