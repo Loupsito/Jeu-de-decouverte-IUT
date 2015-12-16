@@ -78,7 +78,7 @@ function genererTexte()
     //------------------------------------BOUTONS DE SCENES-------------------------------------
     var boutonsDeplacement = '<b>Salles adjacentes :</b><br/>';
     genereContenu('p',boutonsDeplacement,'deplacement'); 
-
+    
     //parcours le tableau des liens
     for (var i = 0; i < listeLiens.length; i++)
     {
@@ -159,6 +159,14 @@ function avancer(newScene)
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     genererTexte();
+    var captureActions = document.querySelectorAll('#actions span');
+    for(k=0;k<listesActions.length;k++)
+    {
+        //alert("lopo");
+        verifiePrerequis(captureActions[k].textContent);
+        //alert(captureActions[k].textContent);
+        //alert("lopo2");
+    }
 }
 					
 //---------------------------------------------------------------------------------------------------------------------------
@@ -204,6 +212,7 @@ function changementAff(val)
                 }
         }
 }
+
 /*
  * @param {string} val - l'action choisi precedemment
  */
@@ -308,15 +317,15 @@ function debutInventaire()
                         }
                 }	
 }
+
 /*
- * 
  * @param {string} action - le nom de l'action
  */
 //Fonction verifiant les prerequis des actions
 function verifiePrerequis(action)
 {
     var erreurs = 0 ;
-    
+    //alert("entré dans verifiePrerequis");
     for(i=0;i<listesActions.length;i++)
     {
         if (listesActions[i]['nomAction']===action)//identification du nom de l'action
@@ -327,19 +336,22 @@ function verifiePrerequis(action)
                     //Si le prerequis est respecte
                     if (eval(listesActions[i]['prerequis'][j]))
                     {
-                        // alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
+                       //alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
                         // ne rien faire 
                     }
                     //Si jamais un prerequis n'est pas respecte
                     else
                     {	
-                        alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
+                        //alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
                         erreurs +=1;
                     }
                 }
                 //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
                 if (erreurs !== 0)
-                    alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                {
+                    //alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                    document.getElementById('actions').innerHTML = "";
+                }
                 else
                 {
                     //alert("Affichage des actions pour " +listesActions[i]['nomAction']);
@@ -352,6 +364,7 @@ function verifiePrerequis(action)
             }
     }
 }
+
 /*
  * @param {Object[]} tabActions - un tableau qui contient des actions
  */
