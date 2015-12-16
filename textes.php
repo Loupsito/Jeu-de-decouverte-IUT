@@ -1,21 +1,56 @@
 <?php
-//salle G25
-  $g25scenesAdjacentes = array($scene1 = array(1,"couloir 1",true),$scene2 = array(3,"I21",false));
- $g25 = array(0, "G25", $g25scenesAdjacentes, $item= array("cle","pomme","brosse"));  
+//entrée
+$entree = array(0,"entrée", $item= array());  
 
-//couloir 1
-  $couloir1scenesAdjacentes = array($scene1 = array(0,"G25",true),$scene2 = array(2,"couloir 2",true));
- $couloir1 = array(1, "couloir1", $couloir1scenesAdjacentes, $item= array());      
+//couloir point de vue A
+$couloirA = array(1,"couloir A", $item= array()); 
 
-//couloir 2
-  $couloir2scenesAdjacentes = array($scene1 = array(1,"couloir 1",true),$scene2 = array(3,"I21",false));
- $couloir2 = array(2, "couloir2", $couloir2scenesAdjacentes, $item= array());  
+//couloir point de vue B
+$couloirB = array(2,"couloir B", $item= array());  
 
-//salle I21
-  $i21scenesAdjacentes = array($scene1 = array(0,"G25",true),$scene2 = array(2,"couloir 2",true));
- $i21 = array(3, "I21", $i21scenesAdjacentes, $item= array("brosse"));					
+//salle G25 objets
+$g25Objets = array(3, "G25 A", $item= array("cle","pomme","brosse"));  
 
-$listeCases = array($g25, $couloir1, $couloir2, $i21);
+//salle G25 porte (vers i21)
+$g25_portei21 = array(4, "G25 B", $item= array());   
+
+//salle G23 porte
+$g23_porteCouloirB = array(5, "G23", $item= array());					
+
+//salle G23 tableau
+$g23Tableau = array(6, "G23 tableau blanc", $item= array("tableau"));		
+
+//salle I21 
+$i21 = array(7,"I21", $item= array());		
+
+
+//------------------------------------repertorie toutes les salles------------------------------------
+$listeCases = array($entree,$couloirA,$couloirB, $g25Objets, $g25_portei21,$g23_porteCouloirB, $g23Tableau, $i21 );
+
+// idsalle,idsalle2,accès
+//entrée ========= couloir A
+        $lien1 = array(0,1,true);
+
+//couloir A ========= couloir B
+        $lien2 = array(1,2,true);
+
+//couloir A ========= G25 objets
+        $lien3 = array(1,3,true);
+
+//G25 objets ========= G25 porte vers I21
+        $lien4 = array(3,4,true);
+
+//G25 porte vers I21 ========= I21
+        $lien5 = array(4,7,false);
+
+//couloir B ========= G23
+        $lien6 = array(2,5,true);
+
+//G23 ========= G23 tableau
+        $lien7 = array(5,6, true);
+
+//---------------------repertorie tous les liens---------------------
+$listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
 
 //----La-cle----
                 $tabAction1 = array("ouvrir porte");

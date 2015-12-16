@@ -22,7 +22,8 @@
                                 <h2>Inventaire</h2>
                                 <hr/>
                         </div>
-                        <?php                                               
+                        <?php                  
+                            echo '<script type="text/javascript">var listeLiens = '.json_encode($listeLiens).';</script>';	
                             echo '<script type="text/javascript">var tabDeTousLesItems = '.json_encode($tabDeTousLesItems).';</script>';	
                             echo '<script type="text/javascript">var listeCases = '.json_encode($listeCases).';</script>';					
                         ?>

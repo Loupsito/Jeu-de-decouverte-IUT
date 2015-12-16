@@ -4,6 +4,7 @@
 //---------------------------------------------------------------------------------------------------------------------------
 var listeCases;
 var tabDeTousLesItems;
+var listeLiens;
 var tampon;
 
 //Les actions
@@ -54,67 +55,110 @@ function genereContenuID(element,contenu,divMere,idd)
 function Joueur (idSalle)
 {
     //salle
-    this.idSalle = idSalle || 2;
+    this.idSalle = idSalle || 0;
     //orientation du joueur
 }
-									
+
 //fonction générant le texte et les boutons
 function genererTexte()
 {
-    //position du joueur
-    var positionJoueur = '<b>Position du joueur =></b> '+listeCases[joueur.idSalle][1];
-    genereContenu('p',positionJoueur,'deplacement');
-  
-    //affichage des boutons de scènes (portes ou longs couloirs)
+    //------------------------------------POSITION DU JOUEUR-----------------------------------
+    //parcours du tableau des scènes
+    for (var i = 0; i < listeCases.length ; i++)
+    {
+            //si position de joueur = id de scènes d'indice i
+            if (joueur.idSalle === listeCases[i][0])
+            {
+                    //affichage de la position du joueur
+                    var positionJoueur = '<b>Position du joueur =></b> '+listeCases[i][1];
+                    genereContenu('p',positionJoueur,'deplacement');
+            }
+    }
+
+    //------------------------------------BOUTONS DE SCENES-------------------------------------
     var boutonsDeplacement = '<b>Salles adjacentes :</b><br/>';
     genereContenu('p',boutonsDeplacement,'deplacement'); 
-					
-    for (i = 0; i < listeCases[joueur.idSalle][2].length; i++)
-    {
-        //affiche le nom de la scène dans les boutons créés.
-	genereContenu('span','<button type="button" onclick="avancer(listeCases[joueur.idSalle][2]['+i+'][0],'+i+')">'+listeCases[joueur.idSalle][2][i][1]+'</button>','deplacement');
-    } 
-						
 
-						
-    //affiche boutons items  
+    //parcours le tableau des liens
+    for (var i = 0; i < listeLiens.length; i++)
+    {
+            //compare la salle à la position du joueur
+            if (listeLiens[i][0] === joueur.idSalle) 
+            {
+                    //parcours le tableau des scènes
+                    for (var j = 0; j < listeCases.length; j++)
+                    {
+                            //compare l'idée de la salle et la salle 2
+                            if (listeCases[j][0] === listeLiens[i][1])
+                                    genereContenu('span','<button type="button" onclick="avancer(listeCases['+j+'][0])">'+listeCases[j][1]+'</button>','deplacement');
+                    }
+            }
+            //même chose
+            else if (listeLiens[i][1] === joueur.idSalle)
+            {
+                    for (var j = 0; j < listeCases.length; j++)
+                    {
+                            if (listeCases[j][0] === listeLiens[i][0])
+                                    genereContenu('span','<button type="button" onclick="avancer(listeCases['+j+'][0])">'+listeCases[j][1]+'</button>','deplacement');
+                    }							
+            }
+    }
+
+    //------------------------------------BOUTONS D'ITEMS-------------------------------------
     var caseInventaire = '<b>Objets que vous voyez :</b><br/>';
     genereContenu('p',caseInventaire,'deplacement'); 
-    for (i = 0; i < listeCases[joueur.idSalle][3].length; i++)
+    for (var i = 0; i < listeCases.length; i++)
     {
-        genereContenu('span','<button type="button">'+listeCases[joueur.idSalle][3][i]+'</button>','objet');
+            if (joueur.idSalle === listeCases[i][0])
+            {						
+                    for (var j = 0; j < listeCases[i][2].length ; j++)
+                    {
+                            genereContenu('span','<button type="button">'+listeCases[i][2][j]+'</button>','objet');
+                    }
+            }
     }
-						
+
     //-----------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------Analyse-des-boutons-et-traitement----------------------------------------------
-    var	captureBouton = document.querySelectorAll('#objet span');
-    document.getElementById('objet').innerHTML = "";
-    for(var i = 0; i<captureBouton.length;i++)
-    {
-        //genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
-	placementItem(captureBouton[i].textContent);
-    }
-						//-----------------------------------------------------------------------------------------------------------------------------
-						//-----------------------------------------------------------------------------------------------------------------------------
-						
-					  
-}						
-				
-//Fonction qui fait avancer le joueue                                
-function avancer(newScene,indice)
+            var	captureBouton = document.querySelectorAll('#objet span');
+            document.getElementById('objet').innerHTML = "";
+            for(var i = 0; i<captureBouton.length;i++)
+            {
+                    //genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
+                    placementItem(captureBouton[i].textContent);
+            }
+    //-----------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------
+
+
+}		
+
+function avancer(newScene)
 {	
-//test la case lointaine est accessible
+    //parcours le tableau des scènes
+    for (var i = 0; i < listeCases.length;i++)
+    {
+            //test si l'id de la scène est égal à la position du joueur
+            if (listeCases[i][0] === joueur.idSalle)	
+            {
+                    //parcours le tableau des liens
+                    for (var j = 0; j < listeLiens.length;j++)
+                    {
+                            //test si l'id est égal à la position du joueur et si l'id est égal à la position souhaité
+                            if ((listeLiens[j][0] === joueur.idSalle || listeLiens[j][1] === joueur.idSalle) && (listeLiens[j][0] === newScene || listeLiens[j][1] === newScene))
+                            {
+                                    if (listeLiens[j][2] === true)  
+                                            joueur.idSalle = newScene;	
+                                    else if (joueur.idSalle !== newScene)
+                                            alert("not possible");
+                            }	
+                    }
+            }
+    }
 
-        //affiche une alerte si non accessible
-        if (listeCases[joueur.idSalle][2][indice][2] === false)			
-                alert("La porte est vérrouillé, il doit y avoir une cle près d\'ici...");
-        //case lointaine accessible => le joueur peut avancer
-        else 
-                joueur.idSalle = newScene;
-
-        document.getElementById('deplacement').innerHTML = "";
-        document.getElementById('objet').innerHTML = "";
-        genererTexte();
+    document.getElementById('deplacement').innerHTML = "";
+    document.getElementById('objet').innerHTML = "";
+    genererTexte();
 }
 					
 //---------------------------------------------------------------------------------------------------------------------------
