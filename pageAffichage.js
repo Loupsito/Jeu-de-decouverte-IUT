@@ -163,7 +163,7 @@ function avancer(newScene)
     for(k=0;k<listesActions.length;k++)
     {
         //alert("lopo");
-        verifiePrerequis(captureActions[k].textContent);
+        verifiePrerequis(captureActions[k].textContent,"avancement");
         //alert(captureActions[k].textContent);
         //alert("lopo2");
     }
@@ -207,7 +207,7 @@ function changementAff(val)
                         //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
                         if (captureBouton[i].textContent === listesActions[j]["nomAction"])
                         {
-                                verifiePrerequis(listesActions[j]["nomAction"]);
+                                verifiePrerequis(listesActions[j]["nomAction"],"interaction");
                         }
                 }
         }
@@ -322,7 +322,7 @@ function debutInventaire()
  * @param {string} action - le nom de l'action
  */
 //Fonction verifiant les prerequis des actions
-function verifiePrerequis(action)
+function verifiePrerequis(action,choix) //ajouter un choix de modification
 {
     var erreurs = 0 ;
     //alert("entré dans verifiePrerequis");
@@ -347,11 +347,16 @@ function verifiePrerequis(action)
                     }
                 }
                 //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
-                if (erreurs !== 0)
+                if (erreurs !== 0 && choix ==="interaction")
                 {
-                    //alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                    alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                }
+                else if (erreurs !== 0 && choix ==="avancement")
+                {
+                     alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
                     document.getElementById('actions').innerHTML = "";
                 }
+                
                 else
                 {
                     //alert("Affichage des actions pour " +listesActions[i]['nomAction']);

@@ -51,6 +51,12 @@
     margin:10px;
 }
 
+button
+{
+    color:#ff4000; 
+    border-radius:16px;
+}
+
 @media all and (max-height: 1070px)
 {
 	#ecran
