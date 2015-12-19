@@ -53,7 +53,7 @@ $listeCases = array($entree,$couloirA,$couloirB, $g25Objets, $g25_portei21,$g23_
 $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
 
 //----La-cle----
-                $tabAction1 = array("ouvrir porte");
+                $tabAction1 = array("ouvrir_porte");
                 $description1="Sert a ouvrir quelque chose";
                 $lienIMG1="images/cle.jpg";
                 $possession = false;
