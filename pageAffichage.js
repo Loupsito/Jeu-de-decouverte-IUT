@@ -8,17 +8,26 @@ var listeLiens;
 var tampon;
 var porteVerrouille;
 
+//indice du lien (parcours du tableau au prélable)(servira pour ouvrir des portes)
+var indiceLien;
+
+//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 //Les actions
     //pomme
-    var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
-    var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0 || joueur.idSalle==1"]};
+    //var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
+   // var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"], "etatFinal": ["tabDeTousLesItems[1][1][1] = 'il ne reste plus rien de la pomme'"],"message" : "Vous avez manger la pomme"};
+    //var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0 || joueur.idSalle==1"]};
     //brosse
     var brosser = {"nomAction": "brosser","prerequis" : ["joueur.idSalle==0"]};
     //cle
-    var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["porteVerrouille==false"]}; 
+    var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["porteVerrouille==false"], "etatFinal": ["listeLiens[indiceLien][2]=true"], "message" : "Vous avez ouvert la porte"};
 
     //Le tableau qui contient les actions
     var listesActions = [manger,ecraser,brosser,ouvrir_porte];	
+//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
+
 
 /*
  * @param {string} element - la balise que l'on veut creer
@@ -71,7 +80,8 @@ function genererTexte()
             {
                     //affichage de la position du joueur
                     var positionJoueur = '<b>Position du joueur =></b> '+listeCases[i][1];
-                    genereContenu('p',positionJoueur,'deplacement');
+                    var lienIMG ='<br/><b>Lien image : </b> '+listeCases[i][3];
+                    genereContenu('p',positionJoueur+lienIMG,'deplacement');
             }
     }
 
@@ -93,7 +103,10 @@ function genererTexte()
                     {
                             genereContenu('span','<button type="button" onclick="avancer(listeCases['+j+'][0])">'+listeCases[j][1]+'</button>','deplacement');
                             if (sceneIsTrue(listeCases[j][0]) === false)
+                            {
                                     porteVerrouille = false;
+                                    indiceLien = i;
+                            }        
                     }
             }
     }
@@ -126,6 +139,7 @@ function genererTexte()
 
 
 }		
+
 
 function avancer(newScene)
 {	
@@ -218,7 +232,11 @@ function changementAff(val)
  */
 function afficheResultat(val)
 {
-        document.getElementById('actions').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
+    //appel de la fonction modifieValeur 
+    modifieValeur(val);
+
+    var myAction = document.getElementById(val);
+    myAction.parentNode.removeChild(myAction);
 }
 
 /*
@@ -325,24 +343,20 @@ function debutInventaire()
 function verifiePrerequis(action,choix) //ajouter un choix de modification
 {
     var erreurs = 0 ;
-    //alert("entré dans verifiePrerequis");
     for(i=0;i<listesActions.length;i++)
     {
         if (listesActions[i]['nomAction']===action)//identification du nom de l'action
             {
-                //alert(listesActions[i]['nomAction']+" = "+action);
                 for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
                 {   
                     //Si le prerequis est respecte
                     if (eval(listesActions[i]['prerequis'][j]))
                     {
-                       //alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  : prerequis respecte");
                         // ne rien faire 
                     }
                     //Si jamais un prerequis n'est pas respecte
                     else
                     {	
-                        //alert("ACTION = "+listesActions[i]['nomAction']+"    Position :  ==>"+listesActions[i]['prerequis'][j]+"  :prerequis non respecte");
                         erreurs +=1;
                     }
                 }
@@ -353,14 +367,14 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                 }
                 else if (erreurs !== 0 && choix ==="avancement")
                 {
-                     alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                     alert("Vous ne pouvez plus executer l'action : "+listesActions[i]['nomAction']);
                     document.getElementById('actions').innerHTML = "";
                 }
                 
-                //Affichage des actions
+                //-----------------------------Affichage des actions-----------------------------
                 else
                 {
-                       //Si bouton present : ne rien afficher
+                       //-----------------------------Si bouton present : ne rien afficher-----------------------------
                       var captureBouton = document.querySelectorAll('#actions span');
 
                        if(captureBouton.length !==0)
@@ -369,29 +383,39 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                           {
                               for(var j = 0; j <listesActions.length;j++)
                               {       
-                                  var captureBoutonAction = document.querySelectorAll('#actions span');
-
+                                   var captureBoutonAction = document.querySelectorAll('#actions span');
                                    if (captureBoutonAction[j].textContent === listesActions[i]["nomAction"])
-                                   {
                                        break;
+                                   else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
+                                   { 
+                                       genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);
                                    }
-                                   else
-                                        genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions');
                               }
                                return;
                           }
                        }
-                       else
+                       else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                        {
-                        //Si le bouton n'est pas présent : generer le bouton action
-                        genereContenu('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions');
+                           genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
                        }
                 }	
             }
-        else
+    }
+}
+
+//modifie la valeur de quelque chose suite à l'execution d'une action
+function modifieValeur(action)
+{
+    for (var i = 0; i<listesActions.length; i++)
+    {
+        if (listesActions[i]['nomAction'] === action)
+        {
+            for (var j = 0;j<listesActions[i]['etatFinal'].length;j++)
             {
-                    //alert(listesActions[i]['nomAction']+" =/= "+action + "  :  NOPE");
+                eval(listesActions[i]["etatFinal"][j]);    
+                alert(listesActions[i]["message"]);  
             }
+        }
     }
 }
 
@@ -417,3 +441,11 @@ debutInventaire();
 var joueur = new Joueur(); 					
 //gerere le texte et les boutons
 genererTexte();		
+
+
+    //Obtenir la position du curseur
+   /*var position = document.getElementById('actions');
+                            document.addEventListener('mousemove', function(e) {
+                                position.innerHTML = 'Position X : ' + e.clientX + 'px<br />Position Y : ' + e.clientY + 'px';
+                            }, false);
+   */

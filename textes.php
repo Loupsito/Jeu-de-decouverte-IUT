@@ -1,27 +1,27 @@
 <?php
 //entrée
-$entree = array(0,"entrée", $item= array());  
+$entree = array(0,"entrée", $item= array(),"images/1- Début.JPG");  
 
 //couloir point de vue A
-$couloirA = array(1,"couloir A", $item= array()); 
+$couloirA = array(1,"couloir A", $item= array(),"images/2- Couloir vue A.JPG"); 
 
 //couloir point de vue B
-$couloirB = array(2,"couloir B", $item= array());  
+$couloirB = array(2,"couloir B", $item= array(),"images/3- Couloir vue B.JPG");  
 
 //salle G25 objets
-$g25Objets = array(3, "G25 A", $item= array("cle","pomme","brosse"));  
+$g25Objets = array(3, "G25 A", $item= array("cle","stylo","brosse"),"images/6- G25 Machines (avec objets).JPG");  
 
 //salle G25 porte (vers i21)
-$g25_portei21 = array(4, "G25 B", $item= array());   
+$g25_portei21 = array(4, "G25 B", $item= array("carte"),"images/7- G25 Porte.JPG");   
 
 //salle G23 porte
-$g23_porteCouloirB = array(5, "G23", $item= array());					
+$g23_porteCouloirB = array(5, "G23", $item= array(),"images/5- G23 Salle (avec objets).JPG");					
 
 //salle G23 tableau
-$g23Tableau = array(6, "G23 tableau blanc", $item= array("tableau"));		
+$g23Tableau = array(6, "G23 tableau blanc", $item= array("tableau"),"images/4- G23 Tableau (vide).JPG");		
 
 //salle I21 
-$i21 = array(7,"I21", $item= array());		
+$i21 = array(7,"I21", $item= array(),"images/8- Arrivée.JPG");		
 
 
 //------------------------------------repertorie toutes les salles------------------------------------
@@ -44,7 +44,7 @@ $listeCases = array($entree,$couloirA,$couloirB, $g25Objets, $g25_portei21,$g23_
         $lien5 = array(4,7,false);
 
 //couloir B ========= G23
-        $lien6 = array(2,5,true);
+        $lien6 = array(2,5,false);
 
 //G23 ========= G23 tableau
         $lien7 = array(5,6, true);
@@ -60,13 +60,13 @@ $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
                 $tabInfos1 = array($tabAction1,$description1,$lienIMG1,$possession);
         $tabItem2 = array("cle",$tabInfos1);
 
-//----La-pomme----
-                $tabAction2 = array("ecraser","manger");
-                $description2="une belle pomme rouge";
-                $lienIMG2="images/pomme.jpg";
+//----Le-stylo----
+                $tabAction2 = array("stylo");
+                $description2="Un stylo qui va me servir a ecrire sur le tableau";
+                $lienIMG2="images/stylo.jpg";
                 $possession2 = false;
                 $tabInfos2 = array($tabAction2,$description2,$lienIMG2,$possession2);
-        $tabItem3 = array("pomme",$tabInfos2);
+        $tabItem3 = array("stylo",$tabInfos2);
 
 //----La-brosse----	
                 $tabAction3 = array("brosser");
