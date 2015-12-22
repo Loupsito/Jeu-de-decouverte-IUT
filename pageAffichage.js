@@ -1,32 +1,25 @@
-	
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
 var listeCases;
 var tabDeTousLesItems;
 var listeLiens;
 var tampon;
 var porteVerrouille;
+var positionJoueur;
 
 //indice du lien (parcours du tableau au prélable)(servira pour ouvrir des portes)
 var indiceLien;
 
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 //Les actions
-    //pomme
-    //var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"]};
-   // var manger = {"nomAction" : "manger","prerequis" : ["joueur.idSalle==0","verifPossessionItem('cle') == true"], "etatFinal": ["tabDeTousLesItems[1][1][1] = 'il ne reste plus rien de la pomme'"],"message" : "Vous avez manger la pomme"};
-    //var ecraser = {"nomAction": "ecraser","prerequis" : ["joueur.idSalle==0 || joueur.idSalle==1"]};
-    //brosse
-    var brosser = {"nomAction": "brosser","prerequis" : ["joueur.idSalle==0"]};
-    //cle
     var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["porteVerrouille==false"], "etatFinal": ["listeLiens[indiceLien][2]=true"], "message" : "Vous avez ouvert la porte"};
+    var ecrire = {"nomAction": "ecrire","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'"], "message" : "Vous avez ecris sur le tableau"};
+    var effacer = {"nomAction": "effacer","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (vide).JPG'"], "message" : "Vous avez effacer le tableau"};
+    var affiche_plan = {"nomAction": "affiche_plan","prerequis" : ["porteVerrouille==false"], "etatFinal": ["listeLiens[indiceLien][2]=true"], "message" : "Vous avez ouvert la porte"};
 
     //Le tableau qui contient les actions
-    var listesActions = [manger,ecraser,brosser,ouvrir_porte];	
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
+    var listesActions = [ecrire,effacer,affiche_plan,ouvrir_porte];	
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 /*
@@ -57,9 +50,9 @@ function genereContenuID(element,contenu,divMere,idd)
     document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
 					
-//---------------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------DEPLACEMENT--------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------DEPLACEMENT--------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 					
 //classe joueur pour connaître la position de l'utilisateur
 function Joueur (idSalle)
@@ -79,9 +72,11 @@ function genererTexte()
             if (joueur.idSalle === listeCases[i][0])
             {
                     //affichage de la position du joueur
-                    var positionJoueur = '<b>Position du joueur =></b> '+listeCases[i][1];
-                    var lienIMG ='<br/><b>Lien image : </b> '+listeCases[i][3];
-                    genereContenu('p',positionJoueur+lienIMG,'deplacement');
+                    positionJoueur = '<b>Position du joueur =></b> '+listeCases[i][1]+" | num : "+listeCases[i][0]+'<br/><b>Lien image : </b> '+listeCases[i][3];
+                    genereContenuID('p',positionJoueur,'deplacement',positionJoueur);
+                    document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
+                    document.getElementById("ecran").style.backgroundSize = "contain";
+                    document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
             }
     }
 
@@ -130,15 +125,14 @@ function genererTexte()
             var	captureBouton = document.querySelectorAll('#objet span');
             document.getElementById('objet').innerHTML = "";
             for(var i = 0; i<captureBouton.length;i++)
-            {
-                    //genereContenu('span','<button type="button" onclick="selectionObjet('+"'"+captureBouton[i].textContent+"'"+')">'+captureBouton[i].textContent+'</button>','objet');
+            {                    
                     placementItem(captureBouton[i].textContent);
             }
     //-----------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------------------------------------
 
 
-}		
+}
 
 
 function avancer(newScene)
@@ -183,9 +177,9 @@ function sceneIsTrue(newScene)
  return true;
 }
 					
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------INTERACTION-------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------INTERACTION------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
  * @param {string} - le nom de l'item
@@ -329,10 +323,6 @@ function debutInventaire()
                         {
                                 genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
                         }
-                        else
-                        {
-                                //ne rien faire
-                        }
                 }	
 }
 
@@ -350,13 +340,8 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                 for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
                 {   
                     //Si le prerequis est respecte
-                    if (eval(listesActions[i]['prerequis'][j]))
+                    if (!(eval(listesActions[i]['prerequis'][j])))
                     {
-                        // ne rien faire 
-                    }
-                    //Si jamais un prerequis n'est pas respecte
-                    else
-                    {	
                         erreurs +=1;
                     }
                 }
@@ -403,6 +388,9 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
     }
 }
 
+/*
+ * @param {string} action - nom de l'action dont on veut modifier la valeur
+ */
 //modifie la valeur de quelque chose suite à l'execution d'une action
 function modifieValeur(action)
 {
@@ -413,10 +401,11 @@ function modifieValeur(action)
             for (var j = 0;j<listesActions[i]['etatFinal'].length;j++)
             {
                 eval(listesActions[i]["etatFinal"][j]);    
-                alert(listesActions[i]["message"]);  
+                alert(listesActions[i]["message"]);
             }
         }
     }
+     MAJaffichagePosition();
 }
 
 /*
@@ -431,21 +420,50 @@ function genereAction(tabActions)
         genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','actions');
     }
 }
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+function MAJaffichagePosition()
+{
+     for (var i = 0; i < listeCases.length ; i++)
+    {
+            //si position de joueur = id de scènes d'indice i
+            if (joueur.idSalle === listeCases[i][0])
+            {
+                    var anciennnePosition = document.getElementById(positionJoueur);
+                    var eff = document.getElementById(positionJoueur).innerHTML="";
+                    newPosition=document.createElement("p");
+                    newPosition.appendChild(document.createTextNode('Position du joueur => '+listeCases[i][1]+" | num : "+listeCases[i][0]+'\n Lien image : '+listeCases[i][3]));
+                    document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
+                    document.getElementById("ecran").style.backgroundSize = "contain";
+                    document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
+                    anciennnePosition.appendChild(newPosition);           
+            }
+    }
+}
+
+/*
+ *  @param {string} id - correspond a l'id de la div a cacher 
+ */
+function afficherCacher(id) 
+{
+  var div = document.getElementById(id); 
+  if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
+        div.style.display = "block";
+   else                                                             // Si la division est visible
+        div.style.display = "none"; 
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Analyse les items a true et les places dans l'inventaire si c'est le cas
-debutInventaire();
+    debutInventaire();
 //instanciation du joueur
-var joueur = new Joueur(); 					
+    var joueur = new Joueur(); 					
 //gerere le texte et les boutons
-genererTexte();		
-
-
-    //Obtenir la position du curseur
-   /*var position = document.getElementById('actions');
-                            document.addEventListener('mousemove', function(e) {
-                                position.innerHTML = 'Position X : ' + e.clientX + 'px<br />Position Y : ' + e.clientY + 'px';
-                            }, false);
-   */
+    genererTexte();		
+//Bouton afficher-cacher inventaire
+    genereContenu('span','<button type="button" onclick="afficherCacher('+"'"+"inventaire"+"'"+')">'+"inventaire"+'</button>','dialogue');

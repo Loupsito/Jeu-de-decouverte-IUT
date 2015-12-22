@@ -56,26 +56,34 @@ $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
                 $tabAction1 = array("ouvrir_porte");
                 $description1="Sert a ouvrir quelque chose";
                 $lienIMG1="images/cle.jpg";
-                $possession = false;
+                $possession = true;
                 $tabInfos1 = array($tabAction1,$description1,$lienIMG1,$possession);
         $tabItem2 = array("cle",$tabInfos1);
-
+        
 //----Le-stylo----
-                $tabAction2 = array("stylo");
+                $tabAction2 = array("ecrire");
                 $description2="Un stylo qui va me servir a ecrire sur le tableau";
                 $lienIMG2="images/stylo.jpg";
-                $possession2 = false;
+                $possession2 = true;
                 $tabInfos2 = array($tabAction2,$description2,$lienIMG2,$possession2);
         $tabItem3 = array("stylo",$tabInfos2);
 
 //----La-brosse----	
-                $tabAction3 = array("brosser");
+                $tabAction3 = array("effacer");
                 $description3="une brosse qui semble use par le temps";
                 $lienIMG3="images/brosse.jpg";
-                $possession3 = false;
+                $possession3 = true;
                 $tabInfos3 = array($tabAction3,$description3,$lienIMG3,$possession3);
-        $tabItem4 = array("brosse",$tabInfos3);																			
+        $tabItem4 = array("brosse",$tabInfos3);
+        
+//----La-carte----	
+                $tabAction4 = array("affiche_plan");
+                $description4="Carte qui montre le plan de l'IUT";
+                $lienIMG4="images/carte.jpg";
+                $possession4 = false;
+                $tabInfos4 = array($tabAction4,$description4,$lienIMG4,$possession4);
+        $tabItem5 = array("carte",$tabInfos4);	
 
 //---Répertoriassions-de-tous-les-items-dans-un-seul-tableau---	
-$tabDeTousLesItems=array($tabItem2,$tabItem3,$tabItem4);
+$tabDeTousLesItems=array($tabItem2,$tabItem3,$tabItem4,$tabItem5);
 
