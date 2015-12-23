@@ -6,10 +6,9 @@
         <title>Jeu de découverte de l'IUT de Vélizy</title>
         <?php
             include("textes.php");
-            //include("test.php");
         ?>
     </head>
-    <body>
+    <body id ='corps'>
         <!-- ______________________________________________________ --> 
         <!-- _____________________L'écran du jeu___________________ -->
             <div id="console">
@@ -21,6 +20,7 @@
                                 <b>Inventaire</b>
                                 <hr/>
                         </div>
+                        <div id='choixPorte'></div>
                         <?php                  
                             echo '<script type="text/javascript">var listeLiens = '.json_encode($listeLiens).';</script>';	
                             echo '<script type="text/javascript">var tabDeTousLesItems = '.json_encode($tabDeTousLesItems).';</script>';	
@@ -28,7 +28,9 @@
                         ?>
                         
                 </div>
-                 <div id="dialogue"></div>
+                <div id="dialogue">
+                    <div id="menu"></div>
+                </div>
                 <script src="pageAffichage.js"></script>
             </div>
         <!-- ______________________________________________________ --> 
