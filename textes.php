@@ -1,21 +1,21 @@
 <?php
 //entrée
-$entree = array(0,"entrée", $item= array(),"images/1- Début.JPG",$coordonneesHitbox=array($face1=array(311,164),$face2=array(485,177)));  
+$entree = array(0,"entrée", $item= array(),"images/1- Début.JPG");
 
 //couloir point de vue A
 $couloirA = array(1,"couloir A", $item= array(),"images/2- Couloir vue A.JPG"); 
 
 //couloir point de vue B
-$couloirB = array(2,"couloir B", $item= array(),"images/3- Couloir vue B.JPG");  
+$couloirB = array(2,"couloir B", $item= array(),"images/3- Couloir vue B.JPG");
 
 //salle G25 objets
-$g25Objets = array(3, "G25 A", $item= array("stylo","brosse"),"images/6- G25 Machines (avec objets).JPG");  
+$g25Objets = array(3, "G25 A", $item= array("stylo","brosse"),"images/6- G25 Machines (sans objets).JPG");//FAIT  
 
 //salle G25 porte (vers i21)
 $g25_portei21 = array(4, "G25 B", $item= array("carte"),"images/7- G25 Porte.JPG");   
 
 //salle G23 porte
-$g23_porteCouloirB = array(5, "G23", $item= array("cle I21"),"images/5- G23 Salle (avec objets).JPG");					
+$g23_porteCouloirB = array(5, "G23", $item= array("cle I21"),"images/5- G23 Salle (sans objets).JPG");					
 
 //salle G23 tableau
 $g23Tableau = array(6, "G23 tableau blanc", $item= array("tableau"),"images/4- G23 Tableau (vide).JPG");		
@@ -29,25 +29,25 @@ $listeCases = array($entree,$couloirA,$couloirB, $g25Objets, $g25_portei21,$g23_
 
 // idsalle,idsalle2,accès
 //entrée ========= couloir A
-        $lien1 = array(0,1,true);
+        $lien1 = array(0,1,true,$coordonneesHitbox=array($face1=array(311,164),$face2=array(485,177)));
 
 //couloir A ========= couloir B
-        $lien2 = array(1,2,true);
+        $lien2 = array(1,2,true,$coordonneesHitbox=array($face1=array(30,307),$face2=array(250,350)));
 
-//couloir A ========= G25 objets
-        $lien3 = array(1,3,true);
+//couloir A ========= G25 A
+        $lien3 = array(1,3,true,$coordonneesHitbox=array($face1=array(90,170),$face2=array(420,180)));
 
-//G25 objets ========= G25 porte vers I21
-        $lien4 = array(3,4,true);
+//G25 A ========= G25 B
+        $lien4 = array(3,4,true,$coordonneesHitbox=array($face1=array(250,350),$face2=array(250,350)));
 
-//G25 porte vers I21 ========= I21
-        $lien5 = array(4,7,false);
+//G25 B ========= I21
+        $lien5 = array(4,7,false,$coordonneesHitbox=array($face1=array(290,130),$face2=array(250,350)));
 
 //couloir B ========= G23
-        $lien6 = array(2,5,true);
+        $lien6 = array(2,5,true,$coordonneesHitbox=array($face1=array(130,230),$face2=array(0,130)));
 
 //G23 ========= G23 tableau
-        $lien7 = array(5,6, true);
+        $lien7 = array(5,6, true,$coordonneesHitbox=array($face1=array(495,165),$face2=array(250,350)));
 
 //---------------------repertorie tous les liens---------------------
 $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
@@ -56,18 +56,18 @@ $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
 //----Le-stylo----
                 $tabAction2 = array("ecrire");
                 $description2="Un stylo qui va me servir a ecrire sur le tableau";
-                $lienIMG2="images/stylo.jpg";
+                $lienIMG2="images/stylo.png";
                 $possession2 = false;
-                $tabCoordonnees2=[];
+                $tabCoordonnees2=[500,350];
                 $tabInfos2 = array($tabAction2,$description2,$lienIMG2,$possession2,$tabCoordonnees2);
         $tabItem3 = array("stylo",$tabInfos2);
 
 //----La-brosse----	
                 $tabAction3 = array("effacer");
                 $description3="une brosse qui semble use par le temps";
-                $lienIMG3="images/brosse.jpg";
+                $lienIMG3="images/brosse.png";
                 $possession3 = false;
-                $tabCoordonnees3=[];
+                $tabCoordonnees3=[110,365];
                 $tabInfos3 = array($tabAction3,$description3,$lienIMG3,$possession3,$tabCoordonnees3);
         $tabItem4 = array("brosse",$tabInfos3);
         
@@ -92,9 +92,9 @@ $listeLiens = array($lien5,$lien3,$lien4,$lien7,$lien1,$lien2,$lien6);
 //----La-cle i21----
                 $tabAction7 = array("ouvrir_porte_i21");
                 $description7="Sert a ouvrir quelque chose";
-                $lienIMG7="images/cle.jpg";
+                $lienIMG7="images/cleI21.png";
                 $possession7 = false;
-                $tabCoordonnees7=[];
+                $tabCoordonnees7=[52,399];
                 $tabInfos7 = array($tabAction7,$description7,$lienIMG7,$possession7, $tabCoordonnees7);
         $tabItem7 = array("cle I21",$tabInfos7);
 

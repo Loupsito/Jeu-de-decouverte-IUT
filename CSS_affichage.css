@@ -6,9 +6,10 @@ body
 {
     width: 598px;
     height:560px ;
-    background-color:#FF6161;
     position: absolute;
-    left:35%;
+    left:0;
+    right:0;
+    margin:0 auto;
 }
 
 
@@ -41,6 +42,12 @@ body
    height:98%;
    top:0px;
    display: none;
+   z-index:1; 
+}
+
+#menu
+{
+     background-color: #BEBEBE;
 }
 
 #dialogue
@@ -56,10 +63,8 @@ body
 #choixPorte
 {
     display:block;
-    position : absolute;
-    top:0px;
     right:10%;
-    color:green;
+    position:absolute;
 }
 
 #objet
@@ -97,8 +102,19 @@ button
         {
             width: 600px;
             height:600px ;
-            background-color:#FF6161;
             position: absolute;
-            left:25%;
+            left:0;
+            right:0;
+            margin:0 auto;
+        }
+        
+        #dialogue
+        {
+            position : absolute;
+            border: 4px solid #145A4F;
+            background-color: #178977;
+            bottom:22px;
+            height: 20%;
+            width: 98.7%;
         }
 }

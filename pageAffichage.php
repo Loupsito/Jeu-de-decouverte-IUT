@@ -15,12 +15,11 @@
                 <div id ="ecran">
                         <div id="deplacement"></div>
                         <div id="objet"></div>
-                        <div id="actions"></div>
                         <div id="inventaire">		
                                 <b>Inventaire</b>
                                 <hr/>
                         </div>
-                        <div id='choixPorte'></div>
+                        
                         <?php                  
                             echo '<script type="text/javascript">var listeLiens = '.json_encode($listeLiens).';</script>';	
                             echo '<script type="text/javascript">var tabDeTousLesItems = '.json_encode($tabDeTousLesItems).';</script>';	
@@ -30,6 +29,8 @@
                 </div>
                 <div id="dialogue">
                     <div id="menu"></div>
+                    <div id="actions"></div>
+                    <div id='choixPorte'></div>
                 </div>
                 <script src="pageAffichage.js"></script>
             </div>

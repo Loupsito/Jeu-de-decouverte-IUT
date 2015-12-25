@@ -112,7 +112,7 @@ function genererTexte()
                     if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
                     {
                             //genereContenu('span','<button type="button" onclick="avancer(listeCases['+j+'][0],listeLiens['+i+'][0],listeLiens['+i+'][1])">'+listeCases[j][1]+'</button>','deplacement');
-                            genereHitboxDeplacement(311,164,100,100,j,i,'avancer'); //===> a mettre a jour
+                            genereHitboxDeplacement(100,100,j,i);
                              
                             if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
                             {
@@ -219,15 +219,38 @@ function avancer(newScene,id1,id2)
             
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
+
+   //-----Suppression des hitbox-----
+   var capture = document.querySelectorAll('#ecran span');
+   for (i=0;i<capture.length;i++)
+    {
+        
+        for (k=0;k<listeCases.length;k++)
+        {
+            if (capture[i].id === listeCases[k][1])
+            {
+                var monDeplacement = document.getElementById(listeCases[k][1]);
+                monDeplacement.parentNode.removeChild(monDeplacement);
+            }
+        }
+        
+      
+        for (m=0;m<tabDeTousLesItems.length;m++)
+        {
+            if (capture[i].id === tabDeTousLesItems[m][0] &&verifPossessionItem(capture[i].id) ===false)
+            {
+                var monItem = document.getElementById(tabDeTousLesItems[m][0]);
+                monItem.parentNode.removeChild(monItem);
+            }
+        }
+    }
+    //-------------------------------
     genererTexte();
  
     var captureActions = document.querySelectorAll('#actions span');
     for(k=0;k<listesActions.length;k++)
     {
-        //alert("lopo");
         verifiePrerequis(captureActions[k].textContent,"avancement");
-        //alert(captureActions[k].textContent);
-        //alert("lopo2");
     }
 }
 
@@ -306,16 +329,6 @@ function afficheResultat(val)
 }
 
 /*
- * @param {Object[]} array - le tableau
- * @param {string} value - la valeur a supprimer
- */
-// Efface que la première occurrence pour la valeur
-function arrayUnsetByValue(array, value)
-{ 
-        array.splice(array.indexOf(value), 1);
-}
-
-/*
  * @param {string} leItem - le nom de l'item
  */
 //Verifie si l'item est dans l'inventairer ou pas
@@ -336,8 +349,13 @@ function verifPossessionItem(leItem)
 //Place l'item en fonction de son booleen
 function placementItem(leItem)
 {
-        if (verifPossessionItem(leItem) === false)//Si c'est dans l'inventaire
-            genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);	
+        if (verifPossessionItem(leItem) === false)//Si c'est dans la salle
+        { 
+            genereHitboxItem(40,25,leItem);
+            //genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
+        }
+        //else         Si c'est dans l'inventaire
+            //ne rien faire
 }
 
 /*
@@ -348,11 +366,12 @@ function placementItemDansInventaire(leItem)
 {
         if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
-                genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
+            genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
         }
         else                                                 //Si c'est dans la salle
         {
-                genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
+            genereHitboxItem(40,25,leItem);
+            //genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
         }	
 }
 
@@ -517,27 +536,76 @@ function MAJaffichagePosition()
     }
 }
 
-function genereHitboxDeplacement(x,y,largeur,hauteur,j,i,fonction)
+function genereHitboxDeplacement(largeur,hauteur,j,i)
 {    
+
     //Creation de l'element
-    genereContenuID('span','','ecran',i);
-    myDiv = document.getElementById(i);
+    genereContenuID('span','','ecran',listeCases[j][1]);
+    var myDiv = document.getElementById(listeCases[j][1]);
     myDiv.style.width=largeur+'px';
     myDiv.style.height=hauteur+'px';        
-    myDiv.style.position ='absolute';
-    myDiv.style.backgroundColor='blue';
-    
+    myDiv.style.position ='absolute';    
+    myDiv.style.opacity='0.2';
+    myDiv.style.zIndex = "0"; 
+
+    var x; var y;
     //placement de la hitbox en fonction de la div parent
+    if (joueur.idSalle === listeLiens[i][0])
+    {
+        x = listeLiens[i][3][0][0];
+        y = listeLiens[i][3][0][1];
+    }
+    else if (joueur.idSalle === listeLiens[i][1])
+    {
+        x = listeLiens[i][3][1][0];
+        y = listeLiens[i][3][1][1];
+    }
     myDiv.style.top =y+'px';
     myDiv.style.left =x+'px';
     
-    //Integration de deux fonction, une pour le click, une pour quand le curseur survole la hitbox
-    if(fonction ==="avancer")
+
+    myDiv.style.backgroundColor='blue';
+    myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
+    myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='red';});
+    myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});
+}
+
+
+
+function genereHitboxItem(largeur,hauteur,leItem)
+{    
+
+    //Creation de l'element
+    genereContenuID('span','','ecran',leItem);
+    var myDiv = document.getElementById(leItem);
+    myDiv.style.width=largeur+'px';
+    myDiv.style.height=hauteur+'px';        
+    myDiv.style.position ='absolute';
+    myDiv.style.zIndex = "0"; 
+
+    var x;
+    var y;
+    
+    for (var i = 0; i<tabDeTousLesItems.length;i++)
     {
-        myDiv.addEventListener('mouseover',function(){ myDiv.style.backgroundColor='red';},false);
-        myDiv.addEventListener('mouseout',function(){ myDiv.style.backgroundColor='blue';},false);
-        myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
+        if (tabDeTousLesItems[i][0] === leItem)
+        {
+            x= tabDeTousLesItems[i][1][4][0];
+            y= tabDeTousLesItems[i][1][4][1];
+       
+            myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";
+            myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";;});
+            
+        }
+           
     }
+    
+    myDiv.style.top =y+'px';
+    myDiv.style.left =x+'px';
+    myDiv.style.backgroundSize="contain";
+   
+    myDiv.addEventListener("click", function(){ selectionObjet(leItem);});
+   
 }
 
 
@@ -564,10 +632,7 @@ function afficherCacher(id)
 //gerere le texte et les boutons
     genererTexte();		
 //Bouton afficher-cacher inventaire
-    genereContenu('span','<button type="button" onclick="afficherCacher('+"'"+"inventaire"+"'"+')">'+"inventaire"+'</button>','dialogue');
-
-
-
+    genereContenu('span','<button type="button" onclick="afficherCacher('+"'"+"inventaire"+"'"+')">'+"inventaire"+'</button><hr/>','menu');
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------PROVISOIRE : AFFICHE COORDONNEES---------------------------------------------------------
@@ -579,4 +644,4 @@ genereContenuID('div','','dialogue','curseur');
 var position = document.getElementById('curseur');
                             document.addEventListener('mousemove', function(e) {
                                 position.innerHTML = 'Position X : ' + (e.clientX - leftPos) + 'px<br />Position Y : ' + (e.clientY - topPos) + 'px <br/> top :' + topPos+ "-- left :"+ leftPos;  
-                            }, false);
+                            }, false);           
