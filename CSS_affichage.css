@@ -1,7 +1,3 @@
-body
-{
-    margin:0px;
-}
 #console
 {
     width: 598px;
@@ -11,7 +7,6 @@ body
     right:0;
     margin:0 auto;
 }
-
 
 #ecran
 {
@@ -34,9 +29,10 @@ body
 
 #inventaire
 { 
-   border: 4px solid #580000;
-   background-color: #DF8659;
-   position : absolute;
+   border: 4px solid #494949;
+   background:url(images/metal.jpg) no-repeat center;
+   border-radius:8px;
+   position:absolute;
    right:0px;
    width:20%;
    height:98%;
@@ -54,8 +50,9 @@ body
 {
     position : absolute;
     border: 4px solid #145A4F;
+    border-radius: 0px 0px 10px 10px;
     background-color: #178977;
-    bottom:0px;
+    bottom:-8px;
     height: 20%;
     width: 98.7%;
 }
@@ -63,10 +60,44 @@ body
 #choixPorte
 {
     display:block;
-    right:10%;
+    left:5%;
+    top:30%;
     position:absolute;
 }
-
+#infoBulleMenu
+{
+    position:absolute;
+    background:#178977;
+    color:white;
+    bottom:0;
+    height:20px;
+    opacity:0.70;
+    border-radius:10px;
+    text-align: center;  
+    border: 0;
+    display: none;
+}
+.boutonMenu
+{
+    width:40px;
+    height:40px;
+    margin-left:5px;
+}
+#boutonInventaire
+{
+    background: url(images/inventaire.png) no-repeat center;
+    background-size: 40px 40px;
+}
+#boutonSon
+{
+    background: url(images/son2.png) no-repeat center;
+}
+#msgLambda
+{
+    width : 50%; 
+    margin : auto; 
+    margin-top:16px;
+}
 #objet
 {
 	position : absolute;
@@ -84,8 +115,13 @@ body
 
 button
 {
-    color:#ff4000; 
-    border-radius:16px;
+    color:#BC0000; 
+    border-radius:8px;
+}
+
+#boutonMusique
+{
+    background: url(images/musique2.png) no-repeat center;
 }
 
 /* -----------------------------------------Gestion pour les plus petit ecran----------------------------------------- */
@@ -116,5 +152,18 @@ button
             bottom:22px;
             height: 20%;
             width: 98.7%;
+        }
+        .infoBulle
+        {
+            position:absolute;
+            background:#178977;
+            color:white;
+            bottom:0px ;
+            height:20px;
+            opacity:0.70;
+            border-radius:10px;
+            text-align: center;  
+            display: none;
+            border: 0;
         }
 }

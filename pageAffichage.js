@@ -1,7 +1,6 @@
 var listeCases;
 var tabDeTousLesItems;
 var listeLiens;
-var tampon;
 
 //indique si le joueur se trouve face à une porte libre d'accès ou non (booléen) => servira uniquement en tant que prerequis de l'action "ouvrir toutes les portes"
 var porteVerrouille;
@@ -12,15 +11,23 @@ var nomPorte = [];
 var positionJoueur;
 
 //indice du lien (parcours du tableau au prélable)(servira pour ouvrir des portes)
-var indiceLien;
+var indiceScene;
+
+//permettant de couper le son 
+var son = false;
+
+//permettant de couper la musique 
+var musique = false;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //Les actions
-    var ecrire = {"nomAction": "ecrire","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'"]};
-    var effacer = {"nomAction": "effacer","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (vide).JPG'"]};
-    var affiche_plan = {"nomAction": "affiche_plan","prerequis" : ["porteVerrouille==false"], "etatFinal": ["listeLiens[indiceLien][2]=true"]};
-
+    //stylo
+        var ecrire = {"nomAction": "ecrire","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'"]};
+    //brosse    
+        var effacer = {"nomAction": "effacer","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (vide).JPG'"]};
+    //carte    
+        var affiche_plan = {"nomAction": "affiche_plan","prerequis" : ["porteVerrouille==false"], "etatFinal": ["alert('pas fini cette action')"]};
     //cle ultime
         var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["porteVerrouille==false"], "etatFinal": ["genererChoixPorte(nomPorte,nomPorte)"]};
     //cle ouvrant uniquement la salle i21
@@ -32,7 +39,6 @@ var indiceLien;
         var listesActions = [ecrire,effacer,affiche_plan,ouvrir_porte,ouvrir_porte_i21,ouvrir_porte_g25_g23];	
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 /*
  * @param {string} element - la balise que l'on veut creer
@@ -61,6 +67,12 @@ function genereContenuID(element,contenu,divMere,idd)
     nouveauDiv.id=idd;                                           //Attribution d'un id
     document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
+
+function removeElementById(id)
+{
+    var el = document.getElementById(id);
+    el.parentNode.removeChild(el);
+}
 					
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------DEPLACEMENT--------------------------------------------------------------------
@@ -80,76 +92,52 @@ function genererTexte()
     //parcours du tableau des scènes
     for (var i = 0; i < listeCases.length ; i++)
     {
-            //si position de joueur = id de scènes d'indice i
-            if (joueur.idSalle === listeCases[i][0])
-            {
-                    //affichage de la position du joueur
-                    positionJoueur = '<b>Position du joueur =></b> '+listeCases[i][1]+" | num : "+listeCases[i][0]+'<br/><b>Lien image : </b> '+listeCases[i][3];
-                    genereContenuID('p',positionJoueur,'deplacement',positionJoueur);
-                    document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
-                    document.getElementById("ecran").style.backgroundSize = "contain";
-                    document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
-            }
+        //si position de joueur = id de scènes d'indice i
+        if (joueur.idSalle === listeCases[i][0])
+        {
+            //affichage de la position du joueur
+            document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
+            document.getElementById("ecran").style.backgroundSize = "contain";
+            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
+        }
     }
-
-    //------------------------------------BOUTONS DE SCENES-------------------------------------
-    var boutonsDeplacement = '<b>Salles adjacentes :</b><br/>';
-    genereContenu('p',boutonsDeplacement,'deplacement'); 
-    
+    //------------------------------------BOUTONS DE SCENES-------------------------------------    
     //initialisation de la variable globale à true
-    porteVerrouille = true;
-    
+    porteVerrouille = true;   
     //reinitialise le taleau (vide le tableau)
     nomPorte = [];
     
      //parcours le tableau des liens
     for (var i = 0; i < listeLiens.length; i++)
     {                 
-            //parcours le tableau des scènes
-            for (var j = 0; j < listeCases.length; j++)
-            {
-                    //compare la salle (liens) à la position du joueur ET la salle (scènes) à l'id 2 (liens)
-                    if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
-                    {
-                            //genereContenu('span','<button type="button" onclick="avancer(listeCases['+j+'][0],listeLiens['+i+'][0],listeLiens['+i+'][1])">'+listeCases[j][1]+'</button>','deplacement');
-                            genereHitboxDeplacement(100,100,j,i);
-                             
-                            if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
-                            {
-                                porteVerrouille = false;
-                                //rempli le tableau avec le nom des portes verrouillées que le joueur voit
-                                nomPorte.push(listeCases[j][1]);
-                            }        
-                    }
+        //parcours le tableau des scènes
+        for (var j = 0; j < listeCases.length; j++)
+        {
+            //compare la salle (liens) à la position du joueur ET la salle (scènes) à l'id 2 (liens)
+            if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
+            {                           
+                genereHitboxDeplacement(100,100,j,i);                             
+                if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
+                {
+                    porteVerrouille = false;
+                    //rempli le tableau avec le nom des portes verrouillées que le joueur voit
+                    nomPorte.push(listeCases[j][1]);
+                }        
             }
+        }
     }
-
     //------------------------------------BOUTONS D'ITEMS-------------------------------------
-    var caseInventaire = '<b>Objets que vous voyez :</b><br/>';
-    genereContenu('p',caseInventaire,'deplacement'); 
     for (var i = 0; i < listeCases.length; i++)
     {
-            if (joueur.idSalle === listeCases[i][0])
-            {						
-                    for (var j = 0; j < listeCases[i][2].length ; j++)
-                    {
-                            genereContenu('span','<button type="button">'+listeCases[i][2][j]+'</button>','objet');
-                    }
+        if (joueur.idSalle === listeCases[i][0])
+        {						
+            for (var j = 0; j < listeCases[i][2].length ; j++)
+            {                          
+                verificatonPlacementItem(listeCases[i][2][j]);
             }
+        }
     }
-
-    //-----------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------Analyse-des-boutons-et-traitement----------------------------------------------
-            var	captureBouton = document.querySelectorAll('#objet span');
-            document.getElementById('objet').innerHTML = "";
-            for(var i = 0; i<captureBouton.length;i++)
-            {                    
-                    placementItem(captureBouton[i].textContent);
-            }
-    //-----------------------------------------------------------------------------------------------------------------------------
-    //-----------------------------------------------------------------------------------------------------------------------------
 }
-
 
 //Fonction générant les portes afficher (si elles sont verrouillées) => uniquement utilisée dans les "etats finaux" des actions "ouvrir_porte[...]"  
 //prend en paramètres : le tableau des portes que l'action peut ouvrir, le tableau de toutes les portes verrouillées en face
@@ -188,7 +176,13 @@ function ouvrirPorte(nom)
                     {
                     //deverrouille la porte
                         listeLiens[j][2] = true;
-                        alert("Vous avez ouvert la salle "+listeCases[i][1]);
+                        
+                    //joue le bruit de deverrouillement de porte    
+                        jouerSon('sons/ouvrirPorte.mp3',son);
+                        
+                    //affichage de la réussite de l'action dans la boite de dialogue  
+                        genererMessageBoite("Vous avez ouvert la salle "+listeCases[i][1]+" !",2000);
+
                     //retire la div "choix de portes" après avoir deverrouillé la porte
                         document.getElementById('choixPorte').innerHTML = "";
                     //supprime du tableau des portes verrouillées, le nom des portes deverrouillées
@@ -207,18 +201,23 @@ function ouvrirPorte(nom)
     }                                       
 }
 
-
 //fonction permettant d'avancer
 function avancer(newScene,id1,id2)
 { 
- //test si l'accès à la nouvelle scène est libre ou non
- if (verifAccesSalle(id1,id2) === true)
-  joueur.idSalle = newScene;                
- else
-  alert("porte verrouillé");
+    //test si l'accès à la nouvelle scène est libre ou non
+    if (verifAccesSalle(id1,id2) === true)
+    {
+        joueur.idSalle = newScene;     
+        document.getElementById('msgLambda').innerHTML = "";
+    }
+    else
+    {
+        genererMessageBoite("La porte est verrouillée...",2000);
+    }
             
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
+    
 
    //-----Suppression des hitbox-----
    var capture = document.querySelectorAll('#ecran span');
@@ -248,10 +247,15 @@ function avancer(newScene,id1,id2)
     genererTexte();
  
     var captureActions = document.querySelectorAll('#actions span');
-    for(k=0;k<listesActions.length;k++)
+    if(captureActions.length !==0)
     {
-        verifiePrerequis(captureActions[k].textContent,"avancement");
+        for(k=0;k<listesActions.length;k++)
+        {
+            verifiePrerequis(captureActions[k].textContent,"avancement");
+        }
     }
+    
+    
 }
 
 //fonction si la porte est verrouillée ou non, prenant en paramètre les id des salles liées par la porte 
@@ -281,39 +285,34 @@ function verifAccesSalle(id1, id2)
 //Fonction qui change le contenu de l'ecran : affiche les actions
 function changementAff(val)
 { 
-        for(var i = 0; i<tabDeTousLesItems.length;i++)
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {
+        if (tabDeTousLesItems[i][0] === val)
         {
-                if (tabDeTousLesItems[i][0] === val)
-                {
-                        //On suvegarde la valeur de l'objet pour pouvoir l'utiliser plus tard
-                        tampon = val;
-                        //on supprime tous le contenu de la division 'objet'
-                        document.getElementById('actions').innerHTML = "";
-                        //puis on ajoute nos nouveaux elements
-                        genereAction(tabDeTousLesItems[i][1][0]); 
-                        break;
-                }
-                else
-                {
-                        document.getElementById('actions').innerHTML = "<h1>Vous avez "+val+" la "+tampon+"!</h1>";
-                }
+            //On suvegarde la valeur de l'objet pour pouvoir l'utiliser plus tard
+            tampon = val;
+            //on supprime tous le contenu de la division 'objet'
+            document.getElementById('actions').innerHTML = "";
+            //puis on ajoute nos nouveaux elements
+            genereAction(tabDeTousLesItems[i][1][0]); 
+            break;
         }
-
-        var captureBouton = document.querySelectorAll('#actions span');
-        document.getElementById('actions').innerHTML = "";
-        for(var i = 0; i<captureBouton.length;i++)
+    }
+    var captureBouton = document.querySelectorAll('#actions span');
+    document.getElementById('actions').innerHTML = "";
+    for(var i = 0; i<captureBouton.length;i++)
+    {
+        //parcours le tableau d'actions
+        for(var j = 0; j <listesActions.length;j++)
         {
-                //parcours le tableau d'actions
-                for(var j = 0; j <listesActions.length;j++)
-                {
-                        //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
-                        if (captureBouton[i].textContent === listesActions[j]["nomAction"])
-                        {
-                                verifiePrerequis(listesActions[j]["nomAction"],"interaction");
-                                document.getElementById('choixPorte').innerHTML = "";
-                        }
-                }
+            //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
+            if (captureBouton[i].textContent === listesActions[j]["nomAction"])
+            {
+                    verifiePrerequis(listesActions[j]["nomAction"],"interaction");
+                    document.getElementById('choixPorte').innerHTML = "";
+            }
         }
+    }
 }
 
 /*
@@ -331,7 +330,7 @@ function afficheResultat(val)
 /*
  * @param {string} leItem - le nom de l'item
  */
-//Verifie si l'item est dans l'inventairer ou pas
+//Verifie si l'item est dans l'inventaire ou pas
 function verifPossessionItem(leItem)
 {
         for(var i = 0; i<tabDeTousLesItems.length;i++)
@@ -347,7 +346,7 @@ function verifPossessionItem(leItem)
  * @param {string} leItem - le nom de l'item
  */
 //Place l'item en fonction de son booleen
-function placementItem(leItem)
+function verificatonPlacementItem(leItem)
 {
         if (verifPossessionItem(leItem) === false)//Si c'est dans la salle
         { 
@@ -362,11 +361,14 @@ function placementItem(leItem)
  * @param {string} leItem - le nom de l'item
  */
 //Place l'item dans l'inventaire si celui-ci est a false
-function placementItemDansInventaire(leItem)
+function placementItemDansInventaire(leItem,indice)
 {
         if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
-            genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
+            //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
+            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>','inventaire',leItem);
+            genererMessageBoite("Vous avez trouvé l'item : "+leItem,3000);
+            jouerSon('sons/item.mp3',son);
         }
         else                                                 //Si c'est dans la salle
         {
@@ -380,23 +382,29 @@ function placementItemDansInventaire(leItem)
  */
 //Fonction utilise lors de la selection d'un item
 function selectionObjet(leItem)
-{
+{       var indice;
         for(var i = 0; i<tabDeTousLesItems.length;i++)
         {
-                if (tabDeTousLesItems[i][0] === leItem)
-                {
-                        tabDeTousLesItems[i][1][3] = true;//true ou false
-                }
-                else
-                {
+              if (tabDeTousLesItems[i][0] === leItem)
+              {
+                      tabDeTousLesItems[i][1][3] = true;//true ou false
+                      indice = i;
+                      
+                      //suppression de la bulle info apres avoir selectionner l'item
+                      var bulle = document.getElementById(i);
+                      bulle.parentNode.removeChild(bulle);
+              }
+              else
+              {
                         //ne rien faire
-                }
+              }
+             
         }	
         //suppresion de l'item
         var monItem = document.getElementById(leItem);
         monItem.parentNode.removeChild(monItem);
         
-        placementItemDansInventaire(leItem);
+        placementItemDansInventaire(leItem,indice);
         
         //Petit animation : apparition et disparition de l'inventaire pour voir que l'objet a ete place dans l'inventaire
         document.getElementById("inventaire").style.display = 'block';
@@ -410,11 +418,11 @@ function debutInventaire()
                 {
                         if (tabDeTousLesItems[i][1][3] === true)
                         {
-                                genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
+                                //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
+                                genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>','inventaire',tabDeTousLesItems[i][0]);
                         }
                 }	
 }
-
 
 /*
  * @param {string} action - le nom de l'action
@@ -426,59 +434,56 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
     for(i=0;i<listesActions.length;i++)
     {
         if (listesActions[i]['nomAction']===action)//identification du nom de l'action
-            {
-                for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
-                {   
-                    //Si le prerequis est respecte
-                    if (!(eval(listesActions[i]['prerequis'][j])))
-                    {
-                        erreurs +=1;
-                    }
-                }
-                //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
-                if (erreurs !== 0 && choix ==="interaction")
+        {
+            for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
+            {   
+                //Si le prerequis est respecte
+                if (!(eval(listesActions[i]['prerequis'][j])))
                 {
-                    alert(erreurs+" prerequis pas respecte pour " +listesActions[i]['nomAction']);
+                    erreurs +=1;
                 }
-                else if (erreurs !== 0 && choix ==="avancement")
-                {
-                     alert("Vous ne pouvez plus executer l'action : "+listesActions[i]['nomAction']);
-                    document.getElementById('actions').innerHTML = "";
-                }
-                
-                //-----------------------------Affichage des actions-----------------------------
-                else
-                {
-                       //-----------------------------Si bouton present : ne rien afficher-----------------------------
-                      var captureBouton = document.querySelectorAll('#actions span');
-                      
-                      //Ferme l'inventaire si s'il y a au moins une action a afficher
-                      var div = document.getElementById("inventaire"); 
-                      div.style.display = "none"; 
-
-                       if(captureBouton.length !==0)
-                       {
-                        for(var y = 0; y<captureBouton.length;y++)
-                          {
-                              for(var j = 0; j <listesActions.length;j++)
-                              {       
-                                   var captureBoutonAction = document.querySelectorAll('#actions span');
-                                   if (captureBoutonAction[j].textContent === listesActions[i]["nomAction"])
-                                       break;
-                                   else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
-                                   { 
-                                       genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);                                       
-                                   }
-                              }
-                               return;
-                          }
-                       }
-                       else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
-                       {
-                           genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
-                       }
-                }	
             }
+            //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
+            if (erreurs !== 0 && choix ==="interaction")
+            {
+                genererMessageBoite(erreurs+" prerequis pas respecté(s) pour " +listesActions[i]['nomAction'],4000);
+            }
+            else if (erreurs !== 0 && choix ==="avancement")
+            {
+                genererMessageBoite("Vous ne pouvez plus executer l'action : "+listesActions[i]['nomAction'],4000);
+                document.getElementById('actions').innerHTML = "";
+            }                
+            //-----------------------------Affichage des actions-----------------------------
+            else
+            {
+               //Ferme l'inventaire si s'il y a au moins une action a afficher
+               var div = document.getElementById("inventaire"); 
+               div.style.display = "none";
+               //-----------------------------Si le bouton est present : ne rien afficher-----------------------------
+               var captureBouton = document.querySelectorAll('#actions span');            
+               if(captureBouton.length !==0)
+               {
+                for(var y = 0; y<captureBouton.length;y++)
+                  {
+                      for(var j = 0; j <listesActions.length;j++)
+                      {       
+                           var captureBoutonAction = document.querySelectorAll('#actions span');
+                           if (captureBoutonAction[j].textContent === listesActions[i]["nomAction"])
+                               break;
+                           else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
+                           { 
+                               genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);                                       
+                           }
+                      }
+                       return;
+                  }
+               }
+               else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
+               {
+                   genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
+               }
+            }	
+        }
     }
 }
 
@@ -509,12 +514,13 @@ function genereAction(tabActions)
 {
     document.getElementById('actions').innerHTML = "";
     for(var i=0;i < tabActions.length;i++)
-    {	
+    {
         genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','actions');
     }
 }
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------MULTIMEDIA-------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 function MAJaffichagePosition()
@@ -524,21 +530,15 @@ function MAJaffichagePosition()
             //si position de joueur = id de scènes d'indice i
             if (joueur.idSalle === listeCases[i][0])
             {
-                    var anciennnePosition = document.getElementById(positionJoueur);
-                    document.getElementById(positionJoueur).innerHTML="";
-                    newPosition=document.createElement("p");
-                    newPosition.appendChild(document.createTextNode('Position du joueur => '+listeCases[i][1]+" | num : "+listeCases[i][0]+'\n Lien image : '+listeCases[i][3]));
                     document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
                     document.getElementById("ecran").style.backgroundSize = "contain";
                     document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
-                    anciennnePosition.appendChild(newPosition);           
             }
     }
 }
 
 function genereHitboxDeplacement(largeur,hauteur,j,i)
 {    
-
     //Creation de l'element
     genereContenuID('span','','ecran',listeCases[j][1]);
     var myDiv = document.getElementById(listeCases[j][1]);
@@ -549,7 +549,8 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.style.zIndex = "0"; 
 
     var x; var y;
-    //placement de la hitbox en fonction de la div parent
+    
+    //Choix de quel face prendre
     if (joueur.idSalle === listeLiens[i][0])
     {
         x = listeLiens[i][3][0][0];
@@ -562,15 +563,11 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     }
     myDiv.style.top =y+'px';
     myDiv.style.left =x+'px';
-    
-
     myDiv.style.backgroundColor='blue';
     myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
-    myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='red';});
+    myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='#178977';});
     myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});
 }
-
-
 
 function genereHitboxItem(largeur,hauteur,leItem)
 {    
@@ -585,29 +582,66 @@ function genereHitboxItem(largeur,hauteur,leItem)
 
     var x;
     var y;
-    
     for (var i = 0; i<tabDeTousLesItems.length;i++)
     {
         if (tabDeTousLesItems[i][0] === leItem)
         {
             x= tabDeTousLesItems[i][1][4][0];
             y= tabDeTousLesItems[i][1][4][1];
-       
+                
             myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";
-            myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";;});
-            
-        }
-           
+            myDiv.addEventListener("mouseover", function(){ bulleInfosItem(x,y,leItem,"creation");});
+            myDiv.addEventListener("mouseout", function(){ bulleInfosItem(x,y,leItem,"suppression");});
+            //myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";;});
+        }    
     }
-    
     myDiv.style.top =y+'px';
     myDiv.style.left =x+'px';
     myDiv.style.backgroundSize="contain";
-   
+    myDiv.style.backgroundRepeat = "no-repeat";
     myDiv.addEventListener("click", function(){ selectionObjet(leItem);});
-   
 }
 
+function bulleInfosItem(x,y,leItem,choix)
+{
+   for (var i = 0; i<tabDeTousLesItems.length;i++)
+    {
+        if (tabDeTousLesItems[i][0] === leItem)
+        {
+            //Informations apparaissant dans la boite de dialogue si l'item est dans l'inventaire
+            if (verifPossessionItem(leItem)===true && choix ==="creation")
+            {
+                document.getElementById('msgLambda').innerHTML = tabDeTousLesItems[i][1][1];
+            }
+            else if(verifPossessionItem(leItem)===true && choix ==="suppression")
+            {
+                document.getElementById('msgLambda').innerHTML = "";
+            }
+            //Informations apparaissant dans une bulle au dessus del'item si celui-ci est dans la salle
+            else
+            {
+                if (choix ==="creation")
+                {
+                    genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',i);
+                    var myDiv = document.getElementById(i);
+                    myDiv.style.position ='absolute';
+                    myDiv.style.backgroundColor='black';
+                    myDiv.style.color='white';
+                    myDiv.style.borderRadius ='2px';
+                    myDiv.style.top = y - 20 +"px";
+                    myDiv.style.left = x - 40 +"px";
+                    myDiv.style.fontSize="11px";
+                    myDiv.style.opacity="0.7";
+                }
+                else if (choix ==="suppression")
+                {
+                   var myDiv = document.getElementById(i);
+                   myDiv.parentNode.removeChild(myDiv);
+                }
+            }
+        }
+    }
+}
 
 /*
  *  @param {string} id - correspond a l'id de la div a cacher 
@@ -619,12 +653,75 @@ function afficherCacher(id)
         div.style.display = "block";
    else                                                             // Si la division est visible
         div.style.display = "none"; 
-}                            
-                            
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+}
 
+function intervertirImageSon(son,id,url1,url2) 
+{
+    if (son === false) 
+        document.getElementById(id).style.background = "url('"+url2+"') no-repeat center";  
+    else 
+        document.getElementById(id).style.background = "url('"+url1+"') no-repeat center"; 
+}
+
+function afficheInfoBulleMenu(width, marginleft,contenu)
+{
+    genereContenuID('span','','ecran','infoBulleMenu');
+    var myDiv = document.getElementById('infoBulleMenu');
+    document.getElementById('infoBulleMenu').style.display='block';
+    
+    document.getElementById('infoBulleMenu').innerHTML = contenu;
+    
+    myDiv.style.left = marginleft+"px";
+    myDiv.style.width= width+"px";    
+}
+
+function masqueInfoBulleMenu() 
+{
+    document.getElementById('infoBulleMenu').style.display='none';
+}
+
+function genererMessageBoite(msg,timeOut)
+{
+    document.getElementById('msgLambda').innerHTML = msg;
+    setTimeout(function(){document.getElementById('msgLambda').innerHTML = "";}, timeOut);
+}
+
+function jouerSon(url,boolean)
+{
+    var son = new Audio(url);
+    if (boolean === true)
+        son.play();
+    else 
+        return;
+}
+
+function couperJouerSon()
+{
+    if (son === true)
+        son = false;
+    else
+        son = true;
+}
+
+function jouerMusique(boolean)
+{  
+    if (boolean === false)
+        removeElementById("music");
+    else if (boolean === true)
+        genereContenu('span','<audio id="music" src="sons/track1.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
+}
+
+function couperJouerMusique()
+{
+    if(musique === true)
+        musique = false;
+    else
+        musique = true;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 //Analyse les items a true et les places dans l'inventaire si c'est le cas
     debutInventaire();
 //instanciation du joueur
@@ -632,16 +729,8 @@ function afficherCacher(id)
 //gerere le texte et les boutons
     genererTexte();		
 //Bouton afficher-cacher inventaire
-    genereContenu('span','<button type="button" onclick="afficherCacher('+"'"+"inventaire"+"'"+')">'+"inventaire"+'</button><hr/>','menu');
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------PROVISOIRE : AFFICHE COORDONNEES---------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-var d = document.getElementById("console");
-topPos = d.offsetTop;
-leftPos = d.offsetLeft;
-genereContenuID('div','','dialogue','curseur');
-var position = document.getElementById('curseur');
-                            document.addEventListener('mousemove', function(e) {
-                                position.innerHTML = 'Position X : ' + (e.clientX - leftPos) + 'px<br />Position Y : ' + (e.clientY - topPos) + 'px <br/> top :' + topPos+ "-- left :"+ leftPos;  
-                            }, false);           
+   genereContenu('span','<button class="boutonMenu" id="boutonInventaire" type="button" onmouseover="afficheInfoBulleMenu(80,2,'+"'"+"Inventaire"+"'"+')" onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="afficherCacher('+"'"+"inventaire"+"'"+')"></button>','menu');
+//Bouton couper/allumer les effets sonores
+   genereContenu('span','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="afficheInfoBulleMenu(120,55,'+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
+//Bouton de musique
+   genereContenu('span','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu(80,100,'+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');

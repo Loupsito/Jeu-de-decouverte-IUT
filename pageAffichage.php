@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,28 +10,33 @@
     </head>
     <body id ='corps'>
         <!-- ______________________________________________________ --> 
-        <!-- _____________________L'écran du jeu___________________ -->
+        <!-- _________________________Le jeu_______________________ -->
             <div id="console">
+                
+                <!-- ______________________________________________________ --> 
+                <!-- ____________________L'ecran du jeu____________________ -->
                 <div id ="ecran">
                         <div id="deplacement"></div>
                         <div id="objet"></div>
                         <div id="inventaire">		
                                 <b>Inventaire</b>
                                 <hr/>
-                        </div>
-                        
+                        </div>                        
                         <?php                  
                             echo '<script type="text/javascript">var listeLiens = '.json_encode($listeLiens).';</script>';	
                             echo '<script type="text/javascript">var tabDeTousLesItems = '.json_encode($tabDeTousLesItems).';</script>';	
                             echo '<script type="text/javascript">var listeCases = '.json_encode($listeCases).';</script>';					
-                        ?>
-                        
+                        ?>                                       
+                    <div id ="infoBulleMenu"></div>
                 </div>
+                <!-- ______________________________________________________ --> 
+                <!-- ____________Le menu et la boite de dialogue___________ --> 
                 <div id="dialogue">
                     <div id="menu"></div>
                     <div id="actions"></div>
                     <div id='choixPorte'></div>
-                </div>
+                    <div id='msgLambda'></div>
+                </div>               
                 <script src="pageAffichage.js"></script>
             </div>
         <!-- ______________________________________________________ --> 
