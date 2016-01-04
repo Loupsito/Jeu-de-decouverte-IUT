@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actions>
+    <action nom="ouvrir_porte_i21">
+        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
+        <etatFinal>genererChoixPorte(['I21'],nomPorte)</etatFinal>
+    </action>
+    <action nom="ecrire">
+        <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'</etatFinal>
+    </action>
+    <action nom="effacer">
+        <prerequis nom="effacer">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4- G23 Tableau (vide).JPG'</etatFinal>
+    </action>
+</actions>

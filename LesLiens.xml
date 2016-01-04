@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<liens>
+    <lien>
+        <idScenes id1="0" id2="1" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>311</x>
+                <y>164</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>485</x>
+                <y>177</y>
+            </coordonnee2>
+        </coordonnees>
+    </lien>
+    <lien>
+        <idScenes id1="1" id2="2" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>15</x>
+                <y>290</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>250</x>
+                <y>350</y>
+            </coordonnee2>
+        </coordonnees>
+    </lien>
+    <lien>
+        <idScenes id1="1" id2="3" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>90</x>
+                <y>170</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>420</x>
+                <y>180</y>
+            </coordonnee2>
+            </coordonnees>
+    </lien>   
+    <lien>
+        <idScenes id1="3" id2="4" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>250</x>
+                <y>350</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>250</x>
+                <y>350</y>
+            </coordonnee2>
+            </coordonnees>
+    </lien>
+    <lien>
+        <idScenes id1="4" id2="7" />
+        <acces>false</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>290</x>
+                <y>130</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>250</x>
+                <y>350</y>
+            </coordonnee2>
+        </coordonnees>
+    </lien>  
+    <lien>
+        <idScenes id1="2" id2="5" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>115</x>
+                <y>190</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>0</x>
+                <y>130</y>
+            </coordonnee2>
+        </coordonnees>
+    </lien>    
+    <lien>
+        <idScenes id1="5" id2="6" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>495</x>
+                <y>165</y>
+            </coordonnee1>
+            <coordonnee2>
+                <x>250</x>
+                <y>350</y>
+            </coordonnee2>
+        </coordonnees>
+    </lien>  
+</liens>

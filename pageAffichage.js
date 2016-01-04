@@ -1,13 +1,10 @@
-var listeCases;
-var tabDeTousLesItems;
-var listeLiens;
-
 //indique si le joueur se trouve face à une porte libre d'accès ou non (booléen) => servira uniquement en tant que prerequis de l'action "ouvrir toutes les portes"
 var porteVerrouille;
 
 // tableau qui contiendra toutes les portes verrouillées que le joueur voit => servira pour les etats finaux des différents "ouvrir porte"
 var nomPorte = [];
 
+//Contient la position du joueur : son indice
 var positionJoueur;
 
 //indice du lien (parcours du tableau au prélable)(servira pour ouvrir des portes)
@@ -20,26 +17,211 @@ var son = false;
 var musique = false;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//Les actions
-    //stylo
-        var ecrire = {"nomAction": "ecrire","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'"]};
-    //brosse    
-        var effacer = {"nomAction": "effacer","prerequis" : ["joueur.idSalle==6"], "etatFinal": ["listeCases[6][3]='images/4- G23 Tableau (vide).JPG'"]};
-    //carte    
-        var affiche_plan = {"nomAction": "affiche_plan","prerequis" : ["porteVerrouille==false"], "etatFinal": ["alert('pas fini cette action')"]};
-    //cle ultime
-        var ouvrir_porte = {"nomAction": "ouvrir_porte","prerequis" : ["porteVerrouille==false"], "etatFinal": ["genererChoixPorte(nomPorte,nomPorte)"]};
-    //cle ouvrant uniquement la salle i21
-        var ouvrir_porte_i21 = {"nomAction": "ouvrir_porte_i21","prerequis" : ["(verifAccesSalle(4,7)==false)"], "etatFinal": ["genererChoixPorte(['I21'],nomPorte)"]};
-    //cle ouvrant uniquement la salle g25 et g23
-        var ouvrir_porte_g25_g23 = {"nomAction": "ouvrir_porte_g25_g23","prerequis" : ["(verifAccesSalle(1,3)==false) || (verifAccesSalle(2,5)==false)"], "etatFinal": ["genererChoixPorte(['G25 A','G23'],nomPorte)"]};
-
-    //Le tableau qui contient les actions
-        var listesActions = [ecrire,effacer,affiche_plan,ouvrir_porte,ouvrir_porte_i21,ouvrir_porte_g25_g23];	
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------RECUPERATION-XML---------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
+window.onload=initpage;
+
+var tabDeTousLesItems=[null,null];
+var listeCases=[];
+var listeLiens=[];
+var listesActions=[];
+
+function initpage()
+{
+    //-----------------------------RECUPERATION ITEM-----------------------------
+    xhrItem=createRequest();
+    if(xhrItem===null){
+            alert("echec de la creation d'une requete");
+            return;
+    }
+    xhrItem.onreadystatechange=recupFromXMLDataBaseItem;
+    xhrItem.open('GET','LesItems.xml',false);
+    xhrItem.send(null);
+
+    //-----------------------------RECUPERATION SCENE-----------------------------
+    xhrScenes=createRequest();
+    if(xhrScenes===null){
+            alert("echec de la creation d'une requete");
+            return;
+    }
+    xhrScenes.onreadystatechange=recupFromXMLDataBaseScenes;
+    xhrScenes.open('GET','LesScenes.xml',false);
+    xhrScenes.send(null);
+
+    //-----------------------------RECUPERATION LIEN-----------------------------
+    xhrLiens=createRequest();
+    if(xhrLiens===null){
+            alert("echec de la creation d'une requete");
+            return;
+    }
+    xhrLiens.onreadystatechange=recupFromXMLDataBaseLiens;
+    xhrLiens.open('GET','LesLiens.xml',false);
+    xhrLiens.send(null);
+
+    //-----------------------------RECUPERATION ACTIONS-----------------------------
+    xhrActions=createRequest();
+    if(xhrActions===null){
+        alert("echec de la creation d'une requete");
+        return;
+    }
+    xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
+    xhrActions.open('GET','actions.xml',false);
+    xhrActions.send(null);
+    //------------------------------------------------------------------------------     
+    
+    //Analyse les items a true et les places dans l'inventaire si c'est le cas
+        premiereAnalyseInventaire();	
+    //gerere le contenu du jeu        
+        fonctionGeneratricePrincipale();	    
+}
+
+function recupFromXMLDataBaseItem()
+{
+        if (xhrItem.readyState===4 && xhrItem.status===200)
+        {
+            var tabDesc= xhrItem.responseXML.getElementsByTagName("description");// recupération des descriptions
+            var tabPoss= xhrItem.responseXML.getElementsByTagName("possession");// recupération des etats de possession
+            var image= xhrItem.responseXML.getElementsByTagName("image");// récupération             
+            var tabItem = xhrItem.responseXML.getElementsByTagName("tab_item"); 
+            var tabActions = xhrItem.responseXML.getElementsByTagName("action");
+            var tabX = xhrItem.responseXML.getElementsByTagName("x");
+            var tabY = xhrItem.responseXML.getElementsByTagName("y");                    
+            for(i=0;i<tabItem.length;i++)
+            {
+                var tabCoordonnees=[tabX[i].textContent,tabY[i].textContent];
+                var tabTabActions=[null];
+                a=tabTabActions.shift();
+                nom=tabItem[i].getAttribute("nom");
+                for(z=0;z<tabActions.length;z++)
+                {
+                    if((tabActions[z].getAttribute("id"))===nom)
+                    {
+                        tabTabActions.push((tabActions[z].textContent));
+                    }
+                }              
+                tabTabInfos=[tabTabActions,tabDesc[i].firstChild.nodeValue,image[i].getAttribute("lienimage"),eval(tabPoss[i].firstChild.nodeValue),tabCoordonnees];                
+                tabDeTousLesItems[i]=[tabItem[i].getAttribute("nom"),tabTabInfos];            
+                
+            } 
+            for(b=0;b<tabDeTousLesItems.length;b++)
+            {                
+                //document.write(tabDeTousLesItems[b]+"<br/><br/>");
+            }
+        }
+}
+
+function recupFromXMLDataBaseScenes()
+{	
+    if (xhrScenes.readyState===4 && xhrScenes.status===200)
+    {		
+        var tabID= xhrScenes.responseXML.getElementsByTagName("scene");
+        var tabObjet= xhrScenes.responseXML.getElementsByTagName("objet");
+        for(i=0;i<tabID.length;i++)
+        {                    
+            var tabObjetbis=[null];
+            a=tabObjetbis.shift();
+            id = tabID[i].getAttribute("id");
+            for(z=0;z<tabObjet.length;z++)
+            {
+                if((tabObjet[z].getAttribute("id"))===id)
+                {                                                      
+                    tabObjetbis.push(tabObjet[z].textContent);                                                        
+                }
+            }
+
+            if (tabObjetbis.length===0)                       
+                tabScene=[parseInt(tabID[i].getAttribute("id")),tabID[i].getAttribute("nom"),,tabID[i].getAttribute("lienImage")];
+            else
+                tabScene=[parseInt(tabID[i].getAttribute("id")),tabID[i].getAttribute("nom"),tabObjetbis,tabID[i].getAttribute("lienImage")];
+
+            listeCases.push(tabScene);
+        }
+        for(b=0;b<listeCases.length;b++)
+        {                
+           //document.write(listeCases[b]+"<br/><br/>");
+        }
+    }
+}
+function recupFromXMLDataBaseLiens()
+{
+    if (xhrLiens.readyState===4 && xhrLiens.status===200)
+    {
+        var tabID= xhrLiens.responseXML.getElementsByTagName("idScenes");
+        var tabacces= xhrLiens.responseXML.getElementsByTagName("acces");
+        var tabX= xhrLiens.responseXML.getElementsByTagName("x");
+        var tabY= xhrLiens.responseXML.getElementsByTagName("y");
+
+        for(p=0;p<tabID.length;p++)
+        {
+            var tabCoordonnees=[null];
+            a=tabCoordonnees.shift();
+            var tabX1=[tabX[p*2].textContent];
+            var tabY1=[tabY[p*2].textContent];
+            var tabX2=[tabX[p*2+1].textContent];
+            var tabY2=[tabY[p*2+1].textContent];
+            
+            tabCoordonnees.push([parseInt(tabX1),parseInt(tabY1)]);
+            tabCoordonnees.push([parseInt(tabX2),parseInt(tabY2)]);            
+            tabLien=[parseInt(tabID[p].getAttribute("id1")),parseInt(tabID[p].getAttribute("id2")),eval(tabacces[p].textContent),tabCoordonnees];
+            listeLiens[p]=tabLien;
+        }
+        for(b=0;b<listeLiens.length;b++)
+        {                
+            //document.write(listeLiens[b]+"<br/><br/>");
+        }                        
+    }
+}
+
+function recupFromXMLDataBaseActions()
+{
+    if (xhrActions.readyState===4 && xhrActions.status===200)
+    {
+        var tabNom= xhrActions.responseXML.getElementsByTagName("action");
+        var tabPrerequis= xhrActions.responseXML.getElementsByTagName("prerequis");
+        var tabEtatFinal= xhrActions.responseXML.getElementsByTagName("etatFinal");
+        
+        for(A=0;A<tabNom.length;A++)
+        {
+            //var tabActions=["action","prerequis","etatFinal"];
+            var tabActions = new Array();
+		tabActions.push("nomAction");
+		tabActions.push("prerequis");
+                tabActions.push("etatFinal");
+            
+            
+            tabActions.shift();
+            var tabPrefinal=[null];
+            tabPrefinal.shift();
+            id=tabNom[A].getAttribute("nom");
+
+            for(z=0;z<tabPrerequis.length;z++)
+            {           
+                if((tabPrerequis[z].getAttribute("nom"))===id)
+                {
+                    tabPrefinal.push((tabPrerequis[z].textContent).toString());                   
+                }
+            }          
+            tabActions["nomAction"]= new Array();
+            tabActions["prerequis"]= new Array();
+            tabActions["etatFinal"]= new Array();
+                                  
+            tabActions["nomAction"].push(id);            
+            tabActions["prerequis"].push(tabPrefinal);
+            tabActions["etatFinal"].push(tabEtatFinal[A].textContent);                        
+            
+            listesActions[A]=tabActions;
+        }      
+        for(b=0;b<listesActions.length;b++)
+        {                
+           //document.write(listesActions[b]+"<br/><br/>");
+        }  
+    }
+}
+ 
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 /*
  * @param {string} element - la balise que l'on veut creer
  * @param {string} contenu - ce que va contenir la balise
@@ -86,13 +268,13 @@ function Joueur (idSalle)
 }
 
 //fonction générant le texte et les boutons
-function genererTexte()
+function fonctionGeneratricePrincipale()
 {
     //------------------------------------POSITION DU JOUEUR-----------------------------------
     //parcours du tableau des scènes
     for (var i = 0; i < listeCases.length ; i++)
     {
-        //si position de joueur = id de scènes d'indice i
+        //si position de joueur = id de scènes d'indice i        
         if (joueur.idSalle === listeCases[i][0])
         {
             //affichage de la position du joueur
@@ -244,9 +426,8 @@ function avancer(newScene,id1,id2)
         }
     }
     //-------------------------------
-    genererTexte();
- 
-    var captureActions = document.querySelectorAll('#actions span');
+    
+     var captureActions = document.querySelectorAll('#actions span');
     if(captureActions.length !==0)
     {
         for(k=0;k<listesActions.length;k++)
@@ -254,8 +435,7 @@ function avancer(newScene,id1,id2)
             verifiePrerequis(captureActions[k].textContent,"avancement");
         }
     }
-    
-    
+    fonctionGeneratricePrincipale();   
 }
 
 //fonction si la porte est verrouillée ou non, prenant en paramètre les id des salles liées par la porte 
@@ -305,13 +485,26 @@ function changementAff(val)
         //parcours le tableau d'actions
         for(var j = 0; j <listesActions.length;j++)
         {
-            //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions
-            if (captureBouton[i].textContent === listesActions[j]["nomAction"])
+            //compare les chaines de caractères contenues dans le tableau d'objet et celui des actions          
+            if (captureBouton[i].textContent === (listesActions[j]["nomAction"]).toString())
             {
                     verifiePrerequis(listesActions[j]["nomAction"],"interaction");
                     document.getElementById('choixPorte').innerHTML = "";
             }
         }
+    }
+}
+
+/*
+ * @param {Object[]} tabActions - un tableau qui contient des actions
+ */
+//Fontion qui genere des actions en fonction d'un item
+function genereAction(tabActions)
+{
+    document.getElementById('actions').innerHTML = "";
+    for(var i=0;i < tabActions.length;i++)
+    {
+        genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','actions');
     }
 }
 
@@ -412,16 +605,16 @@ function selectionObjet(leItem)
 }
 
 //Analyse les items a true et les places dans l'inventaire si c'est le cas
-function debutInventaire()
+function premiereAnalyseInventaire()
 {
-        for(var i = 0; i<tabDeTousLesItems.length;i++)
-                {
-                        if (tabDeTousLesItems[i][1][3] === true)
-                        {
-                                //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
-                                genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>','inventaire',tabDeTousLesItems[i][0]);
-                        }
-                }	
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {                    
+        if (tabDeTousLesItems[i][1][3] === true)
+        {
+            //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
+            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>','inventaire',tabDeTousLesItems[i][0]);
+        }
+    }	
 }
 
 /*
@@ -430,19 +623,19 @@ function debutInventaire()
 //Fonction verifiant les prerequis des actions
 function verifiePrerequis(action,choix) //ajouter un choix de modification
 {
-    var erreurs = 0 ;
+    var erreurs = 0 ;   
     for(i=0;i<listesActions.length;i++)
-    {
-        if (listesActions[i]['nomAction']===action)//identification du nom de l'action
+    {               
+        if (listesActions[i]['nomAction']==action)//identification du nom de l'action (laisser imperativement le ==)
         {
             for(j=0;j<listesActions[i]['prerequis'].length;j++)//verification validation prerequis
             {   
                 //Si le prerequis est respecte
-                if (!(eval(listesActions[i]['prerequis'][j])))
+                if (!(eval(listesActions[i]['prerequis'][j].toString())))
                 {
                     erreurs +=1;
                 }
-            }
+            }            
             //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
             if (erreurs !== 0 && choix ==="interaction")
             {
@@ -450,8 +643,9 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
             }
             else if (erreurs !== 0 && choix ==="avancement")
             {
-                genererMessageBoite("Vous ne pouvez plus executer l'action : "+listesActions[i]['nomAction'],4000);
+                genererMessageBoite("Vous ne pouvez plus executer l'action : "+listesActions[i]['nomAction'],4000);               
                 document.getElementById('actions').innerHTML = "";
+                fonctionGeneratricePrincipale();
             }                
             //-----------------------------Affichage des actions-----------------------------
             else
@@ -495,7 +689,7 @@ function modifieValeur(action)
 {
     for (var i = 0; i<listesActions.length; i++)
     {
-        if (listesActions[i]['nomAction'] === action)
+        if (listesActions[i]['nomAction'].toString() === action)
         {
             for (var j = 0;j<listesActions[i]['etatFinal'].length;j++)
             {
@@ -506,19 +700,6 @@ function modifieValeur(action)
      MAJaffichagePosition();
 }
 
-/*
- * @param {Object[]} tabActions - un tableau qui contient des actions
- */
-//Fontion qui genere des actions en fonction d'un item
-function genereAction(tabActions)
-{
-    document.getElementById('actions').innerHTML = "";
-    for(var i=0;i < tabActions.length;i++)
-    {
-        genereContenu('span','<button type="button" onclick="changementAff('+"'"+tabActions[i]+"'"+')">'+tabActions[i]+'</button>','actions');
-    }
-}
-
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------MULTIMEDIA-------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -527,13 +708,13 @@ function MAJaffichagePosition()
 {
      for (var i = 0; i < listeCases.length ; i++)
     {
-            //si position de joueur = id de scènes d'indice i
-            if (joueur.idSalle === listeCases[i][0])
-            {
-                    document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
-                    document.getElementById("ecran").style.backgroundSize = "contain";
-                    document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
-            }
+        //si position de joueur = id de scènes d'indice i
+        if (joueur.idSalle === listeCases[i][0])
+        {
+            document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
+            document.getElementById("ecran").style.backgroundSize = "contain";
+            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
+        }
     }
 }
 
@@ -571,7 +752,6 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
 
 function genereHitboxItem(largeur,hauteur,leItem)
 {    
-
     //Creation de l'element
     genereContenuID('span','','ecran',leItem);
     var myDiv = document.getElementById(leItem);
@@ -708,7 +888,7 @@ function jouerMusique(boolean)
     if (boolean === false)
         removeElementById("music");
     else if (boolean === true)
-        genereContenu('span','<audio id="music" src="sons/track1.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
+        genereContenu('span','<audio id="music" src="sons/hello.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
 }
 
 function couperJouerMusique()
@@ -722,15 +902,11 @@ function couperJouerMusique()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-//Analyse les items a true et les places dans l'inventaire si c'est le cas
-    debutInventaire();
 //instanciation du joueur
-    var joueur = new Joueur(); 					
-//gerere le texte et les boutons
-    genererTexte();		
+    var joueur = new Joueur(); 	          
 //Bouton afficher-cacher inventaire
    genereContenu('span','<button class="boutonMenu" id="boutonInventaire" type="button" onmouseover="afficheInfoBulleMenu(80,2,'+"'"+"Inventaire"+"'"+')" onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="afficherCacher('+"'"+"inventaire"+"'"+')"></button>','menu');
 //Bouton couper/allumer les effets sonores
    genereContenu('span','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="afficheInfoBulleMenu(120,55,'+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
 //Bouton de musique
-   genereContenu('span','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu(80,100,'+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');
+   genereContenu('span','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu(80,100,'+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');    
