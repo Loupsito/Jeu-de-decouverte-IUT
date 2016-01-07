@@ -391,45 +391,50 @@ function avancer(newScene,id1,id2)
     {
         joueur.idSalle = newScene;     
         document.getElementById('msgLambda').innerHTML = "";
+        document.getElementById('choixPorte').innerHTML = "";
+        //-----Suppression des hitbox-----
+        var capture = document.querySelectorAll('#ecran span');
+        for (i=0;i<capture.length;i++)
+         {
+
+             for (k=0;k<listeCases.length;k++)
+             {
+                 if (capture[i].id === listeCases[k][1])
+                 {
+                     var monDeplacement = document.getElementById(listeCases[k][1]);
+                     monDeplacement.parentNode.removeChild(monDeplacement);
+                 }
+             }
+
+
+             for (m=0;m<tabDeTousLesItems.length;m++)
+             {
+                 if (capture[i].id === tabDeTousLesItems[m][0] &&verifPossessionItem(capture[i].id) ===false)
+                 {
+                     var monItem = document.getElementById(tabDeTousLesItems[m][0]);
+                     monItem.parentNode.removeChild(monItem);
+                 }
+             }
+         }
+         //-------------------------------
     }
     else
     {
         genererMessageBoite("La porte est verrouillée...",2000);
+        document.getElementById('actions').innerHTML = "";
     }
             
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     
 
-   //-----Suppression des hitbox-----
-   var capture = document.querySelectorAll('#ecran span');
-   for (i=0;i<capture.length;i++)
-    {
-        
-        for (k=0;k<listeCases.length;k++)
-        {
-            if (capture[i].id === listeCases[k][1])
-            {
-                var monDeplacement = document.getElementById(listeCases[k][1]);
-                monDeplacement.parentNode.removeChild(monDeplacement);
-            }
-        }
-        
-      
-        for (m=0;m<tabDeTousLesItems.length;m++)
-        {
-            if (capture[i].id === tabDeTousLesItems[m][0] &&verifPossessionItem(capture[i].id) ===false)
-            {
-                var monItem = document.getElementById(tabDeTousLesItems[m][0]);
-                monItem.parentNode.removeChild(monItem);
-            }
-        }
-    }
-    //-------------------------------
+
     
      var captureActions = document.querySelectorAll('#actions span');
+   // alert("Actions capture = "+captureActions.length);
     if(captureActions.length !==0)
     {
+        //alert("cest pas vide !");
         for(k=0;k<listesActions.length;k++)
         {
             verifiePrerequis(captureActions[k].textContent,"avancement");
