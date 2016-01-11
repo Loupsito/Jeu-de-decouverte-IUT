@@ -7,10 +7,10 @@
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
-        <etatFinal>listeCases[6][3]='images/4- G23 Tableau (écrit).JPG'</etatFinal>
+        <etatFinal>listeCases[6][3]='images/4- G23Tableau(ecrit).JPG'</etatFinal>
     </action>
     <action nom="effacer">
         <prerequis nom="effacer">joueur.idSalle==6</prerequis>
-        <etatFinal>listeCases[6][3]='images/4- G23 Tableau (vide).JPG'</etatFinal>
+        <etatFinal>listeCases[6][3]='images/4- G23Tableau(vide).JPG'</etatFinal>
     </action>
 </actions>

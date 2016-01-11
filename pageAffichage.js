@@ -20,13 +20,22 @@ var musique = false;
 //--------------------------------------------------------------------RECUPERATION-XML---------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
+//Chargement de la page
 window.onload=initpage;
 
+//Tableau qui repertorie tous les items
 var tabDeTousLesItems=[null,null];
+
+//Tableau qui repertorie toutes les scenes
 var listeCases=[];
+
+//Tableau qui repertorie tous les liens entre les salles
 var listeLiens=[];
+
+//Tableau qui repertorie toutes les actions
 var listesActions=[];
 
+//Fonction qui initialise le jeu une premiere fois
 function initpage()
 {
     //-----------------------------RECUPERATION ITEM-----------------------------
@@ -76,6 +85,7 @@ function initpage()
         fonctionGeneratricePrincipale();	    
 }
 
+//Fonction qui recupere les donnees des items dans le fichier LesItems.xml
 function recupFromXMLDataBaseItem()
 {
         if (xhrItem.readyState===4 && xhrItem.status===200)
@@ -111,6 +121,7 @@ function recupFromXMLDataBaseItem()
         }
 }
 
+//Fonction qui recupere les donnees des scences dans le fichier LesScenes.xml
 function recupFromXMLDataBaseScenes()
 {	
     if (xhrScenes.readyState===4 && xhrScenes.status===200)
@@ -143,6 +154,8 @@ function recupFromXMLDataBaseScenes()
         }
     }
 }
+
+//Fonction qui recupere les donnees des liens entre les salles dans le fichier LesLiens.xml
 function recupFromXMLDataBaseLiens()
 {
     if (xhrLiens.readyState===4 && xhrLiens.status===200)
@@ -173,6 +186,7 @@ function recupFromXMLDataBaseLiens()
     }
 }
 
+//Fonction qui recupere les donnees des actions dans le fichier actions.xml
 function recupFromXMLDataBaseActions()
 {
     if (xhrActions.readyState===4 && xhrActions.status===200)
@@ -239,7 +253,7 @@ function genereContenu(element,contenu,divMere)
  * @param {string} element - la balise que l'on veut creer
  * @param {string} contenu - ce que va contenir la balise
  * @param {string} divMere - la division qui va contenir la nouvelle balise
- * @param {type} idd - nom de l'id a donnee
+ * @param {number} idd - nom de l'id a donnee
  */
 //Fonction qui permet de creer la balise que l'on veut (<p>,<span>,etc, avec attribution d'un id)
 function genereContenuID(element,contenu,divMere,idd)
@@ -250,6 +264,10 @@ function genereContenuID(element,contenu,divMere,idd)
     document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
 
+/*
+ * @param {string} id - id de la div que l'on veut supprimer
+ */
+//fonction servant à supprimer la division que l'on veut supprimer
 function removeElementById(id)
 {
     var el = document.getElementById(id);
@@ -259,7 +277,11 @@ function removeElementById(id)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------DEPLACEMENT--------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-					
+
+/*
+ * @param {number} idSalle - id de la scène (position actuelle)
+ * @returns {Joueur}
+ */
 //classe joueur pour connaître la position de l'utilisateur
 function Joueur (idSalle)
 {
@@ -267,7 +289,7 @@ function Joueur (idSalle)
     this.idSalle = idSalle || 0;
 }
 
-//fonction générant le texte et les boutons
+//fonction générant les scènes,les hitbox et les items
 function fonctionGeneratricePrincipale()
 {
     //------------------------------------POSITION DU JOUEUR-----------------------------------
@@ -302,7 +324,7 @@ function fonctionGeneratricePrincipale()
                 if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
                 {
                     porteVerrouille = false;
-                    //rempli le tableau avec le nom des portes verrouillées que le joueur voit
+                    //rempli le tableau avec le nom des portes verrouillées que le joueur voit => servira pour les actions ouvrirPorte
                     nomPorte.push(listeCases[j][1]);
                 }        
             }
@@ -321,6 +343,10 @@ function fonctionGeneratricePrincipale()
     }
 }
 
+/*
+ * @param {object} tabNom - array contenant le nom des portes que l'action PEUT déverrouiller
+ * @param {object} tabPorteVerrouilleEnFace - array contenant le nom de TOUTES les portes verrouillée en face du joueur
+ */
 //Fonction générant les portes afficher (si elles sont verrouillées) => uniquement utilisée dans les "etats finaux" des actions "ouvrir_porte[...]"  
 //prend en paramètres : le tableau des portes que l'action peut ouvrir, le tableau de toutes les portes verrouillées en face
 function genererChoixPorte(tabNom,tabPorteVerrouilleEnFace)
@@ -339,7 +365,10 @@ function genererChoixPorte(tabNom,tabPorteVerrouilleEnFace)
     }
 }
 
-//Fonction générale pour toute les portes (parcours 4 tableaux d'où la quadruple boucle !!!)
+/*
+ * @param {string} nom - nom de la porte à déverrouiller
+ */
+//Déverrouille la porte de la scène dont le nom est en paramètre
 function ouvrirPorte(nom)
 {
     //On y rentrera les id des portes verrouillées que l'action peut deverrouiller
@@ -383,15 +412,23 @@ function ouvrirPorte(nom)
     }                                       
 }
 
+/*
+ * @param {number} newScene - id de la scène destination => prochaine valeur de "joueur.idSalle"
+ * @param {number} id1 - id de la scène 1 du lien dont on vérifie l'accès
+ * @param {number} id2 - id de la scène 2 du lien dont on vérifie l'accès
+ */
 //fonction permettant d'avancer
 function avancer(newScene,id1,id2)
 { 
     //test si l'accès à la nouvelle scène est libre ou non
     if (verifAccesSalle(id1,id2) === true)
     {
+        //changement de scène
         joueur.idSalle = newScene;     
+        //effacer le contenu des autres division => initilisation de la page
         document.getElementById('msgLambda').innerHTML = "";
         document.getElementById('choixPorte').innerHTML = "";
+        
         //-----Suppression des hitbox-----
         var capture = document.querySelectorAll('#ecran span');
         for (i=0;i<capture.length;i++)
@@ -416,14 +453,16 @@ function avancer(newScene,id1,id2)
                  }
              }
          }
-         //-------------------------------
+         //-----Fin suppression hitbox------
     }
+    //sinon affiche un message d'erreur dans la boîte de dialogue
     else
     {
         genererMessageBoite("La porte est verrouillée...",2000);
+        //efface le contenu de la division des actions (pour éviter la duplication du bouton)
         document.getElementById('actions').innerHTML = "";
     }
-            
+    //efface le contenu des divisions de déplacement et d'objet
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     
@@ -443,6 +482,10 @@ function avancer(newScene,id1,id2)
     fonctionGeneratricePrincipale();   
 }
 
+/*
+ * @param {number} id1 - id de la scène 1 du lien dont on vérifie l'accès
+ * @param {number} id2 - id de la scène 2 du lien dont on vérifie l'accès
+ */
 //fonction si la porte est verrouillée ou non, prenant en paramètre les id des salles liées par la porte 
 function verifAccesSalle(id1, id2)
 {
@@ -556,7 +599,9 @@ function verificatonPlacementItem(leItem)
 }
 
 /*
- * @param {string} leItem - le nom de l'item
+ * 
+ * @param {string} leItem - represente l'item en question a placer dans l'inventaire
+ * @param {number} indice - represente l'indice de la localisation de l'item dans le tableau qui repertorie tous les items
  */
 //Place l'item dans l'inventaire si celui-ci est a false
 function placementItemDansInventaire(leItem,indice)
@@ -623,7 +668,9 @@ function premiereAnalyseInventaire()
 }
 
 /*
+ * 
  * @param {string} action - le nom de l'action
+ * @param {string} choix - determine sur quelle partie se fait la verif : interaction ou avancement
  */
 //Fonction verifiant les prerequis des actions
 function verifiePrerequis(action,choix) //ajouter un choix de modification
@@ -709,6 +756,7 @@ function modifieValeur(action)
 //----------------------------------------------------------------------MULTIMEDIA-------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
+//Met a jour l'image background de la position du joueur
 function MAJaffichagePosition()
 {
      for (var i = 0; i < listeCases.length ; i++)
@@ -722,7 +770,13 @@ function MAJaffichagePosition()
         }
     }
 }
-
+/*
+ * 
+ * @param {number} largeur - represente la largeur de la hitbox
+ * @param {number} hauteur - represente la hauteur de la hitbox
+ * @param {number} j - salle courante
+ * @param {number} i - lien courant
+ */
 function genereHitboxDeplacement(largeur,hauteur,j,i)
 {    
     //Creation de l'element
@@ -755,6 +809,12 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});
 }
 
+/*
+ * 
+ * @param {number} largeur - represente la largeur de la hitbox
+ * @param {number} hauteur - represente la hauteur de la hitbox
+ * @param {string} leItem - represente l'item a qui on va donner une hitbox
+ */
 function genereHitboxItem(largeur,hauteur,leItem)
 {    
     //Creation de l'element
@@ -787,6 +847,13 @@ function genereHitboxItem(largeur,hauteur,leItem)
     myDiv.addEventListener("click", function(){ selectionObjet(leItem);});
 }
 
+/*
+ * 
+ * @param {number} x - coordonnee en abscisse de l'item
+ * @param {number} y - coordonnee en ordonnee de l'item
+ * @param {string} leItem - represente la hitbox de l'item
+ * @param {string} choix - represente quel action va etre fait sur la bulle info ou quelle type de bulle on veut
+ */
 function bulleInfosItem(x,y,leItem,choix)
 {
    for (var i = 0; i<tabDeTousLesItems.length;i++)
@@ -840,14 +907,30 @@ function afficherCacher(id)
         div.style.display = "none"; 
 }
 
+/*
+ * 
+ * @param {boolean} son -  variable globale son 
+ * @param {string} id - nom du bouton 
+ * @param {string} url1 - adresse de l'image 1
+ * @param {string} url2 - adresse de l'image 2
+ */
+//change l'image du bouton son en fonction de la valeur de la variable globale son
 function intervertirImageSon(son,id,url1,url2) 
 {
+    //si variable globale son == false
     if (son === false) 
         document.getElementById(id).style.background = "url('"+url2+"') no-repeat center";  
     else 
         document.getElementById(id).style.background = "url('"+url1+"') no-repeat center"; 
 }
 
+/*
+ * 
+ * @param {number} width - largeur de l'infobulle
+ * @param {number} marginleft - position horizontale de l'infobulle
+ * @param {string} contenu - texte à l'intérieur de l'infobulle
+ */
+//affiche l'infobulle au-dessus des boutons du menu
 function afficheInfoBulleMenu(width, marginleft,contenu)
 {
     genereContenuID('span','','ecran','infoBulleMenu');
@@ -860,17 +943,30 @@ function afficheInfoBulleMenu(width, marginleft,contenu)
     myDiv.style.width= width+"px";    
 }
 
+//masque l'infobulle des boutons du menu
 function masqueInfoBulleMenu() 
 {
     document.getElementById('infoBulleMenu').style.display='none';
 }
 
+/*
+ * 
+ * @param {string} msg - message à afficher 
+ * @param {number} timeOut - temps d'apparition (1000 = 1 sec)
+ */
+//génère un message dans la boîte de dialogue avec un temps d'apparition
 function genererMessageBoite(msg,timeOut)
 {
     document.getElementById('msgLambda').innerHTML = msg;
     setTimeout(function(){document.getElementById('msgLambda').innerHTML = "";}, timeOut);
 }
 
+/*
+ * 
+ * @param {string} url - adresse du son à jouer
+ * @param {boolean} boolean - varibale globale son 
+ */
+//activer le son
 function jouerSon(url,boolean)
 {
     var son = new Audio(url);
@@ -880,6 +976,7 @@ function jouerSon(url,boolean)
         return;
 }
 
+//désactiver le son
 function couperJouerSon()
 {
     if (son === true)
@@ -888,14 +985,22 @@ function couperJouerSon()
         son = true;
 }
 
+/*
+ * 
+ * @param {boolean} boolean - variable globale musique
+ */
+//jouer la musique
 function jouerMusique(boolean)
 {  
     if (boolean === false)
+        //supprime l'element audio
         removeElementById("music");
     else if (boolean === true)
+        //créé l'element audio
         genereContenu('span','<audio id="music" src="sons/hello.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
 }
 
+//désactive la musique
 function couperJouerMusique()
 {
     if(musique === true)
