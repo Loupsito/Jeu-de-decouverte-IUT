@@ -106,18 +106,11 @@ function recupFromXMLDataBaseItem()
                 for(z=0;z<tabActions.length;z++)
                 {
                     if((tabActions[z].getAttribute("id"))===nom)
-                    {
                         tabTabActions.push((tabActions[z].textContent));
-                    }
                 }              
                 tabTabInfos=[tabTabActions,tabDesc[i].firstChild.nodeValue,image[i].getAttribute("lienimage"),eval(tabPoss[i].firstChild.nodeValue),tabCoordonnees];                
-                tabDeTousLesItems[i]=[tabItem[i].getAttribute("nom"),tabTabInfos];            
-                
+                tabDeTousLesItems[i]=[tabItem[i].getAttribute("nom"),tabTabInfos];              
             } 
-            for(b=0;b<tabDeTousLesItems.length;b++)
-            {                
-                //document.write(tabDeTousLesItems[b]+"<br/><br/>");
-            }
         }
 }
 
@@ -136,9 +129,7 @@ function recupFromXMLDataBaseScenes()
             for(z=0;z<tabObjet.length;z++)
             {
                 if((tabObjet[z].getAttribute("id"))===id)
-                {                                                      
                     tabObjetbis.push(tabObjet[z].textContent);                                                        
-                }
             }
 
             if (tabObjetbis.length===0)                       
@@ -147,10 +138,6 @@ function recupFromXMLDataBaseScenes()
                 tabScene=[parseInt(tabID[i].getAttribute("id")),tabID[i].getAttribute("nom"),tabObjetbis,tabID[i].getAttribute("lienImage")];
 
             listeCases.push(tabScene);
-        }
-        for(b=0;b<listeCases.length;b++)
-        {                
-           //document.write(listeCases[b]+"<br/><br/>");
         }
     }
 }
@@ -178,11 +165,7 @@ function recupFromXMLDataBaseLiens()
             tabCoordonnees.push([parseInt(tabX2),parseInt(tabY2)]);            
             tabLien=[parseInt(tabID[p].getAttribute("id1")),parseInt(tabID[p].getAttribute("id2")),eval(tabacces[p].textContent),tabCoordonnees];
             listeLiens[p]=tabLien;
-        }
-        for(b=0;b<listeLiens.length;b++)
-        {                
-            //document.write(listeLiens[b]+"<br/><br/>");
-        }                        
+        }                
     }
 }
 
@@ -199,11 +182,10 @@ function recupFromXMLDataBaseActions()
         {
             //var tabActions=["action","prerequis","etatFinal"];
             var tabActions = new Array();
-		tabActions.push("nomAction");
-		tabActions.push("prerequis");
-                tabActions.push("etatFinal");
-            
-            
+            tabActions.push("nomAction");
+            tabActions.push("prerequis");
+            tabActions.push("etatFinal");
+                     
             tabActions.shift();
             var tabPrefinal=[null];
             tabPrefinal.shift();
@@ -212,24 +194,16 @@ function recupFromXMLDataBaseActions()
             for(z=0;z<tabPrerequis.length;z++)
             {           
                 if((tabPrerequis[z].getAttribute("nom"))===id)
-                {
                     tabPrefinal.push((tabPrerequis[z].textContent).toString());                   
-                }
             }          
             tabActions["nomAction"]= new Array();
             tabActions["prerequis"]= new Array();
-            tabActions["etatFinal"]= new Array();
-                                  
+            tabActions["etatFinal"]= new Array();                               
             tabActions["nomAction"].push(id);            
             tabActions["prerequis"].push(tabPrefinal);
-            tabActions["etatFinal"].push(tabEtatFinal[A].textContent);                        
-            
+            tabActions["etatFinal"].push(tabEtatFinal[A].textContent);                                    
             listesActions[A]=tabActions;
         }      
-        for(b=0;b<listesActions.length;b++)
-        {                
-           //document.write(listesActions[b]+"<br/><br/>");
-        }  
     }
 }
  
@@ -245,7 +219,7 @@ function recupFromXMLDataBaseActions()
 function genereContenu(element,contenu,divMere)
 {
     nouveauDiv = document.createElement(element);                //creation de l'element
-    nouveauDiv.innerHTML = contenu;                            //Attribution d'un contenu
+    nouveauDiv.innerHTML = contenu;                              //Attribution d'un contenu
     document.getElementById(divMere).appendChild(nouveauDiv);    //pour insérer dans une div qu'on aura donnee au prealable
 }
 
@@ -466,9 +440,6 @@ function avancer(newScene,id1,id2)
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     
-
-
-    
      var captureActions = document.querySelectorAll('#actions span');
    // alert("Actions capture = "+captureActions.length);
     if(captureActions.length !==0)
@@ -501,8 +472,7 @@ function verifAccesSalle(id1, id2)
         }
         /*else alert("mauvais paramètres");*/
     }    
-}
-					
+}					
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------INTERACTION------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -570,6 +540,7 @@ function afficheResultat(val)
 
 /*
  * @param {string} leItem - le nom de l'item
+ * @returns {boolean} - retrourne le booleen 'possession' de l'item
  */
 //Verifie si l'item est dans l'inventaire ou pas
 function verifPossessionItem(leItem)
@@ -590,16 +561,10 @@ function verifPossessionItem(leItem)
 function verificatonPlacementItem(leItem)
 {
         if (verifPossessionItem(leItem) === false)//Si c'est dans la salle
-        { 
-            genereHitboxItem(40,25,leItem);
-            //genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
-        }
-        //else         Si c'est dans l'inventaire
-            //ne rien faire
+            genereHitboxItem(40,25,leItem);         
 }
 
 /*
- * 
  * @param {string} leItem - represente l'item en question a placer dans l'inventaire
  * @param {number} indice - represente l'indice de la localisation de l'item dans le tableau qui repertorie tous les items
  */
@@ -608,7 +573,6 @@ function placementItemDansInventaire(leItem,indice)
 {
         if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
-            //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+leItem+"'"+')">'+leItem+'</button>','inventaire',leItem);
             genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>','inventaire',leItem);
             genererMessageBoite("Vous avez trouvé l'item : "+leItem,3000);
             jouerSon('sons/item.mp3',son);
@@ -616,7 +580,6 @@ function placementItemDansInventaire(leItem,indice)
         else                                                 //Si c'est dans la salle
         {
             genereHitboxItem(40,25,leItem);
-            //genereContenuID('span','<button type="button" onclick="selectionObjet('+"'"+leItem+"'"+')">'+leItem+'</button>','objet',leItem);
         }	
 }
 
@@ -636,12 +599,7 @@ function selectionObjet(leItem)
                       //suppression de la bulle info apres avoir selectionner l'item
                       var bulle = document.getElementById(i);
                       bulle.parentNode.removeChild(bulle);
-              }
-              else
-              {
-                        //ne rien faire
-              }
-             
+              }            
         }	
         //suppresion de l'item
         var monItem = document.getElementById(leItem);
@@ -660,15 +618,11 @@ function premiereAnalyseInventaire()
     for(var i = 0; i<tabDeTousLesItems.length;i++)
     {                    
         if (tabDeTousLesItems[i][1][3] === true)
-        {
-            //genereContenuID('span','<button type="button" onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')">'+tabDeTousLesItems[i][0]+'</button>','inventaire',tabDeTousLesItems[i][0]);
             genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>','inventaire',tabDeTousLesItems[i][0]);
-        }
     }	
 }
 
 /*
- * 
  * @param {string} action - le nom de l'action
  * @param {string} choix - determine sur quelle partie se fait la verif : interaction ou avancement
  */
@@ -770,8 +724,8 @@ function MAJaffichagePosition()
         }
     }
 }
-/*
- * 
+
+/* 
  * @param {number} largeur - represente la largeur de la hitbox
  * @param {number} hauteur - represente la hauteur de la hitbox
  * @param {number} j - salle courante
@@ -809,8 +763,7 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});
 }
 
-/*
- * 
+/* 
  * @param {number} largeur - represente la largeur de la hitbox
  * @param {number} hauteur - represente la hauteur de la hitbox
  * @param {string} leItem - represente l'item a qui on va donner une hitbox
@@ -825,8 +778,7 @@ function genereHitboxItem(largeur,hauteur,leItem)
     myDiv.style.position ='absolute';
     myDiv.style.zIndex = "0"; 
 
-    var x;
-    var y;
+    var x; var y;
     for (var i = 0; i<tabDeTousLesItems.length;i++)
     {
         if (tabDeTousLesItems[i][0] === leItem)
@@ -837,7 +789,6 @@ function genereHitboxItem(largeur,hauteur,leItem)
             myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";
             myDiv.addEventListener("mouseover", function(){ bulleInfosItem(x,y,leItem,"creation");});
             myDiv.addEventListener("mouseout", function(){ bulleInfosItem(x,y,leItem,"suppression");});
-            //myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";;});
         }    
     }
     myDiv.style.top =y+'px';
@@ -848,7 +799,6 @@ function genereHitboxItem(largeur,hauteur,leItem)
 }
 
 /*
- * 
  * @param {number} x - coordonnee en abscisse de l'item
  * @param {number} y - coordonnee en ordonnee de l'item
  * @param {string} leItem - represente la hitbox de l'item
@@ -907,8 +857,7 @@ function afficherCacher(id)
         div.style.display = "none"; 
 }
 
-/*
- * 
+/* 
  * @param {boolean} son -  variable globale son 
  * @param {string} id - nom du bouton 
  * @param {string} url1 - adresse de l'image 1
@@ -925,7 +874,6 @@ function intervertirImageSon(son,id,url1,url2)
 }
 
 /*
- * 
  * @param {number} width - largeur de l'infobulle
  * @param {number} marginleft - position horizontale de l'infobulle
  * @param {string} contenu - texte à l'intérieur de l'infobulle
@@ -936,9 +884,7 @@ function afficheInfoBulleMenu(width, marginleft,contenu)
     genereContenuID('span','','ecran','infoBulleMenu');
     var myDiv = document.getElementById('infoBulleMenu');
     document.getElementById('infoBulleMenu').style.display='block';
-    
     document.getElementById('infoBulleMenu').innerHTML = contenu;
-    
     myDiv.style.left = marginleft+"px";
     myDiv.style.width= width+"px";    
 }
@@ -950,7 +896,6 @@ function masqueInfoBulleMenu()
 }
 
 /*
- * 
  * @param {string} msg - message à afficher 
  * @param {number} timeOut - temps d'apparition (1000 = 1 sec)
  */
@@ -962,7 +907,6 @@ function genererMessageBoite(msg,timeOut)
 }
 
 /*
- * 
  * @param {string} url - adresse du son à jouer
  * @param {boolean} boolean - varibale globale son 
  */
@@ -985,8 +929,7 @@ function couperJouerSon()
         son = true;
 }
 
-/*
- * 
+/* 
  * @param {boolean} boolean - variable globale musique
  */
 //jouer la musique
