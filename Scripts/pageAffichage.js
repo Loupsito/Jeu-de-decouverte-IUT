@@ -45,7 +45,7 @@ function initpage()
             return;
     }
     xhrItem.onreadystatechange=recupFromXMLDataBaseItem;
-    xhrItem.open('GET','LesItems.xml',false);
+    xhrItem.open('GET','XML/LesItems.xml',false);
     xhrItem.send(null);
 
     //-----------------------------RECUPERATION SCENE-----------------------------
@@ -55,7 +55,7 @@ function initpage()
             return;
     }
     xhrScenes.onreadystatechange=recupFromXMLDataBaseScenes;
-    xhrScenes.open('GET','LesScenes.xml',false);
+    xhrScenes.open('GET','XML/LesScenes.xml',false);
     xhrScenes.send(null);
 
     //-----------------------------RECUPERATION LIEN-----------------------------
@@ -65,7 +65,7 @@ function initpage()
             return;
     }
     xhrLiens.onreadystatechange=recupFromXMLDataBaseLiens;
-    xhrLiens.open('GET','LesLiens.xml',false);
+    xhrLiens.open('GET','XML/LesLiens.xml',false);
     xhrLiens.send(null);
 
     //-----------------------------RECUPERATION ACTIONS-----------------------------
@@ -75,7 +75,7 @@ function initpage()
         return;
     }
     xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
-    xhrActions.open('GET','actions.xml',false);
+    xhrActions.open('GET','XML/actions.xml',false);
     xhrActions.send(null);
     //------------------------------------------------------------------------------     
     
