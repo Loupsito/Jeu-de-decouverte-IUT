@@ -9,8 +9,16 @@
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
         <etatFinal>listeCases[6][3]='images/4- G23Tableau(ecrit).JPG'</etatFinal>
     </action>
+    <action nom="ecrireBIS">
+        <prerequis nom="ecrireBIS">joueur.idSalle==6</prerequis>
+        <etatFinal>alert('hourra')</etatFinal>
+    </action>    
     <action nom="effacer">
         <prerequis nom="effacer">joueur.idSalle==6</prerequis>
         <etatFinal>listeCases[6][3]='images/4- G23Tableau(vide).JPG'</etatFinal>
+    </action>
+    <action nom="messageDialogue">
+        <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
+        <etatFinal>dialogue('Bienvenue dans le jeu de decouverte de notre IUT a Velizy Villacoublay. Bon jeu !','dial');</etatFinal>
     </action>
 </actions>

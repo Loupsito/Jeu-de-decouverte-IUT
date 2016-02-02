@@ -75,12 +75,12 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>115</x>
+                <x>65</x>
                 <y>190</y>
             </coordonnee1>
             <coordonnee2>
                 <x>0</x>
-                <y>130</y>
+                <y>170</y>
             </coordonnee2>
         </coordonnees>
     </lien>    

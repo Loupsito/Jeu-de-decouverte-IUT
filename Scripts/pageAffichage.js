@@ -82,7 +82,10 @@ function initpage()
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
         premiereAnalyseInventaire();	
     //gerere le contenu du jeu        
-        fonctionGeneratricePrincipale();	    
+        fonctionGeneratricePrincipale();
+        
+    defiler ();      
+    dialogue("Bienvenue dans le jeu de decouverte de notre IUT a Velizy Villacoublay. Bon jeu !","dial");            
 }
 
 //Fonction qui recupere les donnees des items dans le fichier LesItems.xml
@@ -204,6 +207,8 @@ function recupFromXMLDataBaseActions()
             tabActions["etatFinal"].push(tabEtatFinal[A].textContent);                                    
             listesActions[A]=tabActions;
         }      
+        
+        
     }
 }
  
@@ -245,7 +250,8 @@ function genereContenuID(element,contenu,divMere,idd)
 function removeElementById(id)
 {
     var el = document.getElementById(id);
-    el.parentNode.removeChild(el);
+    if (el)
+        el.parentNode.removeChild(el);
 }
 					
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -276,7 +282,7 @@ function fonctionGeneratricePrincipale()
             //affichage de la position du joueur
             document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
             document.getElementById("ecran").style.backgroundSize = "contain";
-            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
+            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";                        
         }
     }
     //------------------------------------BOUTONS DE SCENES-------------------------------------    
@@ -302,6 +308,11 @@ function fonctionGeneratricePrincipale()
                     nomPorte.push(listeCases[j][1]);
                 }        
             }
+            if (joueur.idSalle === listeCases[j][0])
+            {
+                    afficheNomScene(listeCases[j][1]);
+                    //$("#nomScene").remove();      
+            } 
         }
     }
     //------------------------------------BOUTONS D'ITEMS-------------------------------------
@@ -309,9 +320,12 @@ function fonctionGeneratricePrincipale()
     {
         if (joueur.idSalle === listeCases[i][0])
         {						
-            for (var j = 0; j < listeCases[i][2].length ; j++)
-            {                          
-                verificatonPlacementItem(listeCases[i][2][j]);
+            if(listeCases[i][2]) //On verifie que le tableau d'items existe
+            {    
+                for (var j = 0; j < listeCases[i][2].length ; j++)
+                {                          
+                    verificatonPlacementItem(listeCases[i][2][j]);
+                }
             }
         }
     }
@@ -393,15 +407,23 @@ function ouvrirPorte(nom)
  */
 //fonction permettant d'avancer
 function avancer(newScene,id1,id2)
-{ 
+{     
+    //Si la div msgDialogue existe alors la vider
+    if(document.getElementById('msgDialogue'))
+    {
+        document.getElementById('msgDialogue').innerHTML = "";            
+        removeElementById("msgDialogue");
+    }
+    
     //test si l'accès à la nouvelle scène est libre ou non
     if (verifAccesSalle(id1,id2) === true)
     {
         //changement de scène
-        joueur.idSalle = newScene;     
+        joueur.idSalle = newScene;                    
+        
         //effacer le contenu des autres division => initilisation de la page
         document.getElementById('msgLambda').innerHTML = "";
-        document.getElementById('choixPorte').innerHTML = "";
+        document.getElementById('choixPorte').innerHTML = "";   
         
         //-----Suppression des hitbox-----
         var capture = document.querySelectorAll('#ecran span');
@@ -428,6 +450,7 @@ function avancer(newScene,id1,id2)
              }
          }
          //-----Fin suppression hitbox------
+         fonctionGeneratricePrincipale();             
     }
     //sinon affiche un message d'erreur dans la boîte de dialogue
     else
@@ -449,8 +472,7 @@ function avancer(newScene,id1,id2)
         {
             verifiePrerequis(captureActions[k].textContent,"avancement");
         }
-    }
-    fonctionGeneratricePrincipale();   
+    }        
 }
 
 /*
@@ -575,7 +597,7 @@ function placementItemDansInventaire(leItem,indice)
         {
             genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>','inventaire',leItem);
             genererMessageBoite("Vous avez trouvé l'item : "+leItem,3000);
-            jouerSon('sons/item.mp3',son);
+            jouerSon('sons/item.mp3',son);            
         }
         else                                                 //Si c'est dans la salle
         {
@@ -668,7 +690,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                       for(var j = 0; j <listesActions.length;j++)
                       {       
                            var captureBoutonAction = document.querySelectorAll('#actions span');
-                           if (captureBoutonAction[j].textContent === listesActions[i]["nomAction"])
+                           if (captureBoutonAction[j].textContent == listesActions[i]["nomAction"]) // ATTANTION : Laisser le ==
                                break;
                            else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                            { 
@@ -760,7 +782,7 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.style.backgroundColor='blue';
     myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
     myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='#178977';});
-    myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});
+    myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});        
 }
 
 /* 
@@ -873,26 +895,51 @@ function intervertirImageSon(son,id,url1,url2)
         document.getElementById(id).style.background = "url('"+url1+"') no-repeat center"; 
 }
 
-/*
- * @param {number} width - largeur de l'infobulle
- * @param {number} marginleft - position horizontale de l'infobulle
- * @param {string} contenu - texte à l'intérieur de l'infobulle
- */
-//affiche l'infobulle au-dessus des boutons du menu
-function afficheInfoBulleMenu(width, marginleft,contenu)
+function afficheInfoBulleMenu(contenu)
 {
-    genereContenuID('span','','ecran','infoBulleMenu');
-    var myDiv = document.getElementById('infoBulleMenu');
-    document.getElementById('infoBulleMenu').style.display='block';
-    document.getElementById('infoBulleMenu').innerHTML = contenu;
-    myDiv.style.left = marginleft+"px";
-    myDiv.style.width= width+"px";    
+    genereContenuID('div','','ecran','infoBulleMenu');   
+    var blocNoir = document.getElementById('infoBulleMenu');    
+    document.getElementById('infoBulleMenu').style.display='block';  
+    blocNoir.style.position="absolute";
+    blocNoir.style.color ="#FFFFFF";
+    blocNoir.style.textAlign="center"; 
+    blocNoir.style.border=0; 
+    blocNoir.style.marginTop=51+"%";
+    blocNoir.style.borderLeft=25+"px solid transparent";
+    blocNoir.style.borderBottom=25+"px solid #000000";
+    blocNoir.style.borderOpacity=80+"%";
+    blocNoir.style.left = 79+"%";
+    blocNoir.style.width= 100+"px"; 
+    genereContenuID('span','','infoBulleMenu','textInfoBulle');
+    var nomInfoBulle = document.getElementById('textInfoBulle');
+    document.getElementById('textInfoBulle').innerHTML = contenu;
+    nomInfoBulle.style.position="absolute";
+    nomInfoBulle.style.marginLeft=-46+"px";
+    nomInfoBulle.style.marginTop=2+"px";
 }
 
 //masque l'infobulle des boutons du menu
 function masqueInfoBulleMenu() 
 {
     document.getElementById('infoBulleMenu').style.display='none';
+}
+
+function afficheNomScene(contenu)
+{    
+    genereContenuID('div','','ecran','nomScene');
+    genereContenuID('p','','nomScene','textNomScene');
+    var myDiv = document.getElementById('nomScene');
+    var myText = document.getElementById('textNomScene');
+    myDiv.style.width=75+"px";
+    myDiv.style.height=30+"px";
+    myDiv.style.color="white";
+    myDiv.style.borderRight=50+"px solid transparent";
+    myDiv.style.borderTop=35+"px solid black";
+    myDiv.style.marginLeft = 100+"%";   
+    document.getElementById('textNomScene').innerHTML = contenu; 
+    myText.style.padding=0;
+    myText.style.textAlign="center";
+    myText.style.marginTop = -35+"%";
 }
 
 /*
@@ -951,6 +998,54 @@ function couperJouerMusique()
     else
         musique = true;
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------SCENARIO--------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+function dialogue(texte,iddd)
+{ 
+    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
+    if(document.getElementById("msgDialogue"))
+        removeElementById("msgDialogue");
+    
+    //Creation de la zone antiClic
+    divAnticlic = document.createElement("div");                
+    divAnticlic.id="antiClic";                                           
+    divAnticlic.style.width=100+'%';
+    divAnticlic.style.height=100+'%';    
+    divAnticlic.style.top =0+'px';
+    divAnticlic.style.left =0+'px';
+    divAnticlic.style.position ='absolute';    
+    divAnticlic.style.opacity='0.4';
+    divAnticlic.style.zIndex = "2"; 
+    divAnticlic.style.backgroundColor='black';
+    document.getElementById("ecran").appendChild(divAnticlic);    
+    
+    
+    //Creation de la div msgDialogue dans la div dialogue
+    genereContenuID("div","","dialogue","msgDialogue");
+    
+    //Creation de la div qui contient le texte de dialogue
+    genereContenuID("div","","msgDialogue",iddd);
+    display = document.getElementById(iddd);
+    
+    //Affichage progressive du texte
+    //Chaque lettre obtient une temporisation differente
+    //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
+    for(i=0, l = texte.length; i< l ; i++) 
+    {           
+        (function(i) {           
+            timer = setTimeout(function() {
+                display.innerHTML += texte.charAt(i);
+                jouerSon("sons/comlo2ByNico.ogg",son);
+            }, duree= i*55); //recuperation de la derniere duree   55ms
+        }(i));         
+    }       
+    //On supprime la zone d'antiClic
+    setTimeout(function() {
+               removeElementById("antiClic");
+            }, duree+=55);//60ms              
+}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -958,8 +1053,9 @@ function couperJouerMusique()
 //instanciation du joueur
     var joueur = new Joueur(); 	          
 //Bouton afficher-cacher inventaire
-   genereContenu('span','<button class="boutonMenu" id="boutonInventaire" type="button" onmouseover="afficheInfoBulleMenu(80,2,'+"'"+"Inventaire"+"'"+')" onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="afficherCacher('+"'"+"inventaire"+"'"+')"></button>','menu');
+   genereContenu('div','<button class="boutonMenu" id="boutonInventaire" type="button" onmouseover="afficheInfoBulleMenu('+"'"+"Inventaire"+"'"+')" onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="afficherCacher('+"'"+"inventaire"+"'"+')"></button>','menu');
 //Bouton couper/allumer les effets sonores
-   genereContenu('span','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="afficheInfoBulleMenu(120,55,'+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
+   genereContenu('div','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="afficheInfoBulleMenu('+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
 //Bouton de musique
-   genereContenu('span','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu(80,100,'+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');    
+   genereContenu('div','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu('+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');    
+	

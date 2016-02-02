@@ -14,8 +14,15 @@
     max-height: 80%;
     width: 100%;
     position: absolute;
+    overflow:hidden;
 }
-
+p,span,#msgLambda{
+    font-family:'century gothic';
+    font-size:14px;	
+}
+p{
+	font-weight:bold;
+}
 #deplacement
 {
     display: inline-block;
@@ -35,17 +42,13 @@
    position:absolute;
    right:0px;
    width:20%;
-   height:98%;
+   height:70%;
    top:0px;
    display: none;
    z-index:1; 
 }
 
-#menu
-{
-     background-color: #BEBEBE;
-}
-
+/*
 #dialogue
 {
     position : absolute;
@@ -56,20 +59,43 @@
     height: 20%;
     width: 98.7%;
 }
-
+*/
+/*#dialogue
+{
+    position : absolute;
+    border-radius: 0px 0px 10px 10px;
+	border: 4px solid #000000;
+	background-color: #FFFFFF;
+    bottom:-8px;
+    height: 20%;
+    width: 98.7%;
+}*/
+#dialogue {
+   position : absolute;
+	color:#FFFFFF;
+	/*z-index:1;*/
+	margin:auto;
+	border:0.2px solid #FFFFFF;
+   border-radius: 0px 10px 10px 0px;
+	background-color: rgba(0,0,0,0.55);
+   /*bottom:-8px;*/
+	left:-1px;
+	top:65%;
+   height: 20%;
+   width: 70%;
+}
 #choixPorte
 {
     display:block;
-    left:5%;
-    top:30%;
+    left:40%;
     position:absolute;
 }
+/*
 #infoBulleMenu
 {
     position:absolute;
     background:#178977;
     color:white;
-    bottom:0;
     height:20px;
     opacity:0.70;
     border-radius:10px;
@@ -77,21 +103,82 @@
     border: 0;
     display: none;
 }
+*/
+#menu
+{
+    position:absolute;
+    color:white;
+    text-align:center;
+    margin-left:70%;
+    width:200px;
+    bottom:0;
+    border-left: 50px solid transparent;
+    border-bottom: 50px solid black;
+    opacity:80%;
+    z-index: 4;
+}
+button
+{
+    border-radius:10px;
+    border: none;
+}
 .boutonMenu
 {
-    width:40px;
-    height:40px;
-    margin-left:5px;
+    width:42px;
+    height:42px;
+    position:absolute;
+    margin-top:4px;
+    z-index:1;
+}
+.boutonMenu:hover
+{
+    background:yellow;
+    border:1px solid white;
 }
 #boutonInventaire
 {
     background: url(images/inventaire.png) no-repeat center;
-    background-size: 40px 40px;
+    background-size: 30px 30px;
+    margin-left:-102px;
+
 }
 #boutonSon
 {
     background: url(images/son2.png) no-repeat center;
+    margin-left:-62px;
 }
+#boutonMusique
+{
+    background: url(images/musique2.png) no-repeat center;
+    margin-left:-22px;
+}
+/* INTERNET EXPLORER 9,10,11 */
+:root #boutonInventaire
+{
+	 margin-left:0px \0/IE9;
+}
+:root #boutonSon
+{
+	 margin-left:43px \0/IE9;
+}
+:root #boutonMusique
+{
+	 margin-left:85px \0/IE9;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	#boutonInventaire {
+		margin-left:0px;
+	}
+	#boutonSon {
+		margin-left:43px;
+	}
+	#boutonMusique {
+		margin-left:85px;
+	}
+}
+/* ======================== */
+
+
 #msgLambda
 {
     width : 50%; 
@@ -113,57 +200,52 @@
     margin:10px;
 }
 
-button
-{
-    color:#BC0000; 
-    border-radius:8px;
-}
 
-#boutonMusique
-{
-    background: url(images/musique2.png) no-repeat center;
-}
+
+
 
 /* -----------------------------------------Gestion pour les plus petit ecran----------------------------------------- */
-@media all and (max-height: 1070px)
+
+/*#nomScene
 {
-	#ecran
-	{
-		min-height:75%;
-		max-height:75%;
-		width:100%;	
-	}
-        
-        #console
-        {
-            width: 600px;
-            height:600px ;
-            position: absolute;
-            left:0;
-            right:0;
-            margin:0 auto;
-        }
-        
-        #dialogue
-        {
-            position : absolute;
-            border: 4px solid #145A4F;
-            background-color: #178977;
-            bottom:22px;
-            height: 20%;
-            width: 98.7%;
-        }
-        .infoBulle
-        {
-            position:absolute;
-            background:#178977;
-            color:white;
-            bottom:0px ;
-            height:20px;
-            opacity:0.70;
-            border-radius:10px;
-            text-align: center;  
-            display: none;
-            border: 0;
-        }
+    position:absolute;
+    color:white;
+    text-align:right;
+    margin-left:100%;
+    width:75px;
+    height:30px;
+    border-right: 50px solid transparent;
+    border-top: 35px solid black; 
+    z-index:1;
+}
+*/
+/*.caseNoire
+{
+    position:absolute;
+    text-align:center;
+    z-index:1;
+    width: 0;
+    background: black;    
+}*/
+/*
+#textNomScene {
+    margin-top : -35%;
+}*/
+
+
+.bandesNoires
+{
+    position:absolute;
+    height:10px;
+    background : black;
+    width:100%;
+    z-index:0;
+}
+#bandeNoiresHautes
+{
+    top:0;
+}
+#bandeNoiresBasses
+{
+    bottom:0;
 }

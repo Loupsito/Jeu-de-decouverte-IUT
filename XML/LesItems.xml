@@ -22,6 +22,7 @@
             <tab_info>                                                                
                     <tab_actions>                                                                                   
                         <action id="brosse">effacer</action>
+                        <action id="brosse">ecrireBIS</action>
                     </tab_actions>
                     <description>Une brosse qui va permettre d'effacer le tableau de la salle G23</description>	
                     <image lienimage="images/brosse.png"/>
@@ -38,6 +39,7 @@
             <tab_info>                                                                
                     <tab_actions>                                                                                   
                         <action id="stylo">ecrire</action>
+                        <action id="stylo">messageDialogue</action>                        
                     </tab_actions>
                     <description>Un stylo qui va servir a ecrire sur le tableau de la salle G23</description>	
                     <image lienimage="images/stylo.png"/>

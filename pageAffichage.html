@@ -5,7 +5,8 @@
         <link rel="stylesheet" href="CSS_affichage.css" type="text/css">
         <title>Jeu de découverte de l'IUT de Vélizy</title>
          <script src="Scripts/utils.js"></script>
-        
+         <script src="jquery-2.2.0.js"></script>
+         <script src="jquery_script.js"></script>
     </head>
     <body id ='corps'>
         <!-- ______________________________________________________ --> 
@@ -19,19 +20,20 @@
                         <div id="inventaire">		
                                 <b>Inventaire</b>
                                 <hr/>
-                        </div>                        
-                                                             
-                    <div id ="infoBulleMenu"></div>
-                </div>
-                <!-- ______________________________________________________ --> 
-                <!-- ____________Le menu et la boite de dialogue___________ --> 
-                <div id="dialogue">
+                        </div>                                                                                    
                     <div id="menu"></div>
+                    <div class="bandesNoires" id="bandeNoiresHautes"></div>
+                    <div class="bandesNoires" id="bandeNoiresBasses"></div>
+                    <div id="dialogue">                    
                     <div id="actions"></div>
                     <div id='choixPorte'></div>
                     <div id='msgLambda'></div>
-                </div>               
-                <script src="Scripts/pageAffichage.js"></script>
+                </div>   
+                </div>
+                <!-- ______________________________________________________ --> 
+                <!-- ____________Le menu et la boite de dialogue___________ --> 
+            
+                <script src="Scripts/pageAffichage.js"></script>              
             </div>
         <!-- ______________________________________________________ --> 
         <!-- ______________________________________________________ --> 
