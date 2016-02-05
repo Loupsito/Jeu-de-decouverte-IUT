@@ -19,6 +19,6 @@
     </action>
     <action nom="messageDialogue">
         <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
-        <etatFinal>dialogue('Bienvenue dans le jeu de decouverte de notre IUT a Velizy Villacoublay. Bon jeu !','dial');</etatFinal>
+        <etatFinal>dialogue('Alors voila vous avez cliquer sur la 2eme action de stylo, comme vous pouvez le voir, on y voit un texte qui s affiche progressivement','dial');</etatFinal>
     </action>
 </actions>

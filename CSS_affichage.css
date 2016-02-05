@@ -1,7 +1,10 @@
 #console
 {
-    width: 598px;
-    height:560px ;
+    border-left: 6px solid #000000;
+    border-right: 6px solid #000000;
+    border-radius:2px;
+    width: 640px;
+    height:500px ;
     position: absolute;
     left:0;
     right:0;
@@ -10,11 +13,11 @@
 
 #ecran
 {
-    min-height: 80%;
-    max-height: 80%;
+    min-height: 100%;
+    max-height: 100%;
     width: 100%;
     position: absolute;
-    overflow:hidden;
+    overflow:hidden;    
 }
 p,span,#msgLambda{
     font-family:'century gothic';
@@ -35,17 +38,39 @@ p{
 }
 
 #inventaire
-{ 
-   border: 4px solid #494949;
-   background:url(images/metal.jpg) no-repeat center;
-   border-radius:8px;
+{    
+   border-top: 2px solid #FFFFFF;
+   border-left: 2px solid #FFFFFF;
+   border-bottom: 2px solid #373737;
+   border-right: 2px solid #373737; 
+   background-color:#C6C6C6;
+   border-radius:4px;
    position:absolute;
+   margin-top:10px;
    right:0px;
-   width:20%;
-   height:70%;
+   width:18.6%;
+   height:59.2%;
    top:0px;
    display: none;
-   z-index:1; 
+   z-index:4; 
+}
+.caseInventaire
+{
+    background-color:#8B8B8B;    
+    border-top: 2px solid #373737;
+    border-left: 2px solid #373737;
+    max-width:55px;
+    min-width:55px;
+    max-height:55px;
+    min-height:55px;
+    margin: 1px;
+    float:left;
+}
+
+.caseInventaire span
+{
+    float: left;
+    vertical-align:middle;
 }
 
 /*
@@ -73,7 +98,7 @@ p{
 #dialogue {
    position : absolute;
 	color:#FFFFFF;
-	/*z-index:1;*/
+	z-index:5;
 	margin:auto;
 	border:0.2px solid #FFFFFF;
    border-radius: 0px 10px 10px 0px;
@@ -115,7 +140,7 @@ p{
     border-left: 50px solid transparent;
     border-bottom: 50px solid black;
     opacity:80%;
-    z-index: 4;
+    z-index: 7;
 }
 button
 {

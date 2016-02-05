@@ -504,7 +504,7 @@ function verifAccesSalle(id1, id2)
  */
 //Fonction qui change le contenu de l'ecran : affiche les actions
 function changementAff(val)
-{ 
+{     
     for(var i = 0; i<tabDeTousLesItems.length;i++)
     {
         if (tabDeTousLesItems[i][0] === val)
@@ -595,7 +595,11 @@ function placementItemDansInventaire(leItem,indice)
 {
         if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
-            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>','inventaire',leItem);
+            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),leItem);
+            document.getElementById(leItem).style.lineHeight="20px";
+            document.getElementById(leItem).style.verticalAlign= "middle";
+            document.getElementById(leItem).style.marginTop="16px";
+            document.getElementById(leItem).style.marginLeft="9px";        
             genererMessageBoite("Vous avez trouvé l'item : "+leItem,3000);
             jouerSon('sons/item.mp3',son);            
         }
@@ -604,6 +608,23 @@ function placementItemDansInventaire(leItem,indice)
             genereHitboxItem(40,25,leItem);
         }	
 }
+
+/*
+ * 
+ * @returns {String} tabCase[i] - id de la div vide (pour placer l'objet dedans)
+ */
+function verifieCaseInventaire()
+{
+    var tabCase =["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"];    
+    for(var i=0;i<tabCase.length;i++)
+    {
+        var laCase = document.querySelectorAll('#'+tabCase[i]+' span');    
+        if(!laCase[0])//Si elle est vide ou si la case n'est pas remplie
+            return tabCase[i];            
+    }
+}
+
+//alert("verifieCaseInventaire() ==> >>"+verifieCaseInventaire()+"<<");
 
 /*
  * @param {string} leItem - le nom de l'item
@@ -640,7 +661,13 @@ function premiereAnalyseInventaire()
     for(var i = 0; i<tabDeTousLesItems.length;i++)
     {                    
         if (tabDeTousLesItems[i][1][3] === true)
-            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>','inventaire',tabDeTousLesItems[i][0]);
+        {
+            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),tabDeTousLesItems[i][0]);
+            document.getElementById(tabDeTousLesItems[i][0]).style.lineHeight="20px";
+            document.getElementById(tabDeTousLesItems[i][0]).style.verticalAlign= "middle";
+            document.getElementById(tabDeTousLesItems[i][0]).style.marginTop="16px";
+            document.getElementById(tabDeTousLesItems[i][0]).style.marginLeft="9px";
+        }
     }	
 }
 
@@ -694,7 +721,10 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                                break;
                            else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                            { 
-                               genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);                                       
+                               genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+')">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);
+                               if(document.getElementById("antiClic2"))
+                                   removeElementById("antiClic2");
+    
                            }
                       }
                        return;
@@ -703,6 +733,9 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                {
                    genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+')">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
+                   if(document.getElementById("antiClic2"))
+                       removeElementById("antiClic2");
+    
                }
             }	
         }
@@ -872,11 +905,32 @@ function bulleInfosItem(x,y,leItem,choix)
  */
 function afficherCacher(id) 
 {
-  var div = document.getElementById(id); 
-  if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
+    if(document.getElementById("antiClic2"))
+        removeElementById("antiClic2");
+    
+    var div = document.getElementById(id); 
+    if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
+    {
         div.style.display = "block";
-   else                                                             // Si la division est visible
-        div.style.display = "none"; 
+        
+        //Creation de la zone antiClic
+        divAnticlic = document.createElement("div");                
+        divAnticlic.id="antiClic2";                                           
+        divAnticlic.style.width=100+'%';
+        divAnticlic.style.height=100+'%';    
+        divAnticlic.style.top =0+'px';
+        divAnticlic.style.left =0+'px';
+        divAnticlic.style.position ='absolute';    
+        divAnticlic.style.opacity='0.4';
+        divAnticlic.style.zIndex = "2"; 
+        divAnticlic.style.backgroundColor='black';
+        document.getElementById("ecran").appendChild(divAnticlic);    
+    }
+   else // Si la division est visible
+   {
+        div.style.display = "none";
+        removeElementById("antiClic2");
+   }
 }
 
 /* 
@@ -1017,7 +1071,7 @@ function dialogue(texte,iddd)
     divAnticlic.style.left =0+'px';
     divAnticlic.style.position ='absolute';    
     divAnticlic.style.opacity='0.4';
-    divAnticlic.style.zIndex = "2"; 
+    divAnticlic.style.zIndex = "6"; 
     divAnticlic.style.backgroundColor='black';
     document.getElementById("ecran").appendChild(divAnticlic);    
     
@@ -1028,6 +1082,9 @@ function dialogue(texte,iddd)
     //Creation de la div qui contient le texte de dialogue
     genereContenuID("div","","msgDialogue",iddd);
     display = document.getElementById(iddd);
+    dial = document.getElementById(iddd);
+    dial.style.marginLeft =10+'px';
+    dial.style.marginRight =10+'px';
     
     //Affichage progressive du texte
     //Chaque lettre obtient une temporisation differente
@@ -1058,4 +1115,3 @@ function dialogue(texte,iddd)
    genereContenu('div','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="afficheInfoBulleMenu('+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
 //Bouton de musique
    genereContenu('div','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="afficheInfoBulleMenu('+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');    
-	
