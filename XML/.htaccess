@@ -1,4 +1,0 @@
-AuthUserFile C:\xampp\htdocs\JeuDeDecouverteIUT-S3-S4\XML\.htpasswd
-AuthName "Acces protege"
-AuthType Basic
-Require valid-user

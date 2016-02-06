@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scenes>
-    <scene id="0" nom="entrée" lienImage="images/1- Debut.JPG"/>
-    <scene id="1" nom="couloir A" lienImage="images/2- CouloirVueA.JPG"/>
-    <scene id="2" nom="couloir B" lienImage="images/3- CouloirVueB.JPG"/>
-    <scene id="3" nom="G25 A" lienImage="images/6- G25Machines(sansObjets).JPG">
+    <scene id="0" nom="entrée" lienImage="images/1-Debut.jpg"/>
+    <scene id="1" nom="couloir A" lienImage="images/2-CouloirVueA.jpg"/>
+    <scene id="2" nom="couloir B" lienImage="images/3-CouloirVueB.jpg"/>
+    <scene id="3" nom="G25 A" lienImage="images/6-G25Machines(sansObjets).jpg">
         <objet id="3">stylo</objet>
         <objet id="3">brosse</objet> 
     </scene>
-    <scene id="4" nom="G25 B" lienImage="images/7- G25Porte.JPG"/>        
-    <scene id="5" nom="G23 A" lienImage="images/5- G23Salle(sansObjets).JPG">
+    <scene id="4" nom="G25 B" lienImage="images/7-G25Porte.jpg"/>        
+    <scene id="5" nom="G23 A" lienImage="images/5-G23Salle(sansObjets).jpg">
         <objet id="5">cleI21</objet>
     </scene>
-    <scene id="6" nom="G23 B" lienImage="images/4- G23Tableau(vide).JPG"/>        
-    <scene id="7" nom="I21" lienImage="images/8- Arrivee.JPG"/>        
+    <scene id="6" nom="G23 B" lienImage="images/4-G23Tableau(vide).jpg"/>        
+    <scene id="7" nom="I21" lienImage="images/8-Arrivee.jpg"/>        
 </scenes>

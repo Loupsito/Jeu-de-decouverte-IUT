@@ -1094,8 +1094,8 @@ function dialogue(texte,iddd)
         (function(i) {           
             timer = setTimeout(function() {
                 display.innerHTML += texte.charAt(i);
-                jouerSon("sons/comlo2ByNico.ogg",son);
-            }, duree= i*55); //recuperation de la derniere duree   55ms
+                jouerSon("sons/SonTexte2.ogg",son);
+            }, duree= i*35);
         }(i));         
     }       
     //On supprime la zone d'antiClic
