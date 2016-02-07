@@ -710,7 +710,7 @@ function placementItemDansInventaire(leItem,indice)
  */
 function verifieCaseInventaire()
 {
-    var tabCase =["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"];    
+    var tabCase =["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10","t11","t12"];    
     for(var i=0;i<tabCase.length;i++)
     {
         var laCase = document.querySelectorAll('#'+tabCase[i]+' span');    
@@ -984,16 +984,19 @@ function bulleInfosItem(x,y,leItem,choix)
             {
                 if (choix ==="creation")
                 {
-                    genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',i);
-                    var myDiv = document.getElementById(i);
-                    myDiv.style.position ='absolute';
-                    myDiv.style.backgroundColor='black';
-                    myDiv.style.color='white';
-                    myDiv.style.borderRadius ='2px';
-                    myDiv.style.top = y - 20 +"px";
-                    myDiv.style.left = x - 40 +"px";
-                    myDiv.style.fontSize="11px";
-                    myDiv.style.opacity="0.7";
+                    if (!(document.getElementById(i)))
+                    {
+                        genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',i);
+                        var myDiv = document.getElementById(i);
+                        myDiv.style.position ='absolute';
+                        myDiv.style.backgroundColor='black';
+                        myDiv.style.color='white';
+                        myDiv.style.borderRadius ='2px';
+                        myDiv.style.top = y - 20 +"px";
+                        myDiv.style.left = x - 40 +"px";
+                        myDiv.style.fontSize="11px";
+                        myDiv.style.opacity="0.7";
+                    }
                 }
                 else if (choix ==="suppression")
                 {
