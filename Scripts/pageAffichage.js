@@ -77,7 +77,9 @@ function initpage()
     xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
     xhrActions.open('GET','XML/actions.xml',false);
     xhrActions.send(null);
-    //------------------------------------------------------------------------------     
+    //------------------------------------------------------------------------------             
+    
+    indicationChargement();
     
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
         premiereAnalyseInventaire();	
@@ -252,6 +254,37 @@ function removeElementById(id)
     var el = document.getElementById(id);
     if (el)
         el.parentNode.removeChild(el);
+}
+
+function indicationChargement()
+{   
+    //On met toutes les images dans un seul tableau pour toute les precharger
+    var tampon = new Array();   
+    for(var i=0;i<listeCases.length;i++)
+    {
+        tampon.push(listeCases[i][3]);
+    }
+    for(var i=0;i<tabDeTousLesItems.length;i++)
+    {
+        tampon.push(tabDeTousLesItems[i][1][2]);
+    }
+    
+    //Prechargement des images
+    for(var i=0;i<tampon.length;i++)
+    {        
+        var image = prechargerImage(tampon[i]);
+        image.onload = function()
+        {            
+            document.getElementById('chargement').style.display='none';
+        };
+    }     
+}
+//Fonction qui va precharger les images
+function prechargerImage(url)
+{
+    var image = new Image();
+    image.src=url;
+    return image;
 }
 					
 //---------------------------------------------------------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
-        <etatFinal>listeCases[6][3]='images/4- G23Tableau(ecrit).JPG'</etatFinal>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(ecrit).jpg'</etatFinal>
     </action>
     <action nom="ecrireBIS">
         <prerequis nom="ecrireBIS">joueur.idSalle==6</prerequis>
@@ -15,7 +15,7 @@
     </action>    
     <action nom="effacer">
         <prerequis nom="effacer">joueur.idSalle==6</prerequis>
-        <etatFinal>listeCases[6][3]='images/4- G23Tableau(vide).JPG'</etatFinal>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(vide).jpg'</etatFinal>
     </action>
     <action nom="messageDialogue">
         <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
