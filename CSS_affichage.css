@@ -1,3 +1,6 @@
+body {
+	margin : 0 auto;
+}
 #console
 {
     border-left: 6px solid #000000;
@@ -19,12 +22,12 @@
     position: absolute;
     overflow:hidden;    
 }
-p,span,#msgLambda{
-    font-family:'century gothic';
-    font-size:14px;	
+#blocNomScene1,#blocNomScene2,#blocInfoBulle {
+    font-family: 'century gothic';
+    font-size:13.5px;
 }
-p{
-	font-weight:bold;
+#blocNomScene1,#blocNomScene2 {
+    font-weight:bold;
 }
 #deplacement
 {
@@ -72,63 +75,45 @@ p{
     float: left;
     vertical-align:middle;
 }
-
-/*
-#dialogue
-{
-    position : absolute;
-    border: 4px solid #145A4F;
-    border-radius: 0px 0px 10px 10px;
-    background-color: #178977;
-    bottom:-8px;
-    height: 20%;
-    width: 98.7%;
-}
-*/
-/*#dialogue
-{
-    position : absolute;
-    border-radius: 0px 0px 10px 10px;
-	border: 4px solid #000000;
-	background-color: #FFFFFF;
-    bottom:-8px;
-    height: 20%;
-    width: 98.7%;
-}*/
 #dialogue {
-   position : absolute;
-	color:#FFFFFF;
-	z-index:5;
-	margin:auto;
-	border:0.2px solid #FFFFFF;
-   border-radius: 0px 10px 10px 0px;
-	background-color: rgba(0,0,0,0.55);
-   /*bottom:-8px;*/
-	left:-1px;
-	top:65%;
-   height: 20%;
-   width: 70%;
+    font-family:'century gothic';
+    font-size:12px;
+    display:block;
+    position : absolute;
+    color:#FFFFFF;
+    z-index:2;
+    margin:auto;
+    border-radius: 0px 10px 10px 0px;
+    /*background-color: rgba(0,0,0,0.80);*/
+    /*bottom:-8px;*/
+    /*left:-1px;*/
+    top:79%;
+    height: 0px;
+    width: 72%;
+    border-bottom:95px solid rgba(0,0,0,0.65);
+    border-right:67px solid transparent;
+}
+#msgLambda
+{
+    margin-top:15px;
+    margin-left:50px
+}
+#msgDescription  {
+    font-style:italic;
+    margin-left:50px;
+}
+#actions
+{
+    right:30%;
+    bottom:30% ;
+    margin:10px;
 }
 #choixPorte
 {
-    display:block;
-    left:40%;
-    position:absolute;
+    right:30%;
+    bottom:30% ;
+    margin:10px;
 }
-/*
-#infoBulleMenu
-{
-    position:absolute;
-    background:#178977;
-    color:white;
-    height:20px;
-    opacity:0.70;
-    border-radius:10px;
-    text-align: center;  
-    border: 0;
-    display: none;
-}
-*/
 #menu
 {
     position:absolute;
@@ -154,11 +139,6 @@ button
     position:absolute;
     margin-top:4px;
     z-index:1;
-}
-.boutonMenu:hover
-{
-    background:yellow;
-    border:1px solid white;
 }
 #boutonInventaire
 {
@@ -204,59 +184,13 @@ button
 /* ======================== */
 
 
-#msgLambda
-{
-    width : 50%; 
-    margin : auto; 
-    margin-top:16px;
-}
+
 #objet
 {
 	position : absolute;
 	bottom:35%;
 	margin:10px;
 }
-
-#actions
-{
-    position : absolute;
-    right:30%;
-    bottom:30% ;
-    margin:10px;
-}
-
-
-
-
-
-/* -----------------------------------------Gestion pour les plus petit ecran----------------------------------------- */
-
-/*#nomScene
-{
-    position:absolute;
-    color:white;
-    text-align:right;
-    margin-left:100%;
-    width:75px;
-    height:30px;
-    border-right: 50px solid transparent;
-    border-top: 35px solid black; 
-    z-index:1;
-}
-*/
-/*.caseNoire
-{
-    position:absolute;
-    text-align:center;
-    z-index:1;
-    width: 0;
-    background: black;    
-}*/
-/*
-#textNomScene {
-    margin-top : -35%;
-}*/
-
 
 .bandesNoires
 {

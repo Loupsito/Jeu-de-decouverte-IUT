@@ -1,12 +1,11 @@
-function defiler ()
+function defiler (idNomScene)
 {
     (function($){  
         setInterval(function(){  
-            $("#nomScene").animate({"margin-left": 0}, 290, function(){  
-                $(this).appendTo("#nomScene");  
+            $("#"+idNomScene+"").animate({"margin-left": 0}, 500, function(){  
+                $(this).appendTo("#"+idNomScene+"");  
         });  
-      }, 1100);   
+      }, 0);   
     })(jQuery);
 }
-
 
