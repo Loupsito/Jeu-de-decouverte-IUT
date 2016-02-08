@@ -39,6 +39,13 @@ var listeLiens=[];
 //Tableau qui repertorie toutes les actions
 var listesActions=[];
 
+
+var pnj1={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png","dialogue":"Salut bienvenue dans notre jeu de decouverte"};
+var pnj2={"nom":"Asusa","localisation": 3,"image":"images/pnj/asusa.png","dialogue":"Hi, welcome in our game's discover !"};
+var pnj3={"nom":"Yui","localisation": 6,"image":"images/pnj/yui.png","dialogue":"Kon'nichiwa, watashitachi no gemu no hakken ni kangei !"};
+
+var tabPNJ = new Array (pnj1,pnj2,pnj3);
+
 //Fonction qui initialise le jeu une premiere fois
 function initpage()
 {
@@ -92,7 +99,7 @@ function initpage()
     //affiche le nom de la première scène
         afficheNomScene("ENTRÉE",'blocNomScene2','nomScene2','textNomScene2');
         
-    dialogue("Bienvenue dans le jeu de decouverte de notre IUT a Velizy Villacoublay. Bon jeu !","dial");            
+    dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Bon jeu !","dial");            
 }
 
 //Fonction qui recupere les donnees des items dans le fichier LesItems.xml
@@ -218,7 +225,7 @@ function recupFromXMLDataBaseActions()
         
     }
 }
- 
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -320,7 +327,8 @@ function fonctionGeneratricePrincipale()
             //affichage de la position du joueur
             document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
             document.getElementById("ecran").style.backgroundSize = "contain";
-            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";                        
+            document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
+            placementPNJ(joueur.idSalle);
         }
     }
     //------------------------------------BOUTONS DE SCENES-------------------------------------    
@@ -375,31 +383,7 @@ function fonctionGeneratricePrincipale()
                         nomTampon = listeCases[j][1];
                         //alert(nomTampon);
                     }
-                }   
-                /*
-                for (var a = 0; a < listeCases.length;a++)
-                {
-                    if ((listeLiens[i][0] === joueur.idSalle && listeLiens[i][1] === listeCases[a][0]) || (listeLiens[i][1] === joueur.idSalle && listeLiens[i][0] === listeCases[a][0]))
-                    {
-
-                        if ((listeCases[j][1].substring(0, 3) === listeCases[a][1].substring(0, 3)))
-                        {   
-                            $("#blocNomScene1").empty();
-                            break;
-                        }
-                        else
-                        {
-                            alert(listeCases[j][1].substring(0, 7));
-                            alert(listeCases[a][1].substring(0, 7));
-                            //defiler ("nomScene"); 
-                            $("#blocNomScene1").empty();	
-                            afficheNomScene(listeCases[j][1],'blocNomScene1','nomScene','textNomScene');
-                            break;
-                           
-                        }
-                    }
-                } 
-                */
+                }                   
             }
         }
     }
@@ -501,7 +485,7 @@ function avancer(newScene,id1,id2)
     {
         document.getElementById('msgDialogue').innerHTML = "";            
         removeElementById("msgDialogue");
-    }
+    }   
     
     //test si l'accès à la nouvelle scène est libre ou non
     if (verifAccesSalle(id1,id2) === true)
@@ -512,6 +496,7 @@ function avancer(newScene,id1,id2)
         //effacer le contenu des autres division => initilisation de la page
         document.getElementById('msgLambda').innerHTML = "";
         document.getElementById('choixPorte').innerHTML = "";   
+        document.getElementById('pnj').innerHTML="";
 
         //cacher la boite de dialogue
         cacherBoiteDialogue();
@@ -561,10 +546,10 @@ function avancer(newScene,id1,id2)
    // alert("Actions capture = "+captureActions.length);
     if(captureActions.length !==0)
     {
-        //alert("cest pas vide !");
-        for(k=0;k<listesActions.length;k++)
+        for(var k=0;k<listesActions.length;k++)
         {
-            verifiePrerequis(captureActions[k].textContent,"avancement");
+            if(captureActions[k])
+                verifiePrerequis(captureActions[k].textContent,"avancement");
         }
     }        
 }
@@ -863,6 +848,95 @@ function modifieValeur(action)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------SCENARIO--------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+function dialogue(texte,iddd)
+{ 
+    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
+    if(document.getElementById("msgDialogue"))
+        removeElementById("msgDialogue");
+    
+    //Creation de la zone antiClic
+    divAnticlic = document.createElement("div");                
+    divAnticlic.id="antiClic";                                           
+    divAnticlic.style.width=100+'%';
+    divAnticlic.style.height=100+'%';    
+    divAnticlic.style.top =0+'px';
+    divAnticlic.style.left =0+'px';
+    divAnticlic.style.position ='absolute';    
+    divAnticlic.style.opacity='0.4';
+    divAnticlic.style.zIndex = "6"; 
+    divAnticlic.style.backgroundColor='black';
+    document.getElementById("ecran").appendChild(divAnticlic);    
+    
+    
+    //Creation de la div msgDialogue dans la div dialogue
+    genereContenuID("div","","dialogue","msgDialogue");
+    
+    //Creation de la div qui contient le texte de dialogue
+    genereContenuID("div","","msgDialogue",iddd);
+    display = document.getElementById(iddd);
+    dial = document.getElementById(iddd);
+    dial.style.marginLeft =10+'px';
+    dial.style.marginRight =10+'px';
+    
+    //Affichage progressive du texte
+    //Chaque lettre obtient une temporisation differente
+    //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
+    for(i=0, l = texte.length; i< l ; i++) 
+    {           
+        (function(i) {           
+            timer = setTimeout(function() {
+                display.innerHTML += texte.charAt(i);
+                jouerSon("sons/SonTexte2.ogg",son);
+            }, duree= i*35);
+        }(i));         
+    }       
+    //On supprime la zone d'antiClic
+    setTimeout(function() {
+               removeElementById("antiClic");
+            }, duree+=55);//60ms              
+}
+
+
+
+function placementPNJ(positionCourante)
+{
+    for(var i=0;i<tabPNJ.length;i++)
+    {               
+      if(tabPNJ[i]["localisation"]===positionCourante)
+      {        
+          if(!(document.getElementById(tabPNJ[i]["nom"])))
+          {            
+            CreationImage = document.createElement('img');
+            CreationImage.id=tabPNJ[i]["nom"];
+            CreationImage.src =tabPNJ[i]["image"];
+            CreationImage.height=400;
+            document.getElementById('pnj').appendChild(CreationImage);
+
+            image = document.getElementById(tabPNJ[i]["nom"]);
+            image.addEventListener("click", function(){
+                afficherBoiteDialogue();                
+                for(var j=0;j<tabPNJ.length;j++)
+                {
+                     if(tabPNJ[j]["localisation"]===positionCourante)
+                         dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"],tabPNJ[j]["nom"]+"Dial");
+                } 
+            });            
+            image.style.marginRight=-100+"px";
+            image.style.marginBottom=-410.2+"px";  
+            image.style.position ='relative';
+            image.style.zIndex = 1; 
+          }
+      }         
+    }
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------MULTIMEDIA-------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1001,7 +1075,8 @@ function bulleInfosItem(x,y,leItem,choix)
                 else if (choix ==="suppression")
                 {
                    var myDiv = document.getElementById(i);
-                   myDiv.parentNode.removeChild(myDiv);
+                   if(myDiv)
+                       myDiv.parentNode.removeChild(myDiv);
                 }
             }
         }
@@ -1194,57 +1269,6 @@ function cacherBoiteDialogue()
     }
     else
         return;
-}
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------SCENARIO--------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-function dialogue(texte,iddd)
-{ 
-    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
-    if(document.getElementById("msgDialogue"))
-        removeElementById("msgDialogue");
-    
-    //Creation de la zone antiClic
-    divAnticlic = document.createElement("div");                
-    divAnticlic.id="antiClic";                                           
-    divAnticlic.style.width=100+'%';
-    divAnticlic.style.height=100+'%';    
-    divAnticlic.style.top =0+'px';
-    divAnticlic.style.left =0+'px';
-    divAnticlic.style.position ='absolute';    
-    divAnticlic.style.opacity='0.4';
-    divAnticlic.style.zIndex = "6"; 
-    divAnticlic.style.backgroundColor='black';
-    document.getElementById("ecran").appendChild(divAnticlic);    
-    
-    
-    //Creation de la div msgDialogue dans la div dialogue
-    genereContenuID("div","","dialogue","msgDialogue");
-    
-    //Creation de la div qui contient le texte de dialogue
-    genereContenuID("div","","msgDialogue",iddd);
-    display = document.getElementById(iddd);
-    dial = document.getElementById(iddd);
-    dial.style.marginLeft =10+'px';
-    dial.style.marginRight =10+'px';
-    
-    //Affichage progressive du texte
-    //Chaque lettre obtient une temporisation differente
-    //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
-    for(i=0, l = texte.length; i< l ; i++) 
-    {           
-        (function(i) {           
-            timer = setTimeout(function() {
-                display.innerHTML += texte.charAt(i);
-                jouerSon("sons/SonTexte2.ogg",son);
-            }, duree= i*35);
-        }(i));         
-    }       
-    //On supprime la zone d'antiClic
-    setTimeout(function() {
-               removeElementById("antiClic");
-            }, duree+=55);//60ms              
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

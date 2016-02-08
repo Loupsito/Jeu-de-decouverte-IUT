@@ -124,7 +124,7 @@ body {
     bottom:0;
     border-left: 50px solid transparent;
     border-bottom: 50px solid black;
-    opacity:80%;
+    /*opacity:80%;*/
     z-index: 7;
 }
 button
@@ -157,7 +157,9 @@ button
     background: url(images/musique2.png) no-repeat center;
     margin-left:-22px;
 }
+
 /* INTERNET EXPLORER 9,10,11 */
+/*
 :root #boutonInventaire
 {
 	 margin-left:0px \0/IE9;
@@ -181,6 +183,7 @@ button
 		margin-left:85px;
 	}
 }
+*/
 /* ======================== */
 
 
