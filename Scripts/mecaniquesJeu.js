@@ -4,12 +4,6 @@ var porteVerrouille;
 // tableau qui contiendra toutes les portes verrouillées que le joueur voit => servira pour les etats finaux des différents "ouvrir porte"
 var nomPorte = [];
 
-//Contient la position du joueur : son indice
-var positionJoueur;
-
-//indice du lien (parcours du tableau au prélable)(servira pour ouvrir des portes)
-var indiceScene;
-
 //permettant de couper le son 
 var son = false;
 
@@ -18,14 +12,10 @@ var musique = false;
 
 //permettent le défilement du nom de scène
 var nomTampon;
-var nomTampon2 = "EXTERIEUR";
-var nomDeScene;
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------RECUPERATION-XML---------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-//Chargement de la page
-window.onload=initpage;
+var nomTampon2 = "EXTERIEUR";
+
+var nomDeScene;
 
 //Tableau qui repertorie tous les items
 var tabDeTousLesItems=[null,null];
@@ -39,185 +29,8 @@ var listeLiens=[];
 //Tableau qui repertorie toutes les actions
 var listesActions=[];
 
-//Fonction qui initialise le jeu une premiere fois
-function initpage()
-{
-    //-----------------------------RECUPERATION ITEM-----------------------------
-    xhrItem=createRequest();
-    if(xhrItem===null){
-            alert("echec de la creation d'une requete");
-            return;
-    }
-    xhrItem.onreadystatechange=recupFromXMLDataBaseItem;
-    xhrItem.open('GET','XML/LesItems.xml',false);
-    xhrItem.send(null);
+var tabPNJ;
 
-    //-----------------------------RECUPERATION SCENE-----------------------------
-    xhrScenes=createRequest();
-    if(xhrScenes===null){
-            alert("echec de la creation d'une requete");
-            return;
-    }
-    xhrScenes.onreadystatechange=recupFromXMLDataBaseScenes;
-    xhrScenes.open('GET','XML/LesScenes.xml',false);
-    xhrScenes.send(null);
-
-    //-----------------------------RECUPERATION LIEN-----------------------------
-    xhrLiens=createRequest();
-    if(xhrLiens===null){
-            alert("echec de la creation d'une requete");
-            return;
-    }
-    xhrLiens.onreadystatechange=recupFromXMLDataBaseLiens;
-    xhrLiens.open('GET','XML/LesLiens.xml',false);
-    xhrLiens.send(null);
-
-    //-----------------------------RECUPERATION ACTIONS-----------------------------
-    xhrActions=createRequest();
-    if(xhrActions===null){
-        alert("echec de la creation d'une requete");
-        return;
-    }
-    xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
-    xhrActions.open('GET','XML/actions.xml',false);
-    xhrActions.send(null);
-    //------------------------------------------------------------------------------     
-    
-    indicationChargement();
-    
-    //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();	
-    //gerere le contenu du jeu        
-        fonctionGeneratricePrincipale();
-    //affiche le nom de la première scène
-        //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');
-        
-    dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Bon jeu !","dial");            
-}
-
-//Fonction qui recupere les donnees des items dans le fichier LesItems.xml
-function recupFromXMLDataBaseItem()
-{
-        if (xhrItem.readyState===4 && xhrItem.status===200)
-        {
-            var tabDesc= xhrItem.responseXML.getElementsByTagName("description");// recupération des descriptions
-            var tabPoss= xhrItem.responseXML.getElementsByTagName("possession");// recupération des etats de possession
-            var image= xhrItem.responseXML.getElementsByTagName("image");// récupération             
-            var tabItem = xhrItem.responseXML.getElementsByTagName("tab_item"); 
-            var tabActions = xhrItem.responseXML.getElementsByTagName("action");
-            var tabX = xhrItem.responseXML.getElementsByTagName("x");
-            var tabY = xhrItem.responseXML.getElementsByTagName("y");                    
-            for(i=0;i<tabItem.length;i++)
-            {
-                var tabCoordonnees=[tabX[i].textContent,tabY[i].textContent];
-                var tabTabActions=[null];
-                a=tabTabActions.shift();
-                nom=tabItem[i].getAttribute("nom");
-                for(z=0;z<tabActions.length;z++)
-                {
-                    if((tabActions[z].getAttribute("id"))===nom)
-                        tabTabActions.push((tabActions[z].textContent));
-                }              
-                tabTabInfos=[tabTabActions,tabDesc[i].firstChild.nodeValue,image[i].getAttribute("lienimage"),eval(tabPoss[i].firstChild.nodeValue),tabCoordonnees];                
-                tabDeTousLesItems[i]=[tabItem[i].getAttribute("nom"),tabTabInfos];              
-            } 
-        }
-}
-
-//Fonction qui recupere les donnees des scences dans le fichier LesScenes.xml
-function recupFromXMLDataBaseScenes()
-{	
-    if (xhrScenes.readyState===4 && xhrScenes.status===200)
-    {		
-        var tabID= xhrScenes.responseXML.getElementsByTagName("scene");
-        var tabObjet= xhrScenes.responseXML.getElementsByTagName("objet");
-        for(i=0;i<tabID.length;i++)
-        {                    
-            var tabObjetbis=[null];
-            a=tabObjetbis.shift();
-            id = tabID[i].getAttribute("id");
-            for(z=0;z<tabObjet.length;z++)
-            {
-                if((tabObjet[z].getAttribute("id"))===id)
-                    tabObjetbis.push(tabObjet[z].textContent);                                                        
-            }
-
-            if (tabObjetbis.length===0)                       
-                tabScene=[parseInt(tabID[i].getAttribute("id")),tabID[i].getAttribute("nom"),,tabID[i].getAttribute("lienImage")];
-            else
-                tabScene=[parseInt(tabID[i].getAttribute("id")),tabID[i].getAttribute("nom"),tabObjetbis,tabID[i].getAttribute("lienImage")];
-
-            listeCases.push(tabScene);
-        }
-    }
-}
-
-//Fonction qui recupere les donnees des liens entre les salles dans le fichier LesLiens.xml
-function recupFromXMLDataBaseLiens()
-{
-    if (xhrLiens.readyState===4 && xhrLiens.status===200)
-    {
-        var tabID= xhrLiens.responseXML.getElementsByTagName("idScenes");
-        var tabacces= xhrLiens.responseXML.getElementsByTagName("acces");
-        var tabX= xhrLiens.responseXML.getElementsByTagName("x");
-        var tabY= xhrLiens.responseXML.getElementsByTagName("y");
-
-        for(p=0;p<tabID.length;p++)
-        {
-            var tabCoordonnees=[null];
-            a=tabCoordonnees.shift();
-            var tabX1=[tabX[p*2].textContent];
-            var tabY1=[tabY[p*2].textContent];
-            var tabX2=[tabX[p*2+1].textContent];
-            var tabY2=[tabY[p*2+1].textContent];
-            
-            tabCoordonnees.push([parseInt(tabX1),parseInt(tabY1)]);
-            tabCoordonnees.push([parseInt(tabX2),parseInt(tabY2)]);            
-            tabLien=[parseInt(tabID[p].getAttribute("id1")),parseInt(tabID[p].getAttribute("id2")),eval(tabacces[p].textContent),tabCoordonnees];
-            listeLiens[p]=tabLien;
-        }                
-    }
-}
-
-//Fonction qui recupere les donnees des actions dans le fichier actions.xml
-function recupFromXMLDataBaseActions()
-{
-    if (xhrActions.readyState===4 && xhrActions.status===200)
-    {
-        var tabNom= xhrActions.responseXML.getElementsByTagName("action");
-        var tabPrerequis= xhrActions.responseXML.getElementsByTagName("prerequis");
-        var tabEtatFinal= xhrActions.responseXML.getElementsByTagName("etatFinal");
-        
-        for(A=0;A<tabNom.length;A++)
-        {
-            //var tabActions=["action","prerequis","etatFinal"];
-            var tabActions = new Array();
-            tabActions.push("nomAction");
-            tabActions.push("prerequis");
-            tabActions.push("etatFinal");
-                     
-            tabActions.shift();
-            var tabPrefinal=[null];
-            tabPrefinal.shift();
-            id=tabNom[A].getAttribute("nom");
-
-            for(z=0;z<tabPrerequis.length;z++)
-            {           
-                if((tabPrerequis[z].getAttribute("nom"))===id)
-                    tabPrefinal.push((tabPrerequis[z].textContent).toString());                   
-            }          
-            tabActions["nomAction"]= new Array();
-            tabActions["prerequis"]= new Array();
-            tabActions["etatFinal"]= new Array();                               
-            tabActions["nomAction"].push(id);            
-            tabActions["prerequis"].push(tabPrefinal);
-            tabActions["etatFinal"].push(tabEtatFinal[A].textContent);                                    
-            listesActions[A]=tabActions;
-        }      
-        
-        
-    }
-}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,9 +85,13 @@ function indicationChargement()
     for(var i=0;i<tabDeTousLesItems.length;i++)
     {
         tampon.push(tabDeTousLesItems[i][1][2]);
+    }           
+     for(var i=0;i<tabPNJ.length;i++)
+    {
+        tampon.push(tabPNJ[i]["image"]);
     }
     
-    //Prechargement des images
+    //Prechargement des images    
     for(var i=0;i<tampon.length;i++)
     {        
         var image = prechargerImage(tampon[i]);
@@ -368,7 +185,7 @@ function fonctionGeneratricePrincipale()
                 }
                 else 
                 {
-                    if (!(listeCases[j][1].substring(0, 3) === nomTampon2.substring(0, 3)))
+                   if (!(listeCases[j][1].substring(0, 3) === nomTampon2.substring(0, 3)))
                     {
                         $("#blocNomScene2").empty();	
                         convertiNomScene(listeCases[j][1]);
@@ -561,14 +378,26 @@ function verifAccesSalle(id1, id2)
             //(joueur.idSalle === id1 || joueur.idSalle === id2) => pour les prerequis, plus pratique mais pas obligatoire
             if ((listeLiens[i][2] === false) && (joueur.idSalle === id1 || joueur.idSalle === id2))
                 return false;
-            else if ((listeLiens[i][2] === false) && (joueur.idSalle !== id1 && joueur.idSalle !== id2))
-                return false;
             else
                 return true;
         }
-        /*else alert("mauvais paramètres");*/
     }    
-}					
+}	
+
+
+function verifScene(id1, id2)
+{
+    for (var i = 0; i < listeLiens.length;i++)
+    {
+        if ((listeLiens[i][0] === id1 && listeLiens[i][1] === id2) || (listeLiens[i][0] === id2 && listeLiens[i][1] === id1))  
+        {
+            if ((listeLiens[i][2] === false) && (joueur.idSalle !== id1 && joueur.idSalle !== id2))
+                return 0;
+            else
+                return true;
+        }
+    }    
+}
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------INTERACTION------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -684,8 +513,7 @@ function placementItemDansInventaire(leItem,indice)
         }	
 }
 
-/*
- * 
+/* 
  * @returns {String} tabCase[i] - id de la div vide (pour placer l'objet dedans)
  */
 function verifieCaseInventaire()
@@ -698,8 +526,6 @@ function verifieCaseInventaire()
             return tabCase[i];            
     }
 }
-
-//alert("verifieCaseInventaire() ==> >>"+verifieCaseInventaire()+"<<");
 
 /*
  * @param {string} leItem - le nom de l'item
@@ -815,8 +641,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                    genereContenuID('p',texteAction,'actions','textAction'); 
                    genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
                    if(document.getElementById("antiClic2"))
-                       removeElementById("antiClic2");
-    
+                       removeElementById("antiClic2");    
                }
             }	
         }
@@ -842,434 +667,6 @@ function modifieValeur(action)
      MAJaffichagePosition();
 }
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------SCENARIO--------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-function dialogue(texte,iddd)
-{ 
-    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
-    if(document.getElementById("msgDialogue"))
-        removeElementById("msgDialogue");
-    
-    //Creation de la zone antiClic
-    divAnticlic = document.createElement("div");                
-    divAnticlic.id="antiClic";                                           
-    divAnticlic.style.width=100+'%';
-    divAnticlic.style.height=100+'%';    
-    divAnticlic.style.top =0+'px';
-    divAnticlic.style.left =0+'px';
-    divAnticlic.style.position ='absolute';    
-    divAnticlic.style.opacity='0.4';
-    divAnticlic.style.zIndex = "6"; 
-    divAnticlic.style.backgroundColor='black';
-    document.getElementById("ecran").appendChild(divAnticlic);    
-    
-    
-    //Creation de la div msgDialogue dans la div dialogue
-    genereContenuID("div","","dialogue","msgDialogue");
-    
-    //Creation de la div qui contient le texte de dialogue
-    genereContenuID("div","","msgDialogue",iddd);
-    display = document.getElementById(iddd);
-    dial = document.getElementById(iddd);
-    dial.style.marginLeft =10+'px';
-    dial.style.marginRight =10+'px';
-    
-    //Affichage progressive du texte
-    //Chaque lettre obtient une temporisation differente
-    //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
-    for(i=0, l = texte.length; i< l ; i++) 
-    {           
-        (function(i) {           
-            timer = setTimeout(function() {
-                display.innerHTML += texte.charAt(i);
-                jouerSon("sons/SonTexte2.ogg",son);
-            }, duree= i*35);
-        }(i));         
-    }      
-    cacherBoiteDialogue();
-    //On supprime la zone d'antiClic
-    setTimeout(function() {
-               removeElementById("antiClic");
-            }, duree+=55);//60ms              
-}
-
-function placementPNJ(positionCourante)
-{
-    for(var i=0;i<tabPNJ.length;i++)
-    {               
-      if(tabPNJ[i]["localisation"]===positionCourante)
-      {        
-          if(!(document.getElementById(tabPNJ[i]["nom"])))
-          {            
-            CreationImage = document.createElement('img');
-            CreationImage.id=tabPNJ[i]["nom"];
-            CreationImage.src =tabPNJ[i]["image"];
-            CreationImage.height=400;
-            document.getElementById('pnj').appendChild(CreationImage);
-
-            image = document.getElementById(tabPNJ[i]["nom"]);
-            image.addEventListener("click", function(){
-                afficherBoiteDialogue();                
-                for(var j=0;j<tabPNJ.length;j++)
-                {
-                     if(tabPNJ[j]["localisation"]===positionCourante)
-                     {
-                         //verifie si le prerequis est validé et si ce n'est pas son dernier dialogue => si oui, on passe au dialogue suivant
-                         if (verifDialPrerequis(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][1]) === true)
-                            tabPNJ[j]["numeroDialogueCourant"]++;
-                         dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial");
-                     }
-                } 
-            });            
-            image.style.marginRight=-100+"px";
-            image.style.marginBottom=-410.2+"px";  
-            image.style.position ='relative';
-            image.style.zIndex = 1; 
-          }
-      }         
-    }
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------MULTIMEDIA-------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-//Met a jour l'image background de la position du joueur
-function MAJaffichagePosition()
-{
-     for (var i = 0; i < listeCases.length ; i++)
-    {
-        //si position de joueur = id de scènes d'indice i
-        if (joueur.idSalle === listeCases[i][0])
-        {
-            document.getElementById("ecran").style.background = "url('"+listeCases[i][3]+"') repeat-x center";
-            document.getElementById("ecran").style.backgroundSize = "contain";
-            document.getElementById("ecran").style.backgroundRepeat = "no-repeat";
-        }
-    }
-}
-
-/* 
- * @param {number} largeur - represente la largeur de la hitbox
- * @param {number} hauteur - represente la hauteur de la hitbox
- * @param {number} j - salle courante
- * @param {number} i - lien courant
- */
-function genereHitboxDeplacement(largeur,hauteur,j,i)
-{    
-    //Creation de l'element
-    genereContenuID('span','','ecran',listeCases[j][1]);
-    var myDiv = document.getElementById(listeCases[j][1]);
-    myDiv.style.width=largeur+'px';
-    myDiv.style.height=hauteur+'px';        
-    myDiv.style.position ='absolute';    
-    myDiv.style.opacity='0.2';
-    myDiv.style.zIndex = "0"; 
-
-    var x; var y;
-    
-    //Choix de quel face prendre
-    if (joueur.idSalle === listeLiens[i][0])
-    {
-        x = listeLiens[i][3][0][0];
-        y = listeLiens[i][3][0][1];
-    }
-    else if (joueur.idSalle === listeLiens[i][1])
-    {
-        x = listeLiens[i][3][1][0];
-        y = listeLiens[i][3][1][1];
-    }
-    myDiv.style.top =y+'px';
-    myDiv.style.left =x+'px';
-    myDiv.style.backgroundColor='blue';
-    myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
-    myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='#178977';});
-    myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});        
-}
-
-/* 
- * @param {number} largeur - represente la largeur de la hitbox
- * @param {number} hauteur - represente la hauteur de la hitbox
- * @param {string} leItem - represente l'item a qui on va donner une hitbox
- */
-function genereHitboxItem(largeur,hauteur,leItem)
-{    
-    //Creation de l'element
-    genereContenuID('span','','ecran',leItem);
-    var myDiv = document.getElementById(leItem);
-    myDiv.style.width=largeur+'px';
-    myDiv.style.height=hauteur+'px';        
-    myDiv.style.position ='absolute';
-    myDiv.style.zIndex = "0"; 
-
-    var x; var y;
-    for (var i = 0; i<tabDeTousLesItems.length;i++)
-    {
-        if (tabDeTousLesItems[i][0] === leItem)
-        {
-            x= tabDeTousLesItems[i][1][4][0];
-            y= tabDeTousLesItems[i][1][4][1];
-                
-            myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";
-            myDiv.addEventListener("mouseover", function(){ bulleInfosItem(x,y,leItem,"creation");});
-            myDiv.addEventListener("mouseout", function(){ bulleInfosItem(x,y,leItem,"suppression");});
-        }    
-    }
-    myDiv.style.top =y+'px';
-    myDiv.style.left =x+'px';
-    myDiv.style.backgroundSize="contain";
-    myDiv.style.backgroundRepeat = "no-repeat";
-    myDiv.addEventListener("click", function(){ selectionObjet(leItem);});
-}
-
-/*
- * @param {number} x - coordonnee en abscisse de l'item
- * @param {number} y - coordonnee en ordonnee de l'item
- * @param {string} leItem - represente la hitbox de l'item
- * @param {string} choix - represente quel action va etre fait sur la bulle info ou quelle type de bulle on veut
- */
-function bulleInfosItem(x,y,leItem,choix)
-{
-   genereContenuID("div","","msgDescription","description");
-   for (var i = 0; i<tabDeTousLesItems.length;i++)
-    {
-        if (tabDeTousLesItems[i][0] === leItem)
-        {
-            //Informations apparaissant dans la boite de dialogue si l'item est dans l'inventaire
-            if (verifPossessionItem(leItem)===true && choix ==="creation")
-            {
-                afficherBoiteDialogue();
-                document.getElementById('description').innerHTML = tabDeTousLesItems[i][1][1];
-            }
-            else if(verifPossessionItem(leItem)===true && choix ==="suppression")
-            {
-                document.getElementById('description').innerHTML = "";
-                $("#msgDescription").empty();
-                cacherBoiteDialogue();
-            }
-            //Informations apparaissant dans une bulle au dessus del'item si celui-ci est dans la salle
-            else
-            {
-                if (choix ==="creation")
-                {
-                    if (!(document.getElementById(i)))
-                    {
-                        genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',i);
-                        var myDiv = document.getElementById(i);
-                        myDiv.style.position ='absolute';
-                        myDiv.style.backgroundColor='black';
-                        myDiv.style.color='white';
-                        myDiv.style.borderRadius ='2px';
-                        myDiv.style.top = y - 20 +"px";
-                        myDiv.style.left = x - 40 +"px";
-                        myDiv.style.fontSize="11px";
-                        myDiv.style.opacity="0.7";
-                    }
-                }
-                else if (choix ==="suppression")
-                {
-                   var myDiv = document.getElementById(i);
-                   if(myDiv)
-                       myDiv.parentNode.removeChild(myDiv);
-                }
-            }
-        }
-    }
-}
-
-/*
- *  @param {string} id - correspond a l'id de la div a cacher 
- */
-function afficherCacher(id) 
-{
-    if(document.getElementById("antiClic2"))
-        removeElementById("antiClic2");
-    
-    var div = document.getElementById(id); 
-    if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
-    {
-        div.style.display = "block";
-        
-        //Creation de la zone antiClic
-        divAnticlic = document.createElement("div");                
-        divAnticlic.id="antiClic2";                                           
-        divAnticlic.style.width=100+'%';
-        divAnticlic.style.height=100+'%';    
-        divAnticlic.style.top =0+'px';
-        divAnticlic.style.left =0+'px';
-        divAnticlic.style.position ='absolute';    
-        divAnticlic.style.opacity='0.4';
-        divAnticlic.style.zIndex = "2"; 
-        divAnticlic.style.backgroundColor='black';
-        document.getElementById("ecran").appendChild(divAnticlic);    
-    }
-   else // Si la division est visible
-   {
-        div.style.display = "none";
-        removeElementById("antiClic2");
-   }
-}
-
-/* 
- * @param {boolean} son -  variable globale son 
- * @param {string} id - nom du bouton 
- * @param {string} url1 - adresse de l'image 1
- * @param {string} url2 - adresse de l'image 2
- */
-//change l'image du bouton son en fonction de la valeur de la variable globale son
-function intervertirImageSon(son,id,url1,url2) 
-{
-    //si variable globale son == false
-    if (son === false) 
-        document.getElementById(id).style.background = "url('"+url2+"') no-repeat center";  
-    else 
-        document.getElementById(id).style.background = "url('"+url1+"') no-repeat center"; 
-}
-
-function afficheInfoBulleMenu(contenu)
-{
-    genereContenuID('div','','blocInfoBulle','infoBulleMenu');   
-    var blocNoir = document.getElementById('infoBulleMenu');    
-    document.getElementById('infoBulleMenu').style.display='block';  
-    blocNoir.style.position="absolute";
-    blocNoir.style.color ="#FFFFFF";
-    blocNoir.style.textAlign="center"; 
-    blocNoir.style.border=0; 
-    blocNoir.style.marginTop=55.8+"%";
-    blocNoir.style.borderLeft=25+"px solid transparent";
-    blocNoir.style.borderBottom=25+"px solid #000000";
-    blocNoir.style.borderOpacity=80+"%";
-    blocNoir.style.left = 78.4+"%";
-    blocNoir.style.width= 120+"px"; 
-    genereContenuID('span','','infoBulleMenu','textInfoBulle');
-    var nomInfoBulle = document.getElementById('textInfoBulle');
-    document.getElementById('textInfoBulle').innerHTML = contenu;
-    nomInfoBulle.style.position="absolute";
-    nomInfoBulle.style.marginLeft=-46+"px";
-    nomInfoBulle.style.marginTop=2+"px";
-}
-
-//masque l'infobulle des boutons du menu
-function masqueInfoBulleMenu() 
-{
-    document.getElementById('infoBulleMenu').style.display='none';
-}
-
-function afficheNomScene(contenu, idPrincipale, idScene, idTextScene)
-{   
-    genereContenuID('div','',idPrincipale,idScene);
-    genereContenuID('p','',idScene,idTextScene);
-    var myDiv = document.getElementById(idScene);
-    var myText = document.getElementById(idTextScene);
-    myDiv.style.width=120+"px";
-    myDiv.style.height=30+"px";
-    myDiv.style.color="white";
-    myDiv.style.borderRight=50+"px solid transparent";
-    myDiv.style.borderTop=35+"px solid black";
-    myDiv.style.marginLeft = 100+"%";   
-    document.getElementById(idTextScene).innerHTML = contenu; 
-    myText.style.padding=0;
-    myText.style.textAlign="center";
-    myText.style.marginTop = -25+"px";
-}
-function convertiNomScene(tabCase)
-{
-    if (tabCase.substring(0, 3) === "bas") nomDeScene = "BATIMENT BASTIE";
-    else if (tabCase.substring(0, 3) === "G25") nomDeScene = "G25";
-    else if (tabCase.substring(0, 3) === "G23") nomDeScene = "G23";
-    else if (tabCase.substring(0, 3) === "I21") nomDeScene = "I21";
-    else if (tabCase.substring(0, 3) === "AMP") nomDeScene = "AMPHI";
-    else if (tabCase.substring(0, 3) === "ext") nomDeScene = "EXTERIEUR";
-}
-/*
- * @param {string} msg - message à afficher 
- * @param {number} timeOut - temps d'apparition (1000 = 1 sec)
- */
-//génère un message dans la boîte de dialogue avec un temps d'apparition
-function genererMessageBoite(msg,timeOut)
-{
-    afficherBoiteDialogue();
-    document.getElementById('msgLambda').innerHTML = msg;
-    setTimeout(function(){document.getElementById('msgLambda').innerHTML = "";}, timeOut);
-    setTimeout(function(){cacherBoiteDialogue();},timeOut);
-}
-
-/*
- * @param {string} url - adresse du son à jouer
- * @param {boolean} boolean - varibale globale son 
- */
-//activer le son
-function jouerSon(url,boolean)
-{
-    var son = new Audio(url);
-    if (boolean === true)
-        son.play();
-    else 
-        return;
-}
-
-//désactiver le son
-function couperJouerSon()
-{
-    if (son === true)
-        son = false;
-    else
-        son = true;
-}
-/* 
- * @param {boolean} boolean - variable globale musique
- */
-//jouer la musique
-function jouerMusique(boolean)
-{  
-    if (boolean === false)
-        //supprime l'element audio
-        removeElementById("music");
-    else if (boolean === true)
-        //créé l'element audio
-        genereContenu('span','<audio id="music" src="sons/hello.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
-}
-
-//désactive la musique
-function couperJouerMusique()
-{
-    if(musique === true)
-        musique = false;
-    else
-        musique = true;
-}
-function afficherBoiteDialogue()
-{
-	var boite = document.getElementById("dialogue");
-	boite.style.display = 'block';
-}
-function cacherBoiteDialogue()
-{    
-    var boite = document.getElementById("dialogue");
-    var count1 = ($('#actions').contents().length);
-    var count2 = ($('#choixPorte').contents().length);
-    var count3 = ($('#msgLambda').contents().length);
-    var count4 = ($('#msgDescription').contents().length);
-    var count5 = ($('#msgDialogue').contents().length);
-    
-        /*$('#actions').empty();
-        $('#choixPorte').empty();
-        $('#msgLambda').empty();*/
-        $('#msgDescription').empty();
-        
-    //if (!(count1 >= 1)&& !(count2 >= 1)&& !(count3 >= 1)&& !(count4 >= 1))
-    if ((count1 == 0)&&(count2 == 0) &&(count3 == 0) &&(count4 == 0) && (count5 == 0))
-    {
-        boite.style.display = 'none';
-    }
-    else
-        return;
-}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
