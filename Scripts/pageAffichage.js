@@ -18,7 +18,7 @@ var musique = false;
 
 //permettent le défilement du nom de scène
 var nomTampon;
-var nomTampon2 = "entrée";
+var nomTampon2 = "EXTERIEUR";
 var nomDeScene;
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------RECUPERATION-XML---------------------------------------------------------------
@@ -38,13 +38,6 @@ var listeLiens=[];
 
 //Tableau qui repertorie toutes les actions
 var listesActions=[];
-
-
-var pnj1={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png","dialogue":"Salut bienvenue dans notre jeu de decouverte"};
-var pnj2={"nom":"Asusa","localisation": 3,"image":"images/pnj/asusa.png","dialogue":"Hi, welcome in our game's discover !"};
-var pnj3={"nom":"Yui","localisation": 6,"image":"images/pnj/yui.png","dialogue":"Kon'nichiwa, watashitachi no gemu no hakken ni kangei !"};
-
-var tabPNJ = new Array (pnj1,pnj2,pnj3);
 
 //Fonction qui initialise le jeu une premiere fois
 function initpage()
@@ -97,7 +90,7 @@ function initpage()
     //gerere le contenu du jeu        
         fonctionGeneratricePrincipale();
     //affiche le nom de la première scène
-        afficheNomScene("ENTRÉE",'blocNomScene2','nomScene2','textNomScene2');
+        //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');
         
     dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Bon jeu !","dial");            
 }
@@ -375,7 +368,7 @@ function fonctionGeneratricePrincipale()
                 }
                 else 
                 {
-                    if (!(listeCases[j][1].substring(0, 2) === nomTampon2.substring(0, 2)))
+                    if (!(listeCases[j][1].substring(0, 3) === nomTampon2.substring(0, 3)))
                     {
                         $("#blocNomScene2").empty();	
                         convertiNomScene(listeCases[j][1]);
@@ -568,6 +561,8 @@ function verifAccesSalle(id1, id2)
             //(joueur.idSalle === id1 || joueur.idSalle === id2) => pour les prerequis, plus pratique mais pas obligatoire
             if ((listeLiens[i][2] === false) && (joueur.idSalle === id1 || joueur.idSalle === id2))
                 return false;
+            else if ((listeLiens[i][2] === false) && (joueur.idSalle !== id1 && joueur.idSalle !== id2))
+                return false;
             else
                 return true;
         }
@@ -674,7 +669,7 @@ function placementItemDansInventaire(leItem,indice)
 {
         if (verifPossessionItem(leItem) === true)            //Si c'est dans l'inventaire
         {
-            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),leItem);
+            genereContenuID('span','<button type="button" onmouseout="bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'suppression'+"'"+')" onmouseover ="bulleInfosItem(1,1,'+"'"+leItem+"'"+','+"'"+'creation'+"'"+')"  onclick="changementAff('+"'"+leItem+"'"+')"><img src="'+tabDeTousLesItems[indice][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),leItem);
             document.getElementById(leItem).style.lineHeight="20px";
             document.getElementById(leItem).style.verticalAlign= "middle";
             document.getElementById(leItem).style.marginTop="16px";
@@ -742,7 +737,7 @@ function premiereAnalyseInventaire()
     {                    
         if (tabDeTousLesItems[i][1][3] === true)
         {
-            genereContenuID('span','<button type="button" onmouseout=bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+') onmouseover =bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),tabDeTousLesItems[i][0]);
+            genereContenuID('span','<button type="button" onmouseout="bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'suppression'+"'"+')" onmouseover ="bulleInfosItem(1,1,'+"'"+tabDeTousLesItems[i][0]+"'"+','+"'"+'creation'+"'"+')"  onclick="changementAff('+"'"+tabDeTousLesItems[i][0]+"'"+')"><img src="'+tabDeTousLesItems[i][1][2]+'" width="20" height="20" /></button>',verifieCaseInventaire(),tabDeTousLesItems[i][0]);
             document.getElementById(tabDeTousLesItems[i][0]).style.lineHeight="20px";
             document.getElementById(tabDeTousLesItems[i][0]).style.verticalAlign= "middle";
             document.getElementById(tabDeTousLesItems[i][0]).style.marginTop="16px";
@@ -893,14 +888,13 @@ function dialogue(texte,iddd)
                 jouerSon("sons/SonTexte2.ogg",son);
             }, duree= i*35);
         }(i));         
-    }       
+    }      
+    cacherBoiteDialogue();
     //On supprime la zone d'antiClic
     setTimeout(function() {
                removeElementById("antiClic");
             }, duree+=55);//60ms              
 }
-
-
 
 function placementPNJ(positionCourante)
 {
@@ -922,7 +916,12 @@ function placementPNJ(positionCourante)
                 for(var j=0;j<tabPNJ.length;j++)
                 {
                      if(tabPNJ[j]["localisation"]===positionCourante)
-                         dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"],tabPNJ[j]["nom"]+"Dial");
+                     {
+                         //verifie si le prerequis est validé et si ce n'est pas son dernier dialogue => si oui, on passe au dialogue suivant
+                         if (verifDialPrerequis(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][1]) === true)
+                            tabPNJ[j]["numeroDialogueCourant"]++;
+                         dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial");
+                     }
                 } 
             });            
             image.style.marginRight=-100+"px";
@@ -1167,7 +1166,7 @@ function afficheNomScene(contenu, idPrincipale, idScene, idTextScene)
     genereContenuID('p','',idScene,idTextScene);
     var myDiv = document.getElementById(idScene);
     var myText = document.getElementById(idTextScene);
-    myDiv.style.width=75+"px";
+    myDiv.style.width=120+"px";
     myDiv.style.height=30+"px";
     myDiv.style.color="white";
     myDiv.style.borderRight=50+"px solid transparent";
@@ -1176,16 +1175,16 @@ function afficheNomScene(contenu, idPrincipale, idScene, idTextScene)
     document.getElementById(idTextScene).innerHTML = contenu; 
     myText.style.padding=0;
     myText.style.textAlign="center";
-    myText.style.marginTop = -35+"%";
+    myText.style.marginTop = -25+"px";
 }
 function convertiNomScene(tabCase)
 {
-    if (tabCase.substring(0, 3) === "cou") nomDeScene = "COULOIR";
+    if (tabCase.substring(0, 3) === "bas") nomDeScene = "BATIMENT BASTIE";
     else if (tabCase.substring(0, 3) === "G25") nomDeScene = "G25";
     else if (tabCase.substring(0, 3) === "G23") nomDeScene = "G23";
     else if (tabCase.substring(0, 3) === "I21") nomDeScene = "I21";
     else if (tabCase.substring(0, 3) === "AMP") nomDeScene = "AMPHI";
-    else if (tabCase.substring(0, 3) === "ent") nomDeScene = "ENTRÉE";
+    else if (tabCase.substring(0, 3) === "ext") nomDeScene = "EXTERIEUR";
 }
 /*
  * @param {string} msg - message à afficher 
@@ -1258,14 +1257,15 @@ function cacherBoiteDialogue()
     var count4 = ($('#msgDescription').contents().length);
     var count5 = ($('#msgDialogue').contents().length);
     
+        /*$('#actions').empty();
+        $('#choixPorte').empty();
+        $('#msgLambda').empty();*/
+        $('#msgDescription').empty();
+        
     //if (!(count1 >= 1)&& !(count2 >= 1)&& !(count3 >= 1)&& !(count4 >= 1))
     if ((count1 == 0)&&(count2 == 0) &&(count3 == 0) &&(count4 == 0) && (count5 == 0))
     {
         boite.style.display = 'none';
-        $('#actions').empty();
-        $('#choixPorte').empty();
-        $('#msgLambda').empty();
-        $('#msgDescription').empty();
     }
     else
         return;
