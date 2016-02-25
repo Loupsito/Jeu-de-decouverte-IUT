@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+    <scene id="0" nom="exterieur 1" lienImage="images/1-Debut.jpg"/>
+    <scene id="1" nom="bastie 1" lienImage="images/2-CouloirVueA.jpg"/>
+    <scene id="2" nom="bastie 2" lienImage="images/3-CouloirVueB.jpg"/>
+    <scene id="3" nom="G25 1" lienImage="images/6-G25Machines(sansObjets).jpg">
+        <objet id="3">stylo</objet>
+        <objet id="3">brosse</objet> 
+    </scene>
+    <scene id="4" nom="G25 2" lienImage="images/7-G25Porte.jpg"/>        
+    <scene id="5" nom="G23 1" lienImage="images/5-G23Salle(sansObjets).jpg">
+        <objet id="5">cleI21</objet>
+    </scene>
+    <scene id="6" nom="G23 2" lienImage="images/4-G23Tableau(vide).jpg"/>        
+    <scene id="7" nom="I21" lienImage="images/8-Arrivee.jpg"/>        
+</scenes>

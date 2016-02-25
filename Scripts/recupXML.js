@@ -17,9 +17,13 @@ var listeLiens=[];
 //Tableau qui repertorie toutes les actions
 var listesActions=[];
 
+var progression = 1;
+
+transitionChapitre("Chapitre  "+progression);
+
 //Fonction qui initialise le jeu une premiere fois
 function initpage()
-{
+{    
     //-----------------------------RECUPERATION ITEM-----------------------------
     xhrItem=createRequest();
     if(xhrItem===null){
@@ -27,7 +31,8 @@ function initpage()
             return;
     }
     xhrItem.onreadystatechange=recupFromXMLDataBaseItem;
-    xhrItem.open('GET','XML/LesItems.xml',false);
+    //xhrItem.open('GET','XML/LesItems.xml',false);
+    xhrItem.open('GET','XML/chapitre'+progression+'/LesItems.xml',false);
     xhrItem.send(null);
 
     //-----------------------------RECUPERATION SCENE-----------------------------
@@ -37,7 +42,8 @@ function initpage()
             return;
     }
     xhrScenes.onreadystatechange=recupFromXMLDataBaseScenes;
-    xhrScenes.open('GET','XML/LesScenes.xml',false);
+    xhrScenes.open('GET','XML/chapitre'+progression+'/LesScenes.xml',false);
+    //xhrItem.open('GET','XML/chapitre'+progression+'/LesScenes.xml',false);
     xhrScenes.send(null);
 
     //-----------------------------RECUPERATION LIEN-----------------------------
@@ -47,7 +53,8 @@ function initpage()
             return;
     }
     xhrLiens.onreadystatechange=recupFromXMLDataBaseLiens;
-    xhrLiens.open('GET','XML/LesLiens.xml',false);
+    xhrLiens.open('GET','XML/chapitre'+progression+'/LesLiens.xml',false);
+    //xhrItem.open('GET','XML/chapitre'+progression+'/LesLiens.xml',false);
     xhrLiens.send(null);
 
     //-----------------------------RECUPERATION ACTIONS-----------------------------
@@ -57,21 +64,39 @@ function initpage()
         return;
     }
     xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
-    xhrActions.open('GET','XML/actions.xml',false);
+    xhrActions.open('GET','XML/chapitre'+progression+'/actions.xml',false);
+    //xhrItem.open('GET','XML/chapitre'+progression+'/actions.xml',false);
     xhrActions.send(null);
-    //------------------------------------------------------------------------------     
+    //------------------------------------------------------------------------------
     
-    indicationChargement();
+    //------------------------------------------------------------------------------
+    /*
+     * Ajouter la recuperation XML de :
+     * - chapitre
+     * - pnj
+     * - joueur
+     */
+    //------------------------------------------------------------------------------
     
+    //------------------------------------------------------------------------------
+    if(document.getElementById("antiClicTransition"))
+        removeElementById("antiClicTransition");
+    //Va servir a precharge les images du jeu
+        indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();	
+        premiereAnalyseInventaire();        
     //gerere le contenu du jeu        
-        fonctionGeneratricePrincipale();
-    //affiche le nom de la première scène
-       //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');
+     setTimeout(function() {    
+         fonctionGeneratricePrincipale();
+         dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial"); 
+     }, 2000);
         
-    dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Bon jeu !","dial");            
+    //affiche le nom de la première scène
+    //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
+    //------------------------------------------------------------------------------
 }
+
+
 
 //Fonction qui recupere les donnees des items dans le fichier LesItems.xml
 function recupFromXMLDataBaseItem()

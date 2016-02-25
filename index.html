@@ -5,21 +5,23 @@
         <link rel="stylesheet" href="CSS_affichage.css" type="text/css">
         <title>Jeu de découverte de l'IUT de Vélizy</title>
          <script src="Scripts/utils.js"></script>
-         <script src="jquery-2.2.0.js"></script>
-         <script src="jquery_script.js"></script>
+         <script src="Scripts/jquery-2.2.0.js"></script>
+         <script src="Scripts/jquery_script.js"></script>
     </head>
     <body id ='corps'>
         <!-- ______________________________________________________ --> 
         <!-- _________________________Le jeu_______________________ -->
-            <div id="console">                
-                <!-- ______________________________________________________ --> 
-                <!-- ____________________L'ecran du jeu____________________ -->
+            <div id="console">                     
                 <div id ="ecran">
-                     <div id="blocNomScene1"></div>
+                    <div id="blocNomScene1"></div>
                     <div id="blocNomScene2"></div>
-                    <div id="blocInfoBulle"></div>
+                    <div id="blocInfoBulle"></div>                    
+                    <div id="agenda"></div>
+                    <div id="panneauTransition">
+                        <div id="texteTransition"></div>
+                    </div>
                     <div id="pnj" ></div>
-                    <div id="chargement" style="text-align:center"><img src="images/engrenages.gif" alt="chargement" /></div>
+                    <div id="chargement" style="text-align:center"><img src="images/engrenages.gif" alt="chargement" /></div>                    
                     <div id="deplacement"></div>
                     <div id="objet"></div>
                     <div id="inventaire">		
@@ -37,13 +39,15 @@
                         <div id="actions"></div>
                         <div id='choixPorte'></div>
                         <div id='msgLambda'></div>
-                        <div id='msgDescription'></div>
-                        
+                        <div id='msgDescription'></div>                        
                     </div>                      
                 </div>            
                 <script src="Scripts/pnj.js"></script>
                 <script src="Scripts/mecaniquesJeu.js"></script>
                 <script src="Scripts/multimedia.js"></script>
+                <script src="Scripts/chapitre.js"></script>
+                <script src="Scripts/scenario.js"></script>
+                <script src="Scripts/menuAccueil.js"></script>
                 <script src="Scripts/recupXML.js"></script>
             </div>
         <!-- ______________________________________________________ --> 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actions>
+    <action nom="ouvrir_porte_i21">
+        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
+        <etatFinal>genererChoixPorte(['I21'],nomPorte)</etatFinal>
+    </action>
+    <action nom="ecrire">
+        <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(ecrit).jpg'</etatFinal>
+    </action>
+    <action nom="ecrireBIS">
+        <prerequis nom="ecrireBIS">joueur.idSalle==6</prerequis>
+        <etatFinal>alert('hourra')</etatFinal>
+    </action>    
+    <action nom="effacer">
+        <prerequis nom="effacer">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(vide).jpg'</etatFinal>
+    </action>
+    <action nom="messageDialogue">
+        <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
+        <etatFinal>dialogue('Alors voila vous avez cliquer sur la 2eme action de stylo, comme vous pouvez le voir, on y voit un texte qui s affiche progressivement','dial');</etatFinal>
+    </action>
+</actions>

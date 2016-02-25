@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- informations de cle -->
+<tabtab_item>
+    <tab_item nom="cleI21">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id ="cleI21">ouvrir_porte_i21</action>
+                    </tab_actions>
+                    <description>Sert a ouvrir la porte de la salle I21 se trouvant dans la salle G25</description>	
+                    <image lienimage="images/cleI21.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>56</x>
+                        <y>436</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+
+    <!-- informations de brosse -->
+    <tab_item nom="brosse">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="brosse">effacer</action>
+                        <action id="brosse">ecrireBIS</action>
+                    </tab_actions>
+                    <description>Une brosse qui va permettre d'effacer le tableau de la salle G23</description>	
+                    <image lienimage="images/brosse.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>110</x>
+                        <y>405</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+
+    <!-- informations de stylo -->
+    <tab_item nom="stylo">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="stylo">ecrire</action>
+                        <action id="stylo">messageDialogue</action>                        
+                    </tab_actions>
+                    <description>Un stylo qui va servir a ecrire sur le tableau de la salle G23</description>	
+                    <image lienimage="images/stylo.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+</tabtab_item>
