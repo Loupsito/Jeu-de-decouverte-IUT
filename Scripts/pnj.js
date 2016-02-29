@@ -67,8 +67,6 @@ function carte ()
     carte = document.getElementById("carte");
     carte.src="images/";
     carte.style.width=80+"%";
-    carte.style.height=80+"%";
-    
+    carte.style.height=80+"%";    
 }
-
 */

@@ -12,5 +12,7 @@
         <objet id="5">cleI21</objet>
     </scene>
     <scene id="6" nom="G23 2" lienImage="images/4-G23Tableau(vide).jpg"/>        
-    <scene id="7" nom="I21" lienImage="images/8-Arrivee.jpg"/>        
+    <scene id="7" nom="I21" lienImage="images/8-Arrivee.jpg">
+        <objet id="7">agenda</objet>       
+    </scene> 
 </scenes>

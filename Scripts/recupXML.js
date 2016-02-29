@@ -84,12 +84,13 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();        
+        premiereAnalyseInventaire();                
     //gerere le contenu du jeu        
      setTimeout(function() {    
          fonctionGeneratricePrincipale();
-         dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial"); 
+         //dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial"); 
      }, 2000);
+    //affichageAgenda(progression);
         
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
@@ -164,6 +165,7 @@ function recupFromXMLDataBaseLiens()
         var tabacces= xhrLiens.responseXML.getElementsByTagName("acces");
         var tabX= xhrLiens.responseXML.getElementsByTagName("x");
         var tabY= xhrLiens.responseXML.getElementsByTagName("y");
+        var tabFleche= xhrLiens.responseXML.getElementsByTagName("fleche");
 
         for(p=0;p<tabID.length;p++)
         {
@@ -173,13 +175,19 @@ function recupFromXMLDataBaseLiens()
             var tabY1=[tabY[p*2].textContent];
             var tabX2=[tabX[p*2+1].textContent];
             var tabY2=[tabY[p*2+1].textContent];
+            var tabFleche1=[tabFleche[p*2].textContent];
+            var tabFleche2=[tabFleche[p*2+1].textContent];
             
-            tabCoordonnees.push([parseInt(tabX1),parseInt(tabY1)]);
-            tabCoordonnees.push([parseInt(tabX2),parseInt(tabY2)]);            
+            //alert(tabFleche1+"----"+tabFleche2);
+            
+            tabCoordonnees.push([parseInt(tabX1),parseInt(tabY1),tabFleche1]);
+            tabCoordonnees.push([parseInt(tabX2),parseInt(tabY2),tabFleche2]);            
             tabLien=[parseInt(tabID[p].getAttribute("id1")),parseInt(tabID[p].getAttribute("id2")),eval(tabacces[p].textContent),tabCoordonnees];
+            //alert(tabLien);
             listeLiens[p]=tabLien;
         }                
     }
+    //alert(listeLiens+"||||||");
 }
 
 //Fonction qui recupere les donnees des actions dans le fichier actions.xml

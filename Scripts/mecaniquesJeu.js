@@ -302,7 +302,17 @@ function avancer(newScene,id1,id2)
     {
         document.getElementById('msgDialogue').innerHTML = "";            
         removeElementById("msgDialogue");
-    }   
+    }  
+    if(document.getElementById('AfficherAgenda'))
+    {     
+        removeElementById("textAction");
+        removeElementById("AfficherAgenda");
+    }
+    if(document.getElementById('CacherAgenda'))
+    {       
+        removeElementById("textAction");
+        removeElementById("CacherAgenda");
+    }
     
     //test si l'accès à la nouvelle scène est libre ou non
     if (verifAccesSalle(id1,id2) === true)
@@ -314,7 +324,9 @@ function avancer(newScene,id1,id2)
         //effacer le contenu des autres division => initilisation de la page
         document.getElementById('msgLambda').innerHTML = "";
         document.getElementById('choixPorte').innerHTML = "";   
-        document.getElementById('pnj').innerHTML="";
+        document.getElementById('pnj').innerHTML="";        
+        if(document.getElementById('menuAction'))
+            removeElementById('menuAction');
 
         //cacher la boite de dialogue
         cacherBoiteDialogue();
@@ -354,13 +366,13 @@ function avancer(newScene,id1,id2)
     {
         genererMessageBoite("La porte est verrouillée...",2000);
         //efface le contenu de la division des actions (pour éviter la duplication du bouton)
-        document.getElementById('actions').innerHTML = "";
+        document.getElementById('actions').innerHTML = "";        
     }
     //efface le contenu des divisions de déplacement et d'objet
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     
-     var captureActions = document.querySelectorAll('#actions span');
+     var captureActions = document.querySelectorAll('#menuAction span');
    // alert("Actions capture = "+captureActions.length);
     if(captureActions.length !==0)
     {
@@ -432,7 +444,9 @@ function changementAff(val)
     }
     var captureBouton = document.querySelectorAll('#actions span');
     document.getElementById('actions').innerHTML = "";
-    msg="";
+    if(document.getElementById('menuAction'))
+        document.getElementById('menuAction').innerHTML = "";
+    msg="";    
     for(var i = 0; i<captureBouton.length;i++)
     {
         //parcours le tableau d'actions
@@ -632,7 +646,7 @@ function premiereAnalyseInventaire()
  */
 //Fonction verifiant les prerequis des actions
 function verifiePrerequis(action,choix) //ajouter un choix de modification
-{
+{     
     var erreurs = 0 ;   
     for(i=0;i<listesActions.length;i++)
     {               
@@ -646,7 +660,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                     erreurs +=1;
                     msg+=" "+action;                       
                 }
-            }            
+            }                        
             //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
             if (erreurs !== 0 && choix ==="interaction")
             {
@@ -655,7 +669,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
             else if (erreurs !== 0 && choix ==="avancement")
             {
                 genererMessageBoite("Vous ne pouvez plus executer l'action : "+msg+"<hr>",4000);               
-                document.getElementById('actions').innerHTML = "";
+                document.getElementById('actions').innerHTML = "";                
                 fonctionGeneratricePrincipale();
             }                
             //-----------------------------Affichage des actions-----------------------------
@@ -680,8 +694,10 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                                break;
                            else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                            { 
-                               afficherBoiteDialogue();                
+                               afficherBoiteDialogue();
+                               menuActions();
                                genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()">'+listesActions[i]["nomAction"]+'</button>','actions',listesActions[i]["nomAction"]);
+                               boutonAction(listesActions[i]['nomAction'],listesActions[i]['nomAction'],'"afficheResultat('+"'"+listesActions[i]["nomAction"]+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()"');
                                if(document.getElementById("antiClic2"))
                                    removeElementById("antiClic2");
     
@@ -693,14 +709,98 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                else//-----------------------------Si le bouton n'est pas présent : generer le bouton action-----------------------------
                {
                    afficherBoiteDialogue();
-                   genereContenuID('p',texteAction,'actions','textAction'); 
-                   genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
+                   menuActions();
+                   //genereContenuID('p',texteAction,'actions','textAction'); 
+                   //genereContenuID('span','<button type="button" onclick="afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()">'+listesActions[i]['nomAction']+'</button>','actions',listesActions[i]["nomAction"]);
+                   boutonAction(listesActions[i]['nomAction'],listesActions[i]['nomAction'],'"afficheResultat('+"'"+listesActions[i]['nomAction']+"'"+');$('+"'"+"#actions"+"'"+').empty();$('+"'"+"div"+"'"+').remove('+"'"+"#textAction"+"'"+');cacherBoiteDialogue()"');
                    if(document.getElementById("antiClic2"))
                        removeElementById("antiClic2");    
                }
-            }	
+            }
         }
     }
+}
+
+function menuActions()
+{       
+    if(!document.getElementById("menuAction"))
+    {
+        //alert("Creation de menuActions");
+        genereContenuID("div","","ecran","menuAction");
+        boutonFermerMenuAction();
+        menu = document.getElementById("menuAction");
+        menu.style.position="absolute";    
+        menu.style.width="70%";
+        menu.style.height="40%";
+        menu.style.backgroundColor="rgba(0, 0, 0, 0.50)";;
+        menu.style.border="solid white 2px";
+        menu.style.borderRadius="4px";
+        menu.style.left="0";
+        menu.style.right="0";    
+        menu.style.margin="0 auto";
+        menu.style.zIndex="2";    
+        $('#menuAction').fadeIn("slow").animate({"margin-top": 50}, "slow");    
+    }
+    else
+        boutonFermerMenuAction();
+}
+
+function boutonAction(idd,nom,fonction)
+{
+    genereContenuID("div",nom,"menuAction",idd);
+    var bouton = document.getElementById(idd);
+    //alert(bouton);
+    bouton.style.position="relative";    
+    bouton.style.width="70%";
+    bouton.style.height="35px";
+    bouton.style.backgroundColor="#EBEBEB";    
+    bouton.style.borderRadius="2px";
+    bouton.style.left="0";
+    bouton.style.right="0";    
+    bouton.style.margin="0 auto";
+    bouton.style.marginTop="10px";
+    bouton.style.zIndex="2";
+    
+    bouton.style.textAlign="center";
+    bouton.style.lineHeight="34px";
+    bouton.style.fontFamily= 'century gothic';
+    
+    
+    $("#"+idd).click(function (){
+        //alert(fonction);
+        eval(eval(fonction));
+        removeElementById("menuAction");
+    });
+    $("#"+idd).hover(function (){
+        bouton.style.backgroundColor="#4C4C4C";
+        bouton.style.color="white";
+    });
+    $("#"+idd).mouseleave(function (){
+        bouton.style.backgroundColor="#EBEBEB";
+        bouton.style.color="black";
+    });        
+}
+function boutonFermerMenuAction()
+{    
+    genereContenuID("div","","menuAction","fermer");
+    var bouton = document.getElementById("fermer");
+    bouton.style.position="absolute";
+    bouton.style.width="20px";
+    bouton.style.height="20px";
+    bouton.style.background = "url('images/croix.png')";
+    bouton.style.backgroundSize = "contain";
+    bouton.style.backgroundRepeat = "no-repeat";    
+    $("#fermer").click(function (){
+        removeElementById("menuAction");
+    });
+    $("#fermer").hover(function (){
+        bouton.style.backgroundColor="red";       
+    });
+    $("#fermer").mouseleave(function (){
+        bouton.style.background = "url('images/croix.png')";
+        bouton.style.backgroundSize = "contain";
+        bouton.style.backgroundRepeat = "no-repeat";
+    });        
 }
 
 /*

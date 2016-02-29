@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <liens>
     <lien>
-        <idScenes id1="0" id2="1" />
+        <idScenes id1="0" id2="1" /><!--Entree-->
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
                 <x>328</x>
                 <y>194</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>520</x>
                 <y>207</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="1" id2="2" />
+        <idScenes id1="1" id2="2" /><!-- Couloir A -->
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
                 <x>5</x>
                 <y>290</y>
+                <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>250</x>
                 <y>390</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="1" id2="3" />
+        <idScenes id1="1" id2="3" /><!-- Couloir A -->
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>90</x>
+                <x>80</x>
                 <y>170</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>420</x>
                 <y>180</y>
+                <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee2>
             </coordonnees>
     </lien>   
@@ -49,24 +55,28 @@
             <coordonnee1>
                 <x>250</x>
                 <y>420</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>250</x>
                 <y>390</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
             </coordonnees>
     </lien>
     <lien>
         <idScenes id1="4" id2="7" />
-        <acces>false</acces>
+        <acces>true</acces><!-- false -->
         <coordonnees>
             <coordonnee1>
                 <x>290</x>
                 <y>130</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>250</x>
                 <y>350</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>  
@@ -77,10 +87,12 @@
             <coordonnee1>
                 <x>65</x>
                 <y>190</y>
+                <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>0</x>
                 <y>185</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>    
@@ -91,10 +103,12 @@
             <coordonnee1>
                 <x>530</x>
                 <y>170</y>
+                <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>250</x>
                 <y>390</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>  

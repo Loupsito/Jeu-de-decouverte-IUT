@@ -50,4 +50,19 @@
                     </tabCoordonnees>
             </tab_info>
     </tab_item>
+    <tab_item nom="lagenda">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="lagenda">AfficherAgenda</action>
+                        <action id="lagenda">CacherAgenda</action>                        
+                    </tab_actions>
+                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <image lienimage="images/agenda.png"/>
+                    <possession>true</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
 </tabtab_item>

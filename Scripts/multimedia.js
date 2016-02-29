@@ -44,9 +44,8 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     var myDiv = document.getElementById(listeCases[j][1]);
     myDiv.style.width=largeur+'px';
     myDiv.style.height=hauteur+'px';        
-    myDiv.style.position ='absolute';    
-    myDiv.style.opacity='0.2';
-    myDiv.style.zIndex = "0"; 
+    myDiv.style.position ='absolute';        
+    myDiv.style.zIndex = "1"; 
 
     var x; var y;
     
@@ -55,18 +54,30 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     {
         x = listeLiens[i][3][0][0];
         y = listeLiens[i][3][0][1];
+        myDiv.style.background = "url('"+listeLiens[i][3][0][2]+"')";
+        myDiv.style.backgroundSize="contain";
+        myDiv.style.backgroundRepeat = "no-repeat";
     }
     else if (joueur.idSalle === listeLiens[i][1])
     {
         x = listeLiens[i][3][1][0];
         y = listeLiens[i][3][1][1];
+        myDiv.style.background = "url('"+listeLiens[i][3][1][2]+"') repeat-x center";
+        myDiv.style.backgroundSize="contain";
+        myDiv.style.backgroundRepeat = "no-repeat";
     }
     myDiv.style.top =y+'px';
     myDiv.style.left =x+'px';
-    myDiv.style.backgroundColor='blue';
-    myDiv.addEventListener("click", function(){ avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);});
-    myDiv.addEventListener("mouseover", function(){ myDiv.style.backgroundColor='#178977';});
-    myDiv.addEventListener("mouseout", function(){ myDiv.style.backgroundColor='blue';});        
+    //myDiv.style.backgroundColor="rgba(225,225,225, 0.7)";    
+    myDiv.addEventListener("click", function(){
+        avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);        
+    });
+    myDiv.addEventListener("mouseover", function(){
+        //myDiv.style.backgroundColor='#178977';        
+    });
+    myDiv.addEventListener("mouseout", function(){
+        //myDiv.style.backgroundColor='#E1E1E1';
+    });
 }
 
 /* 
@@ -158,7 +169,34 @@ function bulleInfosItem(x,y,leItem,choix)
         }
     }
 }
-
+/*
+function bulleInfosDeplacement(x,y,deplacementCible,choix)
+{
+    if (choix ==="creation")
+    {
+        if (!(document.getElementById("deplacement"+i)))
+        {
+            genereContenuID('span',deplacementCible,'ecran',"deplacement"+i);
+            var myDiv = document.getElementById("deplacement"+i);
+            myDiv.style.position ='absolute';
+            myDiv.style.backgroundColor="rgba(0,0,0, 0.7)";
+            myDiv.style.color='white';
+            myDiv.style.borderRadius ='2px';
+            myDiv.style.top = y + 47 +"px";
+            myDiv.style.left = x +15+"px";
+            myDiv.style.fontSize="14px";
+            //myDiv.style.opacity="0.7";
+            myDiv.style.zIndex="2";
+        }
+    }
+    else if (choix ==="suppression")
+    {
+       var myDiv = document.getElementById("deplacement"+i);
+       if(myDiv)
+           myDiv.parentNode.removeChild(myDiv);
+    }
+}
+*/
 /*
  *  @param {string} id - correspond a l'id de la div a cacher 
  */
