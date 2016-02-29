@@ -27,7 +27,7 @@ function verifieProgression(chapitreCourant)
                 if(progression<tabDeTousLesChapitre.length)
                 {
                     progression+=1;
-                    zoneAntiClic("6","antiClicTransition");
+                    zoneAntiClic("6","antiClicTransition","0.4");
                     setTimeout(function(){
                         //Nettoyage
                         NettoyageCaseInventaire();
@@ -48,7 +48,7 @@ function verifieProgression(chapitreCourant)
                 }
                 else
                 {                    
-                    zoneAntiClic("6","antiClicTransition");                    
+                    zoneAntiClic("6","antiClicTransition","0.4");                    
                     setTimeout(function(){                         
                         transitionChapitre("Fin");
                     }, 2000);

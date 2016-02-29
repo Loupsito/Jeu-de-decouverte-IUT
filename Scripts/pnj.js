@@ -1,5 +1,5 @@
 var pnj1={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png", "numeroDialogueCourant": 0,"dialogue":
-            [["Salut bienvenue dans notre jeu de découverte","(verifPossessionItem('stylo') === true)"],
+            [["Salut bienvenue dans notre jeu de découverte, nous sommes heureux de vous faire découvrir l'IUT de Vélizy Bitch.","(verifPossessionItem('stylo') === true)"],
             ["Tu as trouvé le stylo","(verifPossessionItem('cleI21') === true)"],
             ["Wahou la clé !","'"+"last"+"'"]]};
     
@@ -11,17 +11,28 @@ var pnj3={"nom":"Yui","localisation": 6,"image":"images/pnj/yui.png","numeroDial
             [["Essaie de me faire un joli dessin sur le tableau !", "(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')"],
             ["Bien dessiné, chouette !","'"+"last"+"'"]]};
 
-var tabPNJ = new Array (pnj1,pnj2,pnj3);
+var pnj4={"nom":"Auger","localisation": 0,"image":"images/pnj/auger.png","numeroDialogueCourant": 0,"dialogue":
+            [["Bonjour, il fait trop chaud dans cet IUT, d'où mes lunettes de soleil.", "'"+"normal"+"'"],
+            ["Bienvenue dans le monde epoustouflant de Narnia ! Nous sommes ravis de vous accueillir.","'"+"normal"+"'"],
+            ["Hello, je suis enseignant-chercheur et j'enseigne l'algorithmique.", "'"+"normal"+"'"],
+            ["Au revoir, ce fut un plaisir de vous rencontrer dans de telles conditions.", "'"+"last"+"'"]
+        ]};
+
+var tabPNJ = new Array (pnj4,pnj2,pnj3);
+var divTexte;
+var divTexte2;
 
 function verifDialPrerequis(tab)
 {
-	if (eval(tab) && eval(tab) !== "last")
-            return true;
-		//alert("yeah");
+	if ((eval(tab) && eval(tab) !== "last") && (eval(tab) !== "normal"))
+            return 0;
+        else if (eval(tab) === "normal")
+            return 1;
         else if (eval(tab) === "last")
-            return false;
+            return -1;
 }
-
+var typeDialogue;
+var son = false;
 function placementPNJ(positionCourante)
 {
     for(var i=0;i<tabPNJ.length;i++)
@@ -34,23 +45,20 @@ function placementPNJ(positionCourante)
             CreationImage.id=tabPNJ[i]["nom"];
             CreationImage.src =tabPNJ[i]["image"];
             CreationImage.height=400;
-            document.getElementById('pnj').appendChild(CreationImage);
-
-            image = document.getElementById(tabPNJ[i]["nom"]);
+            image = document.getElementById('pnj').appendChild(CreationImage);
+            /*if ($("#antiClicEnchaine").length)
+            {
+                $("#antiClicEnchaine").click(function() {
+                    testDialogue (positionCourante);
+                    alert("not hood");
+                    return;
+                });  
+            }*/
             image.addEventListener("click", function(){
-                afficherBoiteDialogue();                
-                for(var j=0;j<tabPNJ.length;j++)
-                {
-                     if(tabPNJ[j]["localisation"]===positionCourante)
-                         {
-                         //verifie si le prerequis est validé et si ce n'est pas son dernier dialogue => si oui, on passe au dialogue suivant
-                         if (verifDialPrerequis(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][1]) === true)
-                             tabPNJ[j]["numeroDialogueCourant"]++;
-                                                 
-                         dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial");
-                     }
-                } 
-            });            
+                afficherBoiteDialogue(); 
+                testDialogue (positionCourante);   
+                return;
+            });              
             image.style.marginRight=-100+"px";
             image.style.marginBottom=-411.4+"px";  
             image.style.position ='relative';
@@ -59,14 +67,45 @@ function placementPNJ(positionCourante)
       }         
     }
 }
-/*
-function carte ()
+function testDialogue (positionCourante)
+{
+
+    for(var j=0;j<tabPNJ.length;j++)
+    {
+         if(tabPNJ[j]["localisation"]===positionCourante)
+        {
+            //verifie si le prerequis est validé et si ce n'est pas son dernier dialogue => si oui, on passe au dialogue suivant
+            var verifDial = verifDialPrerequis(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][1]);
+
+            if (verifDial === 0)   
+            {
+                tabPNJ[j]["numeroDialogueCourant"]++;   
+                typeDialogue = "dialoguePrerequis";
+            }                                           
+            if (verifDial === 1)
+            {
+                typeDialogue = "dialogueEnchaine";
+                dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue);
+                tabPNJ[j]["numeroDialogueCourant"]++; 
+                return;
+            }
+            if (verifDial === -1)
+            {                           
+                typeDialogue = "dialogueDernier";
+            }
+            dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue);
+            return;
+            //alert(typeDialogue);
+        }
+    } 
+}
+/*function carte ()
 {
     genereContenuID("div","","ecran","carte");
     
     carte = document.getElementById("carte");
     carte.src="images/";
     carte.style.width=80+"%";
-    carte.style.height=80+"%";    
-}
-*/
+    carte.style.height=80+"%";
+    
+}*/

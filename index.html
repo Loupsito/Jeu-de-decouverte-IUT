@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="CSS_affichage.css" type="text/css">
+        <link rel="icon" type="images/png" href="images/icone.ico" />
+        <link rel="shortcut icon" href="images/favicon.ico" />        
         <title>Jeu de découverte de l'IUT de Vélizy</title>
          <script src="Scripts/utils.js"></script>
          <script src="Scripts/jquery-2.2.0.js"></script>
@@ -11,7 +13,16 @@
     <body id ='corps'>
         <!-- ______________________________________________________ --> 
         <!-- _________________________Le jeu_______________________ -->
-            <div id="console">                     
+            <div id="console">   
+                <!--<div id="accueil">
+                    <h1>Jeu découverte de l'IUT de Vélizy</h1>
+                    <div id="accueilMenu">
+                        <ul id="accueilListe">
+                            <li class="accueilChoixMenu" id="commencer">Commencer le jeu</li>
+                            <li class="accueilChoixMenu" id="continuer">Continuer</li>
+                        </ul>
+                    </div>
+                </div>-->
                 <div id ="ecran">
                     <div id="blocNomScene1"></div>
                     <div id="blocNomScene2"></div>
@@ -37,8 +48,6 @@
                     <div class="bandesNoires" id="bandeNoiresBasses"></div>
                     <div id="dialogue">                    
                         <div id="actions"></div>
-                        <div id='choixPorte'></div>
-                        <div id='msgLambda'></div>
                         <div id='msgDescription'></div>                        
                     </div>                      
                 </div>            

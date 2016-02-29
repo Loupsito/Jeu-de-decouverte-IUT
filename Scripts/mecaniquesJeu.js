@@ -33,10 +33,6 @@ var listesActions;
 
 var tabPNJ;
 
-defiler ("nomScene"); 
-defiler ("nomScene2");
-
-
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -154,7 +150,7 @@ function fonctionGeneratricePrincipale()
     porteVerrouille = true;   
     //reinitialise le taleau (vide le tableau)
     nomPorte = [];
-    
+    var count = $("#blocNomScene1 > *").length;
      //parcours le tableau des liens
     for (var i = 0; i < listeLiens.length; i++)
     {                 
@@ -164,7 +160,7 @@ function fonctionGeneratricePrincipale()
             //compare la salle 1 du lien à la position du joueur ET la salle 2 du lien à la scène
             if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
             {                           
-                genereHitboxDeplacement(100,100,j,i);                             
+                genereHitboxDeplacement(100,100,j,i);
                 if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
                 {
                     porteVerrouille = false;
@@ -172,35 +168,41 @@ function fonctionGeneratricePrincipale()
                     nomPorte.push(listeCases[j][1]);
                 }        
             }
+        }
+    }
+    for (var i = 0; i < listeLiens.length; i++)
+    {                 
+        //parcours le tableau des scènes
+        for (var j = 0; j < listeCases.length; j++)
+        {
             //Pour faire défiler les noms de scènes
             if (joueur.idSalle === listeCases[j][0])
             {			
-                var count = $("#blocNomScene1 > *").length;
-                
-                
                 if (count >= 1)
-                {
+                {                    	
                     //alert(nomTampon);
                     if (!(listeCases[j][1].substring(0, 3) === nomTampon.substring(0, 3)))
                     {
-                        $("#blocNomScene1").empty();	
+                        $("#blocNomScene1").empty();
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene2','nomScene2','textNomScene2');
                         nomTampon2 = listeCases[j][1]; 
+                        defiler ("nomScene2"); 
+                        break;
                     } 
-                    //else break;
                 }
                 else 
-                {
+                {  
                    if (!(listeCases[j][1].substring(0, 3) === nomTampon2.substring(0, 3)))
                     {
-                        $("#blocNomScene2").empty();	
+                        $("#blocNomScene2").empty();
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene1','nomScene','textNomScene');
                         nomTampon = listeCases[j][1];
-                        //alert(nomTampon);
-                    }
-                }                   
+                        defiler ("nomScene");                       
+                        break;
+                    }                   
+                }   
             }
         }
     }
@@ -219,40 +221,28 @@ function fonctionGeneratricePrincipale()
         }
     }    
 }
-
-/*
- * @param {object} tabNom - array contenant le nom des portes que l'action PEUT déverrouiller
- * @param {object} tabPorteVerrouilleEnFace - array contenant le nom de TOUTES les portes verrouillée en face du joueur
- */
-//Fonction générant les portes afficher (si elles sont verrouillées) => uniquement utilisée dans les "etats finaux" des actions "ouvrir_porte[...]"  
-//prend en paramètres : le tableau des portes que l'action peut ouvrir, le tableau de toutes les portes verrouillées en face
-function genererChoixPorte(tabNom,tabPorteVerrouilleEnFace)
+function ouvrirPorte(tabPortes)
 {
-    var textePorte = '<b>Choisissez la porte à deverrouiller</b>';
-    genereContenu('p',textePorte,'choixPorte');    
-    //parcours le tableau des noms de portes que la clé peut déverrouiller 
-    for (var i = 0; i< tabNom.length;i++)
-    {
-        //parcours le tableau des portes verrouillees en face
-        for (var j = 0; j< tabPorteVerrouilleEnFace.length;j++)
+    var idPortes = null;
+    $('span').click(function () {
+        idPortes = this.id;
+        for(var i =0; i<tabPortes.length;i++)
         {
-            if (tabNom[i] === tabPorteVerrouilleEnFace[j])
-                genereContenu('span','<button type="button" onclick="ouvrirPorte('+"'"+tabNom[i]+"'"+')">'+tabNom[i]+'</button>','choixPorte');
-        }    
-    }
+            if (idPortes === tabPortes[i])
+            {
+                deverouillementPorte(idPortes);
+                break;
+            }
+        }
+    });
 }
-
-/*
- * @param {string} nom - nom de la porte à déverrouiller
- */
-//Déverrouille la porte de la scène dont le nom est en paramètre
-function ouvrirPorte(nom)
+function deverouillementPorte(nomId)
 {
-    //On y rentrera les id des portes verrouillées que l'action peut deverrouiller
+//On y rentrera les id des portes verrouillées que l'action peut deverrouiller
     var idPorte = [];
     for (var i = 0;i < listeCases.length;i++)//parcourt la liste des scènes
     {
-        if (nom === listeCases[i][1])
+        if (nomId === listeCases[i][1])
         {
             idPorte.push(listeCases[i][0]);
             for (var j = 0; j < listeLiens.length;j++)//parcourt la liste les liens
@@ -264,31 +254,27 @@ function ouvrirPorte(nom)
                     {
                     //deverrouille la porte
                         listeLiens[j][2] = true;
-                        
+
                     //joue le bruit de deverrouillement de porte    
                         jouerSon('sons/ouvrirPorte.mp3',son);
-                        
-                    //affichage de la réussite de l'action dans la boite de dialogue  
-                        genererMessageBoite("Vous avez ouvert la salle "+listeCases[i][1]+" !",2000);
-
-                    //retire la div "choix de portes" après avoir deverrouillé la porte
-                        document.getElementById('choixPorte').innerHTML = "";
+                    
+                    //generer une notification 
+                        genererNotification("Vous avez déverrouillé la salle"+listeCases[i][1]);
                     //supprime du tableau des portes verrouillées, le nom des portes deverrouillées
-                        for (var b=nomPorte.length-1; b>=0; b--) 
+                        /*for (var b=nomPorte.length-1; b>=0; b--) 
                         {
-                            if (nomPorte[b] === nom) 
+                            if (nomPorte[b] === nomId) 
                                 nomPorte.splice(b, 1);
                         }
                     //si le tableau des portes verrouillées est vide, changer la variable de prerequis (de la clé ultime) à true => l'action ne s'affichera pas
                         if (nomPorte.length === 0)
-                            porteVerrouille = true;
+                            porteVerrouille = true;*/
                     }                       
                 }
             }             
         }
     }                                       
 }
-
 /*
  * @param {number} newScene - id de la scène destination => prochaine valeur de "joueur.idSalle"
  * @param {number} id1 - id de la scène 1 du lien dont on vérifie l'accès
@@ -319,11 +305,8 @@ function avancer(newScene,id1,id2)
     {
         verifieProgression(progression);
         //changement de scène
-        joueur.idSalle = newScene;                    
-        
+        joueur.idSalle = newScene;                           
         //effacer le contenu des autres division => initilisation de la page
-        document.getElementById('msgLambda').innerHTML = "";
-        document.getElementById('choixPorte').innerHTML = "";   
         document.getElementById('pnj').innerHTML="";        
         if(document.getElementById('menuAction'))
             removeElementById('menuAction');
@@ -331,8 +314,8 @@ function avancer(newScene,id1,id2)
         //cacher la boite de dialogue
         cacherBoiteDialogue();
         
-        //$("#blocNomScene1").empty();
-        //$("#blocNomScene2").empty();
+        //efface les notifications
+        removeElementById("notification");
         
         //-----Suppression des hitbox-----
         var capture = document.querySelectorAll('#ecran span');
@@ -363,11 +346,8 @@ function avancer(newScene,id1,id2)
     }
     //sinon affiche un message d'erreur dans la boîte de dialogue
     else
-    {
-        genererMessageBoite("La porte est verrouillée...",2000);
-        //efface le contenu de la division des actions (pour éviter la duplication du bouton)
-        document.getElementById('actions').innerHTML = "";        
-    }
+        genererNotification("Vous ne pouvez pas avancer..."); 
+    
     //efface le contenu des divisions de déplacement et d'objet
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
@@ -456,7 +436,6 @@ function changementAff(val)
             if (captureBouton[i].textContent === (listesActions[j]["nomAction"]).toString())
             {                    
                     verifiePrerequis(listesActions[j]["nomAction"],"interaction");
-                    document.getElementById('choixPorte').innerHTML = "";
             }
         }
     }
@@ -528,7 +507,7 @@ function placementItemDansInventaire(leItem,indice)
             document.getElementById(leItem).style.verticalAlign= "middle";
             document.getElementById(leItem).style.marginTop="16px";
             document.getElementById(leItem).style.marginLeft="9px";        
-            genererMessageBoite("Vous avez trouvé l'item : "+leItem,3000);
+            genererNotification("Vous avez ramassé l'item : "+leItem);
             jouerSon('sons/item.mp3',son);         
             $("#msgDescription").empty();
             verifieProgression(progression);
@@ -566,10 +545,7 @@ function NettoyageCaseInventaire()
 
 function NettoyageComplet()
 {
-    document.getElementById('msgLambda').innerHTML = "";
-    document.getElementById('choixPorte').innerHTML = "";   
     document.getElementById('pnj').innerHTML="";
-    document.getElementById('actions').innerHTML = "";
     document.getElementById('deplacement').innerHTML = "";
     document.getElementById('objet').innerHTML = "";
     
@@ -662,14 +638,13 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                 }
             }                        
             //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
-            if (erreurs !== 0 && choix ==="interaction")
+                    if (erreurs !== 0 && choix ==="interaction")
             {
-                genererMessageBoite(erreurs+" prerequis pas respecté(s) pour : " +msg+"<hr>",4000);
+                genererNotification("Vous ne pouvez pas utiliser l'objet.");
             }
             else if (erreurs !== 0 && choix ==="avancement")
             {
-                genererMessageBoite("Vous ne pouvez plus executer l'action : "+msg+"<hr>",4000);               
-                document.getElementById('actions').innerHTML = "";                
+                genererNotification("Vous ne pouvez plus utiliser l'objet.");               
                 fonctionGeneratricePrincipale();
             }                
             //-----------------------------Affichage des actions-----------------------------
@@ -677,9 +652,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
             {
                //Ferme l'inventaire si s'il y a au moins une action a afficher
                var div = document.getElementById("inventaire"); 
-               div.style.display = "none";
-               var texteAction = "<b>Choisissez l'action à effectuer</b>";
-                  
+               div.style.display = "none";                  
 
                //-----------------------------Si le bouton est present : ne rien afficher-----------------------------
                var captureBouton = document.querySelectorAll('#actions span');            
