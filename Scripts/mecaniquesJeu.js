@@ -423,6 +423,7 @@ function changementAff(val)
             if (captureBouton[i].textContent === (listesActions[j]["nomAction"]).toString())
             {                    
                     verifiePrerequis(listesActions[j]["nomAction"],"interaction");
+
             }
         }
     }
