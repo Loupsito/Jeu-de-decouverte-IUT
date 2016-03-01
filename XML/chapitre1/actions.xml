@@ -3,7 +3,7 @@
 <actions>
     <action nom="ouvrir_porte_i21">
         <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
-        <etatFinal>genererChoixPorte(['I21'],nomPorte)</etatFinal>
+        <etatFinal>ouvrirPorte(['I21'])</etatFinal>
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
