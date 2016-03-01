@@ -130,7 +130,7 @@ function genereHitboxItem(largeur,hauteur,leItem)
  * @param {string} choix - represente quel action va etre fait sur la bulle info ou quelle type de bulle on veut
  */
 function bulleInfosItem(x,y,leItem,choix)
-{
+{    
    genereContenuID("div","","msgDescription","description");
    for (var i = 0; i<tabDeTousLesItems.length;i++)
     {
@@ -141,22 +141,24 @@ function bulleInfosItem(x,y,leItem,choix)
             {
                 afficherBoiteDialogue();
                 document.getElementById('description').innerHTML = tabDeTousLesItems[i][1][1];
+                break;
             }
             else if(verifPossessionItem(leItem)===true && choix ==="suppression")
             {
                 document.getElementById('description').innerHTML = "";
                 $("#msgDescription").empty();
                 cacherBoiteDialogue();
+                break;
             }
             //Informations apparaissant dans une bulle au dessus del'item si celui-ci est dans la salle
             else
             {
                 if (choix ==="creation")
                 {
-                    if (!(document.getElementById(i)))
+                    if (!(document.getElementById("bulleItem"+i)))
                     {
-                        genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',i);
-                        var myDiv = document.getElementById(i);
+                        genereContenuID('span',tabDeTousLesItems[i][1][1],'ecran',"bulleItem"+i);
+                        var myDiv = document.getElementById("bulleItem"+i);
                         myDiv.style.position ='absolute';
                         myDiv.style.backgroundColor='black';
                         myDiv.style.color='white';
@@ -166,14 +168,20 @@ function bulleInfosItem(x,y,leItem,choix)
                         myDiv.style.fontSize="11px";
                         myDiv.style.opacity="0.7";
                     }
+                    break;
                 }
                 else if (choix ==="suppression")
                 {
-                   var myDiv = document.getElementById(i);
+                   var myDiv = document.getElementById("bulleItem"+i);
                    if(myDiv)
+                   {
                        myDiv.parentNode.removeChild(myDiv);
+                       break;
+                   }                   
                 }
+                break;
             }
+            break;
         }
     }
 }

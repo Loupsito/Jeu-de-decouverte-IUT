@@ -210,6 +210,7 @@ function fonctionGeneratricePrincipale()
                     verificatonPlacementItem(listeCases[i][2][j]);
                 }
             }
+            break;
         }
     }    
 }
@@ -575,6 +576,7 @@ function selectionObjet(leItem)
                       //suppression de la bulle info apres avoir selectionner l'item
                       var bulle = document.getElementById(i);
                       bulle.parentNode.removeChild(bulle);
+                      break;
               }            
         }	
         //suppresion de l'item
@@ -626,7 +628,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                 }
             }                        
             //Les actions ne sont affiche QUE si le nombre d'erreur n'est pas respecte
-                    if (erreurs !== 0 && choix ==="interaction")
+            if (erreurs !== 0 && choix ==="interaction")
             {
                 genererNotification("Vous ne pouvez pas utiliser l'objet.");
             }
@@ -678,6 +680,7 @@ function verifiePrerequis(action,choix) //ajouter un choix de modification
                        removeElementById("antiClic2");    
                }
             }
+            break;
         }
     }
 }

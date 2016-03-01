@@ -7,7 +7,6 @@ var chapitre3={"chapitre" :3,"lienFichier":"chapitres/chapitre3/","objectifs":[[
 
 var tabDeTousLesChapitre= new Array(chapitre1,chapitre2,chapitre3);
 
-var progression;
 
 function verifieProgression(chapitreCourant)
 {
@@ -120,7 +119,7 @@ function pasuwado(mdp)
         if((resultat==1)||(resultat==2)||(resultat==3))
         {
             alert("Chargement du chapitre "+resultat);             
-            return message;
+            return resultat;
         }
         else
             alert("Mot de passe non reconnue");            

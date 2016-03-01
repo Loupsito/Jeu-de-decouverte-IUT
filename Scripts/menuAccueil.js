@@ -52,7 +52,13 @@ function retourValeurTouche(touche)
     else if(touche==="Valider")
     {
         //alert("Votre message : "+texte);
-        pasuwado(texte);
+        //alert(pasuwado(texte));
+        progression = pasuwado(texte);  
+        $('#accueil').fadeOut("slow");
+        transitionChapitre("Chapitre  "+progression);
+         setTimeout(function() {    
+            fonctionGeneratricePrincipale();            
+        }, 2000);
     }
     else if(texte.length<=max)
     {               
