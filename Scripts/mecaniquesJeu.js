@@ -162,7 +162,7 @@ function fonctionGeneratricePrincipale()
             //compare la salle 1 du lien à la position du joueur ET la salle 2 du lien à la scène
             if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
             {                           
-                genereHitboxDeplacement(60,60,j,i);
+                genereHitboxDeplacement(60,30,j,i);
                 if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
                 {
                     porteVerrouille = false;
@@ -182,8 +182,7 @@ function fonctionGeneratricePrincipale()
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene2','nomScene2','textNomScene2');
                         nomTampon2 = listeCases[j][1]; 
-                        defiler ("nomScene2"); 
-                        break;
+                        defiler ("nomScene2");                         
                     } 
                 }
                 else 
