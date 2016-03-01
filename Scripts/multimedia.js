@@ -51,7 +51,10 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.style.height=hauteur+'px';        
     myDiv.style.position ='absolute';        
     myDiv.style.zIndex = "1"; 
-
+    myDiv.style.opacity = "0.4"; 
+    myDiv.onmouseover = function(){myDiv.style.opacity = "1";};
+    myDiv.onmouseout = function(){myDiv.style.opacity = "0.4";};
+    
     var x; var y;
     
     //Choix de quel face prendre
@@ -237,7 +240,8 @@ function afficheInfoBulleMenu(contenu)
 //masque l'infobulle des boutons du menu
 function masqueInfoBulleMenu() 
 {
-    document.getElementById('infoBulleMenu').style.display='none';
+    var blocNoir = document.getElementById('infoBulleMenu');    
+    document.getElementById('infoBulleMenu').style.display='none';  
 }
 
 function afficheNomScene(contenu, idPrincipale, idScene, idTextScene)
@@ -324,12 +328,12 @@ function couperJouerSon()
 //jouer la musique
 function jouerMusique(boolean)
 {  
-    if (boolean === false)
+    if (boolean === false || $("#music").length)
         //supprime l'element audio
-        removeElementById("music");
+        removeElementById("spanMusic");
     else if (boolean === true)
         //créé l'element audio
-        genereContenu('span','<audio id="music" src="sons/hello.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu');
+        genereContenuID('span','<audio id="music" src="sons/hello.mp3" controls preload="auto" autoplay="autoplay" style="display:none" loop="loop"></audio>','menu',"spanMusic");
 }
 
 //désactive la musique

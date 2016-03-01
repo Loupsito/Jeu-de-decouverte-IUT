@@ -32,7 +32,8 @@ var listeLiens;
 var listesActions;
 
 var tabPNJ;
-
+defiler ("nomScene"); 
+defiler ("nomScene2"); 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -143,6 +144,7 @@ function fonctionGeneratricePrincipale()
             document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
             placementPNJ(joueur.idSalle);
             placementScenario(joueur.idSalle);
+            break;
         }
     }
     //------------------------------------BOUTONS DE SCENES-------------------------------------    
@@ -160,22 +162,15 @@ function fonctionGeneratricePrincipale()
             //compare la salle 1 du lien à la position du joueur ET la salle 2 du lien à la scène
             if ((listeLiens[i][0] === joueur.idSalle && listeCases[j][0] === listeLiens[i][1]) || (listeLiens[i][1] === joueur.idSalle && listeCases[j][0] === listeLiens[i][0]))
             {                           
-                genereHitboxDeplacement(100,100,j,i);
+                genereHitboxDeplacement(60,60,j,i);
                 if (verifAccesSalle(listeLiens[i][0],listeLiens[i][1]) === false)
                 {
                     porteVerrouille = false;
                     //rempli le tableau avec le nom des portes verrouillées que le joueur voit => servira pour les actions ouvrirPorte
                     nomPorte.push(listeCases[j][1]);
+                    break;
                 }        
             }
-        }
-    }
-    for (var i = 0; i < listeLiens.length; i++)
-    {                 
-        //parcours le tableau des scènes
-        for (var j = 0; j < listeCases.length; j++)
-        {
-            //Pour faire défiler les noms de scènes
             if (joueur.idSalle === listeCases[j][0])
             {			
                 if (count >= 1)
@@ -187,8 +182,6 @@ function fonctionGeneratricePrincipale()
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene2','nomScene2','textNomScene2');
                         nomTampon2 = listeCases[j][1]; 
-                        defiler ("nomScene2"); 
-                        break;
                     } 
                 }
                 else 
@@ -199,8 +192,6 @@ function fonctionGeneratricePrincipale()
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene1','nomScene','textNomScene');
                         nomTampon = listeCases[j][1];
-                        defiler ("nomScene");                       
-                        break;
                     }                   
                 }   
             }
@@ -259,16 +250,8 @@ function deverouillementPorte(nomId)
                         jouerSon('sons/ouvrirPorte.mp3',son);
                     
                     //generer une notification 
-                        genererNotification("Vous avez déverrouillé la salle"+listeCases[i][1]);
-                    //supprime du tableau des portes verrouillées, le nom des portes deverrouillées
-                        /*for (var b=nomPorte.length-1; b>=0; b--) 
-                        {
-                            if (nomPorte[b] === nomId) 
-                                nomPorte.splice(b, 1);
-                        }
-                    //si le tableau des portes verrouillées est vide, changer la variable de prerequis (de la clé ultime) à true => l'action ne s'affichera pas
-                        if (nomPorte.length === 0)
-                            porteVerrouille = true;*/
+                        genererNotification("Vous avez déverrouillé la salle"+listeCases[i][1]);                    
+                        break;
                     }                       
                 }
             }             
@@ -328,16 +311,16 @@ function avancer(newScene,id1,id2)
                  {
                      var monDeplacement = document.getElementById(listeCases[k][1]);
                      monDeplacement.parentNode.removeChild(monDeplacement);
+                     break;
                  }
              }
-
-
              for (m=0;m<tabDeTousLesItems.length;m++)
              {
                  if (capture[i].id === tabDeTousLesItems[m][0] &&verifPossessionItem(capture[i].id) ===false)
                  {
                      var monItem = document.getElementById(tabDeTousLesItems[m][0]);
                      monItem.parentNode.removeChild(monItem);
+                     break;
                  }
              }
          }
@@ -360,7 +343,10 @@ function avancer(newScene,id1,id2)
         for(var k=0;k<listesActions.length;k++)
         {           
             if(captureActions[k])
+            {
                 verifiePrerequis(captureActions[k].textContent,"avancement");
+                break;
+            }
         }
     }        
 }
@@ -436,6 +422,7 @@ function changementAff(val)
             if (captureBouton[i].textContent === (listesActions[j]["nomAction"]).toString())
             {                    
                     verifiePrerequis(listesActions[j]["nomAction"],"interaction");
+                    break;
             }
         }
     }
@@ -705,6 +692,7 @@ function menuActions()
         menu.style.position="absolute";    
         menu.style.width="70%";
         menu.style.height="40%";
+        menu.style.padding="10px";
         menu.style.backgroundColor="rgba(0, 0, 0, 0.50)";;
         menu.style.border="solid white 2px";
         menu.style.borderRadius="4px";
@@ -758,8 +746,10 @@ function boutonFermerMenuAction()
     genereContenuID("div","","menuAction","fermer");
     var bouton = document.getElementById("fermer");
     bouton.style.position="absolute";
-    bouton.style.width="20px";
-    bouton.style.height="20px";
+    bouton.style.width="8px";
+    bouton.style.height="8px";
+    bouton.style.left=98+"%";
+    bouton.style.top=1+"px";
     bouton.style.background = "url('images/croix.png')";
     bouton.style.backgroundSize = "contain";
     bouton.style.backgroundRepeat = "no-repeat";    
