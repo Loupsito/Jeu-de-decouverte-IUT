@@ -9,6 +9,8 @@ var scenario2={"localisation":7,"texte":"Texte de la deuxieme partie du scenario
 var scenario3={"localisation":2,"texte":"Texte de la troisieme partie du scenario","asEteVu":false};
 
 var tabScenario = new Array(scenario1,scenario2,scenario3);
+var divTexte;
+var divTexte2;
 
 function placementScenario(positionCourant)
 {
@@ -16,7 +18,8 @@ function placementScenario(positionCourant)
     {
         if((tabScenario[i]["localisation"]===positionCourant) && (tabScenario[i]["asEteVu"]===false))
         {
-            dialogue(tabScenario[i]["texte"],"texteScenario");
+            afficherBoiteDialogue();
+            dialogue(tabScenario[i]["texte"],"texteScenario",divTexte, divTexte2,"dialogueDernier");
             tabScenario[i]["asEteVu"]=true;
         }
     }

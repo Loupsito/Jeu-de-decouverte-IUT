@@ -19,7 +19,11 @@ var listesActions=[];
 
 var progression = 1;
 
-transitionChapitre("Chapitre  "+progression);
+//transitionChapitre("Chapitre  "+progression);
+barreDeSaisie("accueil");
+clavier("accueil");
+cliquerBouton("commencer");
+cliquerBouton("continuer");
 
 //Fonction qui initialise le jeu une premiere fois
 function initpage()
@@ -84,13 +88,13 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();                
-    //gerere le contenu du jeu        
-     setTimeout(function() {    
-         fonctionGeneratricePrincipale();
-         //dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial"); 
+        premiereAnalyseInventaire();                       
+     
+    /*setTimeout(function() {    
+         dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial");         
      }, 2000);
-    //affichageAgenda(progression);
+     */
+     //(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
         
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      

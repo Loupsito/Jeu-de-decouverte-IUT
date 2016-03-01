@@ -27,7 +27,7 @@ function verifieProgression(chapitreCourant)
                 if(progression<tabDeTousLesChapitre.length)
                 {
                     progression+=1;
-                    zoneAntiClic("6","antiClicTransition");
+                    zoneAntiClic("6","antiClicTransition","0.4");
                     setTimeout(function(){
                         //Nettoyage
                         NettoyageCaseInventaire();
@@ -38,6 +38,9 @@ function verifieProgression(chapitreCourant)
                         listesActions=[];   
 
                         transitionChapitre("Chapitre "+progression);
+                        setTimeout(function() {    
+                            fonctionGeneratricePrincipale();                            
+                        }, 2000);
                         //----------------------------------------------------------------------
                         //----------------------------------------------------------------------
                                 joueur.idSalle=0;//info a mettre dans une structure puis dans un XML
@@ -48,7 +51,7 @@ function verifieProgression(chapitreCourant)
                 }
                 else
                 {                    
-                    zoneAntiClic("6","antiClicTransition");                    
+                    zoneAntiClic("6","antiClicTransition","0.4");                    
                     setTimeout(function(){                         
                         transitionChapitre("Fin");
                     }, 2000);
@@ -67,6 +70,8 @@ function verifieProgression(chapitreCourant)
 function pasuwado(mdp)
 {
     var message="";
+    var error=0;
+    var chiffres="0123456789";
     var tab = new Array();
     
     for(var i=0;i<mdp.length;i++)
@@ -75,6 +80,7 @@ function pasuwado(mdp)
     }
     for(var i=0;i<tab.length;i++)
     {       
+       // alert(tab[i]);
         if((tab[i] ==="f")||(tab[i] ==="d")||(tab[i] ==="a")||(tab[i] ==="m"))
         {           
             if(tab[i] ==="f")
@@ -84,14 +90,46 @@ function pasuwado(mdp)
             if(tab[i] ==="a")
                 message+="+";
             if(tab[i] ==="m")
-                message+="-";            
+                message+="-";                            
         }
-        else if((tab[i] !=="f")&&(tab[i] !=="d")&(tab[i] !=="a")&&(tab[i] !=="m"))
-            message+=tab[i];
+        else if((tab[i] !=="f")&&(tab[i] !=="d")&&(tab[i] !=="a")&&(tab[i] !=="m"))
+        {
+            var valeurTrouve=false;
+            //alert("oh la la la");
+            for(var j=0;j<chiffres.length;j++)
+            {    
+                //alert(tab[i]+"==="+chiffres.charAt(j));
+                if(tab[i]==chiffres.charAt(j))
+                {
+                    //alert("on ajoute "+ tab[i]);
+                    message+=tab[i];
+                    valeurTrouve=true;
+                    break;
+                }                
+            }
+            if(valeurTrouve===false)
+            {               
+                error+=1;
+            }
+        }               
     }
-    var resultat = eval(message);
-    alert("Valeur = "+resultat);             
-    return message;
+    alert("Nombre d'erreurs : "+error);
+    if(error===0&&(message.length===11))
+    {
+        var resultat = eval(message);
+        if((resultat==1)||(resultat==2)||(resultat==3))
+        {
+            alert("Chargement du chapitre "+resultat);             
+            return message;
+        }
+        else
+            alert("Mot de passe non reconnue");            
+    }
+    else
+    {
+        alert("Le mot de passe non reconnue");
+        return;   
+    }
 }
 
 function Angoka(courant)

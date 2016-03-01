@@ -7,7 +7,8 @@ function clavier(placement)
     clavier.id="clavier";
     clavier.style.textAlign="center";
     clavier.style.display="none";
-    clavier.style.background="pink";
+    clavier.style.backgroundColor="rgba(0, 0, 0, 0.50)";
+    clavier.style.padding="10px";
     document.getElementById(placement).appendChild(clavier);
     for(var i = 0;i<touches.length;i++)
     {
@@ -49,7 +50,10 @@ function retourValeurTouche(touche)
         document.getElementById("barreDeSaisie").innerHTML=val;    
     }
     else if(touche==="Valider")
-        alert("Votre message : "+texte);       
+    {
+        //alert("Votre message : "+texte);
+        pasuwado(texte);
+    }
     else if(texte.length<=max)
     {               
         texte+=touche;
@@ -63,14 +67,20 @@ function cliquerBouton(bouton)
     $("#"+bouton).click(function (){
         if (bouton === "commencer")
         {
-            commencer = document.getElementById("accueil");
-            commencer.style.display="none";
+            //commencer = document.getElementById("accueil");
+            //commencer.style.display="none";
+            $('#accueil').fadeOut("slow");
+            transitionChapitre("Chapitre  "+progression);
+             setTimeout(function() {    
+                fonctionGeneratricePrincipale();
+                //dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial"); 
+            }, 2000);
         }
         else
         {
             if (isOnPage === false)
             {                           
-                $('#barreDeSaisie').fadeIn("slow").animate({"margin-top": 50}, "slow");
+                $('#barreDeSaisie').fadeIn("slow").animate({"margin-top": 20}, "slow");
                 $('#clavier').fadeIn("slow").animate({"margin-top": 20}, "slow");
                 isOnPage = true;
             }

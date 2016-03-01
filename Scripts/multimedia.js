@@ -15,6 +15,11 @@ var listeLiens;
 var listesActions;
 
 var joueur;
+//Ces trois variables serviront pour la gestion des dialogues
+var divTexte;
+var divTexte2;
+//antiClic Provisoire pour le cas où le joueur souhaite passer le dialogue
+var antiClicProv;
 
 //Met a jour l'image background de la position du joueur
 function MAJaffichagePosition()
@@ -170,34 +175,6 @@ function bulleInfosItem(x,y,leItem,choix)
     }
 }
 /*
-function bulleInfosDeplacement(x,y,deplacementCible,choix)
-{
-    if (choix ==="creation")
-    {
-        if (!(document.getElementById("deplacement"+i)))
-        {
-            genereContenuID('span',deplacementCible,'ecran',"deplacement"+i);
-            var myDiv = document.getElementById("deplacement"+i);
-            myDiv.style.position ='absolute';
-            myDiv.style.backgroundColor="rgba(0,0,0, 0.7)";
-            myDiv.style.color='white';
-            myDiv.style.borderRadius ='2px';
-            myDiv.style.top = y + 47 +"px";
-            myDiv.style.left = x +15+"px";
-            myDiv.style.fontSize="14px";
-            //myDiv.style.opacity="0.7";
-            myDiv.style.zIndex="2";
-        }
-    }
-    else if (choix ==="suppression")
-    {
-       var myDiv = document.getElementById("deplacement"+i);
-       if(myDiv)
-           myDiv.parentNode.removeChild(myDiv);
-    }
-}
-*/
-/*
  *  @param {string} id - correspond a l'id de la div a cacher 
  */
 function afficherCacher(id) 
@@ -209,7 +186,7 @@ function afficherCacher(id)
     if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
     {
         div.style.display = "block";                
-        zoneAntiClic("2","antiClic2");
+        zoneAntiClic("2","antiClic2","0.4");
     }
    else // Si la division est visible
    {
@@ -289,19 +266,36 @@ function convertiNomScene(tabCase)
     else if (tabCase.substring(0, 3) === "AMP") nomDeScene = "AMPHI";
     else if (tabCase.substring(0, 3) === "ext") nomDeScene = "EXTERIEUR";
 }
-/*
- * @param {string} msg - message à afficher 
- * @param {number} timeOut - temps d'apparition (1000 = 1 sec)
- */
-//génère un message dans la boîte de dialogue avec un temps d'apparition
-function genererMessageBoite(msg,timeOut)
+var timing,timing2;
+function genererNotification(msg)
 {
-    afficherBoiteDialogue();
-    document.getElementById('msgLambda').innerHTML = msg;
-    setTimeout(function(){document.getElementById('msgLambda').innerHTML = "";}, timeOut);
-    setTimeout(function(){cacherBoiteDialogue();},timeOut);
+    if ($("#notification").length)
+        removeElementById("notification");
+    clearTimeout(timing);
+    clearTimeout(timing2);
+    genereContenuID("div","","ecran","notification");
+    var notification = document.getElementById("notification");
+    notification.style.display = "none";
+    notification.style.width = 35+"%";
+    notification.style.height = 20+"px";
+    notification.style.padding = 5+"px";
+    notification.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
+    notification.style.margin = "auto";
+    notification.style.textAlign = "center";
+    notification.style.color ="white";
+    notification.style.border = "1px solid #BDBDBD";
+    notification.style.fontFamily = 'century gothic';
+    notification.style.fontSize= 12+'px';
+    notification.innerHTML = msg;
+    
+    $("#notification").fadeIn(500);   
+    timing = setTimeout(function() {
+        $("#notification").fadeOut("slow");
+    },2500);  
+    timing2 = setTimeout(function() {
+        removeElementById("notification");
+    },3500);      
 }
-
 /*
  * @param {string} url - adresse du son à jouer
  * @param {boolean} boolean - varibale globale son 
@@ -354,66 +348,148 @@ function afficherBoiteDialogue()
 function cacherBoiteDialogue()
 {    
     var boite = document.getElementById("dialogue");
-    var count1 = ($('#actions').contents().length);
-    var count2 = ($('#choixPorte').contents().length);
-    var count3 = ($('#msgLambda').contents().length);
-    var count4 = ($('#msgDescription').contents().length);
-    var count5 = ($('#msgDialogue').contents().length);
+    var count1 = ($('#msgDescription').contents().length);
+    var count2 = ($('#msgDialogue').contents().length);
         
-     /*$('#actions').empty();
-        $('#choixPorte').empty();
-        $('#msgLambda').empty();*/
         $('#msgDescription').empty();    
     
     //if (!(count1 >= 1)&& !(count2 >= 1)&& !(count3 >= 1)&& !(count4 >= 1))
-    if ((count1 == 0)&&(count2 == 0) &&(count3 == 0) &&(count4 == 0) && (count5 == 0))
+    if ((count1 === 0)&&(count2 === 0))
     {
         boite.style.display = 'none';      
     }
     else
         return;
 }
-
-
-function dialogue(texte,iddd)
-{ 
-    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
-    if(document.getElementById("msgDialogue"))
-        removeElementById("msgDialogue");  
-    
-    zoneAntiClic("6","antiClic");
-    
+function creationDialogue(iddd,divTexte)
+{
     //Creation de la div msgDialogue dans la div dialogue
     genereContenuID("div","","dialogue","msgDialogue");
     
     //Creation de la div qui contient le texte de dialogue
     genereContenuID("div","","msgDialogue",iddd);
-    display = document.getElementById(iddd);
-    dial = document.getElementById(iddd);
-    dial.style.marginLeft =10+'px';
-    dial.style.marginRight =10+'px';
-    document.getElementById("dialogue").style.display="block";
+    divTexte = document.getElementById(iddd);
+    divTexte.style.marginLeft =10+'px';
+    divTexte.style.marginRight =10+'px';    
+    
+    return divTexte;
+}
+function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
+{ 
+    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
+    if(document.getElementById("msgDialogue"))
+        removeElementById("msgDialogue");
+    
+    if (!$("#antiClic").length)
+        zoneAntiClic("6","antiClic",'0.4');  
+    //création des div dialogues
+    divTexte1 = creationDialogue(iddd,divTexte1);
+    
+    //texte complet tampon;
+    toutLeTexte = texte;
     
     //Affichage progressive du texte
     //Chaque lettre obtient une temporisation differente
     //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
     for(i=0, l = texte.length; i< l ; i++) 
-    {           
-        (function(i) {           
+    {          
+        $(function(i) {           
             timer = setTimeout(function() {
-                display.innerHTML += texte.charAt(i);
-                jouerSon("sons/SonTexte2.ogg",son);
-            }, duree= i*35);
-        }(i));         
-    }       
-    cacherBoiteDialogue();
-    //On supprime la zone d'antiClic
-    setTimeout(function() {
-               removeElementById("antiClic");
-            }, duree+=35);//60ms              
+                var lettreParLettre = texte.charAt(i);
+                divTexte1.innerHTML += lettreParLettre;                
+                hello = jouerSon("sons/SonTexte2.ogg",son); 
+                
+                //si clique pendant que le texte est en court d'affichage
+                if (msgDialogueEstComplet(divTexte1, texte) === false){
+                    if (typeDeDialogue !== "dialogueEnchaine")
+                    {
+                        if ($("#antiClicProvisoire2").length)
+                            removeElementById("antiClicProvisoire2");
+                        $('#antiClic').click(function () {                        
+                            removeElementById("msgDialogue");
+                            //création des div dialogues
+                            divTexte2 = creationDialogue(iddd,divTexte2);
+                            
+                            divTexte2.innerHTML = toutLeTexte;
+                            if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
+                            {
+                                clearTimeout(timer);
+                                poursuivreDialogue(iddd,typeDeDialogue);                                                               
+                                return;
+                            }
+                        });
+                    }
+                    else if (typeDeDialogue === "dialogueEnchaine")
+                    {
+                        $('#antiClic').click(function () {          
+                            removeElementById("msgDialogue");
+                            //création des div dialogues
+                            divTexte2 = creationDialogue(iddd,divTexte2);
+
+                            divTexte2.innerHTML = toutLeTexte;
+
+                            if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
+                            {
+                                clearTimeout(timer);
+                                poursuivreDialogue(iddd,typeDeDialogue);                             
+                                return;
+                            }
+                        });
+                    }
+                }
+                else if (msgDialogueEstComplet(divTexte1, toutLeTexte) === true)
+                {   
+                    poursuivreDialogue(iddd,typeDeDialogue); 
+                }                
+            }, duree= i*35); 
+        }(i));    
+    }                
+    //cacherBoiteDialogue();
+}
+//test si le texte a été intégralement affiché (progessivement)
+function msgDialogueEstComplet(element,texte)
+{
+    if (element.innerHTML === texte)
+        return true;     
+    else
+        return false;
+}
+function poursuivreDialogue(iddd,typeDeDialogue)
+{
+    removeElementById("fleche");
+    genereContenuID("span","",iddd,"fleche");
+              
+    //sert à pouvoir cliquer 2 fois sur un antiClic (pas sur la boîte de dialogue   
+    antiClicProv = document.getElementById('antiClicProvisoire');
+    if (antiClicProv === null)
+        zoneAntiClic("6","antiClicProvisoire",'0');
+         
+    if (typeDeDialogue !== "dialogueEnchaine")
+    {     
+        $('#antiClicProvisoire').click(function () {           
+            removeElementById("msgDialogue");          
+            removeElementById("antiClic"); 
+            removeElementById("antiClicProvisoire");          
+            cacherBoiteDialogue(); 
+        });  
+    }
+    else if (typeDeDialogue === "dialogueEnchaine")
+    {
+        removeElementById("antiClicProvisoire2");
+        genereContenuID("span","","ecran","antiClicProvisoire2");
+        $('#antiClicProvisoire2').click(function () {
+            removeElementById("msgDialogue");
+            //removeElementById("antiClicEnchaine"); 
+            removeElementById("antiClic");
+            removeElementById("antiClicProvisoire");
+            removeElementById("antiClicProvisoire2");
+            testDialogue (joueur.idSalle);
+            return;
+        }); 
+    }
 }
 
-function zoneAntiClic(priorite,sonId)
+function zoneAntiClic(priorite,sonId,opacity)
 {
     //Creation de la zone antiClic
     divAnticlic = document.createElement("div");                
@@ -423,7 +499,7 @@ function zoneAntiClic(priorite,sonId)
     divAnticlic.style.top =0+'px';
     divAnticlic.style.left =0+'px';
     divAnticlic.style.position ='absolute';    
-    divAnticlic.style.opacity='0.4';
+    divAnticlic.style.opacity=opacity;
     divAnticlic.style.zIndex = priorite; 
     divAnticlic.style.backgroundColor='black';
     document.getElementById("ecran").appendChild(divAnticlic);   
