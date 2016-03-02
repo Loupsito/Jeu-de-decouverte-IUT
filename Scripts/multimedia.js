@@ -120,7 +120,10 @@ function genereHitboxItem(largeur,hauteur,leItem)
     myDiv.style.left =x+'px';
     myDiv.style.backgroundSize="contain";
     myDiv.style.backgroundRepeat = "no-repeat";
-    myDiv.addEventListener("click", function(){ selectionObjet(leItem);});
+    myDiv.addEventListener("click", function(){
+        bulleInfosItem(x,y,leItem,"suppression");
+        selectionObjet(leItem);        
+    });
 }
 
 /*
@@ -130,7 +133,7 @@ function genereHitboxItem(largeur,hauteur,leItem)
  * @param {string} choix - represente quel action va etre fait sur la bulle info ou quelle type de bulle on veut
  */
 function bulleInfosItem(x,y,leItem,choix)
-{    
+{        
    genereContenuID("div","","msgDescription","description");
    for (var i = 0; i<tabDeTousLesItems.length;i++)
     {
@@ -152,7 +155,7 @@ function bulleInfosItem(x,y,leItem,choix)
             }
             //Informations apparaissant dans une bulle au dessus del'item si celui-ci est dans la salle
             else
-            {
+            {              
                 if (choix ==="creation")
                 {
                     if (!(document.getElementById("bulleItem"+i)))

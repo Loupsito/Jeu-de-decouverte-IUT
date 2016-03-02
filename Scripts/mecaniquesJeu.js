@@ -572,10 +572,6 @@ function selectionObjet(leItem)
               {
                       tabDeTousLesItems[i][1][3] = true;//true ou false
                       indice = i;
-                      
-                      //suppression de la bulle info apres avoir selectionner l'item
-                      var bulle = document.getElementById(i);
-                      bulle.parentNode.removeChild(bulle);
                       break;
               }            
         }	

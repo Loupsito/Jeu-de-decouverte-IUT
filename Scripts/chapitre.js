@@ -36,10 +36,12 @@ function verifieProgression(chapitreCourant)
                         listeLiens=[];
                         listesActions=[];   
 
-                        transitionChapitre("Chapitre "+progression);
+                        chapitreTermine();
+                        boutonChapitreSuivant();
+                        /*transitionChapitre("Chapitre "+progression);
                         setTimeout(function() {    
                             fonctionGeneratricePrincipale();                            
-                        }, 2000);
+                        }, 2000);*/
                         //----------------------------------------------------------------------
                         //----------------------------------------------------------------------
                                 joueur.idSalle=0;//info a mettre dans une structure puis dans un XML
@@ -64,6 +66,38 @@ function verifieProgression(chapitreCourant)
         }
     }
     affichageAgenda(chapitreCourant);
+}
+
+function chapitreTermine()
+{
+    $("#texteTransition").empty();
+    $("#texteTransition").append("<h1>Chapitre Terminé</h1>");
+    $("#panneauTransition").fadeIn("3000");
+     setTimeout(function(){                         
+        genereContenuID("div","Voici le mot de passe du chapitre "+(progression-1)+" : <br/><strong>"+Angoka(progression-1)+"</strong><br/><br/>Recopiez-le la prochaine fois dans <strong>Charger partie</strong><br/> si vous souhaitez revenir à ce chapitre.<br/>","texteTransition","MessageMdp");
+        $('#MessageMdp').fadeIn("slow").animate({"margin-top": 35}, "slow");
+    }, 2000);    
+}
+
+function boutonChapitreSuivant()
+{
+    setTimeout(function(){ 
+        genereContenuID("div","Passer au chapitre suivant","panneauTransition","boutonChapSuivant");
+        $("#boutonChapSuivant").css('background-color','#E1E1E1').css('color','#4C4C4C').css('width','180px').css('text-align','center').css('border-radius','2px').css('margin-top','30px').css('margin-left','450px');
+        $("#boutonChapSuivant").hover(function() {
+            $("#boutonChapSuivant").css('background-color','#4C4C4C').css('color','#E1E1E1');
+        });
+        $("#boutonChapSuivant").mouseleave(function() {
+            $("#boutonChapSuivant").css('background-color','#E1E1E1').css('color','#4C4C4C');
+        });
+        $("#boutonChapSuivant").click(function() {   
+            removeElementById("boutonChapSuivant");
+            transitionChapitre("Chapitre "+progression);
+            setTimeout(function() {    
+                fonctionGeneratricePrincipale();                            
+            }, 2000);
+        });
+    }, 4000); 
 }
 
 function pasuwado(mdp)
@@ -111,23 +145,24 @@ function pasuwado(mdp)
                 error+=1;
             }
         }               
-    }
-    alert("Nombre d'erreurs : "+error);
+    }    
     if(error===0&&(message.length===11))
     {
         var resultat = eval(message);
         if((resultat==1)||(resultat==2)||(resultat==3))
-        {
-            alert("Chargement du chapitre "+resultat);             
             return resultat;
-        }
         else
-            alert("Mot de passe non reconnue");            
+        {
+            //alert("Mot de passe non reconnue");
+            msgErreurMdp();
+            return false;   
+        }
     }
     else
     {
-        alert("Le mot de passe non reconnue");
-        return;   
+        //alert("Le mot de passe non reconnue");
+        msgErreurMdp();
+        return false;   
     }
 }
 
@@ -142,8 +177,7 @@ function Angoka(courant)
     for(var i=0;i<6;i++)
     {
         message+=(tabTab[courant-1][i]+tab[i]);
-    }
-    alert(message);
+    }    
     return message;
 }
 //---------TEST---------//

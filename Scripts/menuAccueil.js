@@ -35,6 +35,28 @@ function barreDeSaisie(placement)
     barre.style.border=1+"px solid";
     barre.style.display="none";
 }
+function msgErreurMdp()
+{    
+    if(!(document.getElementById("msgErreurMotDePasse")))
+    {
+        genereContenuID('div',"Le mot de passe n'a pas été reconnue","accueil","msgErreurMotDePasse");
+        msgErreurMotDePasse = document.getElementById("msgErreurMotDePasse");    
+        //msgErreurMotDePasse.style.width=160+"px";
+        msgErreurMotDePasse.style.height=22+"px";
+        msgErreurMotDePasse.style.backgroundColor="rgba(0, 0, 0, 0.40)";
+        msgErreurMotDePasse.style.borderRadius="4px";
+        msgErreurMotDePasse.style.color="#BC0000";
+        msgErreurMotDePasse.style.marginLeft="auto";
+        msgErreurMotDePasse.style.marginLeft="180px";
+        msgErreurMotDePasse.style.marginBottom=(-20)+"px";
+        msgErreurMotDePasse.style.marginTop=(-10)+"px";   
+        msgErreurMotDePasse.style.width="250px";
+        msgErreurMotDePasse.style.textAlign="center";
+        msgErreurMotDePasse.style.display="none";        
+        $('#barreDeSaisie').after($('#msgErreurMotDePasse'));
+        $('#msgErreurMotDePasse').fadeIn("slow").animate({"margin-left": "200px"}, "slow");
+    }
+}
 
 function retourValeurTouche(touche)
 {    
@@ -51,14 +73,14 @@ function retourValeurTouche(touche)
     }
     else if(touche==="Valider")
     {
-        //alert("Votre message : "+texte);
-        //alert(pasuwado(texte));
         progression = pasuwado(texte);  
-        $('#accueil').fadeOut("slow");
-        transitionChapitre("Chapitre  "+progression);
-         setTimeout(function() {    
-            fonctionGeneratricePrincipale();            
-        }, 2000);
+        if(progression!==false){
+            $('#accueil').fadeOut("slow");
+            transitionChapitre("Chapitre  "+progression);
+             setTimeout(function() {    
+                fonctionGeneratricePrincipale();            
+            }, 2000);
+        }
     }
     else if(texte.length<=max)
     {               
