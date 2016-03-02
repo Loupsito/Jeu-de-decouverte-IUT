@@ -389,7 +389,7 @@ function creationDialogue(iddd,divTexte)
     
     return divTexte;
 }
-function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
+function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal)
 { 
     //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
     if(document.getElementById("msgDialogue"))
@@ -429,7 +429,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue);                                                               
+                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal);                                                               
                                 return;
                             }
                         });
@@ -446,7 +446,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue);                             
+                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal);                             
                                 return;
                             }
                         });
@@ -454,7 +454,8 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
                 }
                 else if (msgDialogueEstComplet(divTexte1, toutLeTexte) === true)
                 {   
-                    poursuivreDialogue(iddd,typeDeDialogue); 
+                    poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal); 
+                    return;
                 }                
             }, duree= i*35); 
         }(i));    
@@ -469,7 +470,7 @@ function msgDialogueEstComplet(element,texte)
     else
         return false;
 }
-function poursuivreDialogue(iddd,typeDeDialogue)
+function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal)
 {
     removeElementById("fleche");
     genereContenuID("span","",iddd,"fleche");
@@ -486,6 +487,8 @@ function poursuivreDialogue(iddd,typeDeDialogue)
             removeElementById("antiClic"); 
             removeElementById("antiClicProvisoire");          
             cacherBoiteDialogue(); 
+            verifEtatFinal(tabEtatFinal);
+            return;
         });  
     }
     else if (typeDeDialogue === "dialogueEnchaine")

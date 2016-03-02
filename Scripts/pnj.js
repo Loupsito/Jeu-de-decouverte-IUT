@@ -1,27 +1,27 @@
 var pnj1={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png", "numeroDialogueCourant": 0,"dialogue":
-            [["Salut bienvenue dans notre jeu de découverte, nous sommes heureux de vous faire découvrir l'IUT de Vélizy Bitch.","(verifPossessionItem('stylo') === true)"],
-            ["Tu as trouvé le stylo","(verifPossessionItem('cleI21') === true)"],
-            ["Wahou la clé !","'"+"last"+"'"]]};
+            [["Salut bienvenue dans notre jeu de découverte, nous sommes heureux de vous faire découvrir l'IUT de Vélizy Bitch.","(verifPossessionItem('stylo') === true)",""],
+            ["Tu as trouvé le stylo","(verifPossessionItem('cleI21') === true)",""],
+            ["Wahou la clé !","'"+"last"+"'",""]]};
     
 var pnj2={"nom":"Asusa","localisation": 4,"image":"images/pnj/asusa.png","numeroDialogueCourant": 0,"dialogue":
-            [["Si seulement la salle I21 était ouverte...", "(verifAccesSalle(7,4) === true)"],
-            ["Merci onii-chan, tu as ouvert la salle I21 !","'"+"last"+"'"]]};
+            [["Si seulement la salle I21 était ouverte...", "(verifAccesSalle(7,4) === true)",""],
+            ["Merci onii-chan, tu as ouvert la salle I21 !","'"+"last"+"'",""]]};
         
 var pnj3={"nom":"Yui","localisation": 6,"image":"images/pnj/yui.png","numeroDialogueCourant": 0,"dialogue":
-            [["Essaie de me faire un joli dessin sur le tableau !", "(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')"],
-            ["Bien dessiné, chouette !","'"+"last"+"'"]]};
+            [["Essaie de me faire un joli dessin sur le tableau !", "(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')",""],
+            ["Bien dessiné, chouette !","'"+"last"+"'",""]]};
 
 var pnj4={"nom":"Auger","localisation": 0,"image":"images/pnj/auger.png","numeroDialogueCourant": 0,"dialogue":
-            [["Bonjour, il fait trop chaud dans cet IUT, d'où mes lunettes de soleil.", "'"+"normal"+"'"],
-            ["Bienvenue dans le monde epoustouflant de Narnia ! Nous sommes ravis de vous accueillir.","'"+"normal"+"'"],
-            ["Hello, je suis enseignant-chercheur et j'enseigne l'algorithmique.", "'"+"normal"+"'"],
-            ["Au revoir, ce fut un plaisir de vous rencontrer dans de telles conditions.", "'"+"last"+"'"]
+            [["Bonjour, il fait trop chaud dans cet IUT, d'où mes lunettes de soleil.", "'"+"normal"+"'",""],
+            ["Bienvenue dans le monde epoustouflant de Narnia ! Nous sommes ravis de vous accueillir.","'"+"normal"+"'",""],
+            ["Hello, je suis enseignant-chercheur et j'enseigne l'algorithmique.", "'"+"normal"+"'",""],
+            ["Au revoir, ce fut un plaisir de vous rencontrer dans de telles conditions.", "'"+"last"+"'",""]
         ]};
 var pnj5={"nom":"Jean","localisation": 0,"image":"images/pnj/robert.png","numeroDialogueCourant": 0,"dialogue":
-            [["Bonjour, bienvenue dans notre bel IUT de velizy, ravie de voir que vous soyez arrivé à destination.", "'"+"normal"+"'"],
-            ["Je me présente, je suis Jean et je suis etudiant de 2eme année en informatique.","'"+"normal"+"'"],
-            ["La porte qui se trouve derrière moi permet d'arriver dans le batiment des salles machines, je vous invite à y entrer.", "'"+"normal"+"'"],
-            ["Je vous souhaite donc bonne journée, ce fut un plaisir de vous rencontrer.", "'"+"last"+"'"]
+            [["Bonjour, bienvenue dans notre bel IUT de velizy, ravie de voir que vous soyez arrivé à destination.", "'"+"normal"+"'",""],
+            ["Je me présente, je suis Jean et je suis etudiant de 2eme année en informatique.","'"+"normal"+"'",""],
+            ["La porte qui se trouve derrière moi permet d'arriver dans le batiment des salles machines, je vous invite à y entrer.", "'"+"normal"+"'",""],
+            ["Je vous souhaite donc bonne journée, ce fut un plaisir de vous rencontrer. Au fait, je vous ouvre la salle I21 à distance, sympa non ?", "'"+"last"+"'","if(listeLiens[4][2]===false){listeLiens[4][2]=true;genererNotification('La salle I21 est maintenant accessible');}"]
         ]};
 
 
@@ -38,8 +38,12 @@ function verifDialPrerequis(tab)
         else if (eval(tab) === "last")
             return -1;
 }
+function verifEtatFinal(tab)
+{
+    if (tab.length > 2)
+        eval(tab);
+}
 var typeDialogue;
-var son = false;
 function placementPNJ(positionCourante)
 {
     for(var i=0;i<tabPNJ.length;i++)
@@ -92,7 +96,7 @@ function testDialogue (positionCourante)
             if (verifDial === 1)
             {
                 typeDialogue = "dialogueEnchaine";
-                dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue);
+                dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue,tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][2]);
                 tabPNJ[j]["numeroDialogueCourant"]++; 
                 return;
             }
@@ -100,7 +104,8 @@ function testDialogue (positionCourante)
             {                           
                 typeDialogue = "dialogueDernier";
             }
-            dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue);
+            dialogue(tabPNJ[j]["nom"]+" : "+tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue,tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][2]);
+            
             return;
             //alert(typeDialogue);
         }
