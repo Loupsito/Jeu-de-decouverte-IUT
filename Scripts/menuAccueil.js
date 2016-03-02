@@ -98,6 +98,7 @@ function cliquerBouton(bouton)
             //commencer = document.getElementById("accueil");
             //commencer.style.display="none";
             $('#accueil').fadeOut("slow");
+            progression=1;
             transitionChapitre("Chapitre  "+progression);
              setTimeout(function() {    
                 fonctionGeneratricePrincipale();
@@ -115,7 +116,8 @@ function cliquerBouton(bouton)
             else
             {
                 $("#barreDeSaisie").animate({"margin-top": 0}, "slow").fadeOut("slow");
-                $("#clavier").animate({"margin-top": 0}, "slow").fadeOut("slow");
+                $("#clavier").animate({"margin-top": 0}, "slow").fadeOut("slow");                
+                removeElementById("msgErreurMotDePasse");
                 isOnPage = false;
             }
         }
