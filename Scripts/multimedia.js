@@ -81,7 +81,7 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
         avancer(listeCases[j][0],listeLiens[i][0],listeLiens[i][1]);        
     });
     myDiv.addEventListener("mouseover", function(){
-        //myDiv.style.backgroundColor='#178977';        
+        myDiv.style.cursor = "pointer";
     });
     myDiv.addEventListener("mouseout", function(){
         //myDiv.style.backgroundColor='#E1E1E1';
@@ -112,7 +112,7 @@ function genereHitboxItem(largeur,hauteur,leItem)
             y= tabDeTousLesItems[i][1][4][1];
                 
             myDiv.style.backgroundImage = "url('"+tabDeTousLesItems[i][1][2]+"')";
-            myDiv.addEventListener("mouseover", function(){ bulleInfosItem(x,y,leItem,"creation");});
+            myDiv.addEventListener("mouseover", function(){ bulleInfosItem(x,y,leItem,"creation");myDiv.style.cursor = "pointer";});
             myDiv.addEventListener("mouseout", function(){ bulleInfosItem(x,y,leItem,"suppression");});
         }    
     }

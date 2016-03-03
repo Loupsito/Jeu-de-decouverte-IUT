@@ -35,18 +35,8 @@ function verifieProgression(chapitreCourant)
                         listeCases=[];
                         listeLiens=[];
                         listesActions=[];   
-
                         chapitreTermine();
                         boutonChapitreSuivant();
-                        /*transitionChapitre("Chapitre "+progression);
-                        setTimeout(function() {    
-                            fonctionGeneratricePrincipale();                            
-                        }, 2000);*/
-                        //----------------------------------------------------------------------
-                        //----------------------------------------------------------------------
-                                
-                        //----------------------------------------------------------------------
-                        //----------------------------------------------------------------------
                         initpage();        
                     }, 2000); 
                 }
@@ -85,7 +75,7 @@ function boutonChapitreSuivant()
         genereContenuID("div","Passer au chapitre suivant","panneauTransition","boutonChapSuivant");
         $("#boutonChapSuivant").css('background-color','#E1E1E1').css('color','#4C4C4C').css('width','180px').css('text-align','center').css('border-radius','2px').css('margin-top','30px').css('margin-left','450px');
         $("#boutonChapSuivant").hover(function() {
-            $("#boutonChapSuivant").css('background-color','#4C4C4C').css('color','#E1E1E1');
+            $("#boutonChapSuivant").css('background-color','#4C4C4C').css('color','#E1E1E1').css('cursor','pointer');            
         });
         $("#boutonChapSuivant").mouseleave(function() {
             $("#boutonChapSuivant").css('background-color','#E1E1E1').css('color','#4C4C4C');
@@ -128,22 +118,17 @@ function pasuwado(mdp)
         else if((tab[i] !=="f")&&(tab[i] !=="d")&&(tab[i] !=="a")&&(tab[i] !=="m"))
         {
             var valeurTrouve=false;
-            //alert("oh la la la");
             for(var j=0;j<chiffres.length;j++)
             {    
-                //alert(tab[i]+"==="+chiffres.charAt(j));
                 if(tab[i]==chiffres.charAt(j))
                 {
-                    //alert("on ajoute "+ tab[i]);
                     message+=tab[i];
                     valeurTrouve=true;
                     break;
                 }                
             }
-            if(valeurTrouve===false)
-            {               
+            if(valeurTrouve===false)   
                 error+=1;
-            }
         }               
     }    
     if(error===0&&(message.length===11))
@@ -153,14 +138,12 @@ function pasuwado(mdp)
             return resultat;
         else
         {
-            //alert("Mot de passe non reconnue");
             msgErreurMdp();
             return false;   
         }
     }
     else
     {
-        //alert("Le mot de passe non reconnue");
         msgErreurMdp();
         return false;   
     }

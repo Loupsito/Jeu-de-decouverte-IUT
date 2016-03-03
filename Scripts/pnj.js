@@ -69,7 +69,11 @@ function placementPNJ(positionCourante)
                 afficherBoiteDialogue(); 
                 testDialogue (positionCourante);   
                 return;
-            });              
+            });      
+            
+            image.addEventListener("mouseover", function(){
+                image.style.cursor = "pointer";
+            });                         
             image.style.marginRight=-100+"px";
             image.style.marginBottom=-411.4+"px";  
             image.style.position ='relative';

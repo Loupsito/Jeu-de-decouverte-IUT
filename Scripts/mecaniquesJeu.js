@@ -735,6 +735,7 @@ function boutonAction(idd,nom,fonction)
     $("#"+idd).hover(function (){
         bouton.style.backgroundColor="#4C4C4C";
         bouton.style.color="white";
+        bouton.style.cursor="pointer";
     });
     $("#"+idd).mouseleave(function (){
         bouton.style.backgroundColor="#EBEBEB";
@@ -757,7 +758,8 @@ function boutonFermerMenuAction()
         removeElementById("menuAction");
     });
     $("#fermer").hover(function (){
-        bouton.style.backgroundColor="red";       
+        bouton.style.backgroundColor="red";
+        bouton.style.cursor="pointer";
     });
     $("#fermer").mouseleave(function (){
         bouton.style.background = "url('images/croix.png')";
