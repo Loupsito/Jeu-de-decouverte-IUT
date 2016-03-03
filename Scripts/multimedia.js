@@ -51,9 +51,9 @@ function genereHitboxDeplacement(largeur,hauteur,j,i)
     myDiv.style.height=hauteur+'px';        
     myDiv.style.position ='absolute';        
     myDiv.style.zIndex = "1"; 
-    myDiv.style.opacity = "0.4"; 
+    myDiv.style.opacity = "0.75"; 
     myDiv.onmouseover = function(){myDiv.style.opacity = "1";};
-    myDiv.onmouseout = function(){myDiv.style.opacity = "0.4";};
+    myDiv.onmouseout = function(){myDiv.style.opacity = "0.75";};
     
     var x; var y;
     
@@ -251,7 +251,6 @@ function afficheInfoBulleMenu(contenu)
 //masque l'infobulle des boutons du menu
 function masqueInfoBulleMenu() 
 {
-    var blocNoir = document.getElementById('infoBulleMenu');    
     document.getElementById('infoBulleMenu').style.display='none';  
 }
 
@@ -292,7 +291,7 @@ function genererNotification(msg)
     var notification = document.getElementById("notification");
     notification.style.display = "none";
     notification.style.width = 35+"%";
-    notification.style.height = 20+"px";
+    notification.style.height = "auto";
     notification.style.padding = 5+"px";
     notification.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
     notification.style.margin = "auto";
@@ -389,7 +388,7 @@ function creationDialogue(iddd,divTexte)
     
     return divTexte;
 }
-function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal)
+function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idImages)
 { 
     //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
     if(document.getElementById("msgDialogue"))
@@ -429,7 +428,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal)
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal);                                                               
+                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages);                                                               
                                 return;
                             }
                         });
@@ -446,7 +445,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal)
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal);                             
+                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages);                             
                                 return;
                             }
                         });
@@ -454,7 +453,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal)
                 }
                 else if (msgDialogueEstComplet(divTexte1, toutLeTexte) === true)
                 {   
-                    poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal); 
+                    poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages); 
                     return;
                 }                
             }, duree= i*35); 
@@ -470,7 +469,7 @@ function msgDialogueEstComplet(element,texte)
     else
         return false;
 }
-function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal)
+function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages)
 {
     removeElementById("fleche");
     genereContenuID("span","",iddd,"fleche");
@@ -485,7 +484,8 @@ function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal)
         $('#antiClicProvisoire').click(function () {           
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
-            removeElementById("antiClicProvisoire");          
+            removeElementById("antiClicProvisoire");     
+            removeElementById("nomPNJ");
             cacherBoiteDialogue(); 
             verifEtatFinal(tabEtatFinal);
             return;
@@ -501,7 +501,8 @@ function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal)
             removeElementById("antiClic");
             removeElementById("antiClicProvisoire");
             removeElementById("antiClicProvisoire2");
-            testDialogue (joueur.idSalle);
+            testDialogue (idImages);
+            verifEtatFinal(tabEtatFinal);
             return;
         }); 
     }

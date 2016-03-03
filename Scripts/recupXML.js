@@ -17,7 +17,11 @@ var listeLiens=[];
 //Tableau qui repertorie toutes les actions
 var listesActions=[];
 
+var tabPNJ=[];
+
 var progression = 1;
+
+//tableau qui repertorie tous les pnjs
 
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
@@ -71,6 +75,17 @@ function initpage()
     xhrActions.open('GET','XML/chapitre'+progression+'/actions.xml',false);
     //xhrItem.open('GET','XML/chapitre'+progression+'/actions.xml',false);
     xhrActions.send(null);
+    
+    //-----------------------------RECUPERATION PNJ-----------------------------
+    xhrPnj=createRequest();
+    if(xhrPnj===null){
+        alert("echec de la creation d'une requete");
+        return;
+    }
+    xhrPnj.onreadystatechange=recupFromXMLDataBasePnj;
+    xhrPnj.open('GET','XML/chapitre'+progression+'/LesPNJ.xml',false);
+    xhrPnj.send(null);
+    
     //------------------------------------------------------------------------------
     
     //------------------------------------------------------------------------------
@@ -131,7 +146,86 @@ function recupFromXMLDataBaseItem()
             } 
         }
 }
+function recupFromXMLDataBasePnj()
+{
+        if (xhrPnj.readyState===4 && xhrPnj.status===200)
+        {
+            //rÃ©cupÃ©ration dans les xml//
+            var tabPnj= xhrPnj.responseXML.getElementsByTagName("pnj");                 // recupÃ©ration des descriptions
+            var tabPnjDialogues=xhrPnj.responseXML.getElementsByTagName("dialogue");    //rÃ©cupÃ©ration des dialogues
+            var tabPnjTexte=xhrPnj.responseXML.getElementsByTagName("texte");           //rÃ©cupÃ©ration des textes
+            var tabPnjPrerequis=xhrPnj.responseXML.getElementsByTagName("prerequis");   //rÃ©cupÃ©ration des prÃ©requis
+            var tabPnjEtatFinal=xhrPnj.responseXML.getElementsByTagName("etatFinal");   //rÃ©cupÃ©ration des Etats finaux
+            //---------------------------
 
+            //variables utilisÃ©es dans la rÃ©cupÃ©ration
+            var pnjNom;              //variable contenant le nom du pnj actuel
+            var pnjLocalisation;     //variable contenant la localisation du pnj
+            var pnjImage;            //variable contenant l'adresse de l'image du pnj
+            var pnjDialDefault;      //variable contenant le dialogue par dÃ©faut du pnj
+            var PnjnumDialogues;     //variable contenant le numero du dialogue
+            var pnjTexte;            //variable contenant le texte du dialogue
+            var pnjPrerequis;        //variable contenant le prerequis pour le dialogue suivant
+            var pnjEtatFinal;        //variable contenant le prerequis pour le dialogue suivant
+            //----------------------------------------
+
+
+            //tableau de rÃ©cupÃ©ration des infos
+            var tabInfoPnj=[null];
+            tabInfoPnj.pop();
+            //---------------------------------
+
+            //pour le nombre de pnj
+            for(var i=0;i<tabPnj.length;i++)
+            {
+				
+                //attribution des attributs
+                pnjNom=tabPnj[i].getAttribute("nom");
+                pnjLocalisation= parseInt(tabPnj[i].getAttribute("localisation"));
+
+                pnjImage=tabPnj[i].getAttribute("image");
+                pnjDialDefault=tabPnj[i].getAttribute("numeroDialogueCourant");
+                //-------------------------
+
+                var tabDialogues=[null];
+                tabDialogues.pop();
+                a=0;
+                //pour le nombre de dialogues
+                for(var j=0;j<tabPnjDialogues.length;j++)
+                {
+
+                    //si l'id du dialogue est le nom du pnj
+                    if(tabPnjDialogues[j].getAttribute("id")===pnjNom)
+                    {
+                        //attribution des informations sur les dialogues
+    					pnjnumDialogues=tabPnjDialogues[j].getAttribute("numeroDialogue");
+                        pnjTexte=tabPnjTexte[j].firstChild.nodeValue;
+                        pnjPrerequis=tabPnjPrerequis[j].firstChild.nodeValue;
+                        pnjEtatFinal= tabPnjEtatFinal[j].firstChild.nodeValue;
+                        //alert(pnjPrerequis.toString());
+                        //alert(pnjTexte.toString());
+                        //alert(pnjnumDialogues.toString());
+                        //----------------------------------------------
+                        
+
+                        //attribution au tableau des dialogues
+                        tabDialogues[a]=[pnjTexte,pnjPrerequis,pnjEtatFinal];
+                        a++;
+                        //alert(tabDialogues[j].toString());
+                        //-------------------------------------
+                    }
+                    //-------------------------------------
+                }
+                //---------------------------
+    			tabInfoPnj[i]={"nom":pnjNom , "localisation" : pnjLocalisation, "image" : pnjImage, "numeroDialogueCourant" : pnjDialDefault, "dialogue" : tabDialogues};
+
+                //alert(tabInfoPnj[i]["dialogue"].toString());
+            }
+            tabPNJ=tabInfoPnj;
+            //alert(tabPNJ[0]["dialogue"].toString());
+            //document.write(tabPNJ[b]["dialogue"]);
+        }
+}
 //Fonction qui recupere les donnees des scences dans le fichier LesScenes.xml
 function recupFromXMLDataBaseScenes()
 {	
