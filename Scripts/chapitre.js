@@ -1,12 +1,11 @@
-
-var chapitre1={"chapitre" :1,"lienFichier":"chapitres/chapitre1/","objectifs":[["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('stylo') === true)","Obtenir le stylo"]]};
-var chapitre2={"chapitre" :2,"lienFichier":"chapitres/chapitre2/","objectifs":[["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"],["(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')","Ecrire sur le tableau"]]};
-var chapitre3={"chapitre" :3,"lienFichier":"chapitres/chapitre3/","objectifs":[["(verifPossessionItem('stylo') === true)","Obtenir le stylo"],["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"]]};
-
-
-
+/*
+var chapitre1={"chapitre" :1,"objectifs":[["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('stylo') === true)","Obtenir le stylo"]]};
+var chapitre2={"chapitre" :2,"objectifs":[["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"],["(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')","Ecrire sur le tableau"]]};
+var chapitre3={"chapitre" :3,"objectifs":[["(verifPossessionItem('stylo') === true)","Obtenir le stylo"],["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"]]};
 var tabDeTousLesChapitre= new Array(chapitre1,chapitre2,chapitre3);
+*/
 
+var tabDeTousLesChapitre;
 
 function verifieProgression(chapitreCourant)
 {
@@ -14,10 +13,10 @@ function verifieProgression(chapitreCourant)
     var objectifsNonRemplie=0;
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
-        if (tabDeTousLesChapitre[i]["chapitre"]===chapitreCourant)       
-        {
+        if (tabDeTousLesChapitre[i]["chapitre"] == chapitreCourant)
+        {            
             for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
-            {                
+            {                      
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
                     objectifsNonRemplie+=1;                     
             }
@@ -27,6 +26,7 @@ function verifieProgression(chapitreCourant)
                 {
                     progression+=1;
                     zoneAntiClic("6","antiClicTransition","0.4");
+                    joueur.idSalle=parseInt(tabDeTousLesChapitre[i][2]);//info a mettre dans une structure puis dans un XML
                     setTimeout(function(){
                         //Nettoyage
                         NettoyageCaseInventaire();
@@ -44,7 +44,7 @@ function verifieProgression(chapitreCourant)
                         }, 2000);*/
                         //----------------------------------------------------------------------
                         //----------------------------------------------------------------------
-                                joueur.idSalle=0;//info a mettre dans une structure puis dans un XML
+                                
                         //----------------------------------------------------------------------
                         //----------------------------------------------------------------------
                         initpage();        
@@ -230,8 +230,8 @@ function affichageAgenda(chapitreCourant)
     
     //Affichage dynamique des objectifs
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
-    {
-        if (tabDeTousLesChapitre[i]["chapitre"]===chapitreCourant)       
+    {   
+        if (tabDeTousLesChapitre[i]["chapitre"] == chapitreCourant)       
         {
             for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
             {                                 

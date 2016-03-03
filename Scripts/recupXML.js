@@ -18,6 +18,8 @@ var listeLiens=[];
 var listesActions=[];
 
 var tabPNJ=[];
+//tableau qui repertorie tous les chapitres
+var tabDeTousLesChapitre =[];
 
 var progression = 1;
 
@@ -39,7 +41,6 @@ function initpage()
             return;
     }
     xhrItem.onreadystatechange=recupFromXMLDataBaseItem;
-    //xhrItem.open('GET','XML/LesItems.xml',false);
     xhrItem.open('GET','XML/chapitre'+progression+'/LesItems.xml',false);
     xhrItem.send(null);
 
@@ -51,7 +52,6 @@ function initpage()
     }
     xhrScenes.onreadystatechange=recupFromXMLDataBaseScenes;
     xhrScenes.open('GET','XML/chapitre'+progression+'/LesScenes.xml',false);
-    //xhrItem.open('GET','XML/chapitre'+progression+'/LesScenes.xml',false);
     xhrScenes.send(null);
 
     //-----------------------------RECUPERATION LIEN-----------------------------
@@ -62,7 +62,6 @@ function initpage()
     }
     xhrLiens.onreadystatechange=recupFromXMLDataBaseLiens;
     xhrLiens.open('GET','XML/chapitre'+progression+'/LesLiens.xml',false);
-    //xhrItem.open('GET','XML/chapitre'+progression+'/LesLiens.xml',false);
     xhrLiens.send(null);
 
     //-----------------------------RECUPERATION ACTIONS-----------------------------
@@ -72,8 +71,7 @@ function initpage()
         return;
     }
     xhrActions.onreadystatechange=recupFromXMLDataBaseActions;
-    xhrActions.open('GET','XML/chapitre'+progression+'/actions.xml',false);
-    //xhrItem.open('GET','XML/chapitre'+progression+'/actions.xml',false);
+    xhrActions.open('GET','XML/chapitre'+progression+'/actions.xml',false);    
     xhrActions.send(null);
     
     //-----------------------------RECUPERATION PNJ-----------------------------
@@ -87,11 +85,21 @@ function initpage()
     xhrPnj.send(null);
     
     //------------------------------------------------------------------------------
+ 
+     //-----------------------------RECUPERATION CHAPITRES---------------------------
+    xhrChapitre=createRequest();
+    if(xhrChapitre===null){
+        alert("echec de la creation d'une requete");
+        return;
+    }
+    xhrChapitre.onreadystatechange=recupFromXMLDataBaseChapitre;
+    xhrChapitre.open('GET','XML/LesChapitres.xml',false);
+    xhrChapitre.send(null);
+    //------------------------------------------------------------------------------     
     
     //------------------------------------------------------------------------------
     /*
      * Ajouter la recuperation XML de :
-     * - chapitre
      * - pnj
      * - joueur
      */
@@ -326,3 +334,46 @@ function recupFromXMLDataBaseActions()
     }
 }
 
+function recupFromXMLDataBaseChapitre()
+{
+    if(xhrChapitre.readyState===4 && xhrChapitre.status===200)
+    {
+        var tabChapitre=xhrChapitre.responseXML.getElementsByTagName("chapitre");
+        var tabObjectifs=xhrChapitre.responseXML.getElementsByTagName("objectif");
+        var tabDescriptif=xhrChapitre.responseXML.getElementsByTagName("descriptif");            
+        
+        for(var i=0 ;i<tabChapitre.length;i++)
+        {  
+            var LesChapitres = new Array();
+            LesChapitres.push("chapitre");
+            LesChapitres.push("objectifs");
+            LesChapitres["chapitre"]= new Array();
+            LesChapitres["objectifs"]= new Array();
+            
+            
+            //-----------Ajout du chapitre-----------
+            //alert(Object.prototype.toString.apply((parseInt((tabChapitre[i].getAttribute("numero")).toString()))));
+            LesChapitres["chapitre"].push(tabChapitre[i].getAttribute("numero"));
+            
+            //----------Ajout des objectifs----------
+            for(var j=0;j<tabObjectifs.length;j++)
+            {                                 
+                if(tabObjectifs[j].getAttribute("id")===(tabChapitre[i].getAttribute("numero")))
+                {
+                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent));         
+                }
+            }            
+            
+            LesChapitres.push(tabChapitre[i].getAttribute("positionJoueur"));
+            
+            tabDeTousLesChapitre[i]=LesChapitres;
+        }                
+        
+        //---------Test de conformite du contenu du tableau
+        for(var k=0;k<tabDeTousLesChapitre.length;k++)
+        {
+            //document.write(tabDeTousLesChapitre[k][2]+"<br/><br/>");           
+        } 
+        
+    }
+}
