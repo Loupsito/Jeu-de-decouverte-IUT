@@ -24,7 +24,7 @@ function clavier(placement)
 //Creation de la barre de saisie
 function barreDeSaisie(placement)
 {
-    genereContenuID('div',"",placement,"barreDeSaisie");
+    genereContenuID('div',"7f6d2d3a2m6",placement,"barreDeSaisie");
     barre = document.getElementById("barreDeSaisie");    
     barre.style.width=160+"px";
     barre.style.height=22+"px";
@@ -77,8 +77,16 @@ function retourValeurTouche(touche)
         if(progression!==false){
             $('#accueil').fadeOut("slow");
             transitionChapitre("Chapitre  "+progression);
-             setTimeout(function() {    
-                fonctionGeneratricePrincipale();            
+            NettoyageCaseInventaire();
+            NettoyageComplet();                
+            tabDeTousLesItems=[null,null];
+            listeCases=[];
+            listeLiens=[];
+            listesActions=[];
+            
+            setTimeout(function() {    
+               initpage();   
+               fonctionGeneratricePrincipale();            
             }, 2000);
         }
     }
