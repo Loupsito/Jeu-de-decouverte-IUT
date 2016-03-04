@@ -35,6 +35,7 @@ alert(tabPNJJ[0]["dialogue"]);*/
 
 var divTexte;
 var divTexte2;
+var nomChoix = ["INCENDIE","DEFAILLANCE","CANULAR","ENTRAINEMENT"];
 function verifDialPrerequis(tab)
 {
         if (tab !== "normal" && tab !== "last")
@@ -47,7 +48,7 @@ function verifDialPrerequis(tab)
 function changementEtat(tab)
 {
     if (tab === "MAJ_1_1_INIT"){miseAJourDialogue(1,1);return;}
-    else if (tab === "choixAlarme"){choixAlarme();return;}
+    else if (tab === "choixAlarme"){blocChoix("choixAlarme",nomChoix);return;}
     else if (tab === "SUPPRIME"){;return;}
 }
 var typeDialogue;
@@ -153,13 +154,14 @@ function initEtatImg()
     imagePNJ.style.zIndex="1";
     imagePNJ.style.pointerEvents = 'auto';
 }
-function choixAlarme()
+
+function blocChoix(idBlocChoix,tabChoix)
 {
     zoneAntiClic(49,"antiClicChoix","0");
-    if (!$("#choixAlarme").length)
+    if (!$("#"+idBlocChoix).length)
     {
-        genereContenuID("div","","ecran","choixAlarme");
-        choixAl = document.getElementById("choixAlarme");    
+        genereContenuID("div","","ecran",idBlocChoix);
+        choixAl = document.getElementById(idBlocChoix);    
         choixAl.style.display = "none";
         choixAl.style.position = "absolute";
         choixAl.style.zIndex = "50";
@@ -175,50 +177,44 @@ function choixAlarme()
         choixAl.style.border = "1px solid #BDBDBD";
         choixAl.style.fontFamily = 'century gothic';
         choixAl.style.fontSize= 12+'px';
-        
-        genererChoix("INCENDIE","INCENDIE");
-        genererChoix("DEFAILLANCE","DEFAILLANCE");
-        genererChoix("CANULAR","CANULAR");
-        genererChoix("ENTRAINEMENT","ENTRAINEMENT");
+     
+        genererChoix(tabChoix);
     }
     $("#choixAlarme").fadeIn(500);           
 }
-function genererChoix(idDiv,texte)
+function genererChoix(idDiv)
 {
-    genereContenuID("div","","choixAlarme",idDiv);
-    var choix = document.getElementById(idDiv);
-    choix.innerHTML = texte;
-    choix.style.position = "relative";
-    choix.style.width = 45+"%";
-    choix.style.height = "auto";
-    choix.style.left="0";
-    choix.style.right="0";    
-    choix.style.margin="0 auto";    
-    choix.style.padding=8+"px";  
-    choix.style.marginTop=1+"px";
-    choix.style.background="white"; 
-    choix.style.color ="#2E2E2E";
-    if (idDiv === "INCENDIE")
-        choix.onclick = cliquerChoix (idDiv,9);
-    else if (idDiv === "DEFAILLANCE")
-        choix.onclick = cliquerChoix (idDiv,11);
-    else if (idDiv === "ENTRAINEMENT")   
-        choix.onclick = cliquerChoix (idDiv,13);
-    else if (idDiv === "CANULAR")   
-        choix.onclick = cliquerChoix (idDiv,15);
-    
-    $(choix).mouseover(function(){
-        this.style.cursor = "pointer";
-        choix.style.background="#2E2E2E"; 
-        choix.style.color ="white";
-    });
-    $(choix).mouseout(function(){
+    for (var i=0;i<idDiv.length;i++)
+    {
+        genereContenuID("div","","choixAlarme",idDiv[i]);
+        choix = document.getElementById(idDiv[i]);
+        choix.innerHTML = idDiv[i];
+        choix.style.position = "relative";
+        choix.style.width = 45+"%";
+        choix.style.height = "auto";
+        choix.style.left="0";
+        choix.style.right="0";    
+        choix.style.margin="0 auto";    
+        choix.style.padding=8+"px";  
+        choix.style.marginTop=1+"px";
         choix.style.background="white"; 
-        choix.style.color ="#2E2E2E";
-    });
-
+        choix.style.color ="#2E2E2E";  
+        choix.onmouseover = choix.style.cursor = "pointer";
+        choisirChoixDialogueFredMargaux(idDiv,i);
+    }   
 }
-function cliquerChoix (idDiv,numeroDialogue)
+function choisirChoixDialogueFredMargaux(idDiv,i)
+{
+    if (idDiv[i] === "INCENDIE")
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],9);
+    else if (idDiv[i] === "DEFAILLANCE")
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],11);
+    else if (idDiv[i] === "ENTRAINEMENT")   
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],13);
+    else if (idDiv[i] === "CANULAR")   
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],15); 
+}
+function cliquerChoixFredMargaux (idDiv,numeroDialogue)
 {
     $('#'+idDiv).click(function(){
         removeElementById("antiClicChoix");
@@ -236,11 +232,6 @@ function cliquerChoix (idDiv,numeroDialogue)
         }
     });
 }
-function supprimerPersonnage()
-{
-    
-}
-
 /*function carte ()
 {
     genereContenuID("div","","ecran","carte");

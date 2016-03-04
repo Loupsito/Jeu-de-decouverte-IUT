@@ -19,7 +19,7 @@ function placementScenario(positionCourant)
         if((tabScenario[i]["localisation"]===positionCourant) && (tabScenario[i]["asEteVu"]===false))
         {
             afficherBoiteDialogue();
-            dialogue(tabScenario[i]["texte"],"texteScenario",divTexte, divTexte2,"dialogueDernier","");
+            dialogue(tabScenario[i]["texte"],"texteScenario",divTexte, divTexte2,"dialogueScenar","","","");
             tabScenario[i]["asEteVu"]=true;
         }
     }

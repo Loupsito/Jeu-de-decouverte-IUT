@@ -1,63 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- informations de cle -->
 <pnjs>
-	<pnj nom="FREDERIC" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
+	<pnj nom="FREDERIC" localisation="4" image="images/pnj/robert.png" numeroDialogueCourant="0">
 		<dialogues>
-			<dialogue id="FREDERIC" numeroDialogue="0">
+			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
                                 <texte>Bonjour, comment t'appelles-tu ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ = document.getElementById("nomPNJ"); nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="1">
-                                <texte>Je m'appelle Margaux et toi ?</texte>
-				<prerequis>'normal'</prerequis>
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
-			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="2">
-                                <texte>Moi ? C'est Frédéric.</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="3">
-                                <texte>Oh Vraiment ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
-			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="4">
-                                <texte>Ouaip, allez adieu !</texte>
-				<prerequis>'last'</prerequis>				
-                                <etatFinal>if(tabPNJ[1]["numeroDialogueCourant"]!==4){tabPNJ[1]["numeroDialogueCourant"]=4;}</etatFinal>
-			</dialogue>
-                        
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>                        
 		</dialogues>
 	</pnj>
-	<pnj nom="MARGAUX" localisation="0" image="images/pnj/yui.png" numeroDialogueCourant="0">
-		<dialogues>
-			<dialogue id="MARGAUX" numeroDialogue="0">
-                                <texte>Hey, what's up ? T'es qui ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ = document.getElementById("nomPNJ"); nomPNJ.innerHTML = "FREDERIC";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="1">
-                                <texte>Moi ? Les gens m'appellent Fred.</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="2">
-                                <texte>Okay, enchantée !</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="3">
-                                <texte>Ouaip, allez adieu !</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="4">
-                                <texte>Bye</texte>
-				<prerequis>'last'</prerequis>				
-                                <etatFinal>if(tabPNJ[0]["numeroDialogueCourant"]!==4){tabPNJ[0]["numeroDialogueCourant"]=4;}</etatFinal>
-			</dialogue>
-                </dialogues>               
-        </pnj>
 </pnjs>

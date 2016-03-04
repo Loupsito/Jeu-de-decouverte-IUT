@@ -474,15 +474,16 @@ function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
          
     if (typeDeDialogue !== "dialogueEnchaine")
     {     
-        $('#antiClicProvisoire').click(function () {    
-            initEtatImg(nomFake);       
+        $('#antiClicProvisoire').click(function () {   
+            if (typeDeDialogue !== "dialogueScenar")
+                initEtatImg(nomFake);     
             removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
             removeElementById("antiClicProvisoire");     
             removeElementById("nomPNJ");
             cacherBoiteDialogue();
-            //changementEtat(tabEtat);
+            changementEtat(tabEtat);
             return;
         });  
     }
