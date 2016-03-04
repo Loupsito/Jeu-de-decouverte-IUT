@@ -175,6 +175,7 @@ function recupFromXMLDataBasePnj()
             var pnjTexte;            //variable contenant le texte du dialogue
             var pnjPrerequis;        //variable contenant le prerequis pour le dialogue suivant
             var pnjEtatFinal;        //variable contenant le prerequis pour le dialogue suivant
+            var pnjNomFake;
             //----------------------------------------
 
 
@@ -206,7 +207,8 @@ function recupFromXMLDataBasePnj()
                     if(tabPnjDialogues[j].getAttribute("id")===pnjNom)
                     {
                         //attribution des informations sur les dialogues
-    					pnjnumDialogues=tabPnjDialogues[j].getAttribute("numeroDialogue");
+    					PnjnumDialogues=tabPnjDialogues[j].getAttribute("numeroDialogue");
+                        pnjNomFake=tabPnjDialogues[j].getAttribute("nomFake");
                         pnjTexte=tabPnjTexte[j].firstChild.nodeValue;
                         pnjPrerequis=tabPnjPrerequis[j].firstChild.nodeValue;
                         pnjEtatFinal= tabPnjEtatFinal[j].firstChild.nodeValue;
@@ -217,7 +219,7 @@ function recupFromXMLDataBasePnj()
                         
 
                         //attribution au tableau des dialogues
-                        tabDialogues[a]=[pnjTexte,pnjPrerequis,pnjEtatFinal];
+                        tabDialogues[a]=[pnjTexte,pnjPrerequis,pnjEtatFinal,pnjNomFake];
                         a++;
                         //alert(tabDialogues[j].toString());
                         //-------------------------------------
@@ -230,8 +232,8 @@ function recupFromXMLDataBasePnj()
                 //alert(tabInfoPnj[i]["dialogue"].toString());
             }
             tabPNJ=tabInfoPnj;
-            //alert(tabPNJ[0]["dialogue"].toString());
-            //document.write(tabPNJ[b]["dialogue"]);
+            //alert(tabPNJ[0]["dialogue"].toString());        
+            //document.write(tabPNJ[0]["dialogue"]);
         }
 }
 //Fonction qui recupere les donnees des scences dans le fichier LesScenes.xml

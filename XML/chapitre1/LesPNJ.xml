@@ -3,61 +3,135 @@
 <pnjs>
 	<pnj nom="FREDERIC" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
 		<dialogues>
-			<dialogue id="FREDERIC" numeroDialogue="0">
-                                <texte>Bonjour, comment t'appelles-tu ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ = document.getElementById("nomPNJ"); nomPNJ.innerHTML = "MARGAUX";</etatFinal>
+			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
+                                <texte>Yo ! Genki ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
 			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="1">
-                                <texte>Je m'appelle Margaux et toi ?</texte>
-				<prerequis>'normal'</prerequis>
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
+			<dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="1">
+                                <texte>C’est très bizarre ce qui s’est passé quand même… Personne ne semblait savoir d’où ça pouvait provenir.</texte>
+				<prerequis>normal</prerequis>
+                                <etatFinal> </etatFinal>
 			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="2">
-                                <texte>Moi ? C'est Frédéric.</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
+			<dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="2">
+                                <texte>L’alarme est toujours en train de sonner apparemment.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
 			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="3">
-                                <texte>Oh Vraiment ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
+			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="3">
+                                <texte>C’est vrai, tout le monde avait l’air perdu, et j’ai rarement vu Mme Robba aussi contrariée. Mme Barbot aussi d’ailleurs, elle avait l’air complètement dépassée quand tout le monde voulait récupérer ses affaires.</texte>
+				<prerequis>normal</prerequis>	
+                                <etatFinal> </etatFinal>			
 			</dialogue>
-			<dialogue id="FREDERIC" numeroDialogue="4">
-                                <texte>Ouaip, allez adieu !</texte>
-				<prerequis>'last'</prerequis>				
-                                <etatFinal>if(tabPNJ[1]["numeroDialogueCourant"]!==4){tabPNJ[1]["numeroDialogueCourant"]=4;}</etatFinal>
+			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="4">
+                                <texte>Pauvres sensei n’empêche, je crois même qu’ils ont dû verrouiller les portes pour empêcher les personnes de venir dans le bâtiment.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="5">
+                                <texte>Et ben, c’est pas la civilité qui les étouffe ! Mais du coup… D’où ça pourrait provenir ? On est les délégués des trois groupes quand même, on pourrait essayer d’aider les profs.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="6">
+                                <texte>Oui enfin délégué c’est un bien grand mot, on est l’équivalent des portes-paroles de la classe, et de celui qui est chargé de la feuille d’appel aussi… (je l’ai mise où d’ailleurs ?)</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="7">
+                                <texte>Mais bon c’est vrai que ça ne ferait pas de mal de chercher à aider les profs. Un travail de vrai délégué, enfin ! Ore ni makasetoke !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>  
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="8">
+                                <texte>Fred… ou l’homme le plus Japonais du monde… Dans sa tête. Enfin bref, sinon tu en penses quoi wqazsx ? De l’alarme hein !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>choixAlarme</etatFinal>
 			</dialogue>
-                        
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="9">
+                                <texte>Tu penses vraiment qu’il auraient gardé ça secret ? Et même, on aurait vu les pompiers débarquer à l’heure qu’il est.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>                         
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
+                                <texte>Une autre idée ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>choixAlarme</etatFinal>
+			</dialogue>    
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="11">
+                                <texte>Une défaillance ? Ben je ne pense pas, ils avaient l’air plutôt inquiets et ont quand même fermé le bâtiment.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="12">
+                                <texte>Une autre idée ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>choixAlarme</etatFinal>
+			</dialogue>    
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="13">
+                                <texte>Mais ils avaient l’air de trouver ça très inquiétant quand même… Et ils auraient pas annulé les cours du matin non plus d’ailleurs.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="14">
+                                <texte>Une autre idée ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>choixAlarme</etatFinal>
+			</dialogue>    
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="15">
+                                <texte>Mhh non, c’est peu probable, l’alarme aurait arrêté de sonner et les professeurs ont fait l’appel tout à l’heure, tout le monde était là.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>  
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="16">
+                                <texte>Quoique ! J’ai entendu des rumeurs sur un type, Bastien je crois. Apparemment il avait prévu d’écraser un mégot allumé sur un détecteur, c’est peut-être ça…</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>  
+                        <dialogue nomFake="MARGAUX" id="FREDERIC" numeroDialogue="17">
+                                <texte>On devrait enquêter un peu, personnellement je vais voir si je peux aider les profs restés devant le bâtiment.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="18">
+                                <texte>Bonne idée, de mon côté je vais voir avec l’administration et essayer de tenir les élèves au courant, ça pourrait les calmer.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue> 
+                        <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="19">
+                                <texte>wqazsx tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal>MAJ_1_1_INIT</etatFinal>
+			</dialogue>  
 		</dialogues>
 	</pnj>
 	<pnj nom="MARGAUX" localisation="0" image="images/pnj/yui.png" numeroDialogueCourant="0">
 		<dialogues>
-			<dialogue id="MARGAUX" numeroDialogue="0">
-                                <texte>Hey, what's up ? T'es qui ?</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ = document.getElementById("nomPNJ"); nomPNJ.innerHTML = "FREDERIC";</etatFinal>
+			<dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="0">
+                                <texte>Salut !</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
 			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="1">
-                                <texte>Moi ? Les gens m'appellent Fred.</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="2">
-                                <texte>Okay, enchantée !</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "FREDERIC";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="3">
-                                <texte>Ouaip, allez adieu !</texte>
-				<prerequis>'normal'</prerequis>				
-                                <etatFinal>nomPNJ.innerHTML = "MARGAUX";</etatFinal>
-			</dialogue>
-			<dialogue id="MARGAUX" numeroDialogue="4">
-                                <texte>Bye</texte>
-				<prerequis>'last'</prerequis>				
-                                <etatFinal>if(tabPNJ[0]["numeroDialogueCourant"]!==4){tabPNJ[0]["numeroDialogueCourant"]=4;}</etatFinal>
+                        <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="1">
+                                <texte>On compte sur toi wqazsx, bon courage.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>
+	<!--<pnj nom="LOUISE" localisation="4" image="images/pnj/asusa.png" numeroDialogueCourant="0">
+		<dialogues>
+			<dialogue id="LOUISE" numeroDialogue="0">
+                                <texte>Si seulement la salle était ouverte</texte>
+				<prerequis>(verifAccesSalle(7,4) === true)</prerequis>				
+                                <etatFinal>initEtatImg()</etatFinal>
+			</dialogue>
+			<dialogue id="LOUISE" numeroDialogue="1">
+                                <texte>Merci !</texte>
+				<prerequis>'last'</prerequis>				
+                                <etatFinal>initEtatImg()</etatFinal>
+			</dialogue>
+                </dialogues>               
+        </pnj>-->
+        
 </pnjs>

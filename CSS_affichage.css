@@ -153,22 +153,10 @@ button
     border-right:67px solid transparent;
     z-index:7;
 }
-#msgLambda
-{
-    margin-top:15px;
-    margin-left:50px
-}
 #msgDescription  {
     font-style:italic;
-    margin-left:50px;
 }
 #actions
-{
-    right:30%;
-    bottom:30% ;
-    margin:10px;
-}
-#choixPorte
 {
     right:30%;
     bottom:30% ;
@@ -330,4 +318,23 @@ button
 #notification
 {
     border-radius:10px;
+}
+#nomPNJ
+{
+    position : absolute;
+    width: 90px;
+    height: auto;
+    display: block;
+    background-color : rgba(0, 0, 0, 0.65);
+    color:white;
+    text-align : center;
+    font-family : century gothic;
+    font-size : 14px;
+    font-weight : bold;
+    vertical-align : middle;
+    padding : 5px;
+    bottom : 20.5%;
+    border-bottom: 1px solid white;
+    border-top-right-radius: 20px;
+    z-index : 7;
 }

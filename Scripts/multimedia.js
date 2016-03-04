@@ -388,24 +388,15 @@ function creationDialogue(iddd,divTexte)
     
     return divTexte;
 }
-function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idImages)
-{ 
-    //Si la zone qui doit contenir le dialogue est deja rempli, alors on la supprime
-    if(document.getElementById("msgDialogue"))
-        removeElementById("msgDialogue");
-    
+function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake,tabEtat)
+{     
     if (!$("#antiClic").length)
         zoneAntiClic("6","antiClic",'0.4');  
     //création des div dialogues
     divTexte1 = creationDialogue(iddd,divTexte1);
-    
     //texte complet tampon;
     toutLeTexte = texte;
-    
-    //Affichage progressive du texte
-    //Chaque lettre obtient une temporisation differente
-    //Ex : pour abc ==> a:55ms  b:110ms  c:165ms
-    for(i=0, l = texte.length; i< l ; i++) 
+        for(i=0, l = texte.length; i< l ; i++) 
     {          
         $(function(i) {           
             timer = setTimeout(function() {
@@ -428,7 +419,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idI
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages);                                                               
+                                poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat);                                                               
                                 return;
                             }
                         });
@@ -437,7 +428,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idI
                     {
                         $('#antiClic').click(function () {          
                             removeElementById("msgDialogue");
-                            //création des div dialogues
+                            //création des div dialogues                            
                             divTexte2 = creationDialogue(iddd,divTexte2);
 
                             divTexte2.innerHTML = toutLeTexte;
@@ -445,7 +436,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idI
                             if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
                             {
                                 clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages);                             
+                                poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat);                             
                                 return;
                             }
                         });
@@ -453,7 +444,8 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,tabEtatFinal,idI
                 }
                 else if (msgDialogueEstComplet(divTexte1, toutLeTexte) === true)
                 {   
-                    poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages); 
+                    clearTimeout(timer);
+                    poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat); 
                     return;
                 }                
             }, duree= i*35); 
@@ -469,45 +461,47 @@ function msgDialogueEstComplet(element,texte)
     else
         return false;
 }
-function poursuivreDialogue(iddd,typeDeDialogue,tabEtatFinal,idImages)
+
+function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
 {
     removeElementById("fleche");
     genereContenuID("span","",iddd,"fleche");
-              
-    //sert à pouvoir cliquer 2 fois sur un antiClic (pas sur la boîte de dialogue   
+    
+    //sert à pouvoir cliquer 2 fois sur un antiClic (pas sur la boîte de dialogue)   
     antiClicProv = document.getElementById('antiClicProvisoire');
     if (antiClicProv === null)
         zoneAntiClic("6","antiClicProvisoire",'0');
          
     if (typeDeDialogue !== "dialogueEnchaine")
     {     
-        $('#antiClicProvisoire').click(function () {           
+        $('#antiClicProvisoire').click(function () {    
+            initEtatImg(nomFake);       
+            removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
             removeElementById("antiClicProvisoire");     
             removeElementById("nomPNJ");
-            cacherBoiteDialogue(); 
-            verifEtatFinal(tabEtatFinal);
+            cacherBoiteDialogue();
+            //changementEtat(tabEtat);
             return;
         });  
     }
     else if (typeDeDialogue === "dialogueEnchaine")
     {
         removeElementById("antiClicProvisoire2");
-        genereContenuID("span","","ecran","antiClicProvisoire2");
-        $('#antiClicProvisoire2').click(function () {
+        genereContenuID("span","","ecran","antiClicProvisoire2"); 
+        $('#antiClicProvisoire2').click(function () { 
+            //changementEtat(tabEtat);
+            initEtatImg(nomFake);           
             removeElementById("msgDialogue");
-            //removeElementById("antiClicEnchaine"); 
             removeElementById("antiClic");
             removeElementById("antiClicProvisoire");
             removeElementById("antiClicProvisoire2");
-            testDialogue (idImages);
-            verifEtatFinal(tabEtatFinal);
+            testDialogue(idImages);
             return;
         }); 
     }
 }
-
 function zoneAntiClic(priorite,sonId,opacity)
 {
     //Creation de la zone antiClic
