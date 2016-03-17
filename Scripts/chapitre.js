@@ -25,8 +25,7 @@ function verifieProgression(chapitreCourant)
                 if(progression<tabDeTousLesChapitre.length)
                 {
                     progression+=1;
-                    zoneAntiClic("6","antiClicTransition","0.4");
-                    joueur.idSalle=parseInt(tabDeTousLesChapitre[i][2]);//info a mettre dans une structure puis dans un XML
+                    zoneAntiClic("6","antiClicTransition","0.4");                    
                     setTimeout(function(){
                         //Nettoyage
                         NettoyageCaseInventaire();
@@ -37,7 +36,7 @@ function verifieProgression(chapitreCourant)
                         listesActions=[];   
                         chapitreTermine();
                         boutonChapitreSuivant();
-                        initpage();        
+                        initpage();                             
                     }, 2000); 
                 }
                 else
@@ -83,7 +82,7 @@ function boutonChapitreSuivant()
         $("#boutonChapSuivant").click(function() {   
             removeElementById("boutonChapSuivant");
             transitionChapitre("Chapitre "+progression);
-            setTimeout(function() {    
+            setTimeout(function() {                                               
                 fonctionGeneratricePrincipale();                            
             }, 2000);
         });

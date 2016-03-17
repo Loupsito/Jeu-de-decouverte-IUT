@@ -143,7 +143,7 @@ function fonctionGeneratricePrincipale()
             document.getElementById("ecran").style.backgroundSize = "contain";
             document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
             placementPNJ(joueur.idSalle);
-            placementScenario(joueur.idSalle);
+            placementScenario(joueur.idSalle);                       
             break;
         }
     }
@@ -497,7 +497,7 @@ function placementItemDansInventaire(leItem,indice)
             document.getElementById(leItem).style.marginTop="16px";
             document.getElementById(leItem).style.marginLeft="9px";        
             genererNotification("Vous avez ramassé l'item : "+leItem);
-            jouerSon('sons/item.mp3',son);         
+            jouerSon('sons/item.mp3',son);
             $("#msgDescription").empty();
             verifieProgression(progression);
         }

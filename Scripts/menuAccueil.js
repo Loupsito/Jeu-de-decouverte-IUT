@@ -24,7 +24,7 @@ function clavier(placement)
 //Creation de la barre de saisie
 function barreDeSaisie(placement)
 {
-    genereContenuID('div',"7f6d2d3a2m6",placement,"barreDeSaisie");
+    genereContenuID('div',"",placement,"barreDeSaisie");
     barre = document.getElementById("barreDeSaisie");    
     barre.style.width=160+"px";
     barre.style.height=22+"px";

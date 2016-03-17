@@ -23,6 +23,7 @@ var tabDeTousLesChapitre =[];
 
 var progression = 1;
 
+var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
 
 //transitionChapitre("Chapitre  "+progression);
@@ -84,9 +85,9 @@ function initpage()
     xhrPnj.open('GET','XML/chapitre'+progression+'/LesPNJ.xml',false);
     xhrPnj.send(null);
     
-    //------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
  
-     //-----------------------------RECUPERATION CHAPITRES---------------------------
+     //-----------------------------RECUPERATION CHAPITRES------------------------
     xhrChapitre=createRequest();
     if(xhrChapitre===null){
         alert("echec de la creation d'une requete");
@@ -95,30 +96,38 @@ function initpage()
     xhrChapitre.onreadystatechange=recupFromXMLDataBaseChapitre;
     xhrChapitre.open('GET','XML/LesChapitres.xml',false);
     xhrChapitre.send(null);
-    //------------------------------------------------------------------------------     
+    //----------------------------------------------------------------------------     
     
-    //------------------------------------------------------------------------------
-    /*
-     * Ajouter la recuperation XML de :
-     * - pnj
-     * - joueur
-     */
-    //------------------------------------------------------------------------------
+    //-----------------------------RECUPERATION SCENARIO--------------------------
     
-    //------------------------------------------------------------------------------
+    xhrScenario=createRequest();
+    if(xhrScenario===null){
+        alert("echec de la creation d'une requete");
+        return;
+    }
+    xhrScenario.onreadystatechange=recupFromXMLScenario;
+    xhrScenario.open('GET','XML/chapitre'+progression+'/LesScenarios.xml',false);
+    xhrScenario.send(null);
+    
+    //----------------------------------------------------------------------------        
+    
+    //----------------------------------------------------------------------------
+    
+    //Chargement de la position du joueur indique par le XML
+    for(var i=0;i<tabDeTousLesChapitre.length;i++)
+    {
+        if (tabDeTousLesChapitre[i]["chapitre"] == progression)
+            joueur.idSalle=parseInt(tabDeTousLesChapitre[i][2]);
+    }
+    
+    //Supprime la zoneAntiClic qui a ete cree lors de la transisiton chapitre
     if(document.getElementById("antiClicTransition"))
         removeElementById("antiClicTransition");
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();                       
-     
-    /*setTimeout(function() {    
-         dialogue("Vous etes sur le jeu de decouverte de l'IUT de velizy Villacoublay. Vous etes au chapitre "+progression+". Bon jeu !","dial");         
-     }, 2000);
-     */
-     //(texte,iddd,divTexte1,divTexte2,typeDeDialogue)
-        
+        premiereAnalyseInventaire();           
+               
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
     //------------------------------------------------------------------------------
@@ -353,8 +362,7 @@ function recupFromXMLDataBaseChapitre()
             LesChapitres["objectifs"]= new Array();
             
             
-            //-----------Ajout du chapitre-----------
-            //alert(Object.prototype.toString.apply((parseInt((tabChapitre[i].getAttribute("numero")).toString()))));
+            //-----------Ajout du chapitre-----------            
             LesChapitres["chapitre"].push(tabChapitre[i].getAttribute("numero"));
             
             //----------Ajout des objectifs----------
@@ -372,10 +380,51 @@ function recupFromXMLDataBaseChapitre()
         }                
         
         //---------Test de conformite du contenu du tableau
-        for(var k=0;k<tabDeTousLesChapitre.length;k++)
+        /*for(var k=0;k<tabDeTousLesChapitre.length;k++)
         {
-            //document.write(tabDeTousLesChapitre[k][2]+"<br/><br/>");           
-        } 
+            document.write(tabDeTousLesChapitre[k][2]+"<br/><br/>");           
+        } */
         
+    }
+}
+
+function recupFromXMLScenario()
+{
+    if(xhrScenario.readyState===4 && xhrScenario.status===200)
+    {
+         var tabScenarios=xhrScenario.responseXML.getElementsByTagName("scenario");
+         var tabTexte=xhrScenario.responseXML.getElementsByTagName("texte");
+         
+         for(var i=0 ;i<tabScenarios.length;i++)
+         {
+             var LesScenarios = new Array();
+            LesScenarios.push("localisation");
+            LesScenarios.push("texte");
+            LesScenarios.push("asEteVu");
+            LesScenarios.push("choix");
+            LesScenarios["localisation"]= new Array();
+            LesScenarios["texte"]= new Array();
+            LesScenarios["asEteVu"]= new Array();
+            LesScenarios["choix"]= new Array();
+            
+            //---------------Ajout de la localisation---------------
+            LesScenarios["localisation"].push(tabScenarios[i].getAttribute("localisation"));
+            
+            //----------Ajout du texte----------
+            for(var j=0;j<tabTexte.length;j++)
+            {                                 
+                if(tabTexte[j].getAttribute("id")===(tabScenarios[i].getAttribute("localisation")))
+                {
+                    LesScenarios["texte"].push(tabTexte[j].textContent);         
+                }
+            }    
+            
+            //---------------Ajout du booleen asEteVu---------------
+            LesScenarios["asEteVu"].push(tabScenarios[i].getAttribute("asEteVu"));
+            
+            //
+            LesScenarios["choix"].push(tabScenarios[i].getAttribute("choix"));
+            tabScenario[i]=LesScenarios;
+         }
     }
 }

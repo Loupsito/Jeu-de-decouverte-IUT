@@ -4,7 +4,16 @@
 	<pnj nom="FREDERIC" localisation="4" image="images/pnj/robert.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
-                                <texte>Bonjour, comment t'appelles-tu ?</texte>
+                                <texte>Bonjour, mais euh que faites-vous la ? Vous devriez etre en cours en ce moment ! Filez ! Allez !</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>                        
+		</dialogues>
+	</pnj>
+        <pnj nom="MANON" localisation="7" image="images/pnj/asusa.png" numeroDialogueCourant="0">
+		<dialogues>
+			<dialogue nomFake="MANON" id="MANON" numeroDialogue="0">
+                                <texte>Oh ! Bien joué ! Vous m'avez trouvé !</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>                        

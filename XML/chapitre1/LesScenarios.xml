@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<scenarios>
+    <scenario localisation = "1" asEteVu = "false" choix="dialogue">
+        <texte id ="1">Texte de la premiere partie du scenario</texte>
+    </scenario>
+    <scenario localisation = "7" asEteVu = "false" choix="narration">
+        <texte id ="7">Texte de la deuxieme partie du scenario</texte>
+    </scenario>
+    <scenario localisation = "2" asEteVu = "false" choix="dialogue">
+        <texte id ="2">Texte de la troisieme partie du scenario</texte>
+    </scenario>    
+</scenarios>
