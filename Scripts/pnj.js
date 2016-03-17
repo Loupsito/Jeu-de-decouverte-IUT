@@ -32,10 +32,14 @@ var pnj6={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png","nume
 
 var tabPNJJ = new Array (pnj6);
 alert(tabPNJJ[0]["dialogue"]);*/
-
+var exerciceFini = false;
 var divTexte;
 var divTexte2;
+
+//tableau de choix
 var nomChoix = ["INCENDIE","DEFAILLANCE","CANULAR","ENTRAINEMENT"];
+var choixMaths = ["000","101","111","1000"];
+
 function verifDialPrerequis(tab)
 {
         if (tab !== "normal" && tab !== "last")
@@ -48,8 +52,12 @@ function verifDialPrerequis(tab)
 function changementEtat(tab)
 {
     if (tab === "MAJ_1_1_INIT"){miseAJourDialogue(1,1);return;}
-    else if (tab === "choixAlarme"){blocChoix("choixAlarme",nomChoix);return;}
+    else if (tab === "choixAlarme"){blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");return;}
     else if (tab === "SUPPRIME"){;return;}
+    else if (tab === "suppr"){suppressionPNJ("MARGAUX");return;}
+    else if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleI21",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
+    else if(tab === "alarme_incendie") {panneauNarration("Á ce moment là, un bruit assourdissant se fit entendre dans l'amphi. L'alarme incendie sonnait, encore et encore... <br/>\"J'ai un mauvais pressentiment.\" me suis-je dit.");}
+    else if (tab === "choixExoMaths"){blocChoix("choixAlarme",choixMaths,"Convertir 8 en binaire");}
 }
 var typeDialogue;
 function placementPNJ(positionCourante)
@@ -83,7 +91,7 @@ function placementPNJ(positionCourante)
                 image.style.position ='relative';
                 image.style.zIndex = 1; 
             }
-        }         
+        }
     }
 }
 
@@ -155,12 +163,17 @@ function initEtatImg()
     imagePNJ.style.pointerEvents = 'auto';
 }
 
-function blocChoix(idBlocChoix,tabChoix)
+function blocChoix(idBlocChoix,tabChoix,msg)
 {
     zoneAntiClic(49,"antiClicChoix","0");
     if (!$("#"+idBlocChoix).length)
     {
+        
         genereContenuID("div","","ecran",idBlocChoix);
+        genereContenuID("div",msg+"<br/><br/>",idBlocChoix,"idChoixTexte");
+        choixTexte = document.getElementById("idChoixTexte");
+        choixTexte.style.color="white";
+        
         choixAl = document.getElementById(idBlocChoix);    
         choixAl.style.display = "none";
         choixAl.style.position = "absolute";
@@ -177,8 +190,13 @@ function blocChoix(idBlocChoix,tabChoix)
         choixAl.style.border = "1px solid #BDBDBD";
         choixAl.style.fontFamily = 'century gothic';
         choixAl.style.fontSize= 12+'px';
-     
+          
         genererChoix(tabChoix);
+        //texte pour l'echec éventuel
+        genereContenuID("div","",idBlocChoix,"idEchecOuReussite");
+        var texteEchec = document.getElementById("idEchecOuReussite");
+        texteEchec.style.color="white";
+        texteEchec.style.display = "none";
     }
     $("#choixAlarme").fadeIn(500);           
 }
@@ -201,28 +219,31 @@ function genererChoix(idDiv)
         choix.style.color ="#2E2E2E";  
         choix.onmouseover = choix.style.cursor = "pointer";
         choisirChoixDialogueFredMargaux(idDiv,i);
+        choisirChoixMaths(idDiv,i); 
     }   
 }
 function choisirChoixDialogueFredMargaux(idDiv,i)
 {
     if (idDiv[i] === "INCENDIE")
-        choix.onclick = cliquerChoixFredMargaux(idDiv[i],9);
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],10);
     else if (idDiv[i] === "DEFAILLANCE")
-        choix.onclick = cliquerChoixFredMargaux(idDiv[i],11);
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],12);
     else if (idDiv[i] === "ENTRAINEMENT")   
-        choix.onclick = cliquerChoixFredMargaux(idDiv[i],13);
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],14);
     else if (idDiv[i] === "CANULAR")   
-        choix.onclick = cliquerChoixFredMargaux(idDiv[i],15); 
+        choix.onclick = cliquerChoixFredMargaux(idDiv[i],16); 
 }
 function cliquerChoixFredMargaux (idDiv,numeroDialogue)
 {
     $('#'+idDiv).click(function(){
         removeElementById("antiClicChoix");
         removeElementById("antiClic"); 
+        removeElementById("antiClicSecond"); 
         removeElementById("antiClicProvisoire"); 
         removeElementById("msgDialogue");
         afficherBoiteDialogue();
         miseAJourDialogue(0,numeroDialogue);
+        initEtatImg();
         testDialogue("FREDERIC");
         removeElementById(idDiv);
         $("#choixAlarme").fadeOut(500); 
@@ -231,6 +252,53 @@ function cliquerChoixFredMargaux (idDiv,numeroDialogue)
             removeElementById("choixAlarme");
         }
     });
+}
+function choisirChoixMaths(idDiv,i)
+{
+
+    if (idDiv[i] === "000")
+        choix.onclick = cliquerChoixMaths(idDiv[i]);
+    else if (idDiv[i] === "101")
+        choix.onclick = cliquerChoixMaths(idDiv[i]);
+    else if (idDiv[i] === "111")   
+        choix.onclick = cliquerChoixMaths(idDiv[i]);
+    else if (idDiv[i] === "1000")   
+        choix.onclick = cliquerChoixMaths(idDiv[i]); 
+}
+
+function cliquerChoixMaths (idDiv)
+{
+    $('#'+idDiv).click(function(){
+        removeElementById("antiClicChoix");
+        //removeElementById("antiClic"); 
+        removeElementById("antiClicProvisoire"); 
+        //removeElementById("msgDialogue");
+        removeElementById(idDiv);
+        //$("#choixAlarme").fadeOut(500); 
+        if (idDiv !== "1000")
+        {
+            clearTimeout(timer);
+            var texteEchec = document.getElementById("idEchecOuReussite");
+            texteEchec.innerHTML = "<br/><br/><br/>";
+            var timer = setTimeout(function() {
+                $("#idEchecOuReussite").hide();
+                texteEchec.innerHTML = "<br/><br/>Cela n'est pas correcte, réessayez";
+                $("#idEchecOuReussite").fadeIn("slow");
+            },100);  
+            
+            //genererNotification("Mauvaise réponse...!");
+        }
+        else if (idDiv === "1000")
+        {
+            genererNotification("Bonne réponse !");
+            removeElementById("choixAlarme");
+            exerciceFini = true;
+        }
+    });
+}
+function suppressionPNJ(nomPNJ)
+{
+    removeElementById(nomPNJ);
 }
 /*function carte ()
 {

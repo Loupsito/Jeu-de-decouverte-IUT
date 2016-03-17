@@ -45,7 +45,8 @@ function placementScenario(positionCourant)
 
 function panneauNarration(texte)
 {    
-
+    zoneAntiClic(14,"antiClicNarration",0);
+    
     LePanneauNarration = document.createElement("div");                
     LePanneauNarration.id="narration";    
     LePanneauNarration.style.width=80+'%';
@@ -55,13 +56,11 @@ function panneauNarration(texte)
     LePanneauNarration.style.right =0+'px';
     LePanneauNarration.style.position ='absolute';    
     LePanneauNarration.style.margin="0 auto"; 
-    LePanneauNarration.style.zIndex = 4; 
+    LePanneauNarration.style.zIndex = 15; 
     LePanneauNarration.style.backgroundColor="rgba(0, 0, 0, 0.5)";
     document.getElementById("ecran").appendChild(LePanneauNarration);           
     genereContenuID("div","","narration","texteNarration");
     $("#narration").css("border-radius","4px").css("border","2px solid white ").hide().fadeIn();
-          
-    
     
     $("#texteNarration").css("color","white").css("padding","10px");
     $("#texteNarration").empty();
@@ -78,6 +77,7 @@ function panneauNarration(texte)
     });
     $("#boutonPasser").click(function() {
                $("#narration").remove();
+               $("#antiClicNarration").remove();
     });           
 }
 

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <scenarios>
-    <scenario localisation = "1" asEteVu = "false" choix="dialogue">
-        <texte id ="1">Texte de la premiere partie du scenario</texte>
+    <scenario localisation = "0" asEteVu = "false" choix="narration">
+        <texte id ="0">Cet établissement est mon lieu d’étude actuel, il m’inspire un futur plein d’avenir et prometteur.
+            Si seulement les transports ne faisaient pas grève…
+            N’ayant pas les moyens de me payer un logement étudiant, je suis obligé de parcourir des distances absurdes chaque jour.
+            C’est donc en maudissant les grèves que j’arrivais en face du bâtiment Mermoz quelques minutes en avance.
+            De l’extérieur, je pouvais déjà apercevoir des têtes somnolentes en train de faire la file devant les machines à café.
+            Rentrant dans le bâtiment, j'aperçus un de mes plus vieux camarades ayant été affecté à un autre groupe : Jean.
+        </texte>
     </scenario>
     <scenario localisation = "7" asEteVu = "false" choix="narration">
         <texte id ="7">Texte de la deuxieme partie du scenario</texte>

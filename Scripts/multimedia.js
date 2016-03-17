@@ -294,7 +294,11 @@ function genererNotification(msg)
     notification.style.height = "auto";
     notification.style.padding = 5+"px";
     notification.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
-    notification.style.margin = "auto";
+    notification.style.position ='absolute';   
+    notification.style.left =0+'px';
+    notification.style.right =0+'px';
+    notification.style.margin="0 auto"; 
+    notification.style.zIndex = "51"; 
     notification.style.textAlign = "center";
     notification.style.color ="white";
     notification.style.border = "1px solid #BDBDBD";
@@ -392,6 +396,9 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
 {     
     if (!$("#antiClic").length)
         zoneAntiClic("6","antiClic",'0.4');  
+    if (!$("#antiClicSecond").length)
+        zoneAntiClic("8","antiClicSecond",'0');  
+    
     //création des div dialogues
     divTexte1 = creationDialogue(iddd,divTexte1);
     //texte complet tampon;
@@ -410,7 +417,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
                     {
                         if ($("#antiClicProvisoire2").length)
                             removeElementById("antiClicProvisoire2");
-                        $('#antiClic').click(function () {                        
+                        $('#antiClicSecond').click(function () {                        
                             removeElementById("msgDialogue");
                             //création des div dialogues
                             divTexte2 = creationDialogue(iddd,divTexte2);
@@ -426,7 +433,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
                     }
                     else if (typeDeDialogue === "dialogueEnchaine")
                     {
-                        $('#antiClic').click(function () {          
+                        $('#antiClicSecond').click(function () {          
                             removeElementById("msgDialogue");
                             //création des div dialogues                            
                             divTexte2 = creationDialogue(iddd,divTexte2);
@@ -470,7 +477,7 @@ function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
     //sert à pouvoir cliquer 2 fois sur un antiClic (pas sur la boîte de dialogue)   
     antiClicProv = document.getElementById('antiClicProvisoire');
     if (antiClicProv === null)
-        zoneAntiClic("6","antiClicProvisoire",'0');
+        zoneAntiClic("12","antiClicProvisoire",'0');
          
     if (typeDeDialogue !== "dialogueEnchaine")
     {     
@@ -480,6 +487,7 @@ function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
             removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
+            removeElementById("antiClicSecond"); 
             removeElementById("antiClicProvisoire");     
             removeElementById("nomPNJ");
             cacherBoiteDialogue();
@@ -491,11 +499,11 @@ function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
     {
         removeElementById("antiClicProvisoire2");
         genereContenuID("span","","ecran","antiClicProvisoire2"); 
-        $('#antiClicProvisoire2').click(function () { 
-            //changementEtat(tabEtat);
+        $('#antiClicProvisoire2').click(function () {        
             initEtatImg(nomFake);           
             removeElementById("msgDialogue");
             removeElementById("antiClic");
+            removeElementById("antiClicSecond"); 
             removeElementById("antiClicProvisoire");
             removeElementById("antiClicProvisoire2");
             testDialogue(idImages);

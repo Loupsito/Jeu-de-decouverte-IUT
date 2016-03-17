@@ -11,7 +11,7 @@
                     <image lienimage="images/cleI21.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
-                        <x>56</x>
+                        <x>9999</x>
                         <y>436</y>
                     </tabCoordonnees>
             </tab_info>
