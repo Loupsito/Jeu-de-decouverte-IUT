@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- informations de cle -->
+<pnjs>
+	<pnj nom="JEAN" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
+		<dialogues>
+			<dialogue nomFake="JEAN" id="JEAN" numeroDialogue="0">
+                                <texte>Salut wqazsx</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="1">
+                                <texte>Tu as entendu la nouvelle ? On commence officiellement le deuxième semestre aujourd'hui ! On va savoir le premier cours du deuxième semestre et Mme Robba va tout nous expliquer. C'est génial !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="2">
+                                <texte>En fait, vu que les partiels vont bientôt commencer, les cours et TP ont été remplacés par des séances de révisions et de présentation du deuxième semestre. Du coup les emplois du temps ont changés bien évidement ! Tu… Tu l’as vérifié, n’est-ce-pas </texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="3">
+                                <texte>Vraiment… je crois que ton groupe a cours en 316. Le mien est plus tard, j’ai encore le temps. </texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+        <pnj nom="M. MARTEL" localisation="5" image="images/pnj/robert.png" numeroDialogueCourant="0">
+                <dialogues>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="0">
+                                <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="1">
+                                <texte>Alors, aujourd’hui nous allons faire des exercices pour récapituler le plus gros du premier semestre. Et je suis désolé de vous annoncer qu’il n’y aura malheureusement pas de maths ! Rolala vraiment, moi qui vous avez préparé un sujet de rêve ! On aurait pu la mettre à la place de l’info quand même !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="2">
+                                <texte>Enfin bon, normalement vous avez tous une feuille d’exercices, essayez de la compléter. Elle ne devrait pas vous poser trop de soucis normalement.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="3">
+                                <texte>Pour l'épanouissement de votre âme, bien sûr !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>choixExoMaths</etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="4">
+                                <texte>Décidément wqazsx, tu es en forme aujourd’hui ! C’est rare de te voir finir en avance. Et bien, du coup, tu as fini tout ce qu’il y avait à faire. Je vais te laisser le choix entre rester ici ou aller directement à la présentation en amphi.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M. MARTEL" id="M. MARTEL" numeroDialogue="5">
+                                <texte>Si tu veux aller en amphi je laisse les clés ici, ça évitera à Mme Robba de faire un détour. Ah mais si tu restes tu pourras faire des maths, j’ai un sujet tout prêt si tu veux ! Le rêve, non ?</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal>depotcle_notif</etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+        <pnj nom="MME ROBBA" localisation="7" image="images/pnj/yui.png" numeroDialogueCourant="0">
+                <dialogues>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="0">
+                                <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="1">
+                                <texte>Un peu de silence s’il vous plaît ! … Aujourd’hui je vais vous expliquer comment fonctionne le deuxième semestre ainsi que le troisième et quatrième en deuxième année.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="2">
+                                <texte>Le premier semestre que vous venez d’achever introduisait les notions de programmation les plus basiques, que certains avaient déjà étudié auparavant.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="3">
+                                <texte>Le deuxième semestre, lui, sera basé sur l’adoption d’une méthode précise pour la création d’une application, avec l’apprentissage du langage objet et la mise en l’application de la conception orientée objet.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="4">
+                                <texte>Pour ce semestre on utilisera principalement du java.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="5">
+                                <texte>Et faites attention ! Les cours sont tous très connectés à partir de maintenant, alors faites bien attention à bien garder le niveau dans chaque matière.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="6">
+                                <texte>Le troisième et quatrième semestre seront orientés vers l’apprentissage approfondi de technique de codage pour optimiser le code et le rendre plus sécurisé, on en reparlera au début de la deuxième année.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="7">
+                                <texte>Sachez juste que pour aller en deuxième année, vous devez avoir validé vos deux premiers semestres, que ce soit par compensation ou non. Ceux qui auront ratés le premier semestre pourront le compenser avec les notes du deuxième.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="8">
+                                <texte>Concernant les cours...</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal>alarme_incendie</etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="9">
+                                <texte>… C’est bien le moment… Bon, on en reparle juste après, sortez dans la cour, et dans le calme !</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="MME ROBBA" id="MME ROBBA" numeroDialogue="10">
+                                <texte>Allez ! On se dépêche !</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+                    
+</pnjs>

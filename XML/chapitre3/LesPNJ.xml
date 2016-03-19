@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- informations de cle -->
+<pnjs>
+	<pnj nom="FREDERIC" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
+		<dialogues>
+			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
+                                <texte>Bonjour, comment t'appelles-tu ?</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>                        
+		</dialogues>         
+        </pnj>
+</pnjs>
