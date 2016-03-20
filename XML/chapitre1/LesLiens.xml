@@ -689,7 +689,7 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>250</x>
+                <x>200</x>
                 <y>400</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
@@ -1413,7 +1413,7 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>250</x>
+                <x>300</x>
                 <y>400</y>
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
@@ -1429,7 +1429,7 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>250</x>
+                <x>300</x>
                 <y>400</y>
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
@@ -2279,7 +2279,7 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>100</x>
+                <x>200</x>
                 <y>100</y>
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
@@ -2392,18 +2392,18 @@
         <coordonnees>
             <coordonnee1>
                 <x>200</x>
+                <y>400</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
+            </coordonnee1>
+            <coordonnee2>
+                <x>100</x>
                 <y>100</y>
                 <fleche>images/flecheVersLeHaut.png</fleche>
-            </coordonnee1>
-            <coordonnee2>
-                <x>100</x>
-                <y>400</y>
-                <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="228" id2="223" />
+        <idScenes id1="228" id2="224" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2419,7 +2419,7 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="208" id2="228" />
+        <idScenes id1="228" id2="208" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2435,7 +2435,7 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="228" id2="10" />
+        <idScenes id1="228" id2="210" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2455,14 +2455,14 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>200</x>
-                <y>100</y>
-                <fleche>images/flecheVersLeHaut.png</fleche>
+                <x>300</x>
+                <y>400</y>
+                <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>200</x>
+                <x>100</x>
                 <y>400</y>
-                <fleche>images/flecheVersLeBas.png</fleche>
+                <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2595,7 +2595,7 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="215" id2="218" />
+        <idScenes id1="218" id2="215" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2659,7 +2659,7 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="216" id2="222" />
+        <idScenes id1="222" id2="216" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2675,7 +2675,7 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="217" id2="221" />
+        <idScenes id1="221" id2="217" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -2687,6 +2687,23 @@
                 <x>999999999</x>
                 <y>999999999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
+            </coordonnee2>
+        </coordonnees>
+    </lien>
+    
+    <lien>
+        <idScenes id1="219" id2="222" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>200</x>
+                <y>400</y>
+                <fleche>images/flecheVersLeBas.png</fleche>
+            </coordonnee1>
+            <coordonnee2>
+                <x>100</x>
+                <y>100</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
