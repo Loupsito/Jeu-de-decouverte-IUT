@@ -27,6 +27,7 @@ var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
 
 var objectifCourant=0;
+var exerciceFini;
 
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
