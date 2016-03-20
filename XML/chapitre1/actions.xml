@@ -28,5 +28,15 @@
     <action nom="CacherAgenda">
         <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
         <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
+    </action>    
+    <action nom="DonnerCleUSB">
+        <prerequis nom="DonnerCleUSB">(verifPossessionItem('cleUSB')===true)</prerequis><!-- On verifie que l'on possede la cle -->
+        <prerequis nom="DonnerCleUSB">(verifPresencePNJ("MME ROBBA")===joueur.idSalle)</prerequis> <!-- On verifie que le joueur se trouve en face du bon pnj -->
+        <etatFinal>suppressionItemDuJeu('cleUSB');</etatFinal>
+    </action>
+    <action nom="DonnerGomme">
+        <prerequis nom="DonnerGomme">(verifPossessionItem('gomme')===true)</prerequis><!-- On verifie que l'on possede la cle -->
+        <prerequis nom="DonnerGomme">(verifPresencePNJ("JEAN")===joueur.idSalle)</prerequis> <!-- On verifie que le joueur se trouve en face du bon pnj -->
+        <etatFinal>suppressionItemDuJeu('gomme');</etatFinal>
     </action>
 </actions>

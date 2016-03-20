@@ -2,13 +2,13 @@
 
 <!-- informations de cle -->
 <tabtab_item>
-    <tab_item nom="cleI21">
+    <tab_item nom="cleAmphiA"><!-- Anciennement cleI21 -->
             <tab_info>                                                                
                     <tab_actions>                                                                                   
-                        <action id ="cleI21">ouvrir_porte_i21</action>
+                        <action id ="cleAmphiA">ouvrir_porte_i21</action>
                     </tab_actions>
-                    <description>Sert a ouvrir la porte de la salle I21 se trouvant dans la salle G25</description>	
-                    <image lienimage="images/cleI21.png"/>
+                    <description>Sert a ouvrir la porte de l'amphitheatre A</description>	
+                    <image lienimage="images/cleAmphiA.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
                         <x>9999</x>
@@ -59,6 +59,34 @@
                     <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
                     <image lienimage="images/agenda.png"/>
                     <possession>true</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+    <tab_item nom="cleUSB">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="cleUSB">DonnerCleUSB</action>                                         
+                    </tab_actions>
+                    <description>Un espace de stockage de 16go</description>	
+                    <image lienimage="images/cleUSB.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+    <tab_item nom="gomme">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="gomme">DonnerGomme</action>                                         
+                    </tab_actions>
+                    <description>Un outil bien utile pour effecer ses erreurs</description>	
+                    <image lienimage="images/gomme.png"/>
+                    <possession>false</possession>                                                                  		
                     <tabCoordonnees>
                         <x>460</x>
                         <y>330</y>

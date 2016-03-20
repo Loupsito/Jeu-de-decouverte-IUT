@@ -5,6 +5,8 @@ var chapitre3={"chapitre" :3,"objectifs":[["(verifPossessionItem('stylo') === tr
 var tabDeTousLesChapitre= new Array(chapitre1,chapitre2,chapitre3);
 */
 
+var objectifCourant;
+
 var tabDeTousLesChapitre;
 
 function verifieProgression(chapitreCourant)
@@ -17,8 +19,19 @@ function verifieProgression(chapitreCourant)
         {            
             for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
             {                      
-                if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
-                    objectifsNonRemplie+=1;                     
+                /*if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
+                    objectifsNonRemplie+=1;*/
+                if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
+                {
+                    if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
+                    {
+                        objectifsNonRemplie+=1;                     
+                    }
+                    else
+                        objectifCourant+=1;
+                    
+                    break;
+                }
             }
             if (objectifsNonRemplie===0)
             {                

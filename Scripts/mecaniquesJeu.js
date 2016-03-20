@@ -143,7 +143,8 @@ function fonctionGeneratricePrincipale()
             document.getElementById("ecran").style.backgroundSize = "contain";
             document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
             placementPNJ(joueur.idSalle);
-            placementScenario(joueur.idSalle);                       
+            placementScenario(joueur.idSalle);    
+            document.getElementById("position").innerHTML="Position Joueur : "+joueur.idSalle;
             break;
         }
     }
@@ -471,6 +472,37 @@ function verifPossessionItem(leItem)
                 }
         }
 }
+
+
+function suppressionItemDuJeu(leItem)
+{
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {               
+                delete tabDeTousLesItems[i][0];
+                delete tabDeTousLesItems[i][1];
+                break;
+            }                              
+    }
+}
+
+function existenceItem(leItem)
+{
+    var trouve;
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {
+                trouve = true;      
+                break;
+            }
+            else
+                trouve = false;                                   
+    }
+    return trouve;
+}
+
 
 /*
  * @param {string} leItem - le nom de l'item

@@ -43,7 +43,7 @@ var choixMaths = ["000","101","111","1000"];
 function verifDialPrerequis(tab)
 {
         if (tab !== "normal" && tab !== "last")
-            return 0
+            return 0;
         else if (tab === "normal")
             return 1;
         else if (tab === "last")
@@ -91,6 +91,17 @@ function placementPNJ(positionCourante)
                 image.style.position ='relative';
                 image.style.zIndex = 1; 
             }
+        }
+    }
+}
+
+function verifPresencePNJ(nom)
+{
+     for(var i=0;i<tabPNJ.length;i++)
+    {               
+        if(tabPNJ[i]["nom"]===nom)
+        {
+            return tabPNJ[i]["localisation"];
         }
     }
 }

@@ -26,6 +26,8 @@ var progression = 1;
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
 
+var objectifCourant=0;
+
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
 clavier("accueil");
@@ -126,8 +128,13 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();           
-               
+        premiereAnalyseInventaire();      
+                
+    //suppressionItemDuJeu("stylo");
+    //alert(existenceItem("stylo"));
+    
+    //alert(verifPresencePNJ("MME ROBBA"));
+    
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
     //------------------------------------------------------------------------------
@@ -318,7 +325,6 @@ function recupFromXMLDataBaseActions()
         
         for(A=0;A<tabNom.length;A++)
         {
-            //var tabActions=["action","prerequis","etatFinal"];
             var tabActions = new Array();
             tabActions.push("nomAction");
             tabActions.push("prerequis");
@@ -370,7 +376,7 @@ function recupFromXMLDataBaseChapitre()
             {                                 
                 if(tabObjectifs[j].getAttribute("id")===(tabChapitre[i].getAttribute("numero")))
                 {
-                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent));         
+                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent,tabObjectifs[j].getAttribute("objectifCourant")));         
                 }
             }            
             
