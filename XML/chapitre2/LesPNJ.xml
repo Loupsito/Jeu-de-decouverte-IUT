@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- informations de cle -->
 <pnjs>
-	<pnj nom="FREDERIC" localisation="306" image="images/pnj/frederic.png" numeroDialogueCourant="0">
+	<pnj nom="FREDERIC" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
                                 <texte>Yo ! Genki ?</texte>
@@ -110,7 +110,7 @@
 			</dialogue>  
 		</dialogues>
 	</pnj>
-	<pnj nom="MARGAUX" localisation="306" image="images/pnj/margaux.png" numeroDialogueCourant="0">
+	<pnj nom="MARGAUX" localisation="0" image="images/pnj/yui.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="0">
                                 <texte>Salut !</texte>
@@ -124,142 +124,19 @@
 			</dialogue>
                 </dialogues>               
         </pnj>
-        <pnj nom="ROGER" localisation="305" image="images/pnj/roger.png" numeroDialogueCourant="0">
+	<!--<pnj nom="LOUISE" localisation="4" image="images/pnj/asusa.png" numeroDialogueCourant="0">
 		<dialogues>
-			<dialogue nomFake="ROGER" id="ROGER" numeroDialogue="0">
-                                <texte>Salut, qu’est-ce que tu veux ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
+			<dialogue id="LOUISE" numeroDialogue="0">
+                                <texte>Si seulement la salle était ouverte</texte>
+				<prerequis>(verifAccesSalle(7,4) === true)</prerequis>				
+                                <etatFinal>initEtatImg()</etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="1">
-                                <texte>Tu veux savoir où se trouve Bastien ? Tu est prêt à nous aider ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="2">
-                                <texte>Alors ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal>choixAider</etatFinal>
-			</dialogue>
-                        <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="3">
-                                <texte>Parfait ! On a perdu une gomme, une clé USB et un stylo dans la BU, tu peux nous aider à les retrouver ? On te dira où il est après.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
-                                <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
-				<prerequis>(verifPossessionItem('cleUSB') === true)</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
-                                <texte>Ah, tu les as récupérés. Il est dans la queue du crous.</texte>
-				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
+			<dialogue id="LOUISE" numeroDialogue="1">
+                                <texte>Merci !</texte>
+				<prerequis>'last'</prerequis>				
+                                <etatFinal>initEtatImg()</etatFinal>
 			</dialogue>
                 </dialogues>               
-        </pnj>
-	<pnj nom="BASTIEN" localisation="308" image="images/pnj/bastien.png" numeroDialogueCourant="0">
-		<dialogues>
-			<dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="0">
-                                <texte>Laisse-moi passer abruti, tu bloques le passage.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="1">
-                                <texte>Hein ? Pourquoi tu voudrais me parler ? T’as un problème ?! J’ai rien à faire avec les personnes dans ton genre, alors écrase.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="2">
-                                <texte>Quoi encore ?! Tu va me fou*** la paix ?! Je vais te… l’alarme ? Comment t’es au courant ?! Tss, de toutes façon ça remonte au mois dernier, t’es à la ramasse. Maintenant dégage !</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="3">
-                                <texte>PU**** MAIS QUOI ENCORE ?! Non ! C’est pas moi qui ai fait bouger tout ces conn**** aujourd’hui ! Maintenant fous le camp avant que je t’arrache la tête.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="4">
-                                <texte>Tiens ben si tu veux tant m’emmer** tu peut bien me payer un repas. Attention à ta réponse, ce petit jeu pourrait mal finir…</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="5">
-                                <texte>Alors ?!</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal>choixPayerBastien</etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
-                                <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
-				<prerequis>last</prerequis>				
-                                <etatFinal>supprBastien</etatFinal>
-			</dialogue>
-                        <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="7">
-                                <texte>Tss, tocard !</texte>
-				<prerequis>last</prerequis>				
-                                <etatFinal>supprBastien</etatFinal>
-			</dialogue>
-                </dialogues>               
-        </pnj>
-        <pnj nom="AUGER" localisation="308" image="images/pnj/auger.png" numeroDialogueCourant="0">
-		<dialogues>
-			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
-                                <texte>Il est plutôt terrible non ? Je ne sais pas pourquoi il ne s’est pas encore fait expulsé, on n’en à jamais eu des comme ça avant. Il est peut-être déjà expulsé ? On l’aurait rappelé pour le scén…</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="1">
-                                <texte>… Mh ? Ah, non rien… Mais tu ne m’as peut-être pas reconnu, je suis professeur d’informatique.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="2">
-                                <texte>Tu n’as pas dû beaucoup me voir étant donné que je n’ai pas enseigné à ton groupe. Et je suis aussi sur un projet avec des étudiants de deuxième année, il sera mis sur le site de l’IUT si tout se passe bien…</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="3">
-                                <texte>Bon, plus sérieusement, tu es délégué n’est-ce-pas ? J’ai cru comprendre que tu cherchait à savoir pourquoi l’alarme avait sonnée je me trompe ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="4">
-                                <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peut la vérifier par moi même donc tu tombe bien. Sache que tu cours un risque dans le cas où je me trompe donc fait attention.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="5">
-                                <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerait de me payer le repas ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="6">
-                                <texte>Alors ?</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal>choixPayerRepasAuger</etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="7">
-                                <texte>Merci beaucoup, c’est vraiment très gentil de ta part.</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="8">
-                                <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
-				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="9">
-                                <texte>Tant pis alors…</texte>
-				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="10">
-                                <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
-				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
-			</dialogue>
-                </dialogues>               
-        </pnj>
+        </pnj>-->
         
 </pnjs>

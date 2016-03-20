@@ -9,5 +9,11 @@
             De l’extérieur, je pouvais déjà apercevoir des têtes somnolentes en train de faire la file devant les machines à café.
             Rentrant dans le bâtiment, j'aperçus un de mes plus vieux camarades ayant été affecté à un autre groupe : Jean.
         </texte>
-    </scenario> 
+    </scenario>
+    <scenario localisation = "7" asEteVu = "false" choix="narration">
+        <texte id ="7">Texte de la deuxieme partie du scenario</texte>
+    </scenario>
+    <scenario localisation = "2" asEteVu = "false" choix="dialogue">
+        <texte id ="2">Texte de la troisieme partie du scenario</texte>
+    </scenario>    
 </scenarios>

@@ -143,7 +143,7 @@ function fonctionGeneratricePrincipale()
             document.getElementById("ecran").style.backgroundSize = "contain";
             document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
             placementPNJ(joueur.idSalle);
-            placementScenario(joueur.idSalle);     
+            placementScenario(joueur.idSalle);    
             document.getElementById("position").innerHTML="Position Joueur : "+joueur.idSalle;
             break;
         }
@@ -473,6 +473,37 @@ function verifPossessionItem(leItem)
         }
 }
 
+
+function suppressionItemDuJeu(leItem)
+{
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {               
+                delete tabDeTousLesItems[i][0];
+                delete tabDeTousLesItems[i][1];
+                break;
+            }                              
+    }
+}
+
+function existenceItem(leItem)
+{
+    var trouve;
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {
+                trouve = true;      
+                break;
+            }
+            else
+                trouve = false;                                   
+    }
+    return trouve;
+}
+
+
 /*
  * @param {string} leItem - le nom de l'item
  */
@@ -800,3 +831,22 @@ function modifieValeur(action)
    genereContenu('div','<button class="boutonMenu" id="boutonSon" type="button" onmouseover="$('+"'"+"#blocInfoBulle"+"'"+').empty();afficheInfoBulleMenu('+"'"+"Effets Sonores"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerSon();intervertirImageSon(son,'+"'"+"boutonSon"+"'"+','+"'"+"images/son.png"+"'"+','+"'"+"images/son2.png"+"'"+')" ></button>','menu');
 //Bouton de musique
    genereContenu('div','<button class="boutonMenu" id="boutonMusique" type="button" onmouseover="$('+"'"+"#blocInfoBulle"+"'"+').empty();afficheInfoBulleMenu('+"'"+"Musique"+"'"+')"  onmouseout="masqueInfoBulleMenu('+"'"+"infoBulleMenu"+"'"+')" onclick="couperJouerMusique();intervertirImageSon(musique,'+"'"+"boutonMusique"+"'"+','+"'"+"images/musique.png"+"'"+','+"'"+"images/musique2.png"+"'"+');jouerMusique(musique)"></button>','menu');
+   
+   
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------PROVISOIRE : AFFICHE COORDONNEES---------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+var d = document.getElementById("console");
+topPos = d.offsetTop;
+leftPos = d.offsetLeft;
+genereContenuID('div','','corps','curseur');
+var position = document.getElementById('curseur');
+                            document.addEventListener('mousemove', function(e) {
+                                position.innerHTML = 'Position X : ' + (e.clientX - leftPos) + 'px<br />Position Y : ' + (e.clientY - topPos) + 'px <br/> top :' + topPos+ "-- left :"+ leftPos;  
+                            }, false);

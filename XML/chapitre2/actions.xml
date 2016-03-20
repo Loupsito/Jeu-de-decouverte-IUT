@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <actions>
-    <action nom="ouvrir_porte_i21">
-        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
-        <etatFinal>genererChoixPorte(['I21'],nomPorte)</etatFinal>
+    <action nom="ouvrir_porte_cleAmphiA">
+        <prerequis nom="ouvrir_porte_cleAmphiA">(verifAccesSalle(214,207)==false)</prerequis>
+        <etatFinal>genererChoixPorte(['cleAmphiA'],nomPorte)</etatFinal>
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
@@ -28,9 +28,5 @@
     <action nom="CacherAgenda">
         <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
         <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
-    </action>
-    <action nom="Rendre">
-        <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)</prerequis>
-        <etatFinal>alert('youhou !');</etatFinal>
     </action>
 </actions>

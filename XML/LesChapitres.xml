@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapitres>
-    <chapitre numero='1' positionJoueur='213'>
-        <objectif id='1'>(verifPossessionItem('brosse') === true)</objectif>
-        <descriptif id='1'>Obtenir la brosse</descriptif>
-        <objectif id='1'>(verifPossessionItem('stylo') === true)</objectif>
-        <descriptif id='1'>Obtenir le stylo</descriptif>
+    <chapitre numero='1' positionJoueur='0'>        
+        <objectif id='1' objectifCourant='0'>(joueur.idSalle===222)</objectif>
+        <descriptif id='1'>Se rendre au batiment Mermoz</descriptif>        
+        <objectif id='1' objectifCourant='1'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
+        <descriptif id='1'>Parler a Jean</descriptif>      
+        <objectif id='1' objectifCourant='2'>(joueur.idSalle===205)</objectif>
+        <descriptif id='1'>Se rendre en salle 316</descriptif>        
+        <objectif id='1' objectifCourant='3'>(verifPossessionItem('stylo') === true)</objectif>
+        <descriptif id='1'>Recuperer le stylo</descriptif>        
+        <objectif id='1'objectifCourant='4'>(exerciceFait===true)</objectif>
+        <descriptif id='1'>Repondre a la feuille d'exercice</descriptif>        
+        <objectif id='1' objectifCourant='5'>(joueur.idSalle===207)</objectif>
+        <descriptif id='1'>Se rendre en amphitheatre A</descriptif>        
+        <objectif id='1' objectifCourant='6'>(joueur.idSalle===209)</objectif>
+        <descriptif id='1'>S'asseoir a une place</descriptif>        
+        <objectif id='1' objectifCourant='7'>(joueur.idSalle===212)</objectif>
+        <descriptif id='1'>Evacuer par la sortie de secours</descriptif>      
     </chapitre>
-    <chapitre numero='2' positionJoueur='306'>
-        <objectif id='2'>(verifPossessionItem('cleI21') === true)</objectif>
-        <descriptif id='2'>Obtenir la cle I21</descriptif>
-        <objectif id='2'>(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')</objectif>
-        <descriptif id='2'>Ecrire sur le tableau</descriptif>
+    <chapitre numero='2' positionJoueur='3'>        
+        <objectif id='2' objectifCourant='0'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
+        <descriptif id='2'>Parler de l'incident à Fred et Margaux</descriptif>
+        <objectif id='2' objectifCourant='1'>((verifPossessionItem('gomme') === true)&&(verifPossessionItem('stylo') === true)&&(verifPossessionItem('cleUSB') === true))</objectif>
+        <descriptif id='2'>Trouver les fournitures demande</descriptif>
+        <objectif id='2' objectifCourant='2'>((verifDialPrerequis(tabPNJ[1]["dialogue"][tabPNJ[1]["numeroDialogueCourant"]][1]))===-1)</objectif>
+        <descriptif id='2'>Parler a Bastien</descriptif>
+        <objectif id='2' objectifCourant='3'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
+        <descriptif id='2'>Parler a M. Auger</descriptif>
+        <!--<objectif id='2'>(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')</objectif>
+        <descriptif id='2'>Ecrire sur le tableau</descriptif>-->
     </chapitre>
-    <chapitre numero='3' positionJoueur='117'>
-        <objectif id='3'>(verifPossessionItem('brosse') === true)</objectif>
-        <descriptif id='3'>Obtenir la brosse</descriptif>
-        <objectif id='3'>(verifPossessionItem('stylo') === true)</objectif>
-        <descriptif id='3'>Obtenir le stylo</descriptif>
-        <objectif id='3'>(verifPossessionItem('cleI21') === true)</objectif>
-        <descriptif id='3'>Obtenir la cleI21</descriptif>
+    <chapitre numero='3' positionJoueur='5'>
+        <objectif id='3'objectifCourant='0'>joueur.idSalle===120</objectif>
+        <descriptif id='3'>Sortir de la salle G25 par la salle I21</descriptif>
+        
+        <objectif id='3'objectifCourant='1'>(joueur.idSalle===214)</objectif>
+        <descriptif id='3'>Se rendre en amphitheatre A</descriptif>
+        
+        <objectif id='3'objectifCourant='2'>(verifPossessionItem('cleI21') === true)</objectif>
+        <descriptif id='3'>Récuperer la cle de l'amphitheatre A</descriptif>
     </chapitre>
 </chapitres>
