@@ -2274,6 +2274,7 @@
             </coordonnee2>
         </coordonnees>
     </lien>
+    <!--
     <lien>
         <idScenes id1="206" id2="213" />
         <acces>true</acces>
@@ -2290,6 +2291,7 @@
             </coordonnee2>
         </coordonnees>
     </lien>
+    -->
     <lien>
         <idScenes id1="207" id2="214" />
         <acces>false</acces>

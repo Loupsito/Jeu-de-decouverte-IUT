@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapitres>
-    <chapitre numero='1' positionJoueur='216'>
+    <chapitre numero='1' positionJoueur='213'>
         <objectif id='1'>(verifPossessionItem('brosse') === true)</objectif>
         <descriptif id='1'>Obtenir la brosse</descriptif>
         <objectif id='1'>(verifPossessionItem('stylo') === true)</objectif>
