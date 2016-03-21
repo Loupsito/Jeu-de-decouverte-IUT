@@ -58,7 +58,7 @@ function changementEtat(tab)
     else if (tab === "choixAlarme"){blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");return;}
     else if (tab === "SUPPRIME"){;return;}
     else if (tab === "suppr"){suppressionPNJ("MARGAUX");return;}
-    else if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleI21",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
+    else if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleAmphiA",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
     else if(tab === "alarme_incendie") {panneauNarration("Á ce moment là, un bruit assourdissant se fit entendre dans l'amphi. L'alarme incendie sonnait, encore et encore... <br/>\"J'ai un mauvais pressentiment.\" me suis-je dit.");}
     else if (tab === "choixExoMaths"){blocChoix("choixMaths",choixMaths,"Convertir 8 en binaire");}
     else if (tab === "choixAider"){blocChoix("choixAide",choixAiderRoger,"Récupérer une gomme une clé USB et stylo");}

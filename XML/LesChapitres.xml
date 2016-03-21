@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapitres>
     <chapitre numero='1' positionJoueur='40'>        
-        <objectif id='1' objectifCourant='0'>(joueur.idSalle===222)</objectif>
+        <objectif id='1' objectifCourant='0'>(joueur.idSalle===216)</objectif>
         <descriptif id='1'>Se rendre au batiment Mermoz</descriptif>        
         
         <objectif id='1' objectifCourant='1'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
@@ -29,7 +29,7 @@
         <descriptif id='1'>Evacuer par la sortie de secours</descriptif>      
     </chapitre>
     
-    <chapitre numero='2' positionJoueur='0'>                
+    <chapitre numero='2' positionJoueur='306'>                
         <objectif id='2' objectifCourant='0'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='2'>Parler de l'incident à Fred et Margaux</descriptif>
                 

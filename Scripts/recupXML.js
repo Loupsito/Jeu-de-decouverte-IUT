@@ -21,7 +21,7 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 1;
+var progression = 2;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
@@ -127,7 +127,7 @@ function initpage()
     if(document.getElementById("antiClicTransition"))
         removeElementById("antiClicTransition");
     //Va servir a precharge les images du jeu
-        indicationChargement();    
+        //indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
         premiereAnalyseInventaire();      
                 
