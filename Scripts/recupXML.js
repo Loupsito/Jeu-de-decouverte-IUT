@@ -21,12 +21,12 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 1;
+var progression = 2;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
 
-var objectifCourant=0;
+var objectifCourant = 0;
 
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
@@ -128,13 +128,8 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();      
-                
-    //suppressionItemDuJeu("stylo");
-    //alert(existenceItem("stylo"));
-    
-    //alert(verifPresencePNJ("MME ROBBA"));
-    
+        premiereAnalyseInventaire();           
+               
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
     //------------------------------------------------------------------------------
@@ -192,6 +187,7 @@ function recupFromXMLDataBasePnj()
             var pnjPrerequis;        //variable contenant le prerequis pour le dialogue suivant
             var pnjEtatFinal;        //variable contenant le prerequis pour le dialogue suivant
             var pnjNomFake;
+            var pnjIdImage;
             //----------------------------------------
 
 
@@ -210,6 +206,7 @@ function recupFromXMLDataBasePnj()
 
                 pnjImage=tabPnj[i].getAttribute("image");
                 pnjDialDefault=tabPnj[i].getAttribute("numeroDialogueCourant");
+                pnjIdImage=tabPnj[i].getAttribute("idImage");
                 //-------------------------
 
                 var tabDialogues=[null];
@@ -243,7 +240,7 @@ function recupFromXMLDataBasePnj()
                     //-------------------------------------
                 }
                 //---------------------------
-    			tabInfoPnj[i]={"nom":pnjNom , "localisation" : pnjLocalisation, "image" : pnjImage, "numeroDialogueCourant" : pnjDialDefault, "dialogue" : tabDialogues};
+    			tabInfoPnj[i]={"nom":pnjNom , "localisation" : pnjLocalisation, "image" : pnjImage, "numeroDialogueCourant" : pnjDialDefault, "dialogue" : tabDialogues, "idImage":pnjIdImage};
 
                 //alert(tabInfoPnj[i]["dialogue"].toString());
             }
@@ -325,6 +322,7 @@ function recupFromXMLDataBaseActions()
         
         for(A=0;A<tabNom.length;A++)
         {
+            //var tabActions=["action","prerequis","etatFinal"];
             var tabActions = new Array();
             tabActions.push("nomAction");
             tabActions.push("prerequis");

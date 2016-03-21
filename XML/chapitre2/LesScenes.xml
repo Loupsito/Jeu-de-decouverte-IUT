@@ -3,6 +3,7 @@
 
 
 	<!--exterieur-->
+        <!--
 	<scene id="0" nom="exterieur1" lienImage="images/map/exterieur/ext_Admin_devant_NO.jpg"/>
 	<scene id="1" nom="exterieur2" lienImage="images/map/exterieur/ext_Admin_N_E.jpg"/>
 	<scene id="2" nom="exterieur3" lienImage="images/map/exterieur/ext_Admin_N_O.jpg"/>
@@ -56,9 +57,10 @@
 	<scene id="50" nom="exterieur51" lienImage="images/map/exterieur/ext_Admin_NE_O.jpg"/>
 	<scene id="51" nom="exterieur52" lienImage="images/map/exterieur/ext_Admin_NE_E.jpg"/>
 	<scene id="52" nom="exterieur53" lienImage="images/map/exterieur/ext_Crous_devantSE_SE.jpg"/>
-	
+	-->
 	
 	<!--BATIMENT BASTIE-->
+        <!--
 	<scene id="100" nom="bastie1" lienImage="images/map/bastie/bast_BurAppariteur_SE.jpg"/>
 	<scene id="101" nom="bastie2" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_E.jpg"/>
 	<scene id="102" nom="bastie3" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_N.jpg"/>
@@ -75,7 +77,7 @@
 	<scene id="113" nom="bastie14" lienImage="images/map/bastie/bast_Couloir_I21_S.jpg"/>
 	<scene id="114" nom="bastie15" lienImage="images/map/bastie/bast_Couloir_SO_NE.jpg"/>
 	<scene id="115" nom="bastie16" lienImage="images/map/bastie/bast_Couloir_SO_E.jpg"/>
-	<!--116-->
+	116
 	<scene id="117" nom="bastie18" lienImage="images/map/bastie/bast_G25_N.jpg"/>
 	<scene id="118" nom="bastie19" lienImage="images/map/bastie/bast_G25_S.jpg"/>
 	<scene id="119" nom="bastie20" lienImage="images/map/bastie/bast_G26_SO.jpg"/>
@@ -87,11 +89,14 @@
 	<scene id="125" nom="bastie26" lienImage="images/map/bastie/bast_Couloir_SO_NO.jpg"/>
 	<scene id="126" nom="bastie27" lienImage="images/map/bastie/bast_Couloir_SO_SE.jpg"/>
 	<scene id="127" nom="bastie28" lienImage="images/map/bastie/bast_G25_O.jpg"/>
-	
-    <!--BATIMENT MERMOZ
-	////////PHOTOS MANQUANTES ! (316 & Amphi)/////////
 	-->
-	
+        
+        
+        
+        <!--
+        BATIMENT MERMOZ
+        -->
+	<!--
 	<scene id="200" nom="mermoz1" lienImage="images/map/mermoz/mer_3eme_CouloirEst_E.jpg"/>
 	<scene id="201" nom="mermoz2" lienImage="images/map/mermoz/mer_3eme_CouloirEst_O.jpg"/>
 	<scene id="202" nom="mermoz3" lienImage="images/map/mermoz/mer_3eme_CouloirOuest_E.jpg"/>
@@ -121,7 +126,7 @@
 	<scene id="226" nom="mermoz27" lienImage="images/map/mermoz/mer_AmphiA_tablette_SE.jpg"/>
 	<scene id="227" nom="mermoz28" lienImage="images/map/mermoz/mer_316_table_E.jpg"/>
 	<scene id="228" nom="mermoz29" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_O.jpg"/>
-	
+	-->
 	
 	<!--BATIMENT SAINT EXUPERY-->
 	<scene id="300" nom="saint_exupery1" lienImage="images/map/exupery/exu_BU_cachette1.jpg">
