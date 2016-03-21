@@ -2,94 +2,17 @@
 
 <!-- informations de cle -->
 <tabtab_item>
-    <tab_item nom="cleAmphiA"><!-- Anciennement cleI21 -->
+    <tab_item nom="cleAmphiA">
             <tab_info>                                                                
                     <tab_actions>                                                                                   
-                        <action id ="cleAmphiA">ouvrir_porte_i21</action>
+                        <action id ="cleI21">Ouvrir_Porte_Amphi_A</action>
                     </tab_actions>
-                    <description>Sert a ouvrir la porte de l'amphitheatre A</description>	
-                    <image lienimage="images/cleAmphiA.png"/>
+                    <description>Sert à ouvrir la porte de l'amphithéâtre A du bâtiment Mermoz</description>	
+                    <image lienimage="images/cleI21.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
-                        <x>56</x>
-                        <y>436</y>
-                    </tabCoordonnees>
-            </tab_info>
-    </tab_item>
-
-    <!-- informations de brosse -->
-    <tab_item nom="brosse">
-            <tab_info>                                                                
-                    <tab_actions>                                                                                   
-                        <action id="brosse">effacer</action>
-                        <action id="brosse">ecrireBIS</action>
-                    </tab_actions>
-                    <description>Une brosse qui va permettre d'effacer le tableau de la salle G23</description>	
-                    <image lienimage="images/brosse.png"/>
-                    <possession>false</possession>                                                                  		
-                    <tabCoordonnees>
-                        <x>110</x>
-                        <y>405</y>
-                    </tabCoordonnees>
-            </tab_info>
-    </tab_item>
-
-    <!-- informations de stylo -->
-    <tab_item nom="stylo">
-            <tab_info>                                                                
-                    <tab_actions>                                                                                   
-                        <action id="stylo">ecrire</action>
-                        <action id="stylo">messageDialogue</action>                        
-                    </tab_actions>
-                    <description>Un stylo qui va servir a ecrire sur le tableau de la salle G23</description>	
-                    <image lienimage="images/stylo.png"/>
-                    <possession>false</possession>                                                                  		
-                    <tabCoordonnees>
-                        <x>460</x>
-                        <y>330</y>
-                    </tabCoordonnees>
-            </tab_info>
-    </tab_item>
-    <tab_item nom="lagenda">
-            <tab_info>                                                                
-                    <tab_actions>                                                                                   
-                        <action id="lagenda">AfficherAgenda</action>
-                        <action id="lagenda">CacherAgenda</action>                        
-                    </tab_actions>
-                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
-                    <image lienimage="images/agenda.png"/>
-                    <possession>true</possession>                                                                  		
-                    <tabCoordonnees>
-                        <x>460</x>
-                        <y>330</y>
-                    </tabCoordonnees>
-            </tab_info>
-    </tab_item>
-    <tab_item nom="cleUSB">
-            <tab_info>                                                                
-                    <tab_actions>                                                                                   
-                        <action id="cleUSB">DonnerCleUSB</action>                                         
-                    </tab_actions>
-                    <description>Un espace de stockage de 16go</description>	
-                    <image lienimage="images/cleUSB.png"/>
-                    <possession>false</possession>                                                                  		
-                    <tabCoordonnees>
-                        <x>460</x>
-                        <y>330</y>
-                    </tabCoordonnees>
-            </tab_info>
-    </tab_item>
-    <tab_item nom="gomme">
-            <tab_info>                                                                
-                    <tab_actions>                                                                                   
-                        <action id="gomme">DonnerGomme</action>                                         
-                    </tab_actions>
-                    <description>Un outil bien utile pour effecer ses erreurs</description>	
-                    <image lienimage="images/gomme.png"/>
-                    <possession>false</possession>                                                                  		
-                    <tabCoordonnees>
-                        <x>460</x>
-                        <y>330</y>
+                        <x>250</x>
+                        <y>250</y>
                     </tabCoordonnees>
             </tab_info>
     </tab_item>

@@ -21,13 +21,10 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 2;
+var progression = 3;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
-
-var objectifCourant=0;
-var exerciceFini;
 
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
@@ -127,15 +124,10 @@ function initpage()
     if(document.getElementById("antiClicTransition"))
         removeElementById("antiClicTransition");
     //Va servir a precharge les images du jeu
-        //indicationChargement();    
+        indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();      
-                
-    //suppressionItemDuJeu("stylo");
-    //alert(existenceItem("stylo"));
-    
-    //alert(verifPresencePNJ("MME ROBBA"));
-    
+        premiereAnalyseInventaire();           
+               
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
     //------------------------------------------------------------------------------
@@ -326,6 +318,7 @@ function recupFromXMLDataBaseActions()
         
         for(A=0;A<tabNom.length;A++)
         {
+            //var tabActions=["action","prerequis","etatFinal"];
             var tabActions = new Array();
             tabActions.push("nomAction");
             tabActions.push("prerequis");
@@ -377,7 +370,7 @@ function recupFromXMLDataBaseChapitre()
             {                                 
                 if(tabObjectifs[j].getAttribute("id")===(tabChapitre[i].getAttribute("numero")))
                 {
-                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent,tabObjectifs[j].getAttribute("objectifCourant")));         
+                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent));         
                 }
             }            
             
