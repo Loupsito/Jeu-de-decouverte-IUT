@@ -45,8 +45,8 @@
                     <image lienimage="images/stylo.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
-                        <x>460</x>
-                        <y>330</y>
+                        <x>380</x>
+                        <y>380</y>
                     </tabCoordonnees>
             </tab_info>
     </tab_item>

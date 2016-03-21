@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- informations de cle -->
 <pnjs>
-	<pnj nom="JEAN" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
+	<pnj nom="JEAN" localisation="216" image="images/pnj/jean.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="JEAN" id="JEAN" numeroDialogue="0">
                                 <texte>Salut wqazsx</texte>
@@ -25,7 +25,7 @@
 			</dialogue>
                 </dialogues>
         </pnj>
-        <pnj nom="MARTEL" localisation="5" image="images/pnj/robert.png" numeroDialogueCourant="0">
+        <pnj nom="MARTEL" localisation="227" image="images/pnj/m_martel.png" numeroDialogueCourant="0">
                 <dialogues>
                         <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="0">
                                 <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
@@ -59,59 +59,59 @@
 			</dialogue>
                 </dialogues>
         </pnj>
-        <pnj nom="ROBBA" localisation="7" image="images/pnj/yui.png" numeroDialogueCourant="0">
+        <pnj nom="BARBOT" localisation="209" image="images/pnj/mme_barbot.png" numeroDialogueCourant="0">
                 <dialogues>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="0">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="0">
                                 <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="1">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="1">
                                 <texte>Un peu de silence s’il vous plaît ! … Aujourd’hui je vais vous expliquer comment fonctionne le deuxième semestre ainsi que le troisième et quatrième en deuxième année.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="2">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="2">
                                 <texte>Le premier semestre que vous venez d’achever introduisait les notions de programmation les plus basiques, que certains avaient déjà étudié auparavant.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="3">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="3">
                                 <texte>Le deuxième semestre, lui, sera basé sur l’adoption d’une méthode précise pour la création d’une application, avec l’apprentissage du langage objet et la mise en l’application de la conception orientée objet.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="4">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="4">
                                 <texte>Pour ce semestre on utilisera principalement du java.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="5">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="5">
                                 <texte>Et faites attention ! Les cours sont tous très connectés à partir de maintenant, alors faites bien attention à bien garder le niveau dans chaque matière.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="6">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="6">
                                 <texte>Le troisième et quatrième semestre seront orientés vers l’apprentissage approfondi de technique de codage pour optimiser le code et le rendre plus sécurisé, on en reparlera au début de la deuxième année.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="7">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="7">
                                 <texte>Sachez juste que pour aller en deuxième année, vous devez avoir validé vos deux premiers semestres, que ce soit par compensation ou non. Ceux qui auront ratés le premier semestre pourront le compenser avec les notes du deuxième.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="8">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="8">
                                 <texte>Concernant les cours...</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>alarme_incendie</etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="9">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="9">
                                 <texte>… C’est bien le moment… Bon, on en reparle juste après, sortez dans la cour, et dans le calme !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="ROBBA" id="ROBBA" numeroDialogue="10">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="10">
                                 <texte>Allez ! On se dépêche !</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>

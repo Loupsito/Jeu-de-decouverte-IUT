@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- informations de cle -->
 <pnjs>
-	<pnj nom="FREDERIC" localisation="0" image="images/pnj/robert.png" numeroDialogueCourant="0">
+	<pnj nom="FREDERIC" localisation="306" image="images/pnj/frederic.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="0">
                                 <texte>Yo ! Genki ?</texte>
@@ -110,7 +110,7 @@
 			</dialogue>  
 		</dialogues>
 	</pnj>
-	<pnj nom="MARGAUX" localisation="0" image="images/pnj/yui.png" numeroDialogueCourant="0">
+	<pnj nom="MARGAUX" localisation="306" image="images/pnj/margaux.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="0">
                                 <texte>Salut !</texte>
@@ -124,7 +124,7 @@
 			</dialogue>
                 </dialogues>               
         </pnj>
-        <pnj nom="ROGER" localisation="1" image="images/pnj/robert.png" numeroDialogueCourant="0">
+        <pnj nom="ROGER" localisation="305" image="images/pnj/roger.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="ROGER" id="ROGER" numeroDialogue="0">
                                 <texte>Salut, qu’est-ce que tu veux ?</texte>
@@ -148,7 +148,7 @@
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
                                 <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
-				<prerequis>(verifPossessionItem('stylo') === true)</prerequis>				
+				<prerequis>(verifPossessionItem('cleUSB') === true)</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
@@ -158,7 +158,7 @@
 			</dialogue>
                 </dialogues>               
         </pnj>
-	<pnj nom="BASTIEN" localisation="4" image="images/pnj/asusa.png" numeroDialogueCourant="0">
+	<pnj nom="BASTIEN" localisation="308" image="images/pnj/bastien.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="0">
                                 <texte>Laisse-moi passer abruti, tu bloques le passage.</texte>
@@ -202,7 +202,7 @@
 			</dialogue>
                 </dialogues>               
         </pnj>
-        <pnj nom="AUGER" localisation="4" image="images/pnj/robert.png" numeroDialogueCourant="0">
+        <pnj nom="AUGER" localisation="308" image="images/pnj/auger.png" numeroDialogueCourant="0">
 		<dialogues>
 			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
                                 <texte>Il est plutôt terrible non ? Je ne sais pas pourquoi il ne s’est pas encore fait expulsé, on n’en à jamais eu des comme ça avant. Il est peut-être déjà expulsé ? On l’aurait rappelé pour le scén…</texte>

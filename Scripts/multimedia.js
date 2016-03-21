@@ -418,7 +418,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
     $('#antiClic').click(function () {   
         if (typeDeDialogue === "dialogueEnchaine")
         {
-            removeElementById(iddd);  
+            removeElementById("msgDialogue");  
             testDialogue(idImages);
             //initEtatImg(); 
         }
@@ -427,7 +427,7 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
             if (typeDeDialogue !== "dialogueScenar")
                 //initEtatImg();    
             removeElementById("fond");
-            removeElementById(iddd);          
+            removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
             removeElementById("nomPNJ");
             cacherBoiteDialogue();

@@ -143,7 +143,8 @@ function fonctionGeneratricePrincipale()
             document.getElementById("ecran").style.backgroundSize = "contain";
             document.getElementById("ecran").style.backgroundRepeat = "no-repeat"; 
             placementPNJ(joueur.idSalle);
-            placementScenario(joueur.idSalle);                       
+            placementScenario(joueur.idSalle);     
+            document.getElementById("position").innerHTML="Position Joueur : "+joueur.idSalle;
             break;
         }
     }

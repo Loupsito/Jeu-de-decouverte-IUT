@@ -63,7 +63,7 @@ function changementEtat(tab)
     else if (tab === "choixExoMaths"){blocChoix("choixMaths",choixMaths,"Convertir 8 en binaire");}
     else if (tab === "choixAider"){blocChoix("choixAide",choixAiderRoger,"Récupérer une gomme une clé USB et stylo");}
     else if (tab === "choixPayerBastien"){blocChoix("choixPayerBastien",choixPayerBastien,"Payer le repas de Bastien");}
-    else if (tab === "supprBastien"){visibiltyPNJ("#BASTIEN","hidden");visibiltyPNJ("#AUGER","visible");$("#G25_1").add("#I21").css("position","absolute").css('margin-left',"-9999px");}
+    else if (tab === "supprBastien"){visibiltyPNJ("#BASTIEN","hidden");visibiltyPNJ("#AUGER","visible");}
     else if (tab === "choixPayerRepasAuger"){blocChoix("choixPayerRepasAuger",choixPayerRepasAuger,"Payer le repas de M. Auger");}
 }
 var typeDialogue;
@@ -333,7 +333,7 @@ function cliquerChoixFredMargaux (idDiv)
             miseAJourDialogue(0,16);
             removeElementById("choixAlarme");
         }
-        initEtatImg();
+        //initEtatImg();
         testDialogue("FREDERIC");
         removeElementById(idDiv[1]);
         $("#choixAlarme").fadeOut(500); 
