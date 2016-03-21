@@ -396,120 +396,45 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
 {     
     if (!$("#antiClic").length)
         zoneAntiClic("6","antiClic",'0.4');  
-    if (!$("#antiClicSecond").length)
-        zoneAntiClic("8","antiClicSecond",'0');  
     
     //création des div dialogues
     divTexte1 = creationDialogue(iddd,divTexte1);
+    
+    //removeElementById("fleche");
+            //genereContenuID("span","",iddd,"fleche");
+                
     //texte complet tampon;
     toutLeTexte = texte;
-        for(i=0, l = texte.length; i< l ; i++) 
-    {          
-        $(function(i) {           
-            timer = setTimeout(function() {
-                var lettreParLettre = texte.charAt(i);
-                divTexte1.innerHTML += lettreParLettre;                
-                hello = jouerSon("sons/SonTexte2.ogg",son); 
-                
-                //si clique pendant que le texte est en court d'affichage
-                if (msgDialogueEstComplet(divTexte1, texte) === false){
-                    if (typeDeDialogue !== "dialogueEnchaine")
-                    {
-                        if ($("#antiClicProvisoire2").length)
-                            removeElementById("antiClicProvisoire2");
-                        $('#antiClicSecond').click(function () {                        
-                            removeElementById("msgDialogue");
-                            //création des div dialogues
-                            divTexte2 = creationDialogue(iddd,divTexte2);
-                            
-                            divTexte2.innerHTML = toutLeTexte;
-                            if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
-                            {
-                                clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat);                                                               
-                                return;
-                            }
-                        });
-                    }
-                    else if (typeDeDialogue === "dialogueEnchaine")
-                    {
-                        $('#antiClicSecond').click(function () {          
-                            removeElementById("msgDialogue");
-                            //création des div dialogues                            
-                            divTexte2 = creationDialogue(iddd,divTexte2);
-
-                            divTexte2.innerHTML = toutLeTexte;
-
-                            if (msgDialogueEstComplet(divTexte2, toutLeTexte) === true)
-                            {
-                                clearTimeout(timer);
-                                poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat);                             
-                                return;
-                            }
-                        });
-                    }
-                }
-                else if (msgDialogueEstComplet(divTexte1, toutLeTexte) === true)
-                {   
-                    clearTimeout(timer);
-                    poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat); 
-                    return;
-                }                
-            }, duree= i*35); 
-        }(i));    
-    }                
-    //cacherBoiteDialogue();
-}
-//test si le texte a été intégralement affiché (progessivement)
-function msgDialogueEstComplet(element,texte)
-{
-    if (element.innerHTML === texte)
-        return true;     
-    else
-        return false;
-}
-
-function poursuivreDialogue(iddd,typeDeDialogue,idImages,nomFake,tabEtat)
-{
-    removeElementById("fleche");
-    genereContenuID("span","",iddd,"fleche");
     
-    //sert à pouvoir cliquer 2 fois sur un antiClic (pas sur la boîte de dialogue)   
-    antiClicProv = document.getElementById('antiClicProvisoire');
-    if (antiClicProv === null)
-        zoneAntiClic("12","antiClicProvisoire",'0');
-         
-    if (typeDeDialogue !== "dialogueEnchaine")
-    {     
-        $('#antiClicProvisoire').click(function () {   
+    clearTimeout(timer);
+    
+    
+    var timer = setTimeout(function() {
+        $("#"+iddd).hide();
+        divTexte1.innerHTML = toutLeTexte;   
+        $("#"+iddd).fadeIn(200);
+    },0);   
+        
+    $('#antiClic').click(function () {   
+        if (typeDeDialogue === "dialogueEnchaine")
+        {
+            removeElementById("msgDialogue");  
+            testDialogue(idImages);
+            //initEtatImg(); 
+        }
+        else if (typeDeDialogue !== "dialogueEnchaine")
+        {
             if (typeDeDialogue !== "dialogueScenar")
-                initEtatImg(nomFake);     
+                //initEtatImg();    
             removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 
-            removeElementById("antiClicSecond"); 
-            removeElementById("antiClicProvisoire");     
             removeElementById("nomPNJ");
             cacherBoiteDialogue();
             changementEtat(tabEtat);
-            return;
-        });  
-    }
-    else if (typeDeDialogue === "dialogueEnchaine")
-    {
-        removeElementById("antiClicProvisoire2");
-        genereContenuID("span","","ecran","antiClicProvisoire2"); 
-        $('#antiClicProvisoire2').click(function () {        
-            initEtatImg(nomFake);           
-            removeElementById("msgDialogue");
-            removeElementById("antiClic");
-            removeElementById("antiClicSecond"); 
-            removeElementById("antiClicProvisoire");
-            removeElementById("antiClicProvisoire2");
-            testDialogue(idImages);
-            return;
-        }); 
-    }
+        }   
+    });
+    //cacherBoiteDialogue();
 }
 function zoneAntiClic(priorite,sonId,opacity)
 {

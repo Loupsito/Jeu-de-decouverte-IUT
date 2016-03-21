@@ -2,8 +2,8 @@
 
 <actions>
     <action nom="ouvrir_porte_i21">
-        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
-        <etatFinal>ouvrirPorte(['I21'])</etatFinal>
+        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(207,214)==false)</prerequis>
+        <etatFinal>ouvrirPorte(['mermoz8'])</etatFinal>
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>

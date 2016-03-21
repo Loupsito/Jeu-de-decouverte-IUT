@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapitres>
-    <chapitre numero='1' positionJoueur='25'>        
+    <chapitre numero='1' positionJoueur='40'>        
         <objectif id='1' objectifCourant='0'>(joueur.idSalle===222)</objectif>
         <descriptif id='1'>Se rendre au batiment Mermoz</descriptif>        
         

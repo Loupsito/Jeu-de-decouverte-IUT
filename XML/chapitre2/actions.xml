@@ -29,4 +29,8 @@
         <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
         <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
     </action>
+    <action nom="Rendre">
+        <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)</prerequis>
+        <etatFinal>alert('youhou !');</etatFinal>
+    </action>
 </actions>
