@@ -6,13 +6,13 @@
         <objectif id='1'>(verifPossessionItem('stylo') === true)</objectif>
         <descriptif id='1'>Obtenir le stylo</descriptif>
     </chapitre>
-    <chapitre numero='2' positionJoueur='3'>
+    <chapitre numero='2' positionJoueur='306'>
         <objectif id='2'>(verifPossessionItem('cleI21') === true)</objectif>
         <descriptif id='2'>Obtenir la cle I21</descriptif>
         <objectif id='2'>(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')</objectif>
         <descriptif id='2'>Ecrire sur le tableau</descriptif>
     </chapitre>
-    <chapitre numero='3' positionJoueur='5'>
+    <chapitre numero='3' positionJoueur='117'>
         <objectif id='3'>(verifPossessionItem('brosse') === true)</objectif>
         <descriptif id='3'>Obtenir la brosse</descriptif>
         <objectif id='3'>(verifPossessionItem('stylo') === true)</objectif>
