@@ -10,14 +10,13 @@ var objectifCourant;
 var tabDeTousLesChapitre;
 
 function verifieProgression(chapitreCourant)
-{
-    alert("objectifCourant = "+objectifCourant);
+{    
     affichageAgenda(chapitreCourant);
     var objectifsNonRemplie=0;
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
         if (tabDeTousLesChapitre[i]["chapitre"] == chapitreCourant)
-        {            
+        {                      
             for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
             {                      
                 /*if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
@@ -34,10 +33,11 @@ function verifieProgression(chapitreCourant)
                     break;
                 }
             }
-            if ((objectifsNonRemplie===0) && (objectifCourant == tabDeTousLesChapitre[i]["objectifs"].length-1))
+            if ((objectifsNonRemplie===0) && (objectifCourant == tabDeTousLesChapitre[i]["objectifs"].length))
             {                
                 if(progression<tabDeTousLesChapitre.length)
                 {
+                    objectifCourant=0;
                     progression+=1;
                     zoneAntiClic("6","antiClicTransition","0.4");                    
                     setTimeout(function(){
@@ -66,6 +66,7 @@ function verifieProgression(chapitreCourant)
                     }, 4500);                                        
                 }                                                                                                       
             }
+            break;
         }
     }
     affichageAgenda(chapitreCourant);
@@ -189,7 +190,7 @@ Angoka(3);
 
 
 function affichageAgenda(chapitreCourant)
-{        
+{            
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
         for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
@@ -229,18 +230,13 @@ function affichageAgenda(chapitreCourant)
     {   
         if (tabDeTousLesChapitre[i]["chapitre"] == chapitreCourant)       
         {
-            
-            
-            
-            
-            
-            
              for(var j=0;j<tabDeTousLesChapitre[i]["objectifs"].length;j++)
             {                      
                 /*if((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===false)
                     objectifsNonRemplie+=1;*/
+                
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
-                {
+                {              
                     var tab= document.querySelectorAll('#panneauAgenda span');               
                     //Si on est au tout premier objectif
                     if(tab.length<1)
@@ -249,7 +245,7 @@ function affichageAgenda(chapitreCourant)
                     if(j+1<tabDeTousLesChapitre[i]["objectifs"].length)
                      {
                         if(tab.length<1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
-                        {                   
+                        {         
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));                
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                             if(element)
@@ -269,12 +265,14 @@ function affichageAgenda(chapitreCourant)
                     }                
                     //Quand on arrive au dernier objectif
                     if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
-                    {                        
+                    {                 
                         element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                         if(element)
                             element.style.color="green";
                     }
+                    break;
                 }
+                
             }
             
             

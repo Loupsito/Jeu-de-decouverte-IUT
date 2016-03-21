@@ -76,7 +76,8 @@ function placementPNJ(positionCourante)
                 CreationImage.height=400;
 
                 image = document.getElementById('pnj').appendChild(CreationImage);
-                $(image).click(function () {
+                $(image).click(function () {    
+                    verifieProgression(progression);        
                     idImages = this.id;
                     afficherBoiteDialogue(); 
                     testDialogue (idImages);  
@@ -111,7 +112,7 @@ function miseAJourDialogue(indicePNJ,nouveauDiagCourant)
     if (tabPNJ[indicePNJ]["numeroDialogueCourant"]!==nouveauDiagCourant){tabPNJ[indicePNJ]["numeroDialogueCourant"]=nouveauDiagCourant;}    
 }
 function testDialogue (idImages)
-{
+{    
     if (!$("#nomPNJ").length)
     {        
         //créer la petite boîte contenant le nom du pnj
@@ -150,6 +151,7 @@ function testDialogue (idImages)
             else if (verifDial === -1)
             {                           
                 typeDialogue = "dialogueDernier";
+                verifieProgression(progression);
             }        
             modifAffichageDialogue(nomFake);
             //changementEtat(tabEtat);        

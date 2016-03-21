@@ -38,6 +38,7 @@ function placementScenario(positionCourant)
                 panneauNarration(tabScenario[i]["texte"].toString());
                 tabScenario[i]["asEteVu"]=true;
             }
+            break;
         }
     }
 }

@@ -106,7 +106,7 @@ function cliquerBouton(bouton)
             //commencer = document.getElementById("accueil");
             //commencer.style.display="none";
             $('#accueil').fadeOut("slow");
-            progression=1;
+            //progression=1;
             transitionChapitre("Chapitre  "+progression);
              setTimeout(function() {    
                 fonctionGeneratricePrincipale();
