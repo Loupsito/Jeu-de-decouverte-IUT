@@ -97,19 +97,20 @@
         BATIMENT MERMOZ
         -->
 	<!--
+	
 	<scene id="200" nom="mermoz1" lienImage="images/map/mermoz/mer_3eme_CouloirEst_E.jpg"/>
 	<scene id="201" nom="mermoz2" lienImage="images/map/mermoz/mer_3eme_CouloirEst_O.jpg"/>
 	<scene id="202" nom="mermoz3" lienImage="images/map/mermoz/mer_3eme_CouloirOuest_E.jpg"/>
 	<scene id="203" nom="mermoz4" lienImage="images/map/mermoz/mer_3eme_CouloirOuest_SO.jpg"/>
-	<scene id="204" nom="mermoz5" lienImage="images/map/mermoz/mer_316_E.jpg"/>
-	<scene id="205" nom="mermoz6" lienImage="images/map/mermoz/mer_316_SO.jpg"/>
-	<scene id="206" nom="mermoz7" lienImage="images/map/mermoz/mer_AmphiA_entree_O.jpg"/>
-	<scene id="207" nom="mermoz8" lienImage="images/map/mermoz/mer_AmphiA_entree_SE.jpg"/>
-	<scene id="208" nom="mermoz9" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_E.jpg"/>
-	<scene id="209" nom="mermoz10" lienImage="images/map/mermoz/mer_AmphiA_rangee_E.jpg"/>
-	<scene id="210" nom="mermoz11" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_O.jpg"/>
-	<scene id="211" nom="mermoz12" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_S.jpg"/>
-	<scene id="212" nom="mermoz13" lienImage="images/map/mermoz/mer_AmphiA_sortieSecours_O.jpg"/>
+	<scene id="204" nom="3161" lienImage="images/map/mermoz/mer_316_E.jpg"/>
+	<scene id="205" nom="3162" lienImage="images/map/mermoz/mer_316_SO.jpg"/>
+	<scene id="206" nom="amphi1" lienImage="images/map/mermoz/mer_AmphiA_entree_O.jpg"/>
+	<scene id="207" nom="amphi2" lienImage="images/map/mermoz/mer_AmphiA_entree_SE.jpg"/>
+	<scene id="208" nom="amphi3" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_E.jpg"/>
+	<scene id="209" nom="amphi4" lienImage="images/map/mermoz/mer_AmphiA_rangee_E.jpg"/>
+	<scene id="210" nom="amphi5" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_O.jpg"/>
+	<scene id="211" nom="amphi6" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_S.jpg"/>
+	<scene id="212" nom="amphi7" lienImage="images/map/mermoz/mer_AmphiA_sortieSecours_O.jpg"/>
 	<scene id="213" nom="mermoz14" lienImage="images/map/mermoz/mer_Entree_amphiA_NO.jpg"/>
 	<scene id="214" nom="mermoz15" lienImage="images/map/mermoz/mer_Entree_amphiA_SE.jpg"/>
 	<scene id="215" nom="mermoz16" lienImage="images/map/mermoz/mer_Entree_entree_NE.jpg"/>
@@ -122,10 +123,10 @@
 	<scene id="222" nom="mermoz23" lienImage="images/map/mermoz/mer_Entree_entree_SE.jpg"/>
 	<scene id="223" nom="mermoz24" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_E.jpg"/>
 	<scene id="224" nom="mermoz25" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_SE.jpg"/>
-	<scene id="225" nom="mermoz26" lienImage="images/map/mermoz/mer_AmphiA_bureauProf_SE.jpg"/>
-	<scene id="226" nom="mermoz27" lienImage="images/map/mermoz/mer_AmphiA_tablette_SE.jpg"/>
-	<scene id="227" nom="mermoz28" lienImage="images/map/mermoz/mer_316_table_E.jpg"/>
-	<scene id="228" nom="mermoz29" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_O.jpg"/>
+    <scene id="225" nom="amphi8" lienImage="images/map/mermoz/mer_AmphiA_bureauProf_SE.jpg"/>
+	<scene id="226" nom="amphi9" lienImage="images/map/mermoz/mer_AmphiA_tablette_SE.jpg"/>
+	<scene id="227" nom="3163" lienImage="images/map/mermoz/mer_316_table_E.jpg"/>
+	<scene id="228" nom="amphi10" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_O.jpg"/>
 	-->
 	
 	<!--BATIMENT SAINT EXUPERY-->
