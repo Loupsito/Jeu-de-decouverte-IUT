@@ -2,13 +2,13 @@
 
 <!-- informations de cle -->
 <tabtab_item>
-    <tab_item nom="cleI21">
+    <tab_item nom="cleAmphiA">
             <tab_info>                                                                
                     <tab_actions>                                                                                   
-                        <action id ="cleI21">ouvrir_porte_i21</action>
+                        <action id ="cleAmphiA">Ouvrir_Porte_Amphi_A</action>
                     </tab_actions>
                     <description>Sert a ouvrir la porte de la salle I21 se trouvant dans la salle G25</description>	
-                    <image lienimage="images/cleI21.png"/>
+                    <image lienimage="images/cleAmphiA.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
                         <x>9999</x>

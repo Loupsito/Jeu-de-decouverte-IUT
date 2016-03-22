@@ -30,7 +30,8 @@
         <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
     </action>
     <action nom="Rendre">
-        <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)</prerequis>
-        <etatFinal>alert('youhou !');</etatFinal>
+        <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)  </prerequis>
+		<prerequis nom="Rendre">(joueur.idSalle==305)</prerequis>
+        <etatFinal>alert('Vous avez donner la cle USB');suppressionItemDuJeu('cleUSB');</etatFinal>
     </action>
 </actions>

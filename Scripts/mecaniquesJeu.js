@@ -473,6 +473,37 @@ function verifPossessionItem(leItem)
         }
 }
 
+
+function suppressionItemDuJeu(leItem)
+{	
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {               
+                delete tabDeTousLesItems[i][0];
+                delete tabDeTousLesItems[i][1];
+                break;
+            }                              
+    }
+	removeElementById(leItem);
+}
+
+function existenceItem(leItem)
+{
+    var trouve;
+    for(var i = 0; i<tabDeTousLesItems.length;i++)
+    {               
+            if (tabDeTousLesItems[i][0] === leItem)
+            {
+                trouve = true;      
+                break;
+            }
+            else
+                trouve = false;                                   
+    }
+    return trouve;
+}
+
 /*
  * @param {string} leItem - le nom de l'item
  */

@@ -99,7 +99,7 @@
                         <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="7">
                                 <texte>Sachez juste que pour aller en deuxième année, vous devez avoir validé vos deux premiers semestres, que ce soit par compensation ou non. Ceux qui auront ratés le premier semestre pourront le compenser avec les notes du deuxième.</texte>
 				<prerequis>normal</prerequis>				
-                                <etatFinal>alarme_incendie</etatFinal>
+                                <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="8">
                                 <texte>Concernant les cours...</texte>

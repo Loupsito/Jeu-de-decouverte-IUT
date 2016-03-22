@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <actions>
-    <action nom="ouvrir_porte_i21">
-        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(207,214)==false)</prerequis>
+    <action nom="Ouvrir_Porte_Amphi_A">
+        <prerequis nom="Ouvrir_Porte_Amphi_A">(verifAccesSalle(207,214)==false)</prerequis>
         <etatFinal>ouvrirPorte(['mermoz8'])</etatFinal>
     </action>
     <action nom="ecrire">

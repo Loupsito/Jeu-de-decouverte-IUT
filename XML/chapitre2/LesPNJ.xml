@@ -19,6 +19,7 @@
 				<prerequis>normal</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,3);testDialogue('margaux');</etatFinal>
 			</dialogue> 
+                        
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="3">
                                 <texte>Oui enfin délégué c’est un bien grand mot, on est l’équivalent des portes-paroles de la classe, et de celui qui est chargé de la feuille d’appel aussi… (je l’ai mise où d’ailleurs ?)</texte>
 				<prerequis>normal</prerequis>				
@@ -151,11 +152,11 @@
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
                                 <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
-				<prerequis>(verifPossessionItem('cleUSB') === true)</prerequis>				
+				<prerequis>(existenceItem('cleUSB')===false)</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
-                                <texte>Ah, tu les as récupérés. Il est dans la queue du crous.</texte>
+                                <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

@@ -21,10 +21,12 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 2;
+var progression = 1;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
+
+var objectifCourant = 0;
 
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
@@ -372,7 +374,7 @@ function recupFromXMLDataBaseChapitre()
             {                                 
                 if(tabObjectifs[j].getAttribute("id")===(tabChapitre[i].getAttribute("numero")))
                 {
-                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent));         
+                    LesChapitres["objectifs"].push(new Array(tabObjectifs[j].textContent,tabDescriptif[j].textContent,tabObjectifs[j].getAttribute("objectifCourant")));         
                 }
             }            
             
