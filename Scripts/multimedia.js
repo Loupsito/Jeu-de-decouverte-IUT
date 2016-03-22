@@ -20,6 +20,8 @@ var divTexte;
 var divTexte2;
 //antiClic Provisoire pour le cas où le joueur souhaite passer le dialogue
 var antiClicProv;
+//servira à laisser éclairer l'img du pnj courant
+var tampIdImages;
 
 //Met a jour l'image background de la position du joueur
 function MAJaffichagePosition()
@@ -399,33 +401,37 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
     
     //création des div dialogues
     divTexte1 = creationDialogue(iddd,divTexte1);
-    
-    //removeElementById("fleche");
-            //genereContenuID("span","",iddd,"fleche");
-                
+              
     //texte complet tampon;
     toutLeTexte = texte;
     
     clearTimeout(timer);
     
+    //tampon id images => Pour garder l'img du pnj courant éclairé
+    tampIdImages=idImages;
     
     var timer = setTimeout(function() {
         $("#"+iddd).hide();
         divTexte1.innerHTML = toutLeTexte;   
+        
+        /*if ($("#msgDialogue").length)
+            genereContenuID("span","",iddd,"fleche");*/
         $("#"+iddd).fadeIn(200);
     },0);   
-        
+    removeElementById("fleche");    
     $('#antiClic').click(function () {   
         if (typeDeDialogue === "dialogueEnchaine")
         {
             removeElementById("msgDialogue");  
             testDialogue(idImages);
-            //initEtatImg(); 
+            changementEtat(tabEtat);
+            if (tampIdImages!==idImages)
+                initEtatImg(idImages); 
         }
         else if (typeDeDialogue !== "dialogueEnchaine")
         {
             if (typeDeDialogue !== "dialogueScenar")
-                //initEtatImg();    
+                initEtatImg(idImages);    
             removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 

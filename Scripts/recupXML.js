@@ -185,6 +185,7 @@ function recupFromXMLDataBasePnj()
             var pnjPrerequis;        //variable contenant le prerequis pour le dialogue suivant
             var pnjEtatFinal;        //variable contenant le prerequis pour le dialogue suivant
             var pnjNomFake;
+            var pnjIdImage;
             //----------------------------------------
 
 
@@ -203,6 +204,7 @@ function recupFromXMLDataBasePnj()
 
                 pnjImage=tabPnj[i].getAttribute("image");
                 pnjDialDefault=tabPnj[i].getAttribute("numeroDialogueCourant");
+                pnjIdImage=tabPnj[i].getAttribute("idImage");
                 //-------------------------
 
                 var tabDialogues=[null];
@@ -236,7 +238,7 @@ function recupFromXMLDataBasePnj()
                     //-------------------------------------
                 }
                 //---------------------------
-    			tabInfoPnj[i]={"nom":pnjNom , "localisation" : pnjLocalisation, "image" : pnjImage, "numeroDialogueCourant" : pnjDialDefault, "dialogue" : tabDialogues};
+    			tabInfoPnj[i]={"nom":pnjNom , "localisation" : pnjLocalisation, "image" : pnjImage, "numeroDialogueCourant" : pnjDialDefault, "dialogue" : tabDialogues, "idImage":pnjIdImage};
 
                 //alert(tabInfoPnj[i]["dialogue"].toString());
             }
