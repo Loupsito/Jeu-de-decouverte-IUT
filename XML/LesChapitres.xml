@@ -15,7 +15,7 @@
         <descriptif id='1'>Recuperer le stylo</descriptif>                
 
         <objectif id='1' objectifCourant='4'>(exerciceFini===true)</objectif><!-- (exerciceFini===true) -->
-        <descriptif id='1'>Repondre a la feuille d'exercice</descriptif>               
+        <descriptif id='1'>Parler à M. Martel afin de compléter la feuille d'exercices</descriptif>               
 
         <objectif id='1' objectifCourant='5'>(joueur.idSalle===207)</objectif>
         <descriptif id='1'>Se rendre en amphitheatre A</descriptif>                
