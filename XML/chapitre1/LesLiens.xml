@@ -2753,7 +2753,7 @@
             <coordonnee2>
                 <x>999999999</x>
                 <y>999999999</y>
-                <fleche>images/flecheVer.png</fleche>
+                <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>

@@ -421,7 +421,6 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
             genereContenuID("span","",iddd,"fleche");*/
         $("#"+iddd).fadeIn(200);
     },0);   
-    removeElementById("fleche");    
     $('#antiClic').click(function () {   
         if (typeDeDialogue === "dialogueEnchaine")
         {

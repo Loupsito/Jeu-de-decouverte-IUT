@@ -90,7 +90,7 @@
         <objectif id='3' objectifCourant='5'>(verifPossessionItem('cleAmphiA') === true)</objectif>
         <descriptif id='3'>Obtenir la cle de l'amphi A</descriptif>
         
-        <objectif id='3' objectifCourant='6'>(joueur.idSalle===206)</objectif>
+        <objectif id='3' objectifCourant='6'>(joueur.idSalle===207)</objectif>
         <descriptif id='3'>Se rendre en amphi A</descriptif>
         
         <objectif id='3' objectifCourant='7'>(joueur.idSalle===226)</objectif>
