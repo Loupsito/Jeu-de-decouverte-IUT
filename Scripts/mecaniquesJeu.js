@@ -32,8 +32,8 @@ var listeLiens;
 var listesActions;
 
 var tabPNJ;
-defiler ("nomScene"); 
 defiler ("nomScene2"); 
+defiler ("nomScene"); 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ function fonctionGeneratricePrincipale()
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene2','nomScene2','textNomScene2');
                         nomTampon2 = listeCases[j][1]; 
-                        defiler ("nomScene2");                         
+                        //defiler ("nomScene2");                         
                     } 
                 }
                 else 
@@ -194,6 +194,7 @@ function fonctionGeneratricePrincipale()
                         convertiNomScene(listeCases[j][1]);
                         afficheNomScene(nomDeScene,'blocNomScene1','nomScene','textNomScene');
                         nomTampon = listeCases[j][1];
+                        //defiler ("nomScene"); 
                     }                   
                 }   
             }
