@@ -153,7 +153,7 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
                                 <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
 				<prerequis>(existenceItem('cleUSB')===false)</prerequis>				
-                                <etatFinal> </etatFinal>
+                                <etatFinal>verifieProgression(progression);</etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
                                 <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
@@ -252,7 +252,7 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="8">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;</etatFinal>
+                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;verifieProgression(progression);</etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="9">
                                 <texte>Tant pis alors…</texte>
@@ -262,7 +262,7 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="10">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;</etatFinal>
+                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;verifieProgression(progression);</etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="11">
                                 <texte>Ah mais tu n’as peut-être plus d’argent après t’être fait racketter comme ça. C’est pas grave, merci quand même, c’est l’intention qui compte.</texte>
