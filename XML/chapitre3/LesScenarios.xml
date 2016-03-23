@@ -2,13 +2,32 @@
 
 
 <scenarios>
-    <scenario localisation = "1" asEteVu = "false">
-        <texte>Texte de la premiere partie du scenario</texte>
-    </scenario>
-    <scenario localisation = "7" asEteVu = "false">
-        <texte>Texte de la deuxieme partie du scenario</texte>
-    </scenario>
-    <scenario localisation = "2" asEteVu = "false">
-        <texte>Texte de la troisieme partie du scenario</texte>
-    </scenario>    
+    <scenario localisation = "117" asEteVu = "false" choix="narration">
+        <texte id ="117">
+            Après avoir longement discuté avec M. Auger, j'ai découvert qu'un hackeur se trouvait à l'IUT.
+            Celui-ci défiais les par-feu de l'établissement et remettait en cause l'intégrité des systèmes d'informations de l'IUT.
+            Ironiquement, en pointant les failles de sécurité, le réseau de l'IUT était devenu l'un des plus fiable parmis les université.
+            Depuis, les professeurs cherchent avec vivacité le hackeur parmis les étudiants.
+            Celui-ci aurait alors proposé de rejoindre l'université comme responsable sécurité reseau si un étudiant ou un professeur parvenait à retrouver sa trace.
+            Pour donner un coup de pouce aux élèves, il a également coupé le réseau de l'IUT.
+            Les travaux pratique de l'après midi ont ainsi été remplacés par des travaux dirigés.
+            
+           ...
+            
+            Mais je dois m'éclipser pour chercher le dit hackeur.
+        </texte>
+    </scenario> 
+    <scenario localisation = "226" asEteVu = "false" choix="narration">
+        <texte id ="226">
+        J'ai trouvé la tablette du hackeur !
+        
+        Je suis allé la rendre auprès de M. Auger et il m'a proposé de demander à l'étudiant de former ses camarades à la sécurité.
+        Despuis, une nouvelle matière est enseignée à l'IUT : la sécurité réseau.
+        </texte>
+    </scenario> 
+    <scenario localisation = "120" asEteVu = "false" choix="dialogue">
+        <texte id ="120">
+        Maintenant que je suis sorti de la salle, je deverais aller dans l'amphithéathre, j'y trouverais peut etre quelque chose.
+        </texte>
+    </scenario>     
 </scenarios>
