@@ -138,7 +138,7 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="1">
                                 <texte>Tu veux savoir où se trouve Bastien ? Tu est prêt à nous aider ?</texte>
 				<prerequis>normal</prerequis>				
-                                <etatFinal>blocChoix("choixAide",choixAiderRoger,"Récupérer une gomme une clé USB et stylo");</etatFinal>
+                                <etatFinal>blocChoix("choixAide",choixAiderRoger,"Récupérer une clé USB dans la bibliothèque");</etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="2">
                                 <texte>Alors ?</texte>
@@ -146,12 +146,12 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="3">
-                                <texte>Parfait ! On a perdu une gomme, une clé USB et un stylo dans la BU, tu peux nous aider à les retrouver ? On te dira où il est après.</texte>
+                                <texte>Parfait ! On a perdu une clé USB dans la BU, tu peux nous aider à la retrouver ? On te dira où il est après.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
-                                <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
+                                <texte>Une clé USB. Allez bouge !</texte>
 				<prerequis>(existenceItem('cleUSB')===false)</prerequis>				
                                 <etatFinal>verifieProgression(progression);</etatFinal>
 			</dialogue>
