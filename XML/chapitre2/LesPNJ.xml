@@ -158,8 +158,9 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
                                 <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
+                                <etatFinal>rogerAeteParle2 = true;</etatFinal>
 			</dialogue>
+
                 </dialogues>               
         </pnj>
 	<pnj nom="BASTIEN" localisation="308" image="images/pnj/bastien.png" numeroDialogueCourant="0" idImage="bastien">
@@ -271,7 +272,7 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="12">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;</etatFinal>
+                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;verifieProgression(progression);</etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>          
