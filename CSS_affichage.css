@@ -1,3 +1,7 @@
+@font-face {
+	font-family: "Century Gothic";
+	src: url('Century Gothic.ttf');
+}
 body 
 {
     margin : 0 auto;
