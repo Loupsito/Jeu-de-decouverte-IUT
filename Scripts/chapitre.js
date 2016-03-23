@@ -11,8 +11,7 @@ var tabDeTousLesChapitre;
 
 function verifieProgression(chapitreCourant)
 {    
-    affichageAgenda(chapitreCourant);
-    $('#position').append("objectiCourant : "+objectifCourant+"<br/>");
+    affichageAgenda(chapitreCourant);    
     var objectifsNonRemplie=0;
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
@@ -241,8 +240,7 @@ function affichageAgenda(chapitreCourant)
                
 			   //alert((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))+"==="+objectifCourant);
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
-                { 
-                    //$('#position').append(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")+" : "+(eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))+" objectiCourant : "+objectifCourant+"<br/>");
+                {                    
                     var tab= document.querySelectorAll('#panneauAgenda span');               
                     //Si on est au tout premier objectif
                     if(tab.length<1){
