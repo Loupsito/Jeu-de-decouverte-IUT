@@ -224,7 +224,7 @@ function affichageAgenda(chapitreCourant)
     }
     //Ajout du Titre 'Agenda'
     if(!document.getElementById("titreAgenda"))
-        genereContenuID("div","Agenda<hr/>","panneauAgenda","titreAgenda");
+        genereContenuID("div","Objectif<hr/>","panneauAgenda","titreAgenda");
 
     //Affichage dynamique des objectifs
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
