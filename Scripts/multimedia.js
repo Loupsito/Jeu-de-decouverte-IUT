@@ -20,8 +20,6 @@ var divTexte;
 var divTexte2;
 //antiClic Provisoire pour le cas où le joueur souhaite passer le dialogue
 var antiClicProv;
-//servira à laisser éclairer l'img du pnj courant
-var tampIdImages;
 
 //Met a jour l'image background de la position du joueur
 function MAJaffichagePosition()
@@ -280,7 +278,10 @@ function convertiNomScene(tabCase)
     else if (tabCase.substring(0, 3) === "G23") nomDeScene = "G23";
     else if (tabCase.substring(0, 3) === "I21") nomDeScene = "I21";
     else if (tabCase.substring(0, 3) === "AMP") nomDeScene = "AMPHI";
+    else if (tabCase.substring(0, 3) === "316") nomDeScene = "316";
     else if (tabCase.substring(0, 3) === "ext") nomDeScene = "EXTERIEUR";
+    else if (tabCase.substring(0, 3) === "sai") nomDeScene = "SAINT EXUPERY";
+    else if (tabCase.substring(0, 3) === "mer") nomDeScene = "MERMOZ";
 }
 var timing,timing2;
 function genererNotification(msg)
@@ -401,37 +402,34 @@ function dialogue(texte,iddd,divTexte1,divTexte2,typeDeDialogue,idImages,nomFake
     
     //création des div dialogues
     divTexte1 = creationDialogue(iddd,divTexte1);
-              
+    
+    //removeElementById("fleche");
+            //genereContenuID("span","",iddd,"fleche");
+                
     //texte complet tampon;
     toutLeTexte = texte;
     
     clearTimeout(timer);
     
-    //tampon id images => Pour garder l'img du pnj courant éclairé
-    tampIdImages=idImages;
     
     var timer = setTimeout(function() {
         $("#"+iddd).hide();
         divTexte1.innerHTML = toutLeTexte;   
-        
-        /*if ($("#msgDialogue").length)
-            genereContenuID("span","",iddd,"fleche");*/
         $("#"+iddd).fadeIn(200);
     },0);   
-    removeElementById("fleche");    
+        
     $('#antiClic').click(function () {   
         if (typeDeDialogue === "dialogueEnchaine")
         {
             removeElementById("msgDialogue");  
             testDialogue(idImages);
             changementEtat(tabEtat);
-            if (tampIdImages!==idImages)
-                initEtatImg(idImages); 
+            //initEtatImg(); 
         }
         else if (typeDeDialogue !== "dialogueEnchaine")
         {
             if (typeDeDialogue !== "dialogueScenar")
-                initEtatImg(idImages);    
+                //initEtatImg();    
             removeElementById("fond");
             removeElementById("msgDialogue");          
             removeElementById("antiClic"); 

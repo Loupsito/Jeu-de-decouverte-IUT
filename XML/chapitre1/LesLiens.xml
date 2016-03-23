@@ -2274,6 +2274,7 @@
             </coordonnee2>
         </coordonnees>
     </lien>
+    <!--
     <lien>
         <idScenes id1="206" id2="213" />
         <acces>true</acces>
@@ -2290,6 +2291,7 @@
             </coordonnee2>
         </coordonnees>
     </lien>
+    -->
     <lien>
         <idScenes id1="207" id2="214" />
         <acces>false</acces>
@@ -2660,12 +2662,28 @@
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="220" id2="221" />
+        <idScenes id1="220" id2="217" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
                 <x>295</x>
                 <y>350</y>
+                <fleche>images/flecheVersLeHaut.png</fleche>
+            </coordonnee1>
+            <coordonnee2>
+                <x>999999999</x>
+                <y>999999999</y>
+                <fleche>images/flecheVersLaDroiteDiag.png</fleche>
+            </coordonnee2>
+        </coordonnees>
+    </lien>
+    <lien>
+        <idScenes id1="201" id2="221" />
+        <acces>true</acces>
+        <coordonnees>
+            <coordonnee1>
+                <x>999999999</x>
+                <y>999999999</y>
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>

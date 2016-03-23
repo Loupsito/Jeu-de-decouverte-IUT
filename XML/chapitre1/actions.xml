@@ -3,7 +3,7 @@
 <actions>
     <action nom="Ouvrir_Porte_Amphi_A">
         <prerequis nom="Ouvrir_Porte_Amphi_A">(verifAccesSalle(207,214)==false)</prerequis>
-        <etatFinal>ouvrirPorte(['mermoz8'])</etatFinal>
+        <etatFinal>ouvrirPorte(['amphi2'])</etatFinal>
     </action>
     <action nom="ecrire">
         <prerequis nom="ecrire">joueur.idSalle==6</prerequis>

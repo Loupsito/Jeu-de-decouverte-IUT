@@ -1,9 +1,40 @@
-//variable global
+/*var pnj1={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png", "numeroDialogueCourant": 0,"dialogue":
+            [["Salut bienvenue dans notre jeu de découverte, nous sommes heureux de vous faire découvrir l'IUT de Vélizy Bitch.","(verifPossessionItem('stylo') === true)",""],
+            ["Tu as trouvé le stylo","(verifPossessionItem('cleI21') === true)",""],
+            ["Wahou la clé !","'"+"last"+"'",""]]};
+    
+var pnj2={"nom":"Asusa","localisation": 4,"image":"images/pnj/asusa.png","numeroDialogueCourant": 0,"dialogue":
+            [["Si seulement la salle I21 était ouverte...", "(verifAccesSalle(7,4) === true)",""],
+            ["Merci onii-chan, tu as ouvert la salle I21 !","'"+"last"+"'",""]]};
+        
+var pnj3={"nom":"Yui","localisation": 6,"image":"images/pnj/yui.png","numeroDialogueCourant": 0,"dialogue":
+            [["Essaie de me faire un joli dessin sur le tableau !", "(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')",""],
+            ["Bien dessiné, chouette !","'"+"last"+"'",""]]};
+
+var pnj4={"nom":"Auger","localisation": 0,"image":"images/pnj/auger.png","numeroDialogueCourant": 0,"dialogue":
+            [["Bonjour, il fait trop chaud dans cet IUT, d'où mes lunettes de soleil.", "'"+"normal"+"'",""],
+            ["Bienvenue dans le monde epoustouflant de Narnia ! Nous sommes ravis de vous accueillir.","'"+"normal"+"'",""],
+            ["Hello, je suis enseignant-chercheur et j'enseigne l'algorithmique.", "'"+"normal"+"'",""],
+            ["Au revoir, ce fut un plaisir de vous rencontrer dans de telles conditions.", "'"+"last"+"'",""]
+        ]};
+var pnj5={"nom":"Jean","localisation": 0,"image":"images/pnj/robert.png","numeroDialogueCourant": 0,"dialogue":
+            [["Bonjour, bienvenue dans notre bel IUT de velizy, ravie de voir que vous soyez arrivé à destination.", "'"+"normal"+"'",""],
+            ["Je me présente, je suis Jean et je suis etudiant de 2eme année en informatique.","'"+"normal"+"'",""],
+            ["La porte qui se trouve derrière moi permet d'arriver dans le batiment des salles machines, je vous invite à y entrer.", "'"+"normal"+"'",""],
+            ["Je vous souhaite donc bonne journée, ce fut un plaisir de vous rencontrer. Au fait, je vous ouvre la salle I21 à distance, sympa non ?", "'"+"last"+"'","if(listeLiens[4][2]===false){listeLiens[4][2]=true;genererNotification('La salle I21 est maintenant accessible');}"]
+        ]};
+
+var pnj6={"nom":"Robert","localisation": 0,"image":"images/pnj/robert.png","numeroDialogueCourant": 0,"dialogue":
+            [["Bonjour, bienvenue à l'IUT de Vélizy, ravie de vous recevoir.", "'"+"normal"+"'"," "],
+            ["Je me présente, je suis Jean.","'"+"normal"+"'"," "],
+            ["Au revoir bande d'ingrats.","'"+"last"+"'"," "]
+        ]};
+
+var tabPNJJ = new Array (pnj6);
+alert(tabPNJJ[0]["dialogue"]);*/
 var exerciceFini = false;
 var divTexte;
 var divTexte2;
-var typeDialogue;
-var noMoney = false;
 
 //tableau de choix
 var nomChoix = [["INCENDIE","id1"],["DEFAILLANCE","id2"],["CANULAR","id3"],["ENTRAINEMENT","id4"]];
@@ -23,13 +54,17 @@ function verifDialPrerequis(tab)
 }
 function changementEtat(tab)
 {
-    if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleAmphiA",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
+    if (tab === "SUPPRIME"){;return;}
+    else if (tab === "suppr"){suppressionPNJ("MARGAUX");return;}
+    else if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleAmphiA",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
     else if(tab === "alarme_incendie") {panneauNarration("Á ce moment là, un bruit assourdissant se fit entendre dans l'amphi. L'alarme incendie sonnait, encore et encore... <br/>\"J'ai un mauvais pressentiment.\" me suis-je dit.");}
+    else if (tab === "supprBastien"){visibiltyPNJ("#BASTIEN","hidden");visibiltyPNJ("#AUGER","visible");}
     else
     {
         eval(tab);
     }
 }
+var typeDialogue;
 function placementPNJ(positionCourante)
 {
     var idImages;
@@ -76,7 +111,7 @@ function testDialogue (idImages)
         //créer la petite boîte contenant le nom du pnj
         genereContenuID("span","","ecran","nomPNJ");
         nomPNJ = document.getElementById("nomPNJ");
-        //nomPNJ.innerHTML = "idImages";
+        //nomPNJ.innerHTML = idImages;
     }
     
     for(var j=0;j<tabPNJ.length;j++)
@@ -88,14 +123,14 @@ function testDialogue (idImages)
             var tabEtat = tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][2];
             var nomFake = tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][3];
             imagePNJ = document.getElementById(nomFake);
-            initEtatImg(idImages);
+            //initEtatImg();
             //si il y un prérequis
             if (verifDial === 0)   
             {
                 if(eval(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][1]))
                 {       
                     //tabPNJ[j]["numeroDialogueCourant"]++; 
-                    typeDialogue=dialogueEnchaine(nomFake,idImages); 
+                    typeDialogue=dialogueEnchaine(nomFake); 
                     changementEtat(tabEtat);
                     //met le dialogue suivant puis l'éxecute
                     miseAJourDialogue(j,tabPNJ[j]["numeroDialogueCourant"]+1);
@@ -109,9 +144,8 @@ function testDialogue (idImages)
             }               
             //si pas de prerequis et dialogue enchainé
             else if (verifDial === 1)
-            {              
-                //initEtatImg(idImages); 
-                typeDialogue=dialogueEnchaine(nomFake,idImages); 
+            {                
+                typeDialogue=dialogueEnchaine(nomFake); 
                 //changementEtat(tabEtat);
                 dialogue(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue,idImages,nomFake,tabEtat);                          
                 tabPNJ[j]["numeroDialogueCourant"]++;  
@@ -122,8 +156,7 @@ function testDialogue (idImages)
                 typeDialogue = "dialogueDernier";
 				verifieProgression(progression);
             }        
-            modifAffichageDialogue(nomFake,idImages);
-            //initEtatImg(idImages);
+            modifAffichageDialogue(nomFake);
             //changementEtat(tabEtat);        
             dialogue(tabPNJ[j]["dialogue"][tabPNJ[j]["numeroDialogueCourant"]][0],tabPNJ[j]["nom"]+"Dial",divTexte, divTexte2,typeDialogue,idImages,nomFake,tabEtat);
             return;
@@ -131,30 +164,30 @@ function testDialogue (idImages)
         }
     } 
 }
-function dialogueEnchaine(nomFake,idImage)
+function dialogueEnchaine(nomFake)
 {
     typeDialogue = "dialogueEnchaine";
-    modifAffichageDialogue(nomFake,idImage);   
+    modifAffichageDialogue(nomFake);   
     //les 2 suivants pour empecher le clic automatique
     removeElementById("antiClic");       
     return typeDialogue;
 }
 //Sert à changer le nom, et la luminosité de l'image de pnj (pour les dialogues entre pnj)
-function modifAffichageDialogue(nomFake,idImage)
+function modifAffichageDialogue(nomFake)
 {
     //change le nom dans la boîte (nomFake);
     nomPNJ.innerHTML = nomFake;
     //change la luminosité de l'image
-    eclairerImg(idImage);
+    //$("#"+nomFake).css("z-index","7").css("pointer-events","none");
+        //imagePNJ.style.zIndex="7";
+        //imagePNJ.style.pointerEvents = 'none';
 }
-function eclairerImg(idImage)
+
+/*function initEtatImg()
 {
-    $("#"+idImage).css("z-index","7").css("pointer-events","none");
-}
-function initEtatImg(idImage)
-{
-    $("#"+idImage).css("z-index","1").css("pointer-events","auto");
-}
+        imagePNJ.style.zIndex="1";
+        imagePNJ.style.pointerEvents = 'auto';
+}*/
 function blocChoix(idBlocChoix,tabChoix,msg)
 {
     zoneAntiClic(49,"antiClicChoix","0");
@@ -210,16 +243,8 @@ function genererChoix(tabChoix,idBlocChoix)
         choix.style.background="white"; 
         choix.style.color ="#2E2E2E";  
         choix.onmouseover = choix.style.cursor = "pointer";
-        
-        //$("#"+idBlocChoix ).find( "#"+tabChoix[i][1] ).onclick( "background-color", "red" );
-        $("#"+tabChoix[i][1]).hover(function() {
-            $(this).css("background-color","rgba(0, 0, 0, 0)").css("color","white");
-        });
-        $("#"+tabChoix[i][1]).mouseout(function() {
-            $(this).css("background-color","white").css("color","#2E2E2E");
-        });
         choisirChoix(tabChoix[i],idBlocChoix);
-    }       
+    }   
 }
 function choisirChoix(idDiv,idBlocChoix)
 {
@@ -248,10 +273,7 @@ function cliquerChoixPayerAuger(idDiv)
         if (idDiv[0] === "Payer le repas")  
         {
             prepareChangeDialog();
-            if (noMoney === false)
-                miseAJourDialogue(4,7);
-            else
-                miseAJourDialogue(4,11);
+            miseAJourDialogue(4,7);
             testDialogue("auger");
             removeElementById("choixPayerRepasAuger");
         }
@@ -274,7 +296,6 @@ function cliquerChoixPayerBastie(idDiv)
             testDialogue("bastien");
             removeElementById("choixPayerBastien");
             genererNotification("Vous avez perdu de quoi payer un repas.");
-            noMoney = true;
         }
         else 
         {
@@ -330,6 +351,7 @@ function cliquerChoixFredMargaux (idDiv)
 function cliquerChoixMaths (idDiv)
 { 
     $('#'+idDiv[1]).click(function(){
+        removeElementById("antiClicProvisoire"); 
         removeElementById(idDiv[1]);
         //$("#choixAlarme").fadeOut(500); 
         if (idDiv[0] !== "1000")
@@ -348,7 +370,7 @@ function cliquerChoixMaths (idDiv)
         else if (idDiv[0] === "1000")
         {
             removeElementById("msgDialogue");
-            miseAJourDialogue(1,4);
+            miseAJourDialogue(0,4);
             testDialogue("martel");
             removeElementById("antiClicChoix");
             genererNotification("Bonne réponse !");
@@ -357,12 +379,10 @@ function cliquerChoixMaths (idDiv)
         }
     });
 }
+var isTalkedTo = false
 function visibiltyPNJ(lePNJ,visibility)
 {
-    if (visibility === "hide")
-        $(lePNJ).fadeOut("slow");
-    else
-        $(lePNJ).fadeIn("slow");
+    $(lePNJ).css("visibility",visibility);
 }
 
 /*function carte ()

@@ -19,7 +19,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="3">
-                                <texte>Vraiment… je crois que ton groupe a cours en 316 à l'étage. Le mien est plus tard, j’ai encore le temps. </texte>
+                                <texte>Vraiment… je crois que ton groupe a cours en 316. Le mien est plus tard, j’ai encore le temps. </texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -27,32 +27,32 @@
         </pnj>
         <pnj nom="MARTEL" localisation="227" image="images/pnj/m_martel.png" numeroDialogueCourant="0" idImage="martel">
                 <dialogues>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="0">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="0">
                                 <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="1">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="1">
                                 <texte>Bon, je suis désolé de vous annoncer qu’il n’y aura malheureusement pas de maths ! Rolala vraiment, moi qui vous avez préparé un sujet de rêve ! On aurait pu la mettre à la place de l’info quand même ! Enfin bon, aujourd’hui nous allons faire des exercices pour récapituler le plus gros du premier semestre.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="2">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="2">
                                 <texte>Cela ne devrait pas vous poser trop de soucis normalement. Prenez un stylo et revenez me voir.</texte>
 				<prerequis>(verifPossessionItem('stylo') === true)</prerequis>				
                                 <etatFinal>if (verifPossessionItem('stylo') === true){blocChoix("choixMaths",choixMaths,"Convertir 8 en binaire");}</etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="3">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="3">
                                 <texte>Voici le sujet, pour l'épanouissement de votre âme, bien sûr !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="4">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="4">
                                 <texte>Décidément wqazsx, tu es en forme aujourd’hui ! C’est rare de te voir finir en avance. Et bien, du coup, tu as fini tout ce qu’il y avait à faire. Je vais te laisser le choix entre rester ici ou aller directement à la présentation en amphi.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M. MARTEL" id="MARTEL" numeroDialogue="5">
+                        <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="5">
                                 <texte>Si tu veux aller en amphi je laisse les clés ici, ça évitera à Mme Robba de faire un détour. Ah mais si tu restes tu pourras faire des maths, j’ai un sujet tout prêt si tu veux ! Le rêve, non ?</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>depotcle_notif</etatFinal>
@@ -61,61 +61,62 @@
         </pnj>
         <pnj nom="BARBOT" localisation="209" image="images/pnj/mme_barbot.png" numeroDialogueCourant="0" idImage="barbot">
                 <dialogues>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="0">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="0">
                                 <texte>C’est bon ? Tout le monde est là ? … Parfait, on peut commencer.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="1">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="1">
                                 <texte>Un peu de silence s’il vous plaît ! … Aujourd’hui je vais vous expliquer comment fonctionne le deuxième semestre ainsi que le troisième et quatrième en deuxième année.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="2">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="2">
                                 <texte>Le premier semestre que vous venez d’achever introduisait les notions de programmation les plus basiques, que certains avaient déjà étudié auparavant.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="3">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="3">
                                 <texte>Le deuxième semestre, lui, sera basé sur l’adoption d’une méthode précise pour la création d’une application, avec l’apprentissage du langage objet et la mise en l’application de la conception orientée objet.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="4">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="4">
                                 <texte>Pour ce semestre on utilisera principalement du java.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="5">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="5">
                                 <texte>Et faites attention ! Les cours sont tous très connectés à partir de maintenant, alors faites bien attention à bien garder le niveau dans chaque matière.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="6">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="6">
                                 <texte>Le troisième et quatrième semestre seront orientés vers l’apprentissage approfondi de technique de codage pour optimiser le code et le rendre plus sécurisé, on en reparlera au début de la deuxième année.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="7">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="7">
                                 <texte>Sachez juste que pour aller en deuxième année, vous devez avoir validé vos deux premiers semestres, que ce soit par compensation ou non. Ceux qui auront ratés le premier semestre pourront le compenser avec les notes du deuxième.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>alarme_incendie</etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="8">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="8">
                                 <texte>Concernant les cours...</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="9">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="9">
                                 <texte>… C’est bien le moment… Bon, on en reparle juste après, sortez dans la cour, et dans le calme !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="MME BARBOT" id="BARBOT" numeroDialogue="10">
+                        <dialogue nomFake="BARBOT" id="BARBOT" numeroDialogue="10">
                                 <texte>Allez ! On se dépêche !</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                 </dialogues>
-        </pnj>               
+        </pnj>
+                    
 </pnjs>
