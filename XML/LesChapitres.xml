@@ -39,19 +39,19 @@
         <objectif id='2' objectifCourant='1'>(rogerAeteParle===true)</objectif>
         <descriptif id='2'>Parler a Roger</descriptif> 
         
-		<objectif id='2' objectifCourant='2'>(verifPossessionItem('cleUSB')===true)</objectif>
+	<objectif id='2' objectifCourant='2'>(verifPossessionItem('cleUSB')===true)</objectif>
         <descriptif id='2'>Trouver la cle USB</descriptif>       
         
-		<objectif id='2' objectifCourant='3'>(existenceItem('cleUSB')===false)</objectif>
+	<objectif id='2' objectifCourant='3'>(existenceItem('cleUSB')===false)</objectif>
         <descriptif id='2'>Donner la cle USB</descriptif>                                
 
         <objectif id='2' objectifCourant='4'>(rogerAeteParle2===true)</objectif>
-        <descriptif id='2'>Parler a Roger</descriptif> 
+        <descriptif id='2'>Reparler a Roger</descriptif> 
                         
-		<objectif id='2' objectifCourant='5'>((verifDialPrerequis(tabPNJ[3]["dialogue"][tabPNJ[3]["numeroDialogueCourant"]][1]))===-1)</objectif>
+        <objectif id='2' objectifCourant='5'>((verifDialPrerequis(tabPNJ[3]["dialogue"][tabPNJ[3]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='2'>Parler a Bastien</descriptif>       
         
-		<objectif id='2' objectifCourant='6'>(augerAeteParle===true)</objectif>
+	<objectif id='2' objectifCourant='6'>(augerAeteParle===true)</objectif>
         <descriptif id='2'>Parler a M. Auger</descriptif>
        
        

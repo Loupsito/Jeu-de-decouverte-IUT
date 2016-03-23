@@ -139,7 +139,7 @@ function dialogueEnchaine(nomFake,idImage)
     typeDialogue = "dialogueEnchaine";
     modifAffichageDialogue(nomFake,idImage);   
     //les 2 suivants pour empecher le clic automatique
-    removeElementById("antiClic");       
+    removeElementById("antiClic");      
     return typeDialogue;
 }
 //Sert à changer le nom, et la luminosité de l'image de pnj (pour les dialogues entre pnj)

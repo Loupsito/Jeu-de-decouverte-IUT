@@ -255,7 +255,10 @@ function affichageAgenda(chapitreCourant)
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));                
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                             if(element)
+                            {
                                 element.style.color="green";                    
+                                //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                            }
                         }
                         if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
                         {
@@ -263,7 +266,10 @@ function affichageAgenda(chapitreCourant)
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                             if(element)
+                            {
                                 element.style.color="green";
+                                //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                            }
                         }           
                         if(tab.length>=3)
                         {
@@ -273,9 +279,12 @@ function affichageAgenda(chapitreCourant)
                     //Quand on arrive au dernier objectif
                     if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
                     {                 
-                        element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
+                        element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
                         if(element)
+                        {
                             element.style.color="green";
+                            //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                        }
                     }
                     break;
                 }
