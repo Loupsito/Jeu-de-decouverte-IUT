@@ -152,13 +152,13 @@
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
                                 <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
-				<prerequis>(existenceItem('cleUSB')===false);rogerAeteParle = true;</prerequis>				
+				<prerequis>(existenceItem('cleUSB')===false)</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
                                 <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>rogerAeteParle2 = true;</etatFinal>
+                                <etatFinal> </etatFinal>
 			</dialogue>
 
                 </dialogues>               

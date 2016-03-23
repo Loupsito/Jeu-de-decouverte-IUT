@@ -5,9 +5,6 @@ var divTexte2;
 var typeDialogue;
 var noMoney = false;
 var augerAeteParle = false;
-var rogerAeteParle = false;
-var rogerAeteParle2 = false;
-var hey = false;
 //tableau de choix
 var nomChoix = [["INCENDIE","id1"],["DEFAILLANCE","id2"],["CANULAR","id3"],["ENTRAINEMENT","id4"]];
 var choixMaths = [["000","id1"],["101","id2"],["111","id3"],["1000","id4"]];
