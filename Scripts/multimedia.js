@@ -459,3 +459,7 @@ function zoneAntiClic(priorite,sonId,opacity)
     divAnticlic.style.backgroundColor='black';
     document.getElementById("ecran").appendChild(divAnticlic);   
 }
+function changeCursor(idElement,cursor)
+{
+    $("#"+idElement).css("cursor",cursor);
+}

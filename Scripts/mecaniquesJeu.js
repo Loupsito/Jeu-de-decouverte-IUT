@@ -221,6 +221,7 @@ function ouvrirPorte(tabPortes)
     var idPortes = null;
     $('span').click(function () {
         idPortes = this.id;
+        changeCursor('ecran','auto');
         for(var i =0; i<tabPortes.length;i++)
         {
             if (idPortes === tabPortes[i])

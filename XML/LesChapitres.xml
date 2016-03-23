@@ -24,7 +24,7 @@
         <descriptif id='1'>S'asseoir a une place</descriptif>                
 
         <objectif id='1' objectifCourant='7'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='1'>Ecouter le cours de Mme ROBBA</descriptif>          
+        <descriptif id='1'>Ecouter le cours de Mme Barbot</descriptif>          
 
         <objectif id='1' objectifCourant='8'>(joueur.idSalle===212)</objectif>
         <descriptif id='1'>Evacuer par la sortie de secours</descriptif>      
