@@ -12,7 +12,6 @@ var tabDeTousLesChapitre;
 function verifieProgression(chapitreCourant)
 {    
     affichageAgenda(chapitreCourant);
-    $('#position').append("objectiCourant : "+objectifCourant+"<br/>");
     var objectifsNonRemplie=0;
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
