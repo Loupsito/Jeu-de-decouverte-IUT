@@ -21,7 +21,7 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 1;
+var progression = 2;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
