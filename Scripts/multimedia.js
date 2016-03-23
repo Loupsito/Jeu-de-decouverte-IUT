@@ -280,7 +280,10 @@ function convertiNomScene(tabCase)
     else if (tabCase.substring(0, 3) === "G23") nomDeScene = "G23";
     else if (tabCase.substring(0, 3) === "I21") nomDeScene = "I21";
     else if (tabCase.substring(0, 3) === "AMP") nomDeScene = "AMPHI";
+    else if (tabCase.substring(0, 3) === "316") nomDeScene = "316";
     else if (tabCase.substring(0, 3) === "ext") nomDeScene = "EXTERIEUR";
+    else if (tabCase.substring(0, 3) === "sai") nomDeScene = "SAINT EXUPERY";
+    else if (tabCase.substring(0, 3) === "mer") nomDeScene = "MERMOZ";
 }
 var timing,timing2;
 function genererNotification(msg)
