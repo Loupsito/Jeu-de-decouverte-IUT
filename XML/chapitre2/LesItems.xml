@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- informations de cle -->
+<tabtab_item>
+    <tab_item nom="lagenda">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="lagenda">AfficherAgenda</action>
+                        <action id="lagenda">CacherAgenda</action>                        
+                    </tab_actions>
+                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <image lienimage="images/agenda.png"/>
+                    <possession>true</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+    <tab_item nom="cleUSB">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="cleUSB">Rendre</action>
+                    </tab_actions>
+                    <description>Une clé USB qui appartient à un étudiant</description>	
+                    <image lienimage="images/cleUSB.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+</tabtab_item>

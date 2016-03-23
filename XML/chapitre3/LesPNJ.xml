@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- informations de cle -->
+<pnjs>
+	<pnj nom="AUGER" localisation="119" image="images/pnj/auger.png" numeroDialogueCourant="0" idImage="auger2">
+		<dialogues>
+			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
+                                <texte>Salut wqazsx, quoi de neuf ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="1">
+                                <texte>Ah, tu veux les clé, c'est ça ?</texte>
+				<prerequis>normal</prerequis><!--apres le dialogue avec l'appariteur-->
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="2">
+                                <texte>Je les ai posé sur une table de pique-nique tout à l'heure, j'ai du les oublier la bas.</texte>
+				<prerequis>last</prerequis> 
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+	<pnj nom="APPARITEUR" localisation="100" image="images/pnj/jean.png" numeroDialogueCourant="0" idImage="appariteur">
+		<dialogues>
+			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="0">
+                                <texte>Tu veux aller en amphi ? Ca va pas etre possible.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="1">
+                                <texte>Tu as besoin de l'autorisation d'un prof.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
+                                <texte>M. Auger à les clés de toutes façon, donc vois ça avec lui.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="3">
+                                <texte>Il est en G26 je crois. Dans ce batiment.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+	<pnj nom="HOGUIN" localisation="214" image="images/pnj/hoguin.png" numeroDialogueCourant="0" idImage="hoguin">
+		<dialogues>
+			<dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="0">
+                                <texte>Bonjour wqazsx, si vous voulez aller en amphi, il est fermé.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="1">
+                                <texte>Les appariteurs ont probablement la clé, vous devriez allez voir.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="2">
+                                <texte>Ils se trouvent dans le batiment Bastie, celui où se trouvent les machines.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+</pnjs>

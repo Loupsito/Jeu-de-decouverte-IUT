@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- informations de cle -->
+<tabtab_item>
+    <tab_item nom="lagenda">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="lagenda">AfficherAgenda</action>
+                        <action id="lagenda">CacherAgenda</action>                        
+                    </tab_actions>
+                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <image lienimage="images/agenda.png"/>
+                    <possession>true</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+    <tab_item nom="cleAmphiA">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id ="cleAmphiA">Ouvrir_Porte_Amphi_A</action>
+                    </tab_actions>
+                    <description>Sert à ouvrir la porte de l'amphithéâtre A du bâtiment Mermoz</description>	
+                    <image lienimage="images/cleAmphiA.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>400</x>
+                        <y>280</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+</tabtab_item>

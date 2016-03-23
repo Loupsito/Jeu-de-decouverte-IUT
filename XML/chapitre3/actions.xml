@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actions>
+    <action nom="Ouvrir_Porte_Amphi_A">
+        <prerequis nom="Ouvrir Porte Amphi A">(verifAccesSalle(207,214)==false)</prerequis>
+        <etatFinal>ouvrirPorte(['amphi2'])</etatFinal>
+    </action>
+</actions>
+<action nom="AfficherAgenda">
+    <prerequis nom="AfficherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
+    <etatFinal>document.getElementById('agenda').style.display="block";</etatFinal>
+</action>
+<action nom="CacherAgenda">
+    <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
+    <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
+</action>
