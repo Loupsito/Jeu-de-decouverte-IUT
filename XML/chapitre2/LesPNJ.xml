@@ -253,6 +253,7 @@
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>
+                                    alert("Premier");
                                     visibiltyPNJ("#auger","hide");
                                     genererNotification("M. Auger s'en va.");
                                     augerAeteParle = true;
@@ -267,7 +268,13 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="10">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;verifieProgression(progression);</etatFinal>
+                                <etatFinal>
+                                    alert("Deuxieme");
+                                    visibiltyPNJ("#auger","hide");
+                                    genererNotification("M. Auger s'en va.");
+                                    augerAeteParle = true;
+                                    verifieProgression(progression);
+                                </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="11">
                                 <texte>Ah mais tu n’as peut-être plus d’argent après t’être fait racketter comme ça. C’est pas grave, merci quand même, c’est l’intention qui compte.</texte>
@@ -278,10 +285,10 @@
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>
+                                    alert("Troisieme");
                                     visibiltyPNJ("#auger","hide");
                                     genererNotification("M. Auger s'en va.");
-                                    augerAeteParle = true ;
-                                    alert('onch');
+                                    augerAeteParle = true ;                            
                                     verifieProgression(progression);
                                 </etatFinal>
 			</dialogue>

@@ -12,6 +12,7 @@ var tabDeTousLesChapitre;
 function verifieProgression(chapitreCourant)
 {    
     affichageAgenda(chapitreCourant);
+    $('#position').append("objectiCourant : "+objectifCourant+"<br/>");
     var objectifsNonRemplie=0;
     for(var i=0;i<tabDeTousLesChapitre.length;i++)
     {
@@ -27,14 +28,15 @@ function verifieProgression(chapitreCourant)
                     {
                         objectifsNonRemplie+=1;                     
                     }
-                    else
-                        objectifCourant+=1;
+                    //else
+                        //objectifCourant+=1;
                    
                     break;
                 }
             }
-
-            if ((objectifsNonRemplie===0) && (objectifCourant == tabDeTousLesChapitre[i]["objectifs"].length))
+            
+            //alert(objectifCourant +" == "+ tabDeTousLesChapitre[i]["objectifs"].length);
+            if ((objectifsNonRemplie===0) && (objectifCourant == tabDeTousLesChapitre[i]["objectifs"].length-1))
             {                
                 if(progression<tabDeTousLesChapitre.length)
                 {
@@ -240,7 +242,7 @@ function affichageAgenda(chapitreCourant)
 			   //alert((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))+"==="+objectifCourant);
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
                 { 
-                    $('#position').append(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")+" : "+(eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))+" objectiCourant : "+objectifCourant+"<br/>");
+                    //$('#position').append(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")+" : "+(eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))+" objectiCourant : "+objectifCourant+"<br/>");
                     var tab= document.querySelectorAll('#panneauAgenda span');               
                     //Si on est au tout premier objectif
                     if(tab.length<1){
@@ -254,7 +256,8 @@ function affichageAgenda(chapitreCourant)
                         {   
 							//alert("creation");						
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));                
-                            element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
+                            element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
+                            objectifCourant+=1;
                             if(element)
                             {
                                 //element.style.color="green";                    
@@ -265,7 +268,8 @@ function affichageAgenda(chapitreCourant)
                         {
 							//alert("creation");
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));
-                            element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
+                            element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));            
+                            objectifCourant+=1;
                             if(element)
                             {
                                 //element.style.color="green";
@@ -281,13 +285,14 @@ function affichageAgenda(chapitreCourant)
                     if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
                     {                 
                         element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
+                        objectifCourant+=1;
                         if(element)
                         {
                             //element.style.color="green";
                             removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
                         }
                     }
-                    break;
+                    break;                    
                 }
             }
         }
