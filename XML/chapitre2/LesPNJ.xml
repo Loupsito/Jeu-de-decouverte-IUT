@@ -271,9 +271,8 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="12">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#auger","hide");genererNotification("M. Auger s'en va.");augerAeteParle = true;</etatFinal>
 			</dialogue>
                 </dialogues>               
-        </pnj>      
-        
+        </pnj>          
 </pnjs>
