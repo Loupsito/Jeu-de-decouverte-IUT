@@ -48,7 +48,7 @@
 		<objectif id='2' objectifCourant='4'>((verifDialPrerequis(tabPNJ[3]["dialogue"][tabPNJ[3]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='2'>Parler a Bastien</descriptif>       
         
-		<objectif id='2' objectifCourant='5'>((verifDialPrerequis(tabPNJ[4]["dialogue"][tabPNJ[4]["numeroDialogueCourant"]][1]))===-1)</objectif>
+		<objectif id='2' objectifCourant='5'>(augerAeteParle===true)</objectif>
         <descriptif id='2'>Parler a M. Auger</descriptif>
        
        
