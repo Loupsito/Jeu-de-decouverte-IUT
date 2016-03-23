@@ -239,7 +239,8 @@ function affichageAgenda(chapitreCourant)
                
 			   //alert((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))+"==="+objectifCourant);
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
-                {              
+                { 
+                    $('#position').append(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")+" : "+(eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))+" objectiCourant : "+objectifCourant+"<br/>");
                     var tab= document.querySelectorAll('#panneauAgenda span');               
                     //Si on est au tout premier objectif
                     if(tab.length<1){
@@ -256,8 +257,8 @@ function affichageAgenda(chapitreCourant)
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                             if(element)
                             {
-                                element.style.color="green";                    
-                                //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                                //element.style.color="green";                    
+                                removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
                             }
                         }
                         if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
@@ -267,8 +268,8 @@ function affichageAgenda(chapitreCourant)
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));                   
                             if(element)
                             {
-                                element.style.color="green";
-                                //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                                //element.style.color="green";
+                                removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
                             }
                         }           
                         if(tab.length>=3)
@@ -282,8 +283,8 @@ function affichageAgenda(chapitreCourant)
                         element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
                         if(element)
                         {
-                            element.style.color="green";
-                            //removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
+                            //element.style.color="green";
+                            removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
                         }
                     }
                     break;

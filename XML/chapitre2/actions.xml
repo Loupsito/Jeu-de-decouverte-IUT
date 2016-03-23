@@ -32,6 +32,6 @@
     <action nom="Rendre">
         <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)  </prerequis>
 		<prerequis nom="Rendre">(joueur.idSalle==305)</prerequis>
-        <etatFinal>alert('Vous avez donner la cle USB');suppressionItemDuJeu('cleUSB');</etatFinal>
+        <etatFinal>genererNotification('Vous avez donné la cle USB');suppressionItemDuJeu('cleUSB');</etatFinal>
     </action>
 </actions>
