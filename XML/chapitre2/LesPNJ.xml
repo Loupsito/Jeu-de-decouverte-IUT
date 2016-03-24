@@ -10,7 +10,7 @@
 			</dialogue>
 			
 			<dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="1">
-                                <texte>C’est vrai, tout le monde avait l’air perdu, et j’ai rarement vu Mme Robba aussi contrariée. Mme Barbot aussi d’ailleurs, elle avait l’air complètement dépassée quand tout le monde voulait récupérer ses affaires.</texte>
+                                <texte>C’est vrai, tout le monde avait l’air perdu, et j’ai rarement vu Mme Boti aussi contrariée. Mme Barbot aussi d’ailleurs, elle avait l’air complètement dépassée quand tout le monde voulait récupérer ses affaires.</texte>
 				<prerequis>normal</prerequis>	
                                 <etatFinal> </etatFinal>			
 			</dialogue>
@@ -198,12 +198,12 @@
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
                                 <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","fdsf");genererNotification("Bastien s'en va et M. Geronimo arrive.");</etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="7">
                                 <texte>Tss, tocard !</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","sdfdsf");genererNotification("Bastien s'en va et M. Geronimo arrive.");</etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>
@@ -237,7 +237,7 @@
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="5">
                                 <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerait de me payer le repas ?</texte>
 				<prerequis>normal</prerequis>				
-                                <etatFinal>blocChoix("choixPayerRepasAuger",choixPayerRepasAuger,"Payer le repas de M. Auger");</etatFinal>
+                                <etatFinal>blocChoix("choixPayerRepasGeronimo",choixPayerRepasGeronimo,"Payer le repas de M. Geronimo");</etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="6">
                                 <texte>Alors ?</texte>
@@ -254,7 +254,7 @@
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
                                     visibiltyPNJ("#geronimo","hide");
-                                    genererNotification("M. Auger s'en va.");
+                                    genererNotification("M. Geronimo s'en va.");
                                     geronimoAeteParle = true;
                                     verifieProgression(progression);
                                 </etatFinal>
@@ -269,7 +269,7 @@
 				<prerequis>last</prerequis>				
                                 <etatFinal>
                                     visibiltyPNJ("#geronimo","hide");
-                                    genererNotification("M. Auger s'en va.");
+                                    genererNotification("M. Geronimo s'en va.");
                                     geronimoAeteParle = true;
                                     verifieProgression(progression);
                                 </etatFinal>
@@ -284,7 +284,7 @@
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
                                     visibiltyPNJ("#geronimo","hide");
-                                    genererNotification("M. Auger s'en va.");
+                                    genererNotification("M. Geronimo s'en va.");
                                     geronimoAeteParle = true ;                            
                                     verifieProgression(progression);
                                 </etatFinal>

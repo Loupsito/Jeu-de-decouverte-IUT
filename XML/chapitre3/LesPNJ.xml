@@ -33,7 +33,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
-                                <texte>M. Auger à les clés de toutes façon, donc vois ça avec lui.</texte>
+                                <texte>M. Geronimo à les clés de toutes façon, donc vois ça avec lui.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

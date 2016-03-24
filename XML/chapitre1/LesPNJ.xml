@@ -9,7 +9,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="1">
-                                <texte>Tu as entendu la nouvelle ? On commence officiellement le deuxième semestre aujourd'hui ! On va savoir le premier cours du deuxième semestre et Mme Robba va tout nous expliquer. C'est génial !</texte>
+                                <texte>Tu as entendu la nouvelle ? On commence officiellement le deuxième semestre aujourd'hui ! On va savoir le premier cours du deuxième semestre et Mme Boti va tout nous expliquer. C'est génial !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -53,7 +53,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="MARTEAU" id="MARTEAU" numeroDialogue="5">
-                                <texte>Si tu veux aller en amphi je te passe les clés ici, ça évitera à Mme Robba de faire un détour. Ah mais si tu reste tu pourra admirer ma belle salle et contempler ton professeur de maths, le rêve non ?</texte>
+                                <texte>Si tu veux aller en amphi je te passe les clés ici, ça évitera à Mme Boti de faire un détour. Ah mais si tu reste tu pourra admirer ma belle salle et contempler ton professeur de maths, le rêve non ?</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>depotcle_notif</etatFinal>
 			</dialogue>

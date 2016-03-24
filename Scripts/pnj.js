@@ -10,7 +10,7 @@ var nomChoix = [["INCENDIE","id1"],["DEFAILLANCE","id2"],["CANULAR","id3"],["ENT
 var choixMaths = [["000","id1"],["101","id2"],["111","id3"],["1000","id4"]];
 var choixAiderRoger = [["OUI...","id1"],["OUI, je suis trop sympa.","id2"],["OUI, chef!","id3"]];
 var choixPayerBastien = [["O-O-OUI... ne me fait pas de mal...","id1"],["NON, et puis quoi encore !","id2"]];
-var choixPayerRepasAuger = [["Payer le repas","id1"],["Ne pas payer le repas","id2"]];
+var choixPayerRepasGeronimo = [["Payer le repas","id1"],["Ne pas payer le repas","id2"]];
 
 function verifDialPrerequis(tab)
 {
@@ -231,8 +231,8 @@ function choisirChoix(idDiv,idBlocChoix)
         choix.onclick = cliquerChoixMaths(idDiv);
     if (idBlocChoix === "choixPayerBastien")
         choix.onclick = cliquerChoixPayerBastie(idDiv);
-    if (idBlocChoix === "choixPayerRepasAuger")
-        choix.onclick = cliquerChoixPayerAuger(idDiv);
+    if (idBlocChoix === "choixPayerRepasGeronimo")
+        choix.onclick = cliquerChoixPayerGeronimo(idDiv);
 }
 function prepareChangeDialog()
 {
@@ -242,7 +242,7 @@ function prepareChangeDialog()
     removeElementById("antiClicProvisoire"); 
     removeElementById("msgDialogue");
 }
-function cliquerChoixPayerAuger(idDiv)
+function cliquerChoixPayerGeronimo(idDiv)
 {
     $('#'+idDiv[1]).click(function(){
         if (idDiv[0] === "Payer le repas")  
@@ -253,14 +253,14 @@ function cliquerChoixPayerAuger(idDiv)
             else
                 miseAJourDialogue(4,11);
             testDialogue("geronimo");
-            removeElementById("choixPayerRepasAuger");
+            removeElementById("choixPayerRepasGeronimo");
         }
         else
         {
             prepareChangeDialog();
             miseAJourDialogue(4,9);
             testDialogue("geronimo");
-            removeElementById("choixPayerRepasAuger");
+            removeElementById("choixPayerRepasGeronimo");
         }
     });
 }
