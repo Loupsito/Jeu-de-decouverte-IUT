@@ -1,15 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
-var scenario1={"localisation":1,"texte":"Texte de la premiere partie du scenario","asEteVu":false};
-var scenario2={"localisation":7,"texte":"Texte de la deuxieme partie du scenario","asEteVu":false};
-var scenario3={"localisation":2,"texte":"Texte de la troisieme partie du scenario","asEteVu":false};
-
-var tabScenario = new Array(scenario1,scenario2,scenario3);
-*/
 var divTexte;
 var divTexte2;
 var tabScenario;
@@ -35,15 +23,40 @@ function placementScenario(positionCourant)
             }
             else if(tabScenario[i]["choix"]=="narration")
             {
-                panneauNarration(tabScenario[i]["texte"].toString());
-                tabScenario[i]["asEteVu"]=true;
+                panneauNarration(tabScenario[i]["texte"].toString(),positionCourant);  
             }
         }
     }
 }
 
+function verificationScenarioLu(localisation)
+{            
+    for (var i=0 ; i<tabScenario.length ; i++)
+    {
+         if(tabScenario[i]["localisation"]==localisation)
+         {
+             if(tabScenario[i]["asEteVu"]=="false")   
+                 return false;
+            else if (tabScenario[i]["asEteVu"]=="true")
+                return true;
+         }
+    }
+}
 
-function panneauNarration(texte)
+function ScenarioTrue(localisation)
+{
+    for (var i=0 ; i<tabScenario.length ; i++)
+    {
+         if(tabScenario[i]["localisation"]==localisation)
+         {
+             tabScenario[i]["asEteVu"]='true';             
+         }
+    }
+}
+
+
+
+function panneauNarration(texte,positionCourant)
 {    
     zoneAntiClic(14,"antiClicNarration",0);
     
@@ -78,6 +91,8 @@ function panneauNarration(texte)
     $("#boutonPasser").click(function() {
                $("#narration").remove();
                $("#antiClicNarration").remove();
+                ScenarioTrue(positionCourant);
+                verifieProgression(progression);
     });           
 }
 

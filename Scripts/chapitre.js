@@ -1,10 +1,3 @@
-/*
-var chapitre1={"chapitre" :1,"objectifs":[["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('stylo') === true)","Obtenir le stylo"]]};
-var chapitre2={"chapitre" :2,"objectifs":[["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"],["(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')","Ecrire sur le tableau"]]};
-var chapitre3={"chapitre" :3,"objectifs":[["(verifPossessionItem('stylo') === true)","Obtenir le stylo"],["(verifPossessionItem('brosse') === true)","Obtenir la brosse"],["(verifPossessionItem('cleI21') === true)","Obtenir la cle I21"]]};
-var tabDeTousLesChapitre= new Array(chapitre1,chapitre2,chapitre3);
-*/
-
 var objectifCourant;
 
 var tabDeTousLesChapitre;
@@ -27,9 +20,6 @@ function verifieProgression(chapitreCourant)
                     {
                         objectifsNonRemplie+=1;                     
                     }
-                    //else
-                        //objectifCourant+=1;
-                   
                     break;
                 }
             }
@@ -242,42 +232,32 @@ function affichageAgenda(chapitreCourant)
                 if((eval(tabDeTousLesChapitre[i]["objectifs"][j][2]))===objectifCourant)
                 {                    
                     var tab= document.querySelectorAll('#panneauAgenda span');               
+                    
                     //Si on est au tout premier objectif
-                    if(tab.length<1){
+                    if(tab.length<1)
                         genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
-						//alert("creation");
-						}
+                    
                     //Si on est pas au dernier objectif
                     if(j+1<tabDeTousLesChapitre[i]["objectifs"].length)
                      {
                         if(tab.length<1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
-                        {   
-							//alert("creation");						
+                        {   				
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));                
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
                             objectifCourant+=1;
                             if(element)
-                            {
-                                //element.style.color="green";                    
                                 removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
-                            }
                         }
                         if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
                         {
-							//alert("creation");
                             genereContenuID("span",tabDeTousLesChapitre[i]["objectifs"][j+1][1]+"<br/>","panneauAgenda",tabDeTousLesChapitre[i]["objectifs"][j+1][1].replace(/ /g, ""));
                             element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));            
                             objectifCourant+=1;
                             if(element)
-                            {
-                                //element.style.color="green";
                                 removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
-                            }
                         }           
                         if(tab.length>=3)
-                        {
                             stylePanneau.style.height=(tab.length*10)+100+"px";
-                        }
                     }                
                     //Quand on arrive au dernier objectif
                     if(tab.length>1&&((eval(tabDeTousLesChapitre[i]["objectifs"][j][0]))===true))
@@ -285,10 +265,7 @@ function affichageAgenda(chapitreCourant)
                         element = document.getElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, "")); 
                         objectifCourant+=1;
                         if(element)
-                        {
-                            //element.style.color="green";
                             removeElementById(tabDeTousLesChapitre[i]["objectifs"][j][1].replace(/ /g, ""));
-                        }
                     }
                     break;                    
                 }

@@ -252,8 +252,7 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="8">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>
-                                    alert("Premier");
+                                <etatFinal>                                    
                                     visibiltyPNJ("#auger","hide");
                                     genererNotification("M. Auger s'en va.");
                                     augerAeteParle = true;
@@ -269,7 +268,6 @@
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>
-                                    alert("Deuxieme");
                                     visibiltyPNJ("#auger","hide");
                                     genererNotification("M. Auger s'en va.");
                                     augerAeteParle = true;
@@ -284,8 +282,7 @@
                         <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="12">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>
-                                    alert("Troisieme");
+                                <etatFinal>                                    
                                     visibiltyPNJ("#auger","hide");
                                     genererNotification("M. Auger s'en va.");
                                     augerAeteParle = true ;                            

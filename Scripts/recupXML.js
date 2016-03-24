@@ -21,7 +21,7 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 1;
+var progression = 3;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
@@ -128,8 +128,8 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();           
-               
+        premiereAnalyseInventaire();               
+     
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
     //------------------------------------------------------------------------------
