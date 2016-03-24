@@ -57,7 +57,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue> 
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
-                                <texte>wqazsx tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
+                                <texte>Hyacinthe tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);</etatFinal>
 			</dialogue>  
@@ -87,7 +87,7 @@
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(0,3);testDialogue('frederic');</etatFinal>
 			</dialogue> 
                         <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="4">
-                                <texte>Fred… ou l’homme le plus Japonais du monde… Dans sa tête. Enfin bref, sinon tu en penses quoi wqazsx ? De l’alarme hein !</texte>
+                                <texte>Fred… ou l’homme le plus Japonais du monde… Dans sa tête. Enfin bref, sinon tu en penses quoi Hyacinthe ? De l’alarme hein !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");</etatFinal>
 			</dialogue>
@@ -122,7 +122,7 @@
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(0,9);testDialogue('frederic');</etatFinal>
 			</dialogue>
                         <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="11">
-                                <texte>On compte sur toi wqazsx, bon courage.</texte>
+                                <texte>On compte sur toi Hyacinthe, bon courage.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
