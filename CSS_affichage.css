@@ -1,11 +1,8 @@
-@font-face {
-	font-family: "Century Gothic";
-	src: url('Century Gothic.ttf');
-}
 body 
 {
     margin : 0 auto;
     background-color: #696969;
+    align-items: center;
 }
 
 button
@@ -20,8 +17,8 @@ button
     border-radius:2px;
     width: 640px;
     height:500px ;
-    position: absolute;
-    top:10px;
+    top: 40px;
+    position: absolute;    
     left:0;
     right:0;
     margin:0 auto;
@@ -146,10 +143,7 @@ button
     position : absolute;
     color:#FFFFFF;    
     margin:auto;
-    border-radius: 0px 10px 10px 0px;
-    /*background-color: rgba(0,0,0,0.80);*/
-    /*bottom:-8px;*/
-    /*left:-1px;*/
+    border-radius: 0px 10px 10px 0px;    
     top:79.5%;
     height: 0px;
     width: 72%;
@@ -175,8 +169,7 @@ button
     width:200px;
     bottom:0;
     border-left: 50px solid transparent;
-    border-bottom: 50px solid black;
-    /*opacity:80%;*/
+    border-bottom: 50px solid black;    
     z-index: 8;
 }
 button
@@ -209,36 +202,6 @@ button
     background: url(images/musique2.png) no-repeat center;
     margin-left:-22px;
 }
-
-/* INTERNET EXPLORER 9,10,11 */
-/*
-:root #boutonInventaire
-{
-	 margin-left:0px \0/IE9;
-}
-:root #boutonSon
-{
-	 margin-left:43px \0/IE9;
-}
-:root #boutonMusique
-{
-	 margin-left:85px \0/IE9;
-}
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-	#boutonInventaire {
-		margin-left:0px;
-	}
-	#boutonSon {
-		margin-left:43px;
-	}
-	#boutonMusique {
-		margin-left:85px;
-	}
-}
-*/
-/* ======================== */
-
-
 
 #objet
 {
@@ -342,7 +305,7 @@ button
     border-top-right-radius: 20px;
     z-index : 7;
 }
-#auger
+#geronimo
 {
     display: none;
 }

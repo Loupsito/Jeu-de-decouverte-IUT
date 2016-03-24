@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <scenarios>
-    <scenario localisation = "0" asEteVu = "false" choix="narration">
-        <texte id ="0">Cet établissement est mon lieu d’étude actuel, il m’inspire un futur plein d’avenir et prometteur.
+    <scenario localisation = "40" asEteVu = "false" choix="narration">
+        <texte id ="40">Cet établissement est mon lieu d’étude actuel, il m’inspire un futur plein d’avenir et prometteur.
             Si seulement les transports ne faisaient pas grève…
             N’ayant pas les moyens de me payer un logement étudiant, je suis obligé de parcourir des distances absurdes chaque jour.
             C’est donc en maudissant les grèves que j’arrivais en face du bâtiment Mermoz quelques minutes en avance.

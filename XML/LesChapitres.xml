@@ -14,8 +14,8 @@
         <objectif id='1' objectifCourant='3'>(verifPossessionItem('stylo') === true)</objectif>
         <descriptif id='1'>Recuperer le stylo</descriptif>                
 
-        <objectif id='1' objectifCourant='4'>(exerciceFini===true)</objectif><!-- (exerciceFini===true) -->
-        <descriptif id='1'>Parler à M. Martel afin de compléter la feuille d'exercices</descriptif>               
+        <objectif id='1' objectifCourant='4'>(exerciceFini===true)</objectif>
+        <descriptif id='1'>Parler à M. Marteau afin de compléter la feuille d'exercices</descriptif>               
 
         <objectif id='1' objectifCourant='5'>(joueur.idSalle===207)</objectif>
         <descriptif id='1'>Se rendre en amphitheatre A</descriptif>                
@@ -24,15 +24,13 @@
         <descriptif id='1'>S'asseoir a une place</descriptif>                
 
         <objectif id='1' objectifCourant='7'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='1'>Ecouter le cours de Mme Barbot</descriptif>          
+        <descriptif id='1'>Ecouter le cours de Mme Boti</descriptif>          
 
         <objectif id='1' objectifCourant='8'>(joueur.idSalle===212)</objectif>
         <descriptif id='1'>Evacuer par la sortie de secours</descriptif>      
-
     </chapitre>  
 
     <chapitre numero='2' positionJoueur='306'>                
-
         <objectif id='2' objectifCourant='0'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='2'>Parler de l'incident à Fred et Margaux</descriptif>    
 	
@@ -51,26 +49,10 @@
         <objectif id='2' objectifCourant='5'>((verifDialPrerequis(tabPNJ[3]["dialogue"][tabPNJ[3]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='2'>Parler a Bastien</descriptif>       
         
-	<objectif id='2' objectifCourant='6'>( augerAeteParle ===true)</objectif>
-        <descriptif id='2'>Parler a M. Auger</descriptif>
-       
-       
-    </chapitre>
-        <!--             
-        <objectif id='2' objectifCourant='1'>(verifPossessionItem('stylo')===true)</objectif>
-        <descriptif id='2'>Trouver le stylo</descriptif>        
-        <objectif id='2' objectifCourant='1'>(verifPossessionItem('cleUSB')===true)</objectif>
-        <descriptif id='2'>Trouver la cle USB</descriptif>       
-        <objectif id='2' objectifCourant='4'>((verifDialPrerequis(tabPNJ[1]["dialogue"][tabPNJ[1]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='2'>Parler a Bastien</descriptif>        
-        <objectif id='2' objectifCourant='5'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='2'>Parler a M. Auger</descriptif>
-        -->
-                      
-        <!--<objectif id='2'>(listeCases[6][3]==='images/4-G23Tableau(ecrit).jpg')</objectif>
-
-        <descriptif id='2'>Ecrire sur le tableau</descriptif>-->
-        
+	<objectif id='2' objectifCourant='6'>( geronimoAeteParle ===true)</objectif>
+        <descriptif id='2'>Parler a M. Geronimo</descriptif>              
+    </chapitre>        
+    
     <chapitre numero='3' positionJoueur='117'>
         <objectif id='3' objectifCourant='0'>(joueur.idSalle===120)</objectif>
         <descriptif id='3'>Sortir du cours par l'arriere</descriptif>
@@ -79,13 +61,13 @@
         <descriptif id='3'>Se rendre dans l'amphithéâtre A</descriptif>
         
         <objectif id='3' objectifCourant='2'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Parler à M. Hoguin</descriptif>
+        <descriptif id='3'>Parler à M. Hingo</descriptif>
         
         <objectif id='3' objectifCourant='3'>((verifDialPrerequis(tabPNJ[1]["dialogue"][tabPNJ[1]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='3'>Demander les clés à un appariteur</descriptif>
         
         <objectif id='3' objectifCourant='4'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Demander les clés à M. Auger</descriptif>
+        <descriptif id='3'>Demander les clés à M. Geronimo</descriptif>
         
         <objectif id='3' objectifCourant='5'>(verifPossessionItem('cleAmphiA') === true)</objectif>
         <descriptif id='3'>Obtenir la cle de l'amphi A</descriptif>
@@ -94,7 +76,6 @@
         <descriptif id='3'>Se rendre en amphi A</descriptif>
         
         <objectif id='3' objectifCourant='7'>(verificationScenarioLu('226')===true)</objectif>
-        <descriptif id='3'>Trouver un indice laissé par le hackeur</descriptif>
-        
+        <descriptif id='3'>Trouver un indice laissé par le hackeur</descriptif>        
     </chapitre>
 </chapitres>

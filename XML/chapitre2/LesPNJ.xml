@@ -198,94 +198,94 @@
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
                                 <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="7">
                                 <texte>Tss, tocard !</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>
-        <pnj nom="AUGER" localisation="308" image="images/pnj/auger.png" numeroDialogueCourant="0" idImage="auger">
+        <pnj nom="GERONIMO" localisation="308" image="images/pnj/geronimo.png" numeroDialogueCourant="0" idImage="geronimo">
 		<dialogues>
-			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
+			<dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="0">
                                 <texte>Il est plutôt terrible non ? Je ne sais pas pourquoi il ne s’est pas encore fait expulsé, on n’en à jamais eu des comme ça avant. Il est peut-être déjà expulsé ? On l’aurait rappelé pour le scén…</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="1">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="1">
                                 <texte>… Mh ? Ah, non rien… Mais tu ne m’as peut-être pas reconnu, je suis professeur d’informatique.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="2">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="2">
                                 <texte>Tu n’as pas dû beaucoup me voir étant donné que je n’ai pas enseigné à ton groupe. Et je suis aussi sur un projet avec des étudiants de deuxième année, il sera mis sur le site de l’IUT si tout se passe bien…</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="3">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="3">
                                 <texte>Bon, plus sérieusement, tu es délégué n’est-ce-pas ? J’ai cru comprendre que tu cherchait à savoir pourquoi l’alarme avait sonnée je me trompe ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="4">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="4">
                                 <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peut la vérifier par moi même donc tu tombe bien. Sache que tu cours un risque dans le cas où je me trompe donc fait attention.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="5">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="5">
                                 <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerait de me payer le repas ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixPayerRepasAuger",choixPayerRepasAuger,"Payer le repas de M. Auger");</etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="6">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="6">
                                 <texte>Alors ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="7">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="7">
                                 <texte>Merci beaucoup, c’est vraiment très gentil de ta part.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="8">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="8">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
-                                    visibiltyPNJ("#auger","hide");
+                                    visibiltyPNJ("#geronimo","hide");
                                     genererNotification("M. Auger s'en va.");
-                                    augerAeteParle = true;
+                                    geronimoAeteParle = true;
                                     verifieProgression(progression);
                                 </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="9">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="9">
                                 <texte>Tant pis alors…</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="10">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="10">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>
-                                    visibiltyPNJ("#auger","hide");
+                                    visibiltyPNJ("#geronimo","hide");
                                     genererNotification("M. Auger s'en va.");
-                                    augerAeteParle = true;
+                                    geronimoAeteParle = true;
                                     verifieProgression(progression);
                                 </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="11">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="11">
                                 <texte>Ah mais tu n’as peut-être plus d’argent après t’être fait racketter comme ça. C’est pas grave, merci quand même, c’est l’intention qui compte.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="12">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="12">
                                 <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
-                                    visibiltyPNJ("#auger","hide");
+                                    visibiltyPNJ("#geronimo","hide");
                                     genererNotification("M. Auger s'en va.");
-                                    augerAeteParle = true ;                            
+                                    geronimoAeteParle = true ;                            
                                     verifieProgression(progression);
                                 </etatFinal>
 			</dialogue>

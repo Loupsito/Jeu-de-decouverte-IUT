@@ -4,7 +4,7 @@ var divTexte;
 var divTexte2;
 var typeDialogue;
 var noMoney = false;
-var augerAeteParle = false;
+var geronimoAeteParle = false;
 //tableau de choix
 var nomChoix = [["INCENDIE","id1"],["DEFAILLANCE","id2"],["CANULAR","id3"],["ENTRAINEMENT","id4"]];
 var choixMaths = [["000","id1"],["101","id2"],["111","id3"],["1000","id4"]];
@@ -23,7 +23,7 @@ function verifDialPrerequis(tab)
 }
 function changementEtat(tab)
 {
-    if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleAmphiA",0);genererNotification("M. Martel vous donne la clé de l'amphi A");}}
+    if (tab === "depotcle_notif"){if (tabDeTousLesItems[0][1][3] === false){tabDeTousLesItems[0][1][3] = true;placementItemDansInventaire("cleAmphiA",0);genererNotification("M. Marteau vous donne la clé de l'amphi A");}}
     else if(tab === "alarme_incendie") {panneauNarration("Á ce moment là, un bruit assourdissant se fit entendre dans l'amphi. L'alarme incendie sonnait, encore et encore... <br/>\"J'ai un mauvais pressentiment.\" me suis-je dit.");}
     else
     {
@@ -252,14 +252,14 @@ function cliquerChoixPayerAuger(idDiv)
                 miseAJourDialogue(4,7);
             else
                 miseAJourDialogue(4,11);
-            testDialogue("auger");
+            testDialogue("geronimo");
             removeElementById("choixPayerRepasAuger");
         }
         else
         {
             prepareChangeDialog();
             miseAJourDialogue(4,9);
-            testDialogue("auger");
+            testDialogue("geronimo");
             removeElementById("choixPayerRepasAuger");
         }
     });
@@ -349,7 +349,7 @@ function cliquerChoixMaths (idDiv)
         {
             removeElementById("msgDialogue");
             miseAJourDialogue(1,4);
-            testDialogue("martel");
+            testDialogue("marteau");
             removeElementById("antiClicChoix");
             genererNotification("Bonne réponse !");
             removeElementById("choixMaths");

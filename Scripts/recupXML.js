@@ -21,7 +21,7 @@ var tabPNJ=[];
 //tableau qui repertorie tous les chapitres
 var tabDeTousLesChapitre =[];
 
-var progression = 3;
+var progression = 1;
 
 var tabScenario = new Array();
 //tableau qui repertorie tous les pnjs
@@ -170,7 +170,7 @@ function recupFromXMLDataBasePnj()
         if (xhrPnj.readyState===4 && xhrPnj.status===200)
         {
             //rÃ©cupÃ©ration dans les xml//
-            var tabPnj= xhrPnj.responseXML.getElementsByTagName("pnj");                 // recupÃ©ration des descriptions
+            var tabPnj= xhrPnj.responseXML.getElementsByTagName("pnj");                 //recupÃ©ration des descriptions
             var tabPnjDialogues=xhrPnj.responseXML.getElementsByTagName("dialogue");    //rÃ©cupÃ©ration des dialogues
             var tabPnjTexte=xhrPnj.responseXML.getElementsByTagName("texte");           //rÃ©cupÃ©ration des textes
             var tabPnjPrerequis=xhrPnj.responseXML.getElementsByTagName("prerequis");   //rÃ©cupÃ©ration des prÃ©requis

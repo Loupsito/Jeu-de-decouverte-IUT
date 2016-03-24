@@ -75,7 +75,7 @@ function panneauNarration(texte,positionCourant)
     genereContenuID("div","","narration","texteNarration");
     $("#narration").css("border-radius","4px").css("border","2px solid white ").hide().fadeIn();
     
-    $("#texteNarration").css("color","white").css("padding","10px").css("font-family","Century Gothic");
+    $("#texteNarration").css("color","white").css("padding","10px").css("font-family","Century Gothic").css("font-size","13.7px");
     $("#texteNarration").empty();
     $("#texteNarration").append(texte).hide();;
     $("#texteNarration").fadeIn(2000);

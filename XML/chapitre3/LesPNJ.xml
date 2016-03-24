@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- informations de cle -->
 <pnjs>
-	<pnj nom="AUGER" localisation="119" image="images/pnj/auger.png" numeroDialogueCourant="0" idImage="auger2">
+	<pnj nom="GERONIMO" localisation="119" image="images/pnj/geronimo.png" numeroDialogueCourant="0" idImage="geronimo2">
 		<dialogues>
-			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
+			<dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="0">
                                 <texte>Salut Hyacinthe, quoi de neuf ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="1">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="1">
                                 <texte>Ah, tu veux les clé, c'est ça ?</texte>
 				<prerequis>normal</prerequis><!--apres le dialogue avec l'appariteur-->
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="2">
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="2">
                                 <texte>Je les ai posé sur une table de pique-nique tout à l'heure, j'ai du les oublier la bas.</texte>
 				<prerequis>last</prerequis> 
                                 <etatFinal> </etatFinal>
@@ -44,19 +44,19 @@
 			</dialogue>
                 </dialogues>
         </pnj>
-	<pnj nom="HOGUIN" localisation="214" image="images/pnj/hoguin.png" numeroDialogueCourant="0" idImage="hoguin">
+	<pnj nom="HINGO" localisation="214" image="images/pnj/hingo.png" numeroDialogueCourant="0" idImage="hingo">
 		<dialogues>
-			<dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="0">
+			<dialogue nomFake="HINGO" id="HINGO" numeroDialogue="0">
                                 <texte>Bonjour Hyacinthe, si vous voulez aller en amphi, il est fermé.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="1">
+                        <dialogue nomFake="HINGO" id="HINGO" numeroDialogue="1">
                                 <texte>Les appariteurs ont probablement la clé, vous devriez allez voir.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
-                        <dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="2">
+                        <dialogue nomFake="HINGO" id="HINGO" numeroDialogue="2">
                                 <texte>Ils se trouvent dans le batiment Bastie, celui où se trouvent les machines.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
