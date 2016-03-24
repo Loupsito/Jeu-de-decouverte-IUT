@@ -198,12 +198,12 @@
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
                                 <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="7">
                                 <texte>Tss, tocard !</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>
