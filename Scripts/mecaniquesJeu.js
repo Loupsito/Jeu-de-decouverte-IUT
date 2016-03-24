@@ -255,7 +255,8 @@ function deverouillementPorte(nomId)
                         jouerSon('sons/ouvrirPorte.mp3',son);
                     
                     //generer une notification 
-                        genererNotification("Vous avez déverrouillé la salle"+listeCases[i][1]);                    
+                        convertiNomScene(listeCases[i][1]);
+                        genererNotification('Vous avez déverrouillé le lieu "'+nomDeScene+'"');                    
                         break;
                     }                       
                 }

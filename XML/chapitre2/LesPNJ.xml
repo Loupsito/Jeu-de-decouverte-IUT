@@ -57,7 +57,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue> 
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
-                                <texte>wqazsx tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
+                                <texte>Hyacinthe tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);</etatFinal>
 			</dialogue>  
@@ -87,7 +87,7 @@
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(0,3);testDialogue('frederic');</etatFinal>
 			</dialogue> 
                         <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="4">
-                                <texte>Fred… ou l’homme le plus Japonais du monde… Dans sa tête. Enfin bref, sinon tu en penses quoi wqazsx ? De l’alarme hein !</texte>
+                                <texte>Fred… ou l’homme le plus Japonais du monde… Dans sa tête. Enfin bref, sinon tu en penses quoi Hyacinthe ? De l’alarme hein !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");</etatFinal>
 			</dialogue>
@@ -122,7 +122,7 @@
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(0,9);testDialogue('frederic');</etatFinal>
 			</dialogue>
                         <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="11">
-                                <texte>On compte sur toi wqazsx, bon courage.</texte>
+                                <texte>On compte sur toi Hyacinthe, bon courage.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -138,7 +138,7 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="1">
                                 <texte>Tu veux savoir où se trouve Bastien ? Tu est prêt à nous aider ?</texte>
 				<prerequis>normal</prerequis>				
-                                <etatFinal>blocChoix("choixAide",choixAiderRoger,"Récupérer une gomme une clé USB et stylo");</etatFinal>
+                                <etatFinal>blocChoix("choixAide",choixAiderRoger,"Récupérer une clé USB dans la bibliothèque");</etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="2">
                                 <texte>Alors ?</texte>
@@ -146,12 +146,12 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="3">
-                                <texte>Parfait ! On a perdu une gomme, une clé USB et un stylo dans la BU, tu peux nous aider à les retrouver ? On te dira où il est après.</texte>
+                                <texte>Parfait ! On a perdu une clé USB dans la BU, tu peux nous aider à la retrouver ? On te dira où il est après.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="4">
-                                <texte>Une gomme, un stylo, une clé USB. Allez bouge !</texte>
+                                <texte>Une clé USB. Allez bouge !</texte>
 				<prerequis>(existenceItem('cleUSB')===false)</prerequis>				
                                 <etatFinal>verifieProgression(progression);</etatFinal>
 			</dialogue>
@@ -198,12 +198,12 @@
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
                                 <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","fdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="7">
                                 <texte>Tss, tocard !</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");</etatFinal>
+                                <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#auger","sdfdsf");genererNotification("Bastien s'en va et M. Auger arrive.");$("#saint_exupery8").css('display','none');</etatFinal>
 			</dialogue>
                 </dialogues>               
         </pnj>

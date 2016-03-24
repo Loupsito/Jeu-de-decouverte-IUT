@@ -4,7 +4,7 @@
 	<pnj nom="JEAN" localisation="216" image="images/pnj/jean.png" numeroDialogueCourant="0" idImage="jean">
 		<dialogues>
 			<dialogue nomFake="JEAN" id="JEAN" numeroDialogue="0">
-                                <texte>Salut wqazsx</texte>
+                                <texte>Salut Hyacinthe</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -48,7 +48,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="MARTEL" id="MARTEL" numeroDialogue="4">
-                                <texte>Décidément wqazsx, tu es en forme aujourd’hui ! C’est rare de te voir finir en avance. Et bien, du coup, tu as fini tout ce qu’il y avait à faire. Je vais te laisser le choix entre rester ici ou aller directement à la présentation en amphi.</texte>
+                                <texte>Décidément Hyacinthe, tu es en forme aujourd’hui ! C’est rare de te voir finir en avance. Et bien, du coup, tu as fini tout ce qu’il y avait à faire. Je vais te laisser le choix entre rester ici ou aller directement à la présentation en amphi.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

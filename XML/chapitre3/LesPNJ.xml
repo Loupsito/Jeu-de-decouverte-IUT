@@ -4,7 +4,7 @@
 	<pnj nom="AUGER" localisation="119" image="images/pnj/auger.png" numeroDialogueCourant="0" idImage="auger2">
 		<dialogues>
 			<dialogue nomFake="M.AUGER" id="AUGER" numeroDialogue="0">
-                                <texte>Salut wqazsx, quoi de neuf ?</texte>
+                                <texte>Salut Hyacinthe, quoi de neuf ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -47,7 +47,7 @@
 	<pnj nom="HOGUIN" localisation="214" image="images/pnj/hoguin.png" numeroDialogueCourant="0" idImage="hoguin">
 		<dialogues>
 			<dialogue nomFake="HOGUIN" id="HOGUIN" numeroDialogue="0">
-                                <texte>Bonjour wqazsx, si vous voulez aller en amphi, il est fermé.</texte>
+                                <texte>Bonjour Hyacinthe, si vous voulez aller en amphi, il est fermé.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

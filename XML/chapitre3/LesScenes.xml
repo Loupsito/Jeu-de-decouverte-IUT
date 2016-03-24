@@ -120,8 +120,8 @@
 	<scene id="221" nom="mermoz22" lienImage="images/map/mermoz/mer_Escalier_rdc.jpg"/>
         -->
 	<scene id="222" nom="mermoz23" lienImage="images/map/mermoz/mer_Entree_entree_SE.jpg"/>
-	<scene id="223" nom="mermoz24" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_E.jpg"/>
-	<scene id="224" nom="mermoz25" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_SE.jpg"/>
+	<scene id="223" nom="amphi8" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_E.jpg"/>
+	<scene id="224" nom="amphi11" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_SE.jpg"/>
     <scene id="225" nom="amphi8" lienImage="images/map/mermoz/mer_AmphiA_bureauProf_SE.jpg"/>
 	<scene id="226" nom="amphi9" lienImage="images/map/mermoz/mer_AmphiA_tablette_SE.jpg"/>
 	<!--
