@@ -2,7 +2,7 @@ body
 {
     margin : 0 auto;
     background-color: #696969;
-    align-items: center;
+    align-items: center;       
 }
 
 button
@@ -309,3 +309,41 @@ button
 {
     display: none;
 }
+
+#telechargement
+{
+    position: absolute;
+    bottom: 0px;
+    margin: 10px;
+    width: 150px;
+    background-color: #E9E9E9;
+    text-align: center;
+}
+
+#telechargement a 
+{
+    font-family: 'century gothic';
+    font-size:15px;
+    text-decoration: none;
+    color: black;
+}
+
+#telechargement a:hover
+{
+    font-weight : bold;
+}
+#telechargement a:active 
+{
+    font-weight : bold;
+    color: #969696;    
+}
+
+
+
+
+
+
+
+
+
+

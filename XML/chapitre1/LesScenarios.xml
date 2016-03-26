@@ -2,10 +2,10 @@
 
 <scenarios>
     <scenario localisation = "40" asEteVu = "false" choix="narration">
-        <texte id ="40">Cet établissement est mon lieu d’étude actuel, il m’inspire un futur plein d’avenir et prometteur.
-            Si seulement les transports ne faisaient pas grève…
-            N’ayant pas les moyens de me payer un logement étudiant, je suis obligé de parcourir des distances absurdes chaque jour.
-            C’est donc en maudissant les grèves que j’arrivais en face du bâtiment Mermoz quelques minutes en avance.
+        <texte id ="40">Cet établissement est mon lieu d’étude actuel, il m’inspire un futur plein d’avenir et prometteur.            
+            N’ayant pas les moyens de me payer un logement étudiant, je suis obligé de parcourir des distances assez conséquentes chaque jour.
+            Mais cela ne m'enlève en rien cette envie de revoir mes camarades.
+            C'est avec enthousiasme que j’arrivais en face du bâtiment Mermoz quelques minutes en avance.
             De l’extérieur, je pouvais déjà apercevoir des têtes somnolentes en train de faire la file devant les machines à café.
             Rentrant dans le bâtiment, j'aperçus un de mes plus vieux camarades ayant été affecté à un autre groupe : Jean.
         </texte>
