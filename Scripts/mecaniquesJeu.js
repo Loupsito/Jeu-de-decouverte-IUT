@@ -289,6 +289,8 @@ function avancer(newScene,id1,id2)
         removeElementById("CacherAgenda");
     }
     
+    //dessin();
+    
     //test si l'accès à la nouvelle scène est libre ou non
     if (verifAccesSalle(id1,id2) === true)
     {
@@ -822,6 +824,74 @@ function modifieValeur(action)
      MAJaffichagePosition();
 }
 
+
+var dessiner=false;
+function dessin()
+{       
+    if(joueur.idSalle ===40)
+    {
+        if(!document.getElementById("tableauDessin"))
+        {
+            genereContenuID("div","","ecran","tableauDessin");
+            var tableau = document.getElementById("tableauDessin");       
+            tableau.style.width=500+'px';
+            tableau.style.height=400+'px';
+            tableau.style.top =40+'px';
+            tableau.style.left =0+'px';
+            tableau.style.right =0+'px';
+            tableau.style.position ='absolute';    
+            tableau.style.margin="0 auto";
+            tableau.style.backgroundColor="rgba(0, 0, 0, 0.5)";    
+            tableau.style.position="absolute";
+        }
+
+        for(var i=0;i<10000;i++)
+        {
+            if(!document.getElementById("c"+i))
+            {
+                var uneCase = document.createElement("span");    
+                uneCase.id="c"+i;
+                uneCase.style.positon ="relative";
+                uneCase.style.float="left";
+                uneCase.style.width=1+'%';
+                uneCase.style.height=1+'%';                    
+                document.getElementById("tableauDessin").appendChild(uneCase);  
+            }
+
+            var selectCase = document.getElementById("c"+i);            
+            if(dessiner ===true)
+            {            
+                selectCase.style.cursor="crosshair";
+                selectCase.onmouseover = (function(i) {
+                    return function() {
+                        var val = "c"+i;
+                        var maCase= document.getElementById(val);
+                            maCase.style.backgroundColor="red";
+                        };
+                })(i);     
+                selectCase.onclick = (function() {
+                   dessiner = false;
+                   dessin();
+                });     
+            }
+            else
+            {
+                selectCase.style.cursor="default";
+                selectCase.onmouseover = (function(){                   
+                }); 
+                selectCase.onclick = (function() {
+                   dessiner = true;
+                   dessin();
+                });     
+            }            
+        }      
+    }
+    else
+    {        
+        if(document.getElementById("tableauDessin"))
+            removeElementById("tableauDessin");
+    }
+}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------

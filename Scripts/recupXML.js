@@ -28,6 +28,8 @@ var tabScenario = new Array();
 
 var objectifCourant = 0;
 
+
+
 //transitionChapitre("Chapitre  "+progression);
 barreDeSaisie("accueil");
 clavier("accueil");
@@ -128,7 +130,9 @@ function initpage()
     //Va servir a precharge les images du jeu
         indicationChargement();    
     //Analyse les items a true et les places dans l'inventaire si c'est le cas
-        premiereAnalyseInventaire();               
+        premiereAnalyseInventaire();   
+                
+     //dessin();
      
     //affiche le nom de la première scène
     //afficheNomScene("EXTERIEUR",'blocNomScene1','nomScene','textNomScene');                      
