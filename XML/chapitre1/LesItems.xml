@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- informations de cle -->
+<tabtab_item>
+    <tab_item nom="cleAmphiA">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id ="cleAmphiA">Ouvrir_Porte_Amphi_A</action>
+                    </tab_actions>
+                    <description>Une cle qui va me servir a ouvrir la porte de l'amphitheatre A du batiment Mermoz</description>	
+                    <image lienimage="images/cleAmphiA.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>9999</x>
+                        <y>436</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+
+    <!-- informations de brosse -->
+    <tab_item nom="brosse">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="brosse">effacer</action>
+                        <action id="brosse">ecrireBIS</action>
+                    </tab_actions>
+                    <description>Une brosse qui va permettre d'effacer un tableau</description>	
+                    <image lienimage="images/brosse.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>110</x>
+                        <y>405</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+
+    <!-- informations de stylo -->
+    <tab_item nom="stylo">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="stylo">ecrire</action>
+                        <action id="stylo">messageDialogue</action>                        
+                    </tab_actions>
+                    <description>Un stylo qui va servir a ecrire sur un tableau</description>	
+                    <image lienimage="images/stylo.png"/>
+                    <possession>false</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>380</x>
+                        <y>380</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+    <tab_item nom="lagenda">
+            <tab_info>                                                                
+                    <tab_actions>                                                                                   
+                        <action id="lagenda">AfficherAgenda</action>
+                        <action id="lagenda">CacherAgenda</action>                        
+                    </tab_actions>
+                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <image lienimage="images/agenda.png"/>
+                    <possession>true</possession>                                                                  		
+                    <tabCoordonnees>
+                        <x>460</x>
+                        <y>330</y>
+                    </tabCoordonnees>
+            </tab_info>
+    </tab_item>
+</tabtab_item>

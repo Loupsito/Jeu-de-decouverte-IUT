@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<scenarios>
+    <scenario localisation = "306" asEteVu = "false" choix="narration">
+        <texte id ="306">Après avoir été évacués vers l’extérieur, les membres du personnel arrivèrent en catastrophe, gilet jaune enfilé et extincteur à la main, prêt à les utiliser.
+            De longues minutes plus tard, ils ressortirent, l’air incertain et inquiet et entamaient une série d’aller-retours entre l’administration et le bâtiment.
+            Les élèves, soucieux, commencèrent à douter, voir paniquer et regrettèrent vite d’avoir laissés leurs affaires.
+            Certains tentèrent même de s’infiltrer dans le bâtiment pour rechercher leurs affaires, mais furent retenus par les professeurs.
+            Finalement, après plusieurs longues minutes, des membres de l’administration vinrent parler aux professeurs.
+            Ceux-ci, bien que contrariés, durent transmettre l’annonce aux élèves :
+            “À cause de problèmes techniques, le bâtiment sera fermé pour la journée, seuls les membres du personnel y auront accès sous certaines conditions.
+            Les étudiants sont priés d’éviter de rester dans l’enceinte de l’IUT dans la mesure du possible. Les cours de la journée ayant lieu dans le bâtiment Mermoz sont également annulés.”
+            Cette déclaration déclencha une vague de réprobations et de remarques contrariées ne se tarissant jamais.
+            Dans cette cohue générale, quelques amis me proposèrent alors d’aller à la BU (bibliothèque universitaire) pour passer le temps.
+            Nous nous y rendirent alors, jetant d'occasionnels regards vers la foule mécontente, le bruit de la sirène se fondant peu à peu au loin.
+        </texte>
+    </scenario>
+    <scenario localisation = "7" asEteVu = "false" choix="narration">
+        <texte id ="7">Texte de la deuxieme partie du scenario</texte>
+    </scenario>
+    <scenario localisation = "2" asEteVu = "false" choix="dialogue">
+        <texte id ="2">Texte de la troisieme partie du scenario</texte>
+    </scenario>    
+</scenarios>

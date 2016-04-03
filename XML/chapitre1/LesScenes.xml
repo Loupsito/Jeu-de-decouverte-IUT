@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenes>
+
+	<!--exterieur-->
+        <!--
+	<scene id="0" nom="exterieur1" lienImage="images/map/exterieur/ext_Admin_devant_NO.jpg"/>
+	<scene id="1" nom="exterieur2" lienImage="images/map/exterieur/ext_Admin_N_E.jpg"/>
+	<scene id="2" nom="exterieur3" lienImage="images/map/exterieur/ext_Admin_N_O.jpg"/>
+	<scene id="3" nom="exterieur4" lienImage="images/map/exterieur/ext_Admin_NO_E.jpg"/>
+	<scene id="4" nom="exterieur5" lienImage="images/map/exterieur/ext_Admin_NO_S.jpg"/>
+        <scene id="5" nom="exterieur6" lienImage="images/map/exterieur/ext_Admin_tablesN_N.jpg"/>
+	<scene id="6" nom="exterieur7" lienImage="images/map/exterieur/ext_Admin_tablesN_S.jpg"/>
+        <scene id="7" nom="exterieur8" lienImage="images/map/exterieur/ext_Admin_tablesS_N.jpg"/>
+	<scene id="8" nom="exterieur9" lienImage="images/map/exterieur/ext_Admin_tablesS_S.jpg"/>
+        -->
+	<scene id="9" nom="exterieur10" lienImage="images/map/exterieur/ext_Bastie_amphiC_E.jpg"/>
+	<scene id="10" nom="exterieur11" lienImage="images/map/exterieur/ext_Bastie_amphiC_NE.jpg"/>
+	<scene id="11" nom="exterieur12" lienImage="images/map/exterieur/ext_Bastie_amphiC_O.jpg"/>
+	<scene id="12" nom="exterieur13" lienImage="images/map/exterieur/ext_Bastie_amphiC_S.jpg"/>
+	<scene id="13" nom="exterieur14" lienImage="images/map/exterieur/ext_Bastie_amphiC_SO.jpg"/>
+	<!--
+        <scene id="14" nom="exterieur15" lienImage="images/map/exterieur/ext_Bastie_passagePlateforme_SE.jpg"/>
+	<scene id="15" nom="exterieur16" lienImage="images/map/exterieur/ext_Bastie_pelouse.jpg"/>
+	<scene id="16" nom="exterieur17" lienImage="images/map/exterieur/ext_Bastie_pelouseEntree_E.jpg"/>
+	<scene id="17" nom="exterieur18" lienImage="images/map/exterieur/ext_Bastie_pelouseEntree_S.jpg"/>
+	<scene id="18" nom="exterieur19" lienImage="images/map/exterieur/ext_Bastie_pelouseN_N.jpg"/>
+	<scene id="19" nom="exterieur20" lienImage="images/map/exterieur/ext_Bastie_pelouseN_S.jpg"/>
+        -->
+	<scene id="20" nom="exterieur21" lienImage="images/map/exterieur/ext_Crous_devant_N.jpg"/>
+	<scene id="21" nom="exterieur22" lienImage="images/map/exterieur/ext_Crous_devant_O.jpg"/>
+	<scene id="22" nom="exterieur23" lienImage="images/map/exterieur/ext_Crous_devant_SE.jpg"/>
+	<!--
+        <scene id="23" nom="exterieur24" lienImage="images/map/exterieur/ext_Crous_pelouse.jpg"/>
+	<scene id="24" nom="exterieur25" lienImage="images/map/exterieur/ext_Mermoz_E_S.jpg"/>
+	-->
+        <scene id="25" nom="exterieur26" lienImage="images/map/exterieur/ext_Mermoz_face_SE.jpg"/>
+	<scene id="26" nom="exterieur27" lienImage="images/map/exterieur/ext_Mermoz_face_SO.jpg"/>
+	<!--
+        <scene id="27" nom="exterieur28" lienImage="images/map/exterieur/ext_Mermoz_facePlateforme_N.jpg"/>
+	<scene id="28" nom="exterieur29" lienImage="images/map/exterieur/ext_Mermoz_facePlateforme_O.jpg"/>
+        -->
+	<scene id="29" nom="exterieur30" lienImage="images/map/exterieur/ext_Mermoz_N_E.jpg"/>
+	<scene id="30" nom="exterieur31" lienImage="images/map/exterieur/ext_Mermoz_N_O.jpg"/>
+	<!--
+        <scene id="31" nom="exterieur32" lienImage="images/map/exterieur/ext_Mermoz_plateformeAmphi.jpg"/>
+	<scene id="32" nom="exterieur33" lienImage="images/map/exterieur/ext_Mermoz_plateformeNO_NO.jpg"/>
+	<scene id="33" nom="exterieur34" lienImage="images/map/exterieur/ext_Mermoz_plateformeNO_SE.jpg"/>
+	<scene id="34" nom="exterieur35" lienImage="images/map/exterieur/ext_Mermoz_plateformeO_NO.jpg"/>
+	<scene id="35" nom="exterieur36" lienImage="images/map/exterieur/ext_Mermoz_plateformeO_SE.jpg"/>
+	<scene id="36" nom="exterieur37" lienImage="images/map/exterieur/ext_Mermoz_plateformeS_NE.jpg"/>
+	<scene id="37" nom="exterieur38" lienImage="images/map/exterieur/ext_Mermoz_plateformeS_NO.jpg"/>
+        -->
+	<scene id="38" nom="exterieur39" lienImage="images/map/exterieur/ext_Portail_entree_E.jpg"/>
+	<scene id="39" nom="exterieur40" lienImage="images/map/exterieur/ext_Portail_entree_O.jpg"/>
+	<scene id="40" nom="exterieur41" lienImage="images/map/exterieur/ext_Portail_face.jpg"/>
+	<scene id="41" nom="exterieur42" lienImage="images/map/exterieur/ext_Prefa_devant_NE.jpg"/>
+	<scene id="42" nom="exterieur43" lienImage="images/map/exterieur/ext_Prefa_devant_NO.jpg"/>
+	<scene id="43" nom="exterieur44" lienImage="images/map/exterieur/ext_Admin_devant_S.jpg"/>
+        <!--
+        <scene id="44" nom="exterieur45" lienImage="images/map/exterieur/ext_Admin_barriere_E.jpg"/>
+	<scene id="45" nom="exterieur46" lienImage="images/map/exterieur/ext_Admin_barriere_N.jpg"/>
+	<scene id="46" nom="exterieur47" lienImage="images/map/exterieur/ext_Admin_barriere_O.jpg"/>
+	<scene id="47" nom="exterieur48" lienImage="images/map/exterieur/ext_Bastie_passagePlateforme_NO.jpg"/>
+	<scene id="48" nom="exterieur49" lienImage="images/map/exterieur/ext_Bastie_passagePlateforme_O.jpg"/>
+        -->
+	<scene id="49" nom="exterieur50" lienImage="images/map/exterieur/ext_Mermoz_face_E.jpg"/>
+	<!--
+        <scene id="50" nom="exterieur51" lienImage="images/map/exterieur/ext_Admin_NE_O.jpg"/>
+	<scene id="51" nom="exterieur52" lienImage="images/map/exterieur/ext_Admin_NE_E.jpg"/>
+        -->
+	<scene id="52" nom="exterieur53" lienImage="images/map/exterieur/ext_Crous_devantSE_SE.jpg"/>
+	
+	
+	<!--BATIMENT BASTIE
+	<scene id="100" nom="bastie1" lienImage="images/map/bastie/bast_BurAppariteur_SE.jpg"/>
+	<scene id="101" nom="bastie2" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_E.jpg"/>
+	<scene id="102" nom="bastie3" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_N.jpg"/>
+	<scene id="103" nom="bastie4" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_O.jpg"/>
+	<scene id="104" nom="bastie5" lienImage="images/map/bastie/bast_Couloir_EntreeNordOuest_S.jpg"/>
+	<scene id="105" nom="bastie6" lienImage="images/map/bastie/bast_Couloir_EntreeSud_NO.jpg"/>
+	<scene id="106" nom="bastie7" lienImage="images/map/bastie/bast_Couloir_EntreeSud_E.jpg"/>
+	<scene id="107" nom="bastie8" lienImage="images/map/bastie/bast_Couloir_EntreeSudOuest_O.jpg"/>
+	<scene id="108" nom="bastie9" lienImage="images/map/bastie/bast_Couloir_G23_N.jpg"/>
+	<scene id="109" nom="bastie10" lienImage="images/map/bastie/bast_Couloir_G23_S.jpg"/>
+	<scene id="110" nom="bastie11" lienImage="images/map/bastie/bast_Couloir_G26_O.jpg"/>
+	<scene id="111" nom="bastie12" lienImage="images/map/bastie/bast_Couloir_G26_S.jpg"/>
+	<scene id="112" nom="bastie13" lienImage="images/map/bastie/bast_Couloir_I21_N.jpg"/>
+	<scene id="113" nom="bastie14" lienImage="images/map/bastie/bast_Couloir_I21_S.jpg"/>
+	<scene id="114" nom="bastie15" lienImage="images/map/bastie/bast_Couloir_SO_NE.jpg"/>
+	<scene id="115" nom="bastie16" lienImage="images/map/bastie/bast_Couloir_SO_E.jpg"/>
+	116
+	<scene id="117" nom="bastie18" lienImage="images/map/bastie/bast_G25_N.jpg"/>
+	<scene id="118" nom="bastie19" lienImage="images/map/bastie/bast_G25_S.jpg"/>
+	<scene id="119" nom="bastie20" lienImage="images/map/bastie/bast_G26_SO.jpg"/>
+	<scene id="120" nom="bastie21" lienImage="images/map/bastie/bast_I21_N_SE.jpg"/>
+	<scene id="121" nom="bastie22" lienImage="images/map/bastie/bast_I21_S_SE.jpg"/>
+	<scene id="122" nom="bastie23" lienImage="images/map/bastie/bast_G25_entree_S.jpg"/>
+	<scene id="123" nom="bastie24" lienImage="images/map/bastie/bast_Couloir_EntreeSud_S.jpg"/>
+	<scene id="124" nom="bastie25" lienImage="images/map/bastie/bast_Couloir_couloirG26_E.jpg"/>
+	<scene id="125" nom="bastie26" lienImage="images/map/bastie/bast_Couloir_SO_NO.jpg"/>
+	<scene id="126" nom="bastie27" lienImage="images/map/bastie/bast_Couloir_SO_SE.jpg"/>
+	<scene id="127" nom="bastie28" lienImage="images/map/bastie/bast_G25_O.jpg"/>
+	-->
+        
+        <!--
+
+        BATIMENT MERMOZ
+    
+	-->
+	
+	<scene id="200" nom="mermoz1" lienImage="images/map/mermoz/mer_3eme_CouloirEst_E.jpg"/>
+	<scene id="201" nom="mermoz2" lienImage="images/map/mermoz/mer_3eme_CouloirEst_O.jpg"/>
+	<scene id="202" nom="mermoz3" lienImage="images/map/mermoz/mer_3eme_CouloirOuest_E.jpg"/>
+	<scene id="203" nom="mermoz4" lienImage="images/map/mermoz/mer_3eme_CouloirOuest_SO.jpg"/>
+	<scene id="204" nom="3161" lienImage="images/map/mermoz/mer_316_E.jpg"/>
+	<scene id="205" nom="3162" lienImage="images/map/mermoz/mer_316_SO.jpg"/>
+	<scene id="206" nom="amphi1" lienImage="images/map/mermoz/mer_AmphiA_entree_O.jpg"/>
+	<scene id="207" nom="amphi2" lienImage="images/map/mermoz/mer_AmphiA_entree_SE.jpg"/>
+	<scene id="208" nom="amphi3" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_E.jpg"/>
+	<scene id="209" nom="amphi4" lienImage="images/map/mermoz/mer_AmphiA_rangee_E.jpg"/>
+	<scene id="210" nom="amphi5" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_O.jpg"/>
+	<scene id="211" nom="amphi6" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_S.jpg"/>
+	<scene id="212" nom="amphi7" lienImage="images/map/mermoz/mer_AmphiA_sortieSecours_O.jpg"/>
+	<scene id="213" nom="mermoz14" lienImage="images/map/mermoz/mer_Entree_amphiA_NO.jpg"/>
+	<scene id="214" nom="mermoz15" lienImage="images/map/mermoz/mer_Entree_amphiA_SE.jpg"/>
+	<scene id="215" nom="mermoz16" lienImage="images/map/mermoz/mer_Entree_entree_NE.jpg"/>
+	<scene id="216" nom="mermoz17" lienImage="images/map/mermoz/mer_Entree_entree_S.jpg"/>
+	<scene id="217" nom="mermoz18" lienImage="images/map/mermoz/mer_Entree_escalier.jpg"/>
+	<scene id="218" nom="mermoz19" lienImage="images/map/mermoz/mer_Entree_machinesCafe_N.jpg"/>
+	<scene id="219" nom="mermoz20" lienImage="images/map/mermoz/mer_Entree_machinesCafe_S.jpg"/>
+	<scene id="220" nom="mermoz21" lienImage="images/map/mermoz/mer_Escalier_etage.jpg"/>
+	<scene id="221" nom="mermoz22" lienImage="images/map/mermoz/mer_Escalier_rdc.jpg"/>
+	<scene id="222" nom="mermoz23" lienImage="images/map/mermoz/mer_Entree_entree_SE.jpg"/>
+	<scene id="223" nom="amphi8" lienImage="images/map/mermoz/mer_AmphiA_rangMilieu_E.jpg"/>
+	<scene id="224" nom="amphi9" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_SE.jpg"/>
+	<!--
+        <scene id="225" nom="amphi8" lienImage="images/map/mermoz/mer_AmphiA_bureauProf_SE.jpg"/>
+	<scene id="226" nom="amphi9" lienImage="images/map/mermoz/mer_AmphiA_tablette_SE.jpg"/>
+        -->
+	<scene id="227" nom="3163" lienImage="images/map/mermoz/mer_316_table_E.jpg">
+            <objet id="227">stylo</objet>        
+        </scene>
+	<scene id="228" nom="amphi10" lienImage="images/map/mermoz/mer_AmphiA_rangDevant_O.jpg"/>
+	
+	<!--BATIMENT SAINT EXUPERY
+	<scene id="300" nom="saint_exupery1" lienImage="images/map/exupery/exu_BU_cachette1.jpg"/>
+	<scene id="301" nom="saint_exupery2" lienImage="images/map/exupery/exu_BU_cachette2.jpg"/>
+	<scene id="302" nom="saint_exupery3" lienImage="images/map/exupery/exu_BU_cachette3.jpg"/>
+	<scene id="303" nom="saint_exupery4" lienImage="images/map/exupery/exu_BU_centre_O.jpg"/>
+	<scene id="304" nom="saint_exupery5" lienImage="images/map/exupery/exu_BU_escaliers_NO.jpg"/>
+	<scene id="305" nom="saint_exupery6" lienImage="images/map/exupery/exu_BU_sortie_NE.jpg"/>
+	<scene id="306" nom="saint_exupery7" lienImage="images/map/exupery/exu_BU_tableDiscussion_NO.jpg"/>
+	<scene id="307" nom="saint_exupery8" lienImage="images/map/exupery/exu_entree_NO.jpg"/>
+	<scene id="308" nom="saint_exupery9" lienImage="images/map/exupery/exu_Crous.jpg"/>
+	-->
+        
+        
+    <!-- SCENES SUPPRIMEES
+	<scene id="116" nom="bastie17" lienImage="images/map/bastie/bast_G23_NO.jpg"/>
+	-->
+</scenes>

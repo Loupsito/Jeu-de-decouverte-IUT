@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- informations de cle -->
+<pnjs>
+	<pnj nom="GERONIMO" localisation="119" image="images/pnj/geronimo.png" numeroDialogueCourant="0" idImage="geronimo2">
+		<dialogues>
+			<dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="0">
+                                <texte>Salut Hyacinthe, quoi de neuf ?</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="1">
+                                <texte>Ah, tu veux les clé, c'est ça ?</texte>
+				<prerequis>normal</prerequis><!--apres le dialogue avec l'appariteur-->
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="2">
+                                <texte>Je les ai posé sur une table de pique-nique tout à l'heure, j'ai du les oublier la bas.</texte>
+				<prerequis>last</prerequis> 
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+	<pnj nom="APPARITEUR" localisation="100" image="images/pnj/jean.png" numeroDialogueCourant="0" idImage="appariteur">
+		<dialogues>
+			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="0">
+                                <texte>Tu veux aller en amphi ? Ca va pas etre possible.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="1">
+                                <texte>Tu as besoin de l'autorisation d'un prof.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
+                                <texte>M. Geronimo à les clés de toutes façon, donc vois ça avec lui.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="3">
+                                <texte>Il est en G26 je crois. Dans ce batiment.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+	<pnj nom="HINGO" localisation="214" image="images/pnj/hingo.png" numeroDialogueCourant="0" idImage="hingo">
+		<dialogues>
+			<dialogue nomFake="HINGO" id="HINGO" numeroDialogue="0">
+                                <texte>Bonjour Hyacinthe, si vous voulez aller en amphi, il est fermé.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="HINGO" id="HINGO" numeroDialogue="1">
+                                <texte>Les appariteurs ont probablement la clé, vous devriez allez voir.</texte>
+				<prerequis>normal</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                        <dialogue nomFake="HINGO" id="HINGO" numeroDialogue="2">
+                                <texte>Ils se trouvent dans le batiment Bastie, celui où se trouvent les machines.</texte>
+				<prerequis>last</prerequis>				
+                                <etatFinal> </etatFinal>
+			</dialogue>
+                </dialogues>
+        </pnj>
+</pnjs>

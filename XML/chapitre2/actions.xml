@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actions>
+    <action nom="ouvrir_porte_i21">
+        <prerequis nom="ouvrir_porte_i21">(verifAccesSalle(4,7)==false)</prerequis>
+        <etatFinal>genererChoixPorte(['I21'],nomPorte);</etatFinal>
+    </action>
+    <action nom="ecrire">
+        <prerequis nom="ecrire">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(ecrit).jpg'</etatFinal>
+    </action>
+    <action nom="ecrireBIS">
+        <prerequis nom="ecrireBIS">joueur.idSalle==6</prerequis>
+        <etatFinal>alert('hourra')</etatFinal>
+    </action>    
+    <action nom="effacer">
+        <prerequis nom="effacer">joueur.idSalle==6</prerequis>
+        <etatFinal>listeCases[6][3]='images/4-G23Tableau(vide).jpg'</etatFinal>
+    </action>
+    <action nom="messageDialogue">
+        <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
+        <etatFinal>dialogue('Alors voila vous avez cliquer sur la 2eme action de stylo, comme vous pouvez le voir, on y voit un texte qui s affiche progressivement','dial');</etatFinal>
+    </action>    
+    <action nom="AfficherAgenda">
+        <prerequis nom="AfficherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
+        <etatFinal>document.getElementById('agenda').style.display="block";</etatFinal>
+    </action>
+    <action nom="CacherAgenda">
+        <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
+        <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
+    </action>
+    <action nom="Rendre">
+        <prerequis nom="Rendre">(verifPossessionItem('cleUSB')===true)  </prerequis>
+		<prerequis nom="Rendre">(joueur.idSalle==305)</prerequis>
+        <etatFinal>genererNotification('Vous avez donné la cle USB');suppressionItemDuJeu('cleUSB');</etatFinal>
+    </action>
+</actions>
