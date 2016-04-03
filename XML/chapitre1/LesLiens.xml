@@ -2212,7 +2212,7 @@
     </lien>
     <lien>
         <idScenes id1="204" id2="202" />
-        <acces>true</acces>
+        <acces>false</acces>
         <coordonnees>
             <coordonnee1>
                 <x>240</x>
@@ -2580,7 +2580,7 @@
     </lien>
     <lien>
         <idScenes id1="216" id2="221" />
-        <acces>true</acces>
+        <acces>false</acces>
         <coordonnees>
             <coordonnee1>
                 <x>415</x>

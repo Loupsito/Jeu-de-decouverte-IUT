@@ -2017,7 +2017,7 @@
     </lien>
     <lien>
         <idScenes id1="303" id2="306" />
-        <acces>true</acces>
+        <acces>false</acces>
         <coordonnees>
             <coordonnee1>
                 <x>300</x>
@@ -2033,7 +2033,7 @@
     </lien>
     <lien>
         <idScenes id1="305" id2="304" />
-        <acces>true</acces>
+        <acces>false</acces>
         <coordonnees>
             <coordonnee1>
                 <x>500</x>
