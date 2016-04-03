@@ -63,11 +63,8 @@
         <objectif id='3' objectifCourant='2'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='3'>Parler à M. Hingo</descriptif>
         
-        <objectif id='3' objectifCourant='3'>((verifDialPrerequis(tabPNJ[1]["dialogue"][tabPNJ[1]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Demander les clés à un appariteur</descriptif>
-        
         <objectif id='3' objectifCourant='4'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Demander les clés à M. Geronimo</descriptif>
+        <descriptif id='3'>Demander les clés à M. Geronimo (un appariteur peut vous aider à le trouver).</descriptif>
         
         <objectif id='3' objectifCourant='5'>(verifPossessionItem('cleAmphiA') === true)</objectif>
         <descriptif id='3'>Obtenir la cle de l'amphi A</descriptif>

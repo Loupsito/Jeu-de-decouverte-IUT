@@ -17,8 +17,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -28,8 +28,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -46,7 +46,7 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>555</x>
@@ -62,12 +62,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -76,8 +76,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -92,8 +92,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -110,12 +110,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -124,8 +124,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -140,8 +140,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -161,8 +161,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -172,8 +172,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -190,12 +190,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -204,8 +204,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -225,8 +225,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -238,12 +238,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -252,8 +252,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -273,8 +273,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -286,12 +286,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -300,8 +300,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -321,8 +321,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -337,8 +337,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -348,8 +348,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -366,12 +366,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -385,8 +385,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -412,8 +412,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -433,8 +433,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -449,8 +449,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -460,8 +460,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -481,8 +481,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -497,8 +497,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -508,8 +508,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -524,8 +524,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -540,8 +540,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -556,8 +556,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -572,8 +572,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -593,8 +593,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -609,8 +609,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -638,12 +638,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -657,8 +657,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -673,8 +673,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -684,8 +684,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -702,12 +702,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -718,12 +718,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -732,8 +732,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -769,8 +769,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -780,8 +780,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -796,8 +796,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -812,8 +812,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -833,8 +833,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -849,8 +849,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -860,8 +860,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -881,8 +881,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -894,12 +894,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -908,8 +908,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -929,8 +929,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -945,8 +945,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -956,8 +956,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -972,8 +972,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -990,12 +990,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1006,12 +1006,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1020,8 +1020,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1041,8 +1041,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1054,12 +1054,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1086,12 +1086,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1100,8 +1100,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1121,8 +1121,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1134,12 +1134,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1148,8 +1148,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1169,8 +1169,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1182,12 +1182,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1198,12 +1198,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1212,8 +1212,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1233,8 +1233,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1249,8 +1249,8 @@
                 <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1262,12 +1262,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1276,8 +1276,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1294,12 +1294,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1310,12 +1310,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1326,12 +1326,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1370,8 +1370,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>99999</x>
-                <y>99999</y>
+                <x>999999</x>
+                <y>999999</y>
                 <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1383,12 +1383,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1402,8 +1402,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1418,8 +1418,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1429,8 +1429,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>99999</x>
-                <y>99999</y>
+                <x>999999</x>
+                <y>999999</y>
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1445,8 +1445,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1461,8 +1461,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1479,17 +1479,17 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
     <lien>
-        <idScenes id1="103" id2="16" />
+        <idScenes id1="103" id2="17" />
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
@@ -1498,8 +1498,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1509,8 +1509,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1530,8 +1530,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1546,8 +1546,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1559,12 +1559,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1591,12 +1591,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1607,12 +1607,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1626,8 +1626,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1642,8 +1642,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1655,12 +1655,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1669,8 +1669,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1690,8 +1690,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1719,12 +1719,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1751,12 +1751,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1765,8 +1765,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1786,8 +1786,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1802,8 +1802,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1813,8 +1813,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1831,12 +1831,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1845,8 +1845,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1863,12 +1863,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1877,8 +1877,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1893,8 +1893,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>99999</x>
-                <y>99999</y>
+                <x>999999</x>
+                <y>999999</y>
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -1914,8 +1914,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1930,8 +1930,8 @@
                 <fleche>images/flecheVersLaDroite.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -1958,12 +1958,12 @@
             <coordonnee1>
                 <x>300</x>
                 <y>450</y>
-                <fleche>images/flecheVersLeHaut.png</fleche>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>245</x>
+                <x>150</x>
                 <y>215</y>
-                <fleche>images/flecheVersLaGauche.png</fleche>
+                <fleche>images/loupe.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1978,8 +1978,8 @@
             </coordonnee1>
             <coordonnee2>
                 <x>445</x>
-                <y>230</y>
-                <fleche>images/flecheVersLeBas.png</fleche>
+                <y>270</y>
+                <fleche>images/loupe.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -1993,9 +1993,9 @@
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>365</x>
-                <y>320</y>
-                <fleche>images/flecheVersLeBas.png</fleche>
+                <x>375</x>
+                <y>365</y>
+                <fleche>images/loupe.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2105,12 +2105,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2126,7 +2126,7 @@
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2140,8 +2140,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2156,8 +2156,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2169,12 +2169,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2188,8 +2188,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2199,8 +2199,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2220,8 +2220,8 @@
                 <fleche>images/flecheVersLaGauche.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2249,12 +2249,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2263,8 +2263,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2274,10 +2274,9 @@
             </coordonnee2>
         </coordonnees>
     </lien>
-    <!--
     <lien>
         <idScenes id1="206" id2="213" />
-        <acces>true</acces>
+        <acces>false</acces>
         <coordonnees>
             <coordonnee1>
                 <x>350</x>
@@ -2285,20 +2284,19 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
-    -->
     <lien>
         <idScenes id1="207" id2="214" />
         <acces>false</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2318,8 +2316,8 @@
                 <fleche>images/flecheVersLaGaucheDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2345,8 +2343,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2363,12 +2361,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2379,12 +2377,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2398,8 +2396,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2411,12 +2409,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2443,12 +2441,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2459,12 +2457,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2475,12 +2473,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2491,12 +2489,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2510,8 +2508,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2521,8 +2519,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2537,8 +2535,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2558,8 +2556,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2571,12 +2569,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2590,8 +2588,8 @@
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2603,12 +2601,12 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2619,11 +2617,11 @@
             <coordonnee1>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2634,8 +2632,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2652,12 +2650,12 @@
             <coordonnee1>
                 <x>10</x>
                 <y>400</y>
-                <fleche>images/flecheFlatGauche.png</fleche>
+                <fleche>images/flechePivotG.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>570</x>
                 <y>400</y>
-                <fleche>images/flecheFlatDroite.png</fleche>
+                <fleche>images/flechePivotD.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>
@@ -2671,8 +2669,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLaDroiteDiag.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2682,8 +2680,8 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
@@ -2714,9 +2712,9 @@
         <acces>true</acces>
         <coordonnees>
             <coordonnee1>
-                <x>295</x>
-                <y>375</y>
-                <fleche>images/flecheVersLeHaut.png</fleche>
+                <x>315</x>
+                <y>305</y>
+                <fleche>images/loupe.png</fleche>
             </coordonnee1>
             <coordonnee2>
                 <x>300</x>
@@ -2735,8 +2733,8 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
+                <x>99999</x>
+                <y>99999</y>
                 <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
@@ -2751,9 +2749,9 @@
                 <fleche>images/flecheVersLeHaut.png</fleche>
             </coordonnee1>
             <coordonnee2>
-                <x>9999</x>
-                <y>9999</y>
-                <fleche>images/flecheVersLeHaut.png</fleche>
+                <x>99999</x>
+                <y>99999</y>
+                <fleche>images/flecheVerLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>

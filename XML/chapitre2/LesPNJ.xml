@@ -57,7 +57,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue> 
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
-                                <texte>Hyacinthe tu pourrais chercher Bastien, ça nous aiderait beaucoup.</texte>
+                                <texte>Hyacinthe tu devrais chercher Roger, il sait probablement où se trouve Bastien.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);</etatFinal>
 			</dialogue>  
