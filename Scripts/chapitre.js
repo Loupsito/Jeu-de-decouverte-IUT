@@ -172,8 +172,10 @@ function verifieProgression(chapitreCourant)
                                  "<h2>Testeurs</h2><br/>"+
                                         "<h3>"+
                                         "David Auger<br/>"+
-                                        "Gregory Verrier<br/>"+
+                                        "Inès Suy<br/>"+
+                                        "Santos Suy<br/>"+
                                         "Denis Taupin<br/>"+
+                                        "Gregory Verrier<br/>"+
                                         "</h3>";
                     }, 41000);
                     
