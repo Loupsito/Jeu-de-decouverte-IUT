@@ -43,20 +43,147 @@ function verifieProgression(chapitreCourant)
                         chapitreTermine();
                         boutonChapitreSuivant();
                         initpage();                             
-                    }, 2000); 
+                    }, 2000);
                 }
                 else
-                {                    
-                    zoneAntiClic("6","antiClicTransition","0.4");                    
-                    setTimeout(function(){                         
-                        transitionChapitre("Fin");
-                    }, 2000);
-                    setTimeout(function(){                         
+                {
+                    zoneAntiClic("6","antiClicTransition","0.4");
+                    setTimeout(function(){
                          document.getElementById("panneauTransition").style.display="block";
                          styleTexte=document.getElementById("texteTransition");
-                         styleTexte.innerHTML="<h1>"+"Merci d'avoir jouer à notre Jeu !"+"</h1>";
-                    }, 4500);                                        
-                }                                                                                                       
+                        transitionChapitre("Fin");
+                    }, 2000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML="<h4>Réalisé dans le cadre des projets tuteurés de 2015/2016</h4><br/><br/>"+
+                                 "<h2>"+
+                                 "Client / Tuteur :<br/>"+
+                                 "</h2><h3>"+
+                                 "M. David Auger<br/></h3>";
+                    }, 4500);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML="<h1>Réalisé par</h1><br/>"+
+                                 "<h3>"+
+                                    "Alexandre Suy<br/>"+
+                                    "Harold Basa<br/>"+
+                                    "Nicolas Taupin<br/>"+
+                                    "Romain Bidault"+
+                                 "</h3>";
+                    }, 8000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Chef de projet</h2><br/>"+
+                                        "<h3>"+
+                                        "Alexandre Suy<br/>"+
+                                        "</h3>";
+                    }, 13000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Programmation</h2><br/>"+
+                                        "<h3>"+
+                                        "Alexandre Suy<br/>"+
+                                        "Harold Basa<br/>"+
+                                        "Romain Bidault<br/>"+
+                                        "</h3>";
+                    }, 15000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Conception</h2><br/>"+
+                                        "<h3>"+
+                                        "Alexandre Suy<br/>"+
+                                        "Harold Basa<br/>"+
+                                        "Nicolas Taupin<br/>"+
+                                        "</h3>";
+                    }, 19000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Scénario</h2><br/>"+
+                                        "<h3>"+
+                                        "Nicolas Taupin<br/>"+
+                                        "</h3>";
+                    }, 23000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Musiques et sons</h2><br/>"+
+                                        "<h3>"+
+                                        "Harold Basa<br/>"+
+                                        "</h3>";
+                    }, 25000);
+                    
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h1>Remerciements</h1><br/>";
+                    }, 27000);
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Personnages 1/3</h2><br/>"+
+                                        "<h3>"+
+                                        "Geronimo : David Auger<br/>"+
+                                        "Margaux : Julie Ausseil<br/>"+
+                                        "Boti : Emanuelle Barbot<br/>"+
+                                        "</h3>";
+                    }, 29000);
+                    
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Personnages 2/3</h2><br/>"+
+                                        "<h3>"+
+                                        "Hingo : Fabrice Hoguin<br/>"+
+                                        "Jean : Adrien Loupforest<br/>"+
+                                        "Marteau : Yves Martel<br/>"+
+                                        "</h3>";
+                    }, 33000);
+                    
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Personnages 3/3</h2><br/>"+
+                                        "<h3>"+
+                                        "Bastien : Kevin Ostyn<br/>"+
+                                        "Frederic : Baptiste Rouxel<br/>"+
+                                        "Roger : Paul Vilard<br/>"+
+                                        "</h3>";
+                    }, 37000);
+                    
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML=
+                                 "<h2>Testeurs</h2><br/>"+
+                                        "<h3>"+
+                                        "David Auger<br/>"+
+                                        "Gregory Verrier<br/>"+
+                                        "Denis Taupin<br/>"+
+                                        "</h3>";
+                    }, 41000);
+                    
+                    
+                    setTimeout(function(){
+                         document.getElementById("panneauTransition").style.display="block";
+                         styleTexte=document.getElementById("texteTransition");
+                         styleTexte.innerHTML="<h1>"+"Merci d'avoir joué à notre Jeu !"+"</h1>";
+                    }, 100000);
+                }
             }
             break;
         }

@@ -23,22 +23,22 @@
 	<pnj nom="APPARITEUR" localisation="100" image="images/pnj/jean.png" numeroDialogueCourant="0" idImage="appariteur">
 		<dialogues>
 			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="0">
-                                <texte>Tu veux aller en amphi ? Ca va pas etre possible.</texte>
+                                <texte>Ah, salut Hyacinthe, surpris ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="1">
-                                <texte>Tu as besoin de l'autorisation d'un prof.</texte>
+                        </dialogue>
+			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="1">
+                                <texte>Hé oui, je suis appariteur à temps partiel, les hauts placés n'ont pas trouvé ceux à plein temps.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
-			</dialogue>
-                        <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
-                                <texte>M. Geronimo à les clés de toutes façon, donc vois ça avec lui.</texte>
+                        </dialogue>
+			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
+                                <texte>Oh, tu veux aller en amphi ? Je n'ai plus les clés, un professeur les à empruntés.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="3">
-                                <texte>Il est en G26 je crois. Dans ce batiment.</texte>
+                                <texte>Je crois que M. Geronimo les as oubliés proche de l'autre coté du bâtiment, il en saura peut être plus que moi.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

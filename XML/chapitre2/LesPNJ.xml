@@ -230,12 +230,12 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="4">
-                                <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peut la vérifier par moi même donc tu tombe bien. Sache que tu cours un risque dans le cas où je me trompe donc fait attention.</texte>
+                                <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peux la vérifier par moi même donc tu tombes bien. Saches que tu cours un risque dans le cas où je me trompe donc fais attention.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="5">
-                                <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerait de me payer le repas ?</texte>
+                                <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerais de me payer le repas ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixPayerRepasGeronimo",choixPayerRepasGeronimo,"Payer le repas de M. Geronimo");</etatFinal>
 			</dialogue>
