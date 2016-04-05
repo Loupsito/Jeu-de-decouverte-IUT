@@ -54,8 +54,8 @@
     </chapitre>        
     
     <chapitre numero='3' positionJoueur='117'>
-        <objectif id='3' objectifCourant='0'>(joueur.idSalle===120)</objectif>
-        <descriptif id='3'>Sortir du cours par l'arriere</descriptif>
+        <objectif id='3' objectifCourant='0'>(joueur.idSalle===102)</objectif>
+        <descriptif id='3'>Sortir de la salle de cours</descriptif>
         
         <objectif id='3' objectifCourant='1'>(joueur.idSalle===214)</objectif>
         <descriptif id='3'>Se rendre dans l'amphithéâtre A</descriptif>
@@ -63,19 +63,13 @@
         <objectif id='3' objectifCourant='2'>((verifDialPrerequis(tabPNJ[2]["dialogue"][tabPNJ[2]["numeroDialogueCourant"]][1]))===-1)</objectif>
         <descriptif id='3'>Parler à M. Hingo</descriptif>
         
-        <objectif id='3' objectifCourant='3'>((verifDialPrerequis(tabPNJ[1]["dialogue"][tabPNJ[1]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Demander les clés à un appariteur</descriptif>
+        <objectif id='3' objectifCourant='3'>(verifPossessionItem('cleAmphiA') === true)</objectif>
+        <descriptif id='3'>Obtenir la cle (demander à M. Geronimo ou un Appariteur)</descriptif>
         
-        <objectif id='3' objectifCourant='4'>((verifDialPrerequis(tabPNJ[0]["dialogue"][tabPNJ[0]["numeroDialogueCourant"]][1]))===-1)</objectif>
-        <descriptif id='3'>Demander les clés à M. Geronimo</descriptif>
-        
-        <objectif id='3' objectifCourant='5'>(verifPossessionItem('cleAmphiA') === true)</objectif>
-        <descriptif id='3'>Obtenir la cle de l'amphi A</descriptif>
-        
-        <objectif id='3' objectifCourant='6'>(joueur.idSalle===207)</objectif>
+        <objectif id='3' objectifCourant='4'>(joueur.idSalle===207)</objectif>
         <descriptif id='3'>Se rendre en amphi A</descriptif>
         
-        <objectif id='3' objectifCourant='7'>(verificationScenarioLu('226')===true)</objectif>
+        <objectif id='3' objectifCourant='5'>(verificationScenarioLu('226')===true)</objectif>
         <descriptif id='3'>Trouver un indice laissé par le hackeur</descriptif>        
     </chapitre>
 </chapitres>

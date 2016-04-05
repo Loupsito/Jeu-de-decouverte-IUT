@@ -103,9 +103,10 @@ function cliquerBouton(bouton)
     $("#"+bouton).click(function (){
         if (bouton === "commencer")
         {
+            var progression=1;
             //commencer = document.getElementById("accueil");
             //commencer.style.display="none";
-            $('#accueil').fadeOut("slow");
+            $('#accueil').fadeOut("slow");            
             transitionChapitre("Chapitre  "+progression);
              setTimeout(function() {    
                 fonctionGeneratricePrincipale();

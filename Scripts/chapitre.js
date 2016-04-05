@@ -43,20 +43,38 @@ function verifieProgression(chapitreCourant)
                         chapitreTermine();
                         boutonChapitreSuivant();
                         initpage();                             
-                    }, 2000); 
+                    }, 2000);
                 }
                 else
-                {                    
-                    zoneAntiClic("6","antiClicTransition","0.4");                    
-                    setTimeout(function(){                         
-                        transitionChapitre("Fin");
-                    }, 2000);
-                    setTimeout(function(){                         
-                         document.getElementById("panneauTransition").style.display="block";
-                         styleTexte=document.getElementById("texteTransition");
-                         styleTexte.innerHTML="<h1>"+"Merci d'avoir jouer à notre Jeu !"+"</h1>";
-                    }, 4500);                                        
-                }                                                                                                       
+                {
+                    var tabGenerique = ["<h4>Réalisé dans le cadre des projets tuteurés de 2015/2016</h4><br/><br/>"+"<h2>"+"Client / Tuteur :<br/>"+"</h2><h3>"+"M. David Auger<br/></h3>",
+                                        "<h1>Réalisé par</h1><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"Romain Bidault"+"</h3>",
+                                        "<h2>Chef de projet</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"</h3>",
+                                        "<h2>Programmation</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Romain Bidault<br/>"+"</h3>",
+                                        "<h2>Conception</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"</h3>",
+                                        "<h2>Scénario</h2><br/>"+"<h3>"+"Nicolas Taupin<br/>"+"</h3>",
+                                        "<h2>Musiques et sons</h2><br/>"+"<h3>"+"Harold Basa<br/>"+"</h3>",
+                                        "<h1>Remerciements</h1><br/>",
+                                        "<h2>Personnages 1/3</h2><br/>"+"<h3>"+"Geronimo : David Auger<br/>"+"Margaux : Julie Ausseil<br/>"+"Boti : Emanuelle Barbot<br/>"+"</h3>",
+                                        "<h2>Personnages 2/3</h2><br/>"+"<h3>"+"Hingo : Fabrice Hoguin<br/>"+"Jean : Adrien Loupforest<br/>"+"Marteau : Yves Martel<br/>"+"</h3>",
+                                        "<h2>Personnages 3/3</h2><br/>"+"<h3>"+"Bastien : Kevin Ostyn<br/>"+"Frederic : Baptiste Rouxel<br/>"+"Roger : Paul Vilard<br/>"+"</h3>",
+                                        "<h2>Testeurs</h2><br/>"+"<h3>"+"David Auger<br/>"+"Inès Suy<br/>"+"Santos Suy<br/>"+"Denis Taupin<br/>"+"Gregory Verrier<br/>"+"</h3>",
+                                        "<h1>"+"Merci d'avoir joué à notre Jeu !"+"</h1>"+"<br/><h2>l'equipe du jeu</h2>"
+                    ];                   
+                    
+                    zoneAntiClic("6","antiClicTransition","0.4");
+                    
+                    for(var i=0, l = tabGenerique.length; i< l ; i++) 
+                    {           
+                        (function(i) {           
+                            timer = setTimeout(function(){
+                                document.getElementById("panneauTransition").style.display="block";
+                                styleTexte=document.getElementById("texteTransition");
+                                styleTexte.innerHTML=tabGenerique[i];                            
+                            }, duree= i*3000);
+                        }(i));         
+                    }                                           
+                }
             }
             break;
         }
@@ -69,10 +87,21 @@ function chapitreTermine()
     $("#texteTransition").empty();
     $("#texteTransition").append("<h1>Chapitre Terminé</h1>");
     $("#panneauTransition").fadeIn("3000");
-     setTimeout(function(){                         
-        genereContenuID("div","Voici le mot de passe du chapitre "+(progression-1)+" : <br/><strong>"+Angoka(progression-1)+"</strong><br/><br/>Recopiez-le la prochaine fois dans <strong>Charger partie</strong><br/> si vous souhaitez revenir à ce chapitre.<br/>","texteTransition","MessageMdp");
-        $('#MessageMdp').fadeIn("slow").animate({"margin-top": 35}, "slow");
-    }, 2000);    
+    
+    if(progression===1)
+    {
+        setTimeout(function(){                         
+           genereContenuID("div","Bien joué ! Vous avez terminer le Premier chapitre ! <br/> :)","texteTransition","MessageMdp");
+           $('#MessageMdp').fadeIn("slow").animate({"margin-top": 35}, "slow");
+       }, 2000);       
+    }
+    else
+    {
+        setTimeout(function(){                         
+           genereContenuID("div","Voici le mot de passe du chapitre "+(progression)+" : <br/><strong>"+Angoka(progression)+"</strong><br/><br/>Recopiez-le la prochaine fois dans <strong>Charger partie</strong><br/> si vous souhaitez revenir à ce chapitre.<br/>","texteTransition","MessageMdp");
+           $('#MessageMdp').fadeIn("slow").animate({"margin-top": 35}, "slow");
+       }, 2000);       
+    }     
 }
 
 function boutonChapitreSuivant()
@@ -98,7 +127,7 @@ function boutonChapitreSuivant()
 
 function pasuwado(mdp)
 {
-    var message="";
+    /*var message="";
     var error=0;
     var chiffres="0123456789";
     var tab = new Array();
@@ -153,10 +182,23 @@ function pasuwado(mdp)
         msgErreurMdp();
         return false;   
     }
+    */
+    
+    
+    if(mdp ==="lol")
+        return 2;
+    else if (mdp ==="wof")
+        return 3; 
+    else
+    {
+        msgErreurMdp();
+        return false;   
+    }
 }
 
 function Angoka(courant)
 {
+    /*
     var tab = new Array("f","d","d","a","m","");    
     var tabIchi = new Array("7","8","4","7","4","5");
     var tabNi = new Array("5","6","3","2","3","6");
@@ -167,6 +209,12 @@ function Angoka(courant)
     {
         message+=(tabTab[courant-1][i]+tab[i]);
     }    
+    */
+    if(courant === 2)
+        message= "lol";
+    else if (courant ===3)
+        message ="wof"; 
+    
     return message;
 }
 //---------TEST---------//

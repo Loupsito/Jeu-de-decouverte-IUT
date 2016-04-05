@@ -77,12 +77,16 @@
 	<scene id="113" nom="bastie14" lienImage="images/map/bastie/bast_Couloir_I21_S.jpg"/>
 	<scene id="114" nom="bastie15" lienImage="images/map/bastie/bast_Couloir_SO_NE.jpg"/>
 	<scene id="115" nom="bastie16" lienImage="images/map/bastie/bast_Couloir_SO_E.jpg"/>
-	<!--116-->
+	<scene id="116" nom="bastie17" lienImage="images/map/bastie/bast_G23_NO.jpg"/>
 	<scene id="117" nom="bastie18" lienImage="images/map/bastie/bast_G25_N.jpg"/>
+	<!--
 	<scene id="118" nom="bastie19" lienImage="images/map/bastie/bast_G25_S.jpg"/>
+        -->
 	<scene id="119" nom="bastie20" lienImage="images/map/bastie/bast_G26_SO.jpg"/>
-	<scene id="120" nom="bastie21" lienImage="images/map/bastie/bast_I21_N_SE.jpg"/>
+	<!--
+        <scene id="120" nom="bastie21" lienImage="images/map/bastie/bast_I21_N_SE.jpg"/>
 	<scene id="121" nom="bastie22" lienImage="images/map/bastie/bast_I21_S_SE.jpg"/>
+        -->
 	<scene id="122" nom="bastie23" lienImage="images/map/bastie/bast_G25_entree_S.jpg"/>
 	<scene id="123" nom="bastie24" lienImage="images/map/bastie/bast_Couloir_EntreeSud_S.jpg"/>
 	<scene id="124" nom="bastie25" lienImage="images/map/bastie/bast_Couloir_couloirG26_E.jpg"/>
@@ -143,6 +147,6 @@
 	-->
         
     <!-- SCENES SUPPRIMEES
-	<scene id="116" nom="bastie17" lienImage="images/map/bastie/bast_G23_NO.jpg"/>
+	
 	-->
 </scenes>

@@ -828,7 +828,7 @@ function modifieValeur(action)
 var dessiner=false;
 function dessin()
 {       
-    if(joueur.idSalle ===40)
+    if(joueur.idSalle === 40)
     {
         if(!document.getElementById("tableauDessin"))
         {
@@ -886,7 +886,7 @@ function dessin()
             }            
         }      
     }
-    else
+   else
     {        
         if(document.getElementById("tableauDessin"))
             removeElementById("tableauDessin");
