@@ -59,7 +59,7 @@
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
                                 <texte>Hyacinthe tu devrais chercher Roger, il sait probablement où se trouve Bastien.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);deverouillementPorte('saint_exupery4');</etatFinal>
+                                <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);deverouillementPorte('saint_exupery4',1);</etatFinal>
 			</dialogue>  
 		</dialogues>
 	</pnj>
@@ -158,7 +158,7 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
                                 <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>deverouillementPorte('saint_exupery5');</etatFinal>
+                                <etatFinal>deverouillementPorte('saint_exupery5',1);</etatFinal>
 			</dialogue>
 
                 </dialogues>               

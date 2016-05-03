@@ -226,13 +226,13 @@ function ouvrirPorte(tabPortes)
         {
             if (idPortes === tabPortes[i])
             {
-                deverouillementPorte(idPortes);
+                deverouillementPorte(idPortes,0);
                 break;
             }
         }
     });
 }
-function deverouillementPorte(nomId)
+function deverouillementPorte(nomId,type)
 {
 //On y rentrera les id des portes verrouillées que l'action peut deverrouiller
     var idPorte = [];
@@ -256,7 +256,11 @@ function deverouillementPorte(nomId)
                     
                     //generer une notification 
                         convertiNomScene(listeCases[i][1]);
-                        genererNotification('Vous avez déverrouillé le lieu "'+nomDeScene+'"');                    
+                        
+                        if (type === 0)
+                            genererNotification('Vous avez déverrouillé le lieu "'+nomDeScene+'"');   
+                        else 
+                            genererNotification('La zone suivante est maintenant explorable.'); 
                         break;
                     }                       
                 }
