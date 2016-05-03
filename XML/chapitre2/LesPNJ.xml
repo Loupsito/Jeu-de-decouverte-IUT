@@ -59,7 +59,7 @@
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="10">
                                 <texte>Hyacinthe tu devrais chercher Roger, il sait probablement où se trouve Bastien.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);</etatFinal>
+                                <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,11);deverouillementPorte('saint_exupery4');</etatFinal>
 			</dialogue>  
 		</dialogues>
 	</pnj>
@@ -158,7 +158,7 @@
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="5">
                                 <texte>Ah ma cle USB ! Merci ! Il est dans la file d'attente du crous.</texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
+                                <etatFinal>deverouillementPorte('saint_exupery5');</etatFinal>
 			</dialogue>
 
                 </dialogues>               
@@ -168,7 +168,7 @@
 			<dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="0">
                                 <texte>Laisse-moi passer abruti, tu bloques le passage.</texte>
 				<prerequis>normal</prerequis>				
-                                <etatFinal> </etatFinal>
+                                <etatFinal>$("#saint_exupery8").css("visibility", "hidden")</etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="1">
                                 <texte>Hein ? Pourquoi tu voudrais me parler ? T’as un problème ?! J’ai rien à faire avec les personnes dans ton genre, alors écrase.</texte>

@@ -21,7 +21,7 @@
                         <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="3">
                                 <texte>Vraiment… je crois que ton groupe a cours en 316. Le mien est plus tard, j’ai encore le temps. </texte>
 				<prerequis>last</prerequis>				
-                                <etatFinal> </etatFinal>
+                                <etatFinal>deverouillementPorte('mermoz22');</etatFinal>
 			</dialogue>
                 </dialogues>
         </pnj>

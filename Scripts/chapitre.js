@@ -57,7 +57,7 @@ function verifieProgression(chapitreCourant)
                                         "<h1>Remerciements</h1><br/>",
                                         "<h2>Personnages 1/3</h2><br/>"+"<h3>"+"Geronimo : David Auger<br/>"+"Margaux : Julie Ausseil<br/>"+"Boti : Emanuelle Barbot<br/>"+"</h3>",
                                         "<h2>Personnages 2/3</h2><br/>"+"<h3>"+"Hingo : Fabrice Hoguin<br/>"+"Jean : Adrien Loupforest<br/>"+"Marteau : Yves Martel<br/>"+"</h3>",
-                                        "<h2>Personnages 3/3</h2><br/>"+"<h3>"+"Bastien : Kevin Ostyn<br/>"+"Frederic : Baptiste Rouxel<br/>"+"Roger : Paul Vilard<br/>"+"</h3>",
+                                        "<h2>Personnages 3/3</h2><br/>"+"<h3>"+"Bastien : Kevin Ostyn<br/>"+"Frederic : Baptiste Rouxel<br/>"+"Roger : Paul Viard<br/>"+"</h3>",
                                         "<h2>Testeurs</h2><br/>"+"<h3>"+"David Auger<br/>"+"Inès Suy<br/>"+"Santos Suy<br/>"+"Denis Taupin<br/>"+"Gregory Verrier<br/>"+"</h3>",
                                         "<h1>"+"Merci d'avoir joué à notre Jeu !"+"</h1>"+"<br/><h2>l'equipe du jeu</h2>"
                     ];                   
