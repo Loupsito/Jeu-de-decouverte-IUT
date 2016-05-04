@@ -47,19 +47,20 @@ function verifieProgression(chapitreCourant)
                 }
                 else
                 {
-                    var tabGenerique = ["<h4>Réalisé dans le cadre des projets tuteurés de 2015/2016</h4><br/><br/>"+"<h2>"+"Client / Tuteur :<br/>"+"</h2><h3>"+"M. David Auger<br/></h3>",
-                                        "<h1>Réalisé par</h1><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"Romain Bidault"+"</h3>",
-                                        "<h2>Chef de projet</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"</h3>",
-                                        "<h2>Programmation</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Romain Bidault<br/>"+"</h3>",
-                                        "<h2>Conception</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"</h3>",
-                                        "<h2>Scénario</h2><br/>"+"<h3>"+"Nicolas Taupin<br/>"+"</h3>",
-                                        "<h2>Musiques et sons</h2><br/>"+"<h3>"+"Harold Basa<br/>"+"</h3>",
-                                        "<h1>Remerciements</h1><br/>",
-                                        "<h2>Personnages 1/3</h2><br/>"+"<h3>"+"Geronimo : David Auger<br/>"+"Margaux : Julie Ausseil<br/>"+"Boti : Emanuelle Barbot<br/>"+"</h3>",
-                                        "<h2>Personnages 2/3</h2><br/>"+"<h3>"+"Hingo : Fabrice Hoguin<br/>"+"Jean : Adrien Loupforest<br/>"+"Marteau : Yves Martel<br/>"+"</h3>",
-                                        "<h2>Personnages 3/3</h2><br/>"+"<h3>"+"Bastien : Kevin Ostyn<br/>"+"Frederic : Baptiste Rouxel<br/>"+"Roger : Paul Vilard<br/>"+"</h3>",
-                                        "<h2>Testeurs</h2><br/>"+"<h3>"+"David Auger<br/>"+"Inès Suy<br/>"+"Santos Suy<br/>"+"Denis Taupin<br/>"+"Gregory Verrier<br/>"+"</h3>",
-                                        "<h1>"+"Merci d'avoir joué à notre Jeu !"+"</h1>"+"<br/><h2>l'equipe du jeu</h2>"
+                    var tabGenerique = [
+                        "<h4>Réalisé dans le cadre des projets tuteurés de 2015/2016</h4><br/><br/>"+"<h2>"+"Client / Tuteur :<br/>"+"</h2><h3>"+"M. David Auger<br/></h3>",
+                        "<h1>Réalisé par</h1><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"Romain Bidault"+"</h3>",
+                        "<h2>Chef de projet</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"</h3>",
+                        "<h2>Programmation</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Romain Bidault<br/>"+"</h3>",
+                        "<h2>Conception</h2><br/>"+"<h3>"+"Alexandre Suy<br/>"+"Harold Basa<br/>"+"Nicolas Taupin<br/>"+"</h3>",
+                        "<h2>Scénario</h2><br/>"+"<h3>"+"Nicolas Taupin<br/>"+"</h3>",
+                        "<h2>Musiques et sons</h2><br/>"+"<h3>"+"Harold Basa<br/>"+"</h3>",
+                        "<h1>Remerciements</h1><br/>",
+                        "<h2>Personnages 1/3</h2><br/>"+"<h3>"+"Geronimo : David Auger<br/>"+"Margaux : Julie Ausseil<br/>"+"Boti : Emanuelle Barbot<br/>"+"</h3>",
+                        "<h2>Personnages 2/3</h2><br/>"+"<h3>"+"Hingo : Fabrice Hoguin<br/>"+"Jean : Adrien Loupforest<br/>"+"Marteau : Yves Martel<br/>"+"</h3>",
+                        "<h2>Personnages 3/3</h2><br/>"+"<h3>"+"Bastien : Kevin Ostyn<br/>"+"Frederic : Baptiste Rouxel<br/>"+"Roger : Paul Vilard<br/>"+"</h3>",
+                        "<h2>Testeurs</h2><br/>"+"<h3>"+"David Auger<br/>"+"Inès Suy<br/>"+"Santos Suy<br/>"+"Denis Taupin<br/>"+"Gregory Verrier<br/>"+"</h3>",
+                        "<h1>"+"Merci d'avoir joué à notre Jeu !"+"</h1>"+"<br/><h2>L'equipe du jeu</h2>"
                     ];                   
                     
                     zoneAntiClic("6","antiClicTransition","0.4");
@@ -126,65 +127,7 @@ function boutonChapitreSuivant()
 }
 
 function pasuwado(mdp)
-{
-    /*var message="";
-    var error=0;
-    var chiffres="0123456789";
-    var tab = new Array();
-    
-    for(var i=0;i<mdp.length;i++)
-    {
-        tab[i]=mdp.charAt(i);
-    }
-    for(var i=0;i<tab.length;i++)
-    {       
-       // alert(tab[i]);
-        if((tab[i] ==="f")||(tab[i] ==="d")||(tab[i] ==="a")||(tab[i] ==="m"))
-        {           
-            if(tab[i] ==="f")
-                 message+="*";
-            if(tab[i] ==="d")
-                 message+="/";
-            if(tab[i] ==="a")
-                message+="+";
-            if(tab[i] ==="m")
-                message+="-";                            
-        }
-        else if((tab[i] !=="f")&&(tab[i] !=="d")&&(tab[i] !=="a")&&(tab[i] !=="m"))
-        {
-            var valeurTrouve=false;
-            for(var j=0;j<chiffres.length;j++)
-            {    
-                if(tab[i]==chiffres.charAt(j))
-                {
-                    message+=tab[i];
-                    valeurTrouve=true;
-                    break;
-                }                
-            }
-            if(valeurTrouve===false)   
-                error+=1;
-        }               
-    }    
-    if(error===0&&(message.length===11))
-    {
-        var resultat = eval(message);
-        if((resultat==1)||(resultat==2)||(resultat==3))
-            return resultat;
-        else
-        {
-            msgErreurMdp();
-            return false;   
-        }
-    }
-    else
-    {
-        msgErreurMdp();
-        return false;   
-    }
-    */
-    
-    
+{   
     if(mdp ==="lol")
         return 2;
     else if (mdp ==="wof")
@@ -197,19 +140,7 @@ function pasuwado(mdp)
 }
 
 function Angoka(courant)
-{
-    /*
-    var tab = new Array("f","d","d","a","m","");    
-    var tabIchi = new Array("7","8","4","7","4","5");
-    var tabNi = new Array("5","6","3","2","3","6");
-    var tabSan = new Array("7","6","2","3","2","6");    
-    var tabTab = new Array(tabIchi,tabNi,tabSan);
-    var message="";
-    for(var i=0;i<6;i++)
-    {
-        message+=(tabTab[courant-1][i]+tab[i]);
-    }    
-    */
+{   
     if(courant === 2)
         message= "lol";
     else if (courant ===3)
