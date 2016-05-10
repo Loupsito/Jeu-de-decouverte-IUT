@@ -171,7 +171,7 @@ function affichageAgenda(chapitreCourant)
         }
     }
     if(document.getElementById("panneauAgenda"))
-         document.getElementById("panneauAgenda").style.height="100px";
+         document.getElementById("panneauAgenda").style.height="120px";
      
     //Creation de la div 'panneauAgenda' si elle n'existe pas encore
     if(!document.getElementById("panneauAgenda"))

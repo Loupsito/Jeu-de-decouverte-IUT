@@ -1,8 +1,33 @@
 body 
 {
     margin : 0 auto;
-    background-color: #696969;
+    background-color: #696969;    
     align-items: center;       
+}
+
+#bordGauche
+{
+    background-image:url(images/uvsq-logo.jpg);    
+    background-size:contain;    
+    position: relative;
+    height: 100%;
+    width:15%;
+    position: absolute;    
+    left:0;    
+    margin:0 0;
+}
+
+
+#bordDroite
+{
+    background-image:url(images/uvsq-logo.jpg);    
+    background-size:contain;
+    position: relative;
+    height: 100%;
+    width:15%;
+    position: absolute;    
+    right:0;    
+    margin:0 0;
 }
 
 button
@@ -310,6 +335,7 @@ button
     display: none;
 }
 
+/*
 #telechargement
 {
     position: absolute;
@@ -337,7 +363,7 @@ button
     font-weight : bold;
     color: #969696;    
 }
-
+*/
 
 
 

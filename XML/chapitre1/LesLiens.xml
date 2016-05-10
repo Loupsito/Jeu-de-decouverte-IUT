@@ -2212,7 +2212,7 @@
     </lien>
     <lien>
         <idScenes id1="204" id2="202" />
-        <acces>false</acces>
+        <acces>true</acces><!-- mis a true provisoirement car difficulté à déverouiller -->
         <coordonnees>
             <coordonnee1>
                 <x>240</x>
@@ -2751,7 +2751,7 @@
             <coordonnee2>
                 <x>99999</x>
                 <y>99999</y>
-                <fleche>images/flecheVerLeBas.png</fleche>
+                <fleche>images/flecheVersLeBas.png</fleche>
             </coordonnee2>
         </coordonnees>
     </lien>

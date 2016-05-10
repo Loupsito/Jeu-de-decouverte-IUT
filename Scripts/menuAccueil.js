@@ -39,7 +39,7 @@ function msgErreurMdp()
 {    
     if(!(document.getElementById("msgErreurMotDePasse")))
     {
-        genereContenuID('div',"Le mot de passe n'a pas été reconnue","accueil","msgErreurMotDePasse");
+        genereContenuID('div',"Le mot de passe n'a pas été reconnu","accueil","msgErreurMotDePasse");
         msgErreurMotDePasse = document.getElementById("msgErreurMotDePasse");    
         //msgErreurMotDePasse.style.width=160+"px";
         msgErreurMotDePasse.style.height=22+"px";
