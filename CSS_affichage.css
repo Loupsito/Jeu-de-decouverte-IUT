@@ -1,33 +1,50 @@
-body 
+body
 {
+    margin: 0px;
+}
+
+#sousCorps 
+{
+    min-width: 1000px;
     margin : 0 auto;
     background-color: #696969;    
-    align-items: center;       
+    align-items: center;  
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 #bordGauche
 {
-    background-image:url(images/uvsq-logo.jpg);    
-    background-size:contain;    
+    background-color: #B5B5B5;        
     position: relative;
     height: 100%;
     width:15%;
     position: absolute;    
     left:0;    
-    margin:0 0;
+    margin:0;    
 }
 
 
 #bordDroite
 {
-    background-image:url(images/uvsq-logo.jpg);    
-    background-size:contain;
+    background-color: #B5B5B5;    
     position: relative;
     height: 100%;
     width:15%;
     position: absolute;    
     right:0;    
-    margin:0 0;
+    margin:0;
+}
+
+.logoBord
+{
+    position: absolute;
+    left:0;
+    right:0;
+    margin:0 auto;
+    margin-top: 140%;
+    height:20%;
 }
 
 button
@@ -47,6 +64,7 @@ button
     left:0;
     right:0;
     margin:0 auto;
+     z-index:10; 
 }
 #accueil
 {
