@@ -6,6 +6,7 @@ body
 #sousCorps 
 {
     min-width: 1000px;
+    min-height: 600px;
     margin : 0 auto;
     background-color: #696969;    
     align-items: center;  
