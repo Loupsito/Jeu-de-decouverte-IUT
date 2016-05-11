@@ -21,12 +21,12 @@
 			</dialogue> 
                         
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="3">
-                                <texte>Oui enfin délégué c’est un bien grand mot, on est l’équivalent des portes-paroles de la classe, et de celui qui est chargé de la feuille d’appel aussi… (je l’ai mise où d’ailleurs ?)</texte>
+                                <texte>Oui enfin délégué c’est un bien grand mot, on est l’équivalent des porte-paroles de la classe, et de celui qui est chargé de la feuille d’appel aussi… (je l’ai mise où d’ailleurs ?)</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue> 
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="4">
-                                <texte>Mais bon c’est vrai que ça ne ferait pas de mal de chercher à aider les profs. Un travail de vrai délégué, enfin ! Ore ni makasetoke !</texte>
+                                <texte>Mais bon c’est vrai que ça ne ferait pas de mal d'aider les profs. Un travail de vrai délégué, enfin ! Ore ni makasetoke !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(1,4);testDialogue('margaux');</etatFinal>
 			</dialogue>  
@@ -42,7 +42,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>    
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="7">
-                                <texte>Mais ils avaient l’air de trouver ça très inquiétant quand même… Et ils auraient pas annulé les cours du matin non plus d’ailleurs.</texte>
+                                <texte>Mais ils avaient l’air de trouver ça très inquiétant quand même… Et ils n'auraient pas annulé les cours du matin non plus d’ailleurs.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");</etatFinal>
 			</dialogue> 
@@ -82,7 +82,7 @@
 			</dialogue>
                         
                         <dialogue nomFake="MARGAUX" id="MARGAUX" numeroDialogue="3">
-                                <texte>Et ben, c’est pas la civilité qui les étouffe ! Mais du coup… D’où ça pourrait provenir ? On est les délégués des trois groupes quand même, on pourrait essayer d’aider les profs.</texte>
+                                <texte>Eh ben, c’est pas la civilité qui les étouffe ! Mais du coup… D’où ça pourrait provenir ? On est les délégués des trois groupes quand même, on pourrait essayer d’aider les profs.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>removeElementById('msgDialogue');miseAJourDialogue(0,3);testDialogue('frederic');</etatFinal>
 			</dialogue> 
@@ -136,7 +136,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="ROGER" id="ROGER" numeroDialogue="1">
-                                <texte>Tu veux savoir où se trouve Bastien ? Tu est prêt à nous aider ?</texte>
+                                <texte>Tu veux savoir où se trouve Bastien ? Tu es prêt à nous aider ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixAide",choixAiderRoger,"Récupérer une clé USB dans la bibliothèque");</etatFinal>
 			</dialogue>
@@ -176,17 +176,17 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="2">
-                                <texte>Quoi encore ?! Tu va me fou*** la paix ?! Je vais te… l’alarme ? Comment t’es au courant ?! Tss, de toutes façon ça remonte au mois dernier, t’es à la ramasse. Maintenant dégage !</texte>
+                                <texte>Quoi encore ?! Tu va me fou*** la paix ?! Je vais te… l’alarme ? Comment t’es au courant ?! Tss, de toute façon ça remonte au mois dernier, t’es à la ramasse. Maintenant dégage !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="3">
-                                <texte>PU**** MAIS QUOI ENCORE ?! Non ! C’est pas moi qui ai fait bouger tout ces conn**** aujourd’hui ! Maintenant fous le camp avant que je t’arrache la tête.</texte>
+                                <texte>PU**** MAIS QUOI ENCORE ?! Non ! C’est pas moi qui ai fait bouger tous ces conn**** aujourd’hui ! Maintenant fous le camp avant que je t’arrache la tête.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="4">
-                                <texte>Tiens ben si tu veux tant m’emmer** tu peut bien me payer un repas. Attention à ta réponse, ce petit jeu pourrait mal finir…</texte>
+                                <texte>Tiens ben si tu veux tant m’emmer** tu peux bien me payer un repas. Attention à ta réponse, ce petit jeu pourrait mal finir…</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixPayerBastien",choixPayerBastien,"Payer le repas de Bastien");</etatFinal>
 			</dialogue>
@@ -196,7 +196,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="BASTIEN" id="BASTIEN" numeroDialogue="6">
-                                <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VA TELLEMENT *BIIIP BIP BIP*!!!!</texte>
+                                <texte>*BIP BIP BIP* *BIIIP BIP BIIIP BIP*  !!! TU VAS TELLEMENT *BIIIP BIP BIP*!!!!</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>visibiltyPNJ("#bastien","hide");visibiltyPNJ("#geronimo","fdsf");genererNotification("Bastien s'en va et M. Geronimo arrive.");</etatFinal>
 			</dialogue>
@@ -210,7 +210,7 @@
         <pnj nom="GERONIMO" localisation="308" image="images/pnj/geronimo.png" numeroDialogueCourant="0" idImage="geronimo">
 		<dialogues>
 			<dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="0">
-                                <texte>Il est plutôt terrible non ? Je ne sais pas pourquoi il ne s’est pas encore fait expulsé, on n’en à jamais eu des comme ça avant. Il est peut-être déjà expulsé ? On l’aurait rappelé pour le scén…</texte>
+                                <texte>Il est plutôt terrible non ? Je ne sais pas pourquoi il ne s’est pas encore fait expulser, on n’en a jamais eu des comme ça avant. Il est peut-être déjà expulsé ? On l’aurait rappelé pour le scén…</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -225,17 +225,17 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="3">
-                                <texte>Bon, plus sérieusement, tu es délégué n’est-ce-pas ? J’ai cru comprendre que tu cherchait à savoir pourquoi l’alarme avait sonnée je me trompe ?</texte>
+                                <texte>Bon, plus sérieusement, tu es délégué n’est-ce-pas ? J’ai cru comprendre que tu cherchais à savoir pourquoi l’alarme avait sonné je me trompe ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="4">
-                                <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peux la vérifier par moi même donc tu tombes bien. Saches que tu cours un risque dans le cas où je me trompe donc fais attention.</texte>
+                                <texte>Dans ce cas je vais te mettre sur une piste que je soupçonne, je ne peux la vérifier par moi même donc tu tombes bien. Sache que tu cours un risque dans le cas où je me trompe donc fais attention.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="5">
-                                <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerais de me payer le repas ?</texte>
+                                <texte>Que dis-tu de discuter de cela devant un repas ? Ceci dit… Je n’ai plus d’argent sur ma carte, ça te dérangerait de me payer le repas ?</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixPayerRepasGeronimo",choixPayerRepasGeronimo,"Payer le repas de M. Geronimo");</etatFinal>
 			</dialogue>
@@ -250,7 +250,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="8">
-                                <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
+                                <texte>Je te rejoins à une table tout de suite, je t’expliquerai tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
                                     visibiltyPNJ("#geronimo","hide");
@@ -265,7 +265,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="10">
-                                <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
+                                <texte>Je te rejoins à une table tout de suite, je t’expliquerai tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>
                                     visibiltyPNJ("#geronimo","hide");
@@ -280,7 +280,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="12">
-                                <texte>Je te rejoins à une table tout de suite, je t’expliquerais tout tout à l’heure.</texte>
+                                <texte>Je te rejoins à une table tout de suite, je t’expliquerai tout tout à l’heure.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal>                                    
                                     visibiltyPNJ("#geronimo","hide");
