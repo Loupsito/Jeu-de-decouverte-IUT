@@ -9,12 +9,12 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="1">
-                                <texte>Ah, tu veux les clé, c'est ça ?</texte>
+                                <texte>Ah, tu veux les clés, c'est ça ?</texte>
 				<prerequis>normal</prerequis><!--apres le dialogue avec l'appariteur-->
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="M.GERONIMO" id="GERONIMO" numeroDialogue="2">
-                                <texte>Je les ai posé sur une table de pique-nique tout à l'heure, j'ai du les oublier la bas.</texte>
+                                <texte>Je les ai posées sur une table de pique-nique tout à l'heure, j'ai dû les oublier là-bas.</texte>
 				<prerequis>last</prerequis> 
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -28,17 +28,17 @@
                                 <etatFinal> </etatFinal>
                         </dialogue>
 			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="1">
-                                <texte>Hé oui, je suis appariteur à temps partiel, les hauts placés n'ont pas trouvé ceux à plein temps.</texte>
+                                <texte>Eh oui, je suis appariteur à temps partiel, les hauts placés n'ont pas trouvé ceux à plein temps.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
                         </dialogue>
 			<dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="2">
-                                <texte>Oh, tu veux aller en amphi ? Je n'ai plus les clés, un professeur les à empruntés.</texte>
+                                <texte>Oh, tu veux aller en amphi ? Je n'ai plus les clés, un professeur les a empruntées.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="3">
-                                <texte>Je crois que M. Geronimo les as oubliés proche de l'autre coté du bâtiment, il en saura peut être plus que moi.</texte>
+                                <texte>Je crois que M. Geronimo les as oubliées proche de l'autre coté du bâtiment, il en saura peut-être plus que moi.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -52,7 +52,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="HINGO" id="HINGO" numeroDialogue="1">
-                                <texte>Les appariteurs ont probablement la clé, vous devriez allez voir.</texte>
+                                <texte>Les appariteurs ont probablement la clé, vous devriez aller voir.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
