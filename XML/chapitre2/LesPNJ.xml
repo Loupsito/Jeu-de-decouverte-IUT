@@ -32,7 +32,7 @@
 			</dialogue>  
                         
                         <dialogue nomFake="FREDERIC" id="FREDERIC" numeroDialogue="5">
-                                <texte>Tu penses vraiment qu’il auraient gardé ça secret ? Et même, on aurait vu les pompiers débarquer à l’heure qu’il est.</texte>
+                                <texte>Tu penses vraiment qu’ils auraient gardé ça secret ? Et même, on aurait vu les pompiers débarquer à l’heure qu’il est.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal>blocChoix("choixAlarme",nomChoix,"Que penses-tu de l'alarme");</etatFinal>
 			</dialogue>                         
