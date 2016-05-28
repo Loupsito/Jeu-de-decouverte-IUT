@@ -201,12 +201,17 @@ function afficherCacher(id)
     var div = document.getElementById(id); 
     if(div.style.display==="none" || div.style.display==="")          // Si la division est cache
     {
-        div.style.display = "block";                
+        //div.style.display = "block";  
+        $('#'+id).show();
+        $('#'+id).animate({right:'0px'});
+         
         zoneAntiClic("2","antiClic2","0.4");
     }
    else // Si la division est visible
    {
-        div.style.display = "none";
+        //div.style.display = "none";        
+        $('#'+id).animate({right:'-100px'});
+        $('#'+id).fadeOut(500);
         removeElementById("antiClic2");
    }
 }

@@ -23,10 +23,10 @@
     </action>    
     <action nom="AfficherAgenda">
         <prerequis nom="AfficherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
-        <etatFinal>document.getElementById('agenda').style.display="block";</etatFinal>
+        <etatFinal>$('#agenda').fadeIn(500);</etatFinal>
     </action>
     <action nom="CacherAgenda">
         <prerequis nom="CacherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
-        <etatFinal>document.getElementById('agenda').style.display="none";</etatFinal>
+        <etatFinal>$('#agenda').fadeOut(500);</etatFinal>
     </action>
 </actions>
