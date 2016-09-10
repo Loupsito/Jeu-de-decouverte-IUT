@@ -9,7 +9,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="JEAN" id="JEAN" numeroDialogue="1">
-                                <texte>Tu as entendu la nouvelle ? On commence officiellement le deuxième semestre aujourd'hui ! On va savoir le premier cours du deuxième semestre et Mme Boti va tout nous expliquer. C'est génial !</texte>
+                                <texte>Tu as entendu la nouvelle ? On commence officiellement le deuxième semestre aujourd'hui ! On va avoir le premier cours du deuxième semestre et Mme Boti va tout nous expliquer. C'est génial !</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -33,7 +33,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="MARTEAU" id="MARTEAU" numeroDialogue="1">
-                                <texte>Bon, je suis désolé de vous annoncer qu’il n’y aura malheureusement pas de maths ! Rolala vraiment, moi qui vous avez préparé un sujet de rêve ! On aurait pu la mettre à la place de l’info quand même ! Enfin bon, aujourd’hui nous allons faire des exercices pour récapituler le plus gros du premier semestre.</texte>
+                                <texte>Bon, je suis désolé de vous annoncer qu’il n’y aura malheureusement pas de maths ! Rolala vraiment, moi qui vous aviez préparé un sujet de rêve ! On aurait pu la mettre à la place de l’info quand même ! Enfin bon, aujourd’hui nous allons faire des exercices pour récapituler le plus gros du premier semestre.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
@@ -92,7 +92,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="MME BOTI" id="BOTI" numeroDialogue="6">
-                                <texte>Le troisième et quatrième semestre seront orientés vers l’apprentissage approfondi de techniques de codage pour optimiser le code et le rendre plus sécurisé, on en reparlera au début de la deuxième année.</texte>
+                                <texte>Le troisième et quatrième semestre seront orientés vers l’apprentissage approfondi des techniques de codage pour optimiser le code et le rendre plus sécurisé. On en reparlera au début de la deuxième année.</texte>
 				<prerequis>normal</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>
