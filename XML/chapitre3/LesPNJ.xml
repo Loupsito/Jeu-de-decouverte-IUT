@@ -38,7 +38,7 @@
                                 <etatFinal> </etatFinal>
 			</dialogue>
                         <dialogue nomFake="APPARITEUR" id="APPARITEUR" numeroDialogue="3">
-                                <texte>Je crois que M. Geronimo les as oubliées proche de l'autre coté du bâtiment, il en saura peut-être plus que moi.</texte>
+                                <texte>Je crois que M. Geronimo les as oubliées proche de l'autre côté du bâtiment, il en saura peut-être plus que moi.</texte>
 				<prerequis>last</prerequis>				
                                 <etatFinal> </etatFinal>
 			</dialogue>

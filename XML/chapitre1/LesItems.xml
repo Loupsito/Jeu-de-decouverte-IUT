@@ -7,7 +7,7 @@
                     <tab_actions>                                                                                   
                         <action id ="cleAmphiA">Ouvrir_Porte_Amphi_A</action>
                     </tab_actions>
-                    <description>Une cle qui va me servir a ouvrir la porte de l'amphitheatre A du batiment Mermoz</description>	
+                    <description>Une clé qui va me servir à ouvrir la porte de l'amphithéâtre A du bâtiment Mermoz</description>	
                     <image lienimage="images/cleAmphiA.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
@@ -41,7 +41,7 @@
                         <action id="stylo">ecrire</action>
                         <action id="stylo">messageDialogue</action>                        
                     </tab_actions>
-                    <description>Un stylo qui va servir a ecrire sur un tableau</description>	
+                    <description>Un stylo qui va servir à écrire sur un tableau</description>	
                     <image lienimage="images/stylo.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>
@@ -56,7 +56,7 @@
                         <action id="lagenda">AfficherAgenda</action>
                         <action id="lagenda">CacherAgenda</action>                        
                     </tab_actions>
-                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <description>Un agenda qui va servir à savoir quoi faire pour avancer dans l'histoire</description>	
                     <image lienimage="images/agenda.png"/>
                     <possession>true</possession>                                                                  		
                     <tabCoordonnees>

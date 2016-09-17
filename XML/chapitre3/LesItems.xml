@@ -8,7 +8,7 @@
                         <action id="lagenda">AfficherAgenda</action>
                         <action id="lagenda">CacherAgenda</action>                        
                     </tab_actions>
-                    <description>Un agenda qui va servir a savoir quoi faire pour avancer dans l'histoire</description>	
+                    <description>Un agenda qui va servir à savoir quoi faire pour avancer dans l'histoire</description>	
                     <image lienimage="images/agenda.png"/>
                     <possession>true</possession>                                                                  		
                     <tabCoordonnees>
@@ -22,7 +22,7 @@
                     <tab_actions>                                                                                   
                         <action id ="cleAmphiA">Ouvrir_Porte_Amphi_A</action>
                     </tab_actions>
-                    <description>Sert a ouvrir la porte de l'amphitheatre A du batiment Mermoz</description>	
+                    <description>Sert à ouvrir la porte de l'amphithéâtre A du bâtiment Mermoz</description>	
                     <image lienimage="images/cleAmphiA.png"/>
                     <possession>false</possession>                                                                  		
                     <tabCoordonnees>

@@ -19,7 +19,7 @@
     </action>
     <action nom="messageDialogue">
         <prerequis nom="messageDialogue">joueur.idSalle==6</prerequis>
-        <etatFinal>dialogue('Alors voila vous avez cliquer sur la 2eme action de stylo, comme vous pouvez le voir, on y voit un texte qui s affiche progressivement','dial');</etatFinal>
+        <etatFinal>dialogue('Alors voila vous avez cliqué sur la 2eme action de stylo, comme vous pouvez le voir, on y voit un texte qui s affiche progressivement','dial');</etatFinal>
     </action>    
     <action nom="AfficherAgenda">
         <prerequis nom="AfficherAgenda">(verifPossessionItem('lagenda')===true)</prerequis>
