@@ -46,7 +46,7 @@
                         <div id ="t5" class="caseInventaire"></div><div id ="t6" class="caseInventaire"></div>
                         <div id ="t7" class="caseInventaire"></div><div id ="t8" class="caseInventaire"></div>
                         <div id ="t9" class="caseInventaire"></div><div id ="t10" class="caseInventaire"></div>
-                        <div id ="t11" class="caseInventaire">Depuis 28/05/ 2016 :</div><div id ="t12" class="caseInventaire"><?php echo '<strong>'.$compte.'</strong> visites'; ?></div>
+                        <div id ="t11" class="caseInventaire"></div><div id ="t12" class="caseInventaire"></div>
                     </div>                                                                                    
                     <div id="menu"></div>
                     <div class="bandesNoires" id="bandeNoiresHautes"></div>

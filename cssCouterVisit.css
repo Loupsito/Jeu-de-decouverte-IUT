@@ -1,0 +1,31 @@
+body
+{
+	background-color:#20294E;
+	color : white;
+	font-family: 'century gothic';
+	margin:0px;
+	top:0px;	
+}
+
+th
+{
+	color: white;
+	background-color: rgba(64,64,64,1);
+	text-decoration: none;
+	padding:4px;
+}
+tr
+{
+	color: white;
+	background-color: rgba(161,161,161,1);
+	text-decoration: none;
+	padding:4px;
+}
+
+#corps
+{	
+	width:80%;
+	margin-top:0px;
+	margin-left: auto;
+	margin-right: auto;	
+}

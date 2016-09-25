@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="CSS_affichage.css" type="text/css">
+        <link rel="stylesheet" href="cssCouterVisit.css" type="text/css">
         <link rel="icon" type="images/png" href="images/icone.ico" />
         <link rel="shortcut icon" href="images/favicon.ico" />        
         <title>Jeu de d&eacutecouverte de l'IUT de Vélizy</title>
@@ -10,7 +10,8 @@
          <script src="Scripts/jquery_script.js"></script>    
     </head>
     <body id ='corps'> 
-
+	<br/>
+	<h1>Statistiques</h1>
 <?php
 	include("ScriptCountVisit.php");
 	//Global array
@@ -34,7 +35,7 @@
 		{
 			$total+=$compteurVisite[$i];
 		}	
-		echo "<table border='6' cellpadding='4' style='color : red; ' >";
+		echo "<table>";
 		echo "<th>Nombre total de visites</th><th>Date de la derni&egravere connexion avant vous</th><th>Nombre de visiteurs diff&eacuterents</th>";
 		echo "<tr ><td>".$total."</td><td>".$IPdate[sizeof($IPdate)-2]."</td><td>".sizeof($compteurVisite)."</td></tr>";
 		echo "</table>";
