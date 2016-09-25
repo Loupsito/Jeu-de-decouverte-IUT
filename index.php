@@ -15,27 +15,7 @@
         <div id="bordGauche">              
             <img src="images/logoUVSQ.png" alt="logoUvsq" class="logoBord" />
         </div>
-            <?php           
-            if(file_exists('compteur_visites.txt'))
-            {
-                    $compteur_f = fopen('compteur_visites.txt', 'r+');
-                    $compte = fgets($compteur_f);
-            }
-            else
-            {
-                    $compteur_f = fopen('compteur_visites.txt', 'a+');
-                    $compte = 0;
-            }
-            if(!isset($_SESSION['compteur_de_visite']))
-            {
-                    $_SESSION['compteur_de_visite'] = 'visite';
-                    $compte++;
-                    fseek($compteur_f, 0);
-                    fputs($compteur_f, $compte);
-            }
-            fclose($compteur_f);
-            //echo '<strong>'.$compte.'</strong> visites.';
-         ?>
+           
         <!-- ______________________________________________________ --> 
         <!-- _________________________Le jeu_______________________ -->
             <div id="console">                 
@@ -89,11 +69,14 @@
         <div id="bordDroite">     
             <img src="images/logoUVSQ.png" alt="logoUvsq" class="logoBord"/>
         </div>
-        <!--
+        
         <footer id="telechargement">
-            <a href="JeuDeDecouverte-IUTVelizy.rar">Telecharger le jeu</a>
+            <a href="displayCountVisit.php" target="_blank">Statistiques</a>
+			 <?php           
+				include("ScriptCountVisit.php");
+			?>
         </footer>      
-        -->
+        
         </div>
        
     </body>
